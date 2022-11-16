@@ -297,6 +297,7 @@ import { CarteCandidatModalComponent } from './modal/carte-candidat-modal/carte-
 import { BodyDashboardComponent } from './components/body-dashboard/body-dashboard.component';
 import { MatTabsModule } from '@angular/material/tabs'; 
 import {MatMenuModule} from '@angular/material/menu';
+import { ContratAutoEcoleComponent } from './modal/contrat-auto-ecole/contrat-auto-ecole.component';
 export function httpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http,'../assets/i18n/','.json');
 };
@@ -483,6 +484,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CertificatFormationModalComponent,
     CarteCandidatModalComponent,
     BodyDashboardComponent,
+    ContratAutoEcoleComponent,
   ],
   imports: [
     MatMenuModule,

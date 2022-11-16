@@ -21,6 +21,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
         'Content-Type' : 'application/json; charset=utf-8',
         'Accept'       : 'application/json',
         'Authorization': `Bearer ${AuthService.getToken()}`,
+        'Access-Control-Allow-Origin' : '*'
       },
     });
     return next.handle(req).pipe(

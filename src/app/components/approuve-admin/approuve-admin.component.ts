@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
@@ -11,12 +11,21 @@ import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AbonnementmodalComponent } from 'src/app/modal/abonnementmodal/abonnementmodal.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { ContratAutoEcoleComponent } from 'src/app/modal/contrat-auto-ecole/contrat-auto-ecole.component';
 @Component({
   selector: 'app-approuve-admin',
   templateUrl: './approuve-admin.component.html',
   styleUrls: ['./approuve-admin.component.css']
 })
-export class ApprouveAdminComponent implements OnInit {
+export class ApprouveAdminComponent implements OnInit { 
+  displayedColumns: string[] = ['nom_auto_ecole', 'telephone','etat', 'tel_responsable', 'pays','actions'];    
+  dataSource!: MatTableDataSource<any>;
+  n:any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   dataLoad:any;
   hiddingNewAbonnement:boolean = false;
   dateVal = new Date();
@@ -36,16 +45,20 @@ export class ApprouveAdminComponent implements OnInit {
   constructor(private dataService:DataService,
               private store: Store<{dataSuperAdmin: DataSuperAdminState, autoecolesApprover: AutoecolesApproverState}>,
               private   modalService: NgbModal,
-              private auth:AuthService
+              private auth:AuthService,
     ) { }
   ngOnInit(): void {
     this.auth.authStatus.subscribe(value=>{
       if(value){
-        this.getAutoEcoleApprouve();
+        // this.getAutoEcoleApprouve();
+        this.loadData();
       }
     })
   }
-
+  applyFilter(event:any){
+    let value = event.target.value;
+    this.dataSource.filter = value.trim().toLowerCase();
+  }
   getAutoEcoleApprouve(){
       this.store.pipe(take(1)).subscribe(store=>{
         if(!store.autoecolesApprover.autoecolesApprover.loaded){
@@ -54,9 +67,24 @@ export class ApprouveAdminComponent implements OnInit {
       })
       this.store.select(state=>state.autoecolesApprover.autoecolesApprover.autoecolesApprover).subscribe(autoecolesApprover=>{
         this.autoEcoleApprouver = autoecolesApprover;
+        console.log("auto ecole aprove");console.log(this.autoEcoleApprouver);
+        this.dataSource = new MatTableDataSource(this.dataLoad)
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        if(this.autoEcoleApprouver){
+          this.n = this.autoEcoleApprouver.reduce((acc, o) => acc + Object.keys(o).length, 0)
+        }
       })
   }
-
+   loadData(){
+    this.dataService.getAutoEcoleApprover().subscribe(data=>{
+      this.dataLoad = data;
+      this.dataSource = new MatTableDataSource(this.dataLoad)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    })
+   }
   recuperAutoEcole(id:any){
      this.dataService.recuperAutoEcole(id).subscribe(data =>{
       this.store.dispatch(loadAutoEcolesApprover())
@@ -184,6 +212,10 @@ export class ApprouveAdminComponent implements OnInit {
  open(data:any, btn:any){
   const modalRef = this.modalService.open(AbonnementmodalComponent);
   modalRef.componentInstance.btn = btn;
+  modalRef.componentInstance.data = data;
+}
+contrat(data:any){
+  const modalRef = this.modalService.open(ContratAutoEcoleComponent);
   modalRef.componentInstance.data = data;
 }
 }

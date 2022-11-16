@@ -6,7 +6,7 @@
     margin-top: 140px;
     margin-left: 260px;
 
-    background: #e8eeea;
+    background: #ddd;
     max-width: 100%;
    
 }
@@ -314,4 +314,8 @@ table {
 
 *{
     font-size: 16px;
+}
+
+body{
+    background: #557777;
 }

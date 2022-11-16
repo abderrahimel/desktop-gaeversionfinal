@@ -92,7 +92,7 @@ import { DetailEcoleVendreComponent } from './components/detail-ecole-vendre/det
 import { DetailMonitorComponent } from './components/detail-monitor/detail-monitor.component';
 
 const routes: Routes = [
-  // { path: '', component: LoginComponent, pathMatch: 'full'},
+  { path: '', component: LoginComponent, pathMatch: 'full'},
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'forgot-password', component: ReinitialisePasswordComponent, pathMatch: 'full' },
   { path: 'verify/pin', component: VerifyPinComponent, pathMatch: 'full' },

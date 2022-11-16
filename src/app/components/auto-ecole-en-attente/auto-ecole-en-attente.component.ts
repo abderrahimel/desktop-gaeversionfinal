@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -12,6 +15,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./auto-ecole-en-attente.component.css']
 })
 export class AutoEcoleEnAttenteComponent implements OnInit {
+  displayedColumns: string[] = ['nom_auto_ecole', 'telephone','etat', 'tel_responsable', 'pays','actions'];     
+  dataSource!: MatTableDataSource<any>;
+  n:any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   dataLoad:any;
   hiddingNewAbonnement:boolean = false;
   dateVal = new Date();
@@ -25,12 +33,21 @@ export class AutoEcoleEnAttenteComponent implements OnInit {
   ngOnInit(): void {
      this.auth.authStatus.subscribe(value=>{
       if(value){
-        this.getAutoEcoleEnAttente();
+        // this.getAutoEcoleEnAttente();
+        this.loadData();
       }
      })
 
   }
-
+  loadData(){
+    this.dataService.getAutoEcoleApprover().subscribe(data=>{
+      this.dataLoad = data;
+      this.dataSource = new MatTableDataSource(this.dataLoad)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    })
+   }
   getAutoEcoleEnAttente(){
       this.store.pipe(take(1)).subscribe(store=>{
         if(!store.autoecolesEnAttente.autoecolesEnAttente.loaded){
@@ -41,10 +58,17 @@ export class AutoEcoleEnAttenteComponent implements OnInit {
         console.log("autoecolesEnAttente from the store");
         console.log(autoecolesEnAttente);
         this.autoEcoleEnAttente = autoecolesEnAttente;
+        this.dataSource = new MatTableDataSource(this.autoEcoleEnAttente)
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
       })
     
   }
-
+  applyFilter(event:any){
+    let value = event.target.value;
+    this.dataSource.filter = value.trim().toLowerCase();
+  }
 
   deleteAutoEcole(id:any){
     Swal.fire({

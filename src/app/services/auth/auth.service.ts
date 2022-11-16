@@ -34,10 +34,10 @@ export class AuthService {
  
   
   IssuperAdmin(){
-    return this.http.get(this.api+'/api/check-super-admin', { responseType: 'text'});
+    return this.http.get(this.api+'/check-super-admin', { responseType: 'text'});
   }
   IsAutoAdmin(){
-    return this.http.get(this.api+'/api/check-admin-autoecole', { responseType: 'text'});
+    return this.http.get(this.api+'/check-admin-autoecole', { responseType: 'text'});
   }
   isSuperAdmin(){
     return this.isSuper;
@@ -85,7 +85,7 @@ export class AuthService {
     if(token){
       const payload = this.payload(token);
       if(payload){
-        return (payload.iss === this.api + "/api/login")? true : false;
+        return (payload.iss === this.api + "/login")? true : false;
       }
     }
     return false;
@@ -111,7 +111,7 @@ export class AuthService {
   //logout et supprimer le token stoker
   logout(userData:any){
     
-    this.http.post(this.api+`/api/logout`,userData).subscribe(
+    this.http.post(this.api+`/logout`,userData).subscribe(
       data =>  {
              if(data['message']='success'){
                      this._router.navigate(['/login']);
@@ -121,14 +121,14 @@ export class AuthService {
   }
 
   register(data:any){
-      return this.http.post(this.api+'/api/register', data, { responseType: 'text'})
+      return this.http.post(this.api+'/register', data, { responseType: 'text'})
   }
 
   login(data:any){
-     return this.http.post('http://127.0.0.1:8000/api/login', data, { responseType: 'text'});
+     return this.http.post('http://127.0.0.1:8000/login', data, { responseType: 'text'});
   }
   getUser(){
-   return   this.http.get(this.api+`/api/logged`);
+   return   this.http.get(this.api+`/logged`);
    
   }
   getStatus(){

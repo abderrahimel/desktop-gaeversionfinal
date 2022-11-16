@@ -1,0 +1,165 @@
+<div class="modal-content" style="width: 700px;">
+    <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Contrat Gestion</h5>
+            <button type="button" style="border: none;background: white;" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+    </div>
+    <div class="card-body" id="printpdf">
+        <div id="mCSB_2" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 500px;" tabindex="0">
+            <div id="mCSB_2_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;">
+        <div id="framecontent">
+        <style>
+        table{width: 100%;}
+        .center{text-align: center;}
+        .table_header{width: 100%;} 
+        .table_header tr td{width: 50%;}
+        .custom{border:1px black solid; padding: 5px;}
+        </style>
+        <table class="table">
+                <tbody><tr>
+                <td style="width:40%">
+                    <div class="center">
+                        <img src="/assets/img/contrat.png" width="200px;" height="200px;">
+                    </div>
+                </td>
+                <td style="width:60%">
+                    <div class="custom">
+                        <h4 class="center"><strong>CONTRAT DE LICENCE D’UTILISATION DE LOGICIEL </strong></h4>
+                        <h5 class="center"><strong>GESTION AUTO-ECOLE </strong></h5>
+                        <table class="table table-bordered table_header">
+                            <tbody><tr>
+                                <td>
+                                    <strong>*Licence d'ouverture d'une auto-école</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>*Licence supplémentaire</strong>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        <h6 class="center"><strong>Concession d'un droit d'utilisation</strong></h6>
+                    </div>
+                    <p class="center"><strong>Contrat numéro ?, date {{date_inscriptioncontrat}}</strong></p>
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="col-md-12">
+            <label>Entre</label>
+            <p>Dénommée (personne physique ou morale) :<strong> Mr JALAL EL AMRANI</strong></p>
+            <p>Adresse :<strong> 45.AV HASSAN 2, Tour AL WATANIYA 8éme étage N°802, Fès</strong></p>
+            <p>Numéro RC :<strong> 61533</strong></p>
+        </div>
+    
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tbody><tr>
+                    <td>TEL : <strong>+212535942071</strong></td>
+                    <td>EMAIL : <strong>jhb.plus@yahoo.com</strong></td>
+                    <td>SITE WEB : <strong>www.jhbplus.com</strong></td>
+                </tr>
+                <tr>
+                    <td>Représentée par Mr <strong>Jalal el Amrani</strong></td>
+                    <td>GSM : <strong>+212661189821</strong></td>
+                    <td>En qualité de Directeur</td>
+                </tr>
+            </tbody></table>
+            <p style="text-align: right;">Ci-après dénommer « L'EDITEUR » D'UNE PART,</p>
+        </div>
+    
+        <div class="col-md-12">
+            <label>Et</label>
+            <p>
+                Dénommée (personne physique ou morale) :
+                <strong>{{data?.nom_responsable}}{{" "}}{{data?.nom_responsable}}</strong>
+            </p>
+            <p>Adresse : <strong>{{data?.adresse}}</strong></p>
+        </div>
+        <div class="container">
+            <div class="row">
+            <div class="col">
+                N° Agrément : <strong>{{data?.n_agrement}}</strong><p></p>
+            </div>
+            <div class="col">
+                Numéro RC : <strong>{{data?.n_register_de_commerce}}</strong>
+            </div>
+            <div class="col">
+                N° ICE : <strong>{{data?.ice}}</strong>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tbody><tr>
+                    <td>TEL : <strong>{{data?.telephone}}</strong></td>
+                    <td>EMAIL : <strong>{{data?.gmail}}</strong></td>
+                    <td>SITE WEB : <strong>{{data?.site_web}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Représentée par : <strong>{{data?.nom_auto_ecole}}</strong></td>
+                    <td>GSM : <strong>{{data?.tel_responsable}}</strong></td>
+                    <td>En qualité de GERANT</td>
+                </tr>
+            </tbody></table>
+            <p style="text-align: right;">Ci-après dénommer «licencié» D'AUTRE PART,</p>
+        </div>
+    
+        <div class="col-md-12">
+            <p>Par le présent contrat, l'éditeur concède au licencié qui l'accepte, le droit non exclusif et non cessible d'utiliser le logiciel désigné aux conditions particulières, selon les conditions et modalités définies ci-après moyennant le paiement de la redevance décrite aux conditions particulières.
+            </p>
+            <ol>
+                <li>- Installer le logiciel sur un seul PC, chaque pc doit avoir une licence privée. </li>
+            <p>Toutefois, le licencié devra acheter  et dédier une licence distincte pour chaque ordinateur sur lequel le logiciel est utilisé en même temps.</p>
+                <li>- Une licence  de logiciel ne peut être partagée ou utilisée concomitamment sur plusieurs ordinateurs au même moment.</li>
+            </ol>
+        </div>
+    
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tbody><tr>
+                    <td>Nom du logiciel</td>
+                    <td>Description</td>
+                    <td>Nombre de licences Commandés</td>
+                </tr>
+                <tr>
+                    <td><strong>GESTION AUTO-ECOLE</strong></td>
+                    <td><strong>APPLICATION DESKTOP DE GESTION DE L'AUTO-ECOLE</strong></td>
+                    <td class="center"><strong>.................</strong></td>
+                </tr>
+            </tbody></table>
+            <p style="text-align: right;">Ci-après dénommer « L'EDITEUR » D'UNE PART,</p>
+        </div>
+    
+        <div class="col-md-12">
+            <p>Le licencié reconnaît que la remise de la mise à niveau ou de la mise à jour ne constitue pas une concession d'une nouvelle licence de logiciel, c'est à dire qu'il s'interdit d'utiliser la mise à niveau ou la mise à jour en plus du logiciel qu'elle remplace et de céder le logiciel remplacé à tout tiers. L'achat d'une licence correspond à un droit d'utilisation du logiciel à un moment donné par un utilisateur quel qu'il soit...
+            </p>
+            <br>
+            <p><strong>L'EDITEUR</strong> n'autorise pas l'auto-école à utiliser <strong>« le logiciel de GAE  »</strong> Dans le cadre d'une formation professionnelle délivrée à de PME, entreprises publique ou privée ou dans une autre auto-école. Ce logiciel est destiné à une utilisation unique et privée dans une seule autoécole est celle qui est mentionnée sur le présent contrat. L'utilisateur de notre logiciel   N'a aucun droit de le vendre, dupliquer, reproduire, prêter, copier, piraté, donner le total ou l'un tiers de logiciel à une autre personne physique ou moral.</p>
+            <p><strong>Toute auto-école qui ne possède pas de contrat de licence de notre logiciel signé et cacheté par notre société  est considéré en infraction, et l'utilisation de notre logiciel devient illégale.</strong>
+            </p>
+        </div>
+    
+        <div class="col-md-12">
+            <table class="table">
+                <tbody><tr>
+                    <td colspan="2"> Fait en deux exemplaires,<strong> à fes le {{date_inscriptioncontrat}} </strong></td>
+                </tr>
+                <tr>
+                    <td>Signature et cachet (Lu et approuvé)  </td>
+                    <td style="text-align: right;">Signature et cachet (Lu et approuvé) </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="card-footer">
+            <button type="button" id="sendpdf" class="btn btn-success"> <i class="fa fa-send"></i> Envoyer</button>
+			<button style="background:red;border:none" class="btn btn-danger"  printSectionId="printpdf" #print ngxPrint> <i class="fa fa-print"></i> Imprimer</button>
+			 <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+    </div>
+</div>

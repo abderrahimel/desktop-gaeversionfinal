@@ -20,7 +20,7 @@
 
     <div class="mat-elevation-z8">
      
-      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+      <div style="margin-left: 6px;margin-right: 6px;padding: 10px;">
         <div style="font-size: 16px;font-weight: 600;">
           <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;">
             <div style="font-size: 14px;">GESTION AUTO-ÉCOLE
@@ -93,54 +93,82 @@
           
             </div>
           </div>
-        <table class="table" >
-          <thead>
-            <tr  style="color: black;" >
-                <th scope="col">{{ "NOM" | translate }}</th>
-                <th scope="col">{{ "RESPONSABLE" | translate }}</th>
-                <th scope="col">{{ "ETAT" | translate }}</th>
-                <th scope="col">{{ "TELE ECOLE" | translate }}</th>
-                <th scope="col">{{ "TELE RESPONSABLE" | translate }}</th>
-                <th scope="col">{{ "PAYS/VILLE" | translate }}</th>
-                <th scope="col">{{ "ACTIONS" | translate }}</th>
-            </tr>
-          </thead>
-          <tbody>    
-            <tr *ngFor="let data of autoEcoleApprouver; " class="td_paiment">
-              <th scope="row">{{data.nom_auto_ecole}}</th>
-              <!-- <td>{{data.nom_auto_ecole}}</td> -->
-              <td>{{data.nom_responsable}}{{" "}}{{data.prenom_responsable}}</td>
-              <td><p style="background-color: rgb(0, 255, 13);color: white;">Approuvé</p> </td>
-              <td> {{data.telephone}}</td> 
-              <td> {{data.tel_responsable}}</td>
-              <td> {{data.pays}}/{{data.ville}}</td>
-              <td>
-                <a  href="detail-auto-ecole/{{data.id}}"  title="detail" class="btn" style="border-color:rgb(3, 197, 245); background: rgb(3, 197, 245);color: white;">
-                    Detail
-                </a>
-                <button title="Contrat"class="btn" style="background: rgb(24, 235, 5);color: white;">
-                  Contrat
-                </button> 
-                <button title="approver" *ngIf="data.etat === 'en_attente'" (click)="approver(data.id)"  class="btn" style="background: orange;color: white;">
-                  Approver
-                </button>  
-                <!-- -->
-                <button title="désapprouver" *ngIf="data.etat === 'approuve'" (click)="desapprover(data.id)"   class="btn" style="background: orange;color: white;">
-                  Desapprouver
-              </button> 
-                <button (click)="deleteAutoEcole(data.id)" title="supprimer" class="btn" style="background: black;color: white;">
-                  Supprimer
-                </button>
-                <button title="abonnement" (click)="open(data?.abonnement, 'Abonnement')"  class="btn" style="background: orange;color: white;">
-                  Abonnement
-                </button> 
-              </td>
-            </tr>
-            </tbody>
+          <div style="display: flex;align-items:center;justify-content:flex-end">
+            <div style="margin-right: 6px">  Rechercher:</div>
+            <mat-form-field appearance="standard">
+               <mat-label></mat-label>
+               <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+            </mat-form-field>
+        </div>
+        <table mat-table [dataSource]="dataSource" matSort>    
+      
+          <!-- nom_auto_ecole Column ['nom_auto_ecole', 'date_debut', 'date_fin', 'prix','actions'];     --> 
+          <ng-container matColumnDef="nom_auto_ecole">       
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom_auto_ecole"> 
+              <span style="font-weight:900;font-size: 11px;">NOM</span>    
+            </th>
+            <td mat-cell *matCellDef="let element">{{element?.nom_auto_ecole}}</td>
+          </ng-container>
+     
+          <!-- responsable Column --> 
+          <ng-container matColumnDef="responsable">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 11px;">RESPONSABLE</span></th>
+            <td mat-cell *matCellDef="let element">{{element?.nom_responsable}}{{" "}}{{element?.prenom_responsable}} </td>
+          </ng-container>
+
+            <!-- etat Column -->  
+            <ng-container matColumnDef="etat">  
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 11px;">ETAT</span>   </th>
+              <td mat-cell *matCellDef="let element"><p style="background-color: rgb(0, 255, 13);color: white;">Approuvé</p></td>
+            </ng-container> 
+
+          <!-- telephone Column --> 
+          <ng-container matColumnDef="telephone">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 11px;">TEL AUTO-ÉCOLE</span></th>
+            <td mat-cell *matCellDef="let element">{{element?.telephone}} </td>
+          </ng-container>
+
+          
+          <!-- tel_responsable Column --> 
+          <ng-container matColumnDef="tel_responsable">   
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 11px;">TÉL DE GÉRANT(E)</span> </th>
+            <td mat-cell *matCellDef="let element">{{element?.tel_responsable}}</td>
+          </ng-container>
+      
+          <!-- pays Column -->
+          <ng-container matColumnDef="pays">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">PAYS/VILLE</span> </th>
+            <td mat-cell *matCellDef="let element">{{element?.pays}}/{{element?.ville}}</td>
+          </ng-container>   
+         <!-- actions Column -->
+         <ng-container matColumnDef="actions">  
+          <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 11px;">ACTIONS</span>  </th>
+          <td mat-cell *matCellDef="let element"> 
+
+            <a  routerLink="/detail-auto-ecole/{{element?.id}}"  title="detail" class="btn" style="border-color:rgb(3, 197, 245); background: rgb(3, 197, 245);color: white;padding: 8px;">Detail</a>
+
+            <button title="Contrat"class="btn" style="background: rgb(24, 235, 5);color: white;padding: 8px;" (click)="contrat(element)">Contrat</button> 
+
+            <button title="approver" *ngIf="element?.etat === 'en_attente'" (click)="approver(element?.id)"  class="btn" style="background: orange;color: white;padding: 8px;">Approver</button>  
+      
+            <button title="désapprouver" *ngIf="element?.etat === 'approuve'" (click)="desapprover(element?.id)"   class="btn" style="background: orange;color: white;padding: 8px;">Desapprouver</button> 
+
+            <button (click)="deleteAutoEcole(element?.id)" title="supprimer" class="btn" style="background: black;color: white;padding: 8px;">Supprimer</button>
+
+            <button title="abonnement" (click)="open(element?.abonnement, 'Abonnement')"  class="btn" style="background: orange;color: white;padding: 8px;">Abonnement</button> 
+
+          </td>
+        </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <mat-paginator 
+        [length]="n" 
+        [pageSize]="5"  
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
       </div>
         </div>
-        
     </div>   
       </div>
   </div>
