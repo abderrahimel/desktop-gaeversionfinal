@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style="font-size: 14px;">
+  <div class="h-55">
+    <app-headerlogged></app-headerlogged>
+  </div>
+   <app-menu-sb></app-menu-sb>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
+    <div style="display: flex;">
+      <div class="wrap-table100 card" >
+        <div class="table-header">
+          <div class="row">
+            <div class="col-9" style="font-size: 14px;">
+              GESTION DES RAPPELS
+            </div>
+          </div>
+        </div>
+        <div class="d-fex">
+          <button  id="tabtextid1"  
+          onclick="document.getElementById('tabtextid1').style.color='white';document.getElementById('tabtextid1').style.background='black';document.getElementById('tab1').style.display='block';
+                  document.getElementById('tabtextid2').style.color='black';document.getElementById('tabtextid2').style.background='white';document.getElementById('tab2').style.display='none';
+                  document.getElementById('tabtextid3').style.color='black';document.getElementById('tabtextid3').style.background='white'; document.getElementById('tabtextid3').style.border='1px solid rgb(228, 221, 221)';document.getElementById('tab3').style.display='none'"
+                   style="padding: 7px;background:black;color: white;" class="mx-2" >R.visite technique</button>
+
+           <button id="tabtextid2" onclick="document.getElementById('tabtextid1').style.color='black'; document.getElementById('tabtextid1').style.background='white';document.getElementById('tab1').style.display='none';document.getElementById('tabtextid2').style.color='white'; document.getElementById('tabtextid2').style.background='black';document.getElementById('tab2').style.display='block';document.getElementById('tabtextid3').style.color='black'; document.getElementById('tabtextid3').style.background='white';document.getElementById('tab3').style.display='none'" style="padding: 7px;border:1px solid rgb(233, 227, 227);background:white;color: black;" class="mx-2">R.vidange</button>
+
+           <button id="tabtextid3" onclick="document.getElementById('tabtextid1').style.color='black'; document.getElementById('tabtextid1').style.background='white';document.getElementById('tab1').style.display='none';document.getElementById('tabtextid2').style.color='rgb(228, 221, 221)'; document.getElementById('tabtextid2').style.background='white';; document.getElementById('tabtextid2').style.color='black';document.getElementById('tab2').style.display='none';document.getElementById('tabtextid3').style.color='white'; document.getElementById('tabtextid3').style.background='black';document.getElementById('tab3').style.display='block'" style="padding: 7px;border:1px solid rgb(228, 221, 221);background:white;color: black;" class="mx-2">R.assurance</button>
+        </div>
+         <div id="tab1">
+          <div>
+            <div class="card-header" style="display: none;">
+                <h3 class="card-title">
+                </h3>
+            </div>
+            <mat-card>
+              <div  style="width: 100%;">
+                <div class="card-body">
+                   <div class="table-responsive border-top mb-0">
+                          <!--ABSENCE candidats -->
+                      
+                            <div style="display: flex;align-items:center;justify-content:flex-end">
+                              <div style="margin-right: 6px">  Rechercher:</div>
+                              <mat-form-field appearance="standard">
+                                 <mat-label></mat-label>
+                                 <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                              </mat-form-field>
+                          </div>
+                           <table  mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
+                            <ng-container matColumnDef="matricule">      
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by matricule"> 
+                                <span style="font-weight:900;font-size: 16px;">MATRICULE</span>    
+                              </th>
+                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.matricule}} </td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="type">  
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">TYPE</span>   </th>
+                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.type }}</td>
+                            </ng-container>
+                        
+                            <ng-container matColumnDef="marque">   
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MARQUE</span> </th>
+                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.marque}} </td>
+                            </ng-container>
+           
+                             <ng-container matColumnDef="date_visite">   
+                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE VISITE</span> </th>
+                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_visite}} </td>
+                             </ng-container>
+                             <ng-container matColumnDef="date_prochain_visite">   
+                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE PROCHAIN VISITE TECHNIQUE</span> </th>
+                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_prochain_visite}} </td>
+                             </ng-container>
+                               <ng-container matColumnDef="etat">   
+                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                                 <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
+                               </ng-container>
+                             
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>
+                          <mat-paginator 
+                          #paginatorFirst
+                          [pageSize]="5"  
+                          [pageSizeOptions]="[5, 10, 25, 100]">
+                          </mat-paginator>
+                          <!-- end ABSENCE candidats -->
+                   </div>
+                </div>
+            </div>
+            </mat-card>
+            <!-- <div style="display: flex;align-items:center;justify-content:flex-end">
+              <div style="margin-right: 6px">  Rechercher:</div>
+              <mat-form-field appearance="standard">
+                 <mat-label></mat-label>
+                 <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+              </mat-form-field>
+          </div>
+           <table mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
+             <ng-container matColumnDef="matricule">      
+               <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by matricule"> 
+                 <span style="font-weight:900;font-size: 16px;">MATRICULE</span>    
+               </th>
+               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.matricule}} </td>
+             </ng-container>
+         
+             <ng-container matColumnDef="type">  
+               <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">TYPE</span>   </th>
+               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.type }}</td>
+             </ng-container>
+         
+             <ng-container matColumnDef="marque">   
+               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MARQUE</span> </th>
+               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.marque}} </td>
+             </ng-container>
+
+              <ng-container matColumnDef="date_visite">   
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE VISITE</span> </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.date_visite}} </td>
+              </ng-container>
+              <ng-container matColumnDef="date_prochain_visite">   
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE PROCHAIN VISITE TECHNIQUE</span> </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.date_prochain_visite}} </td>
+              </ng-container>
+                <ng-container matColumnDef="etat">   
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                  <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
+                </ng-container>
+             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+           </table>
+           <mat-paginator 
+             #paginatorFirst
+             [pageSize]="5"  
+             [pageSizeOptions]="[5, 10, 25, 100]">
+           </mat-paginator> -->
+        </div>
+         </div>
+         <div id="tab2" style="display: none;">
+          <mat-card >
+            <div class="card" style="width: 100%;">
+              <div class="card-header" style="display: none;">
+                  <h3 class="card-title"></h3>
+              </div>
+              <div class="card-body">
+                 <div class="table-responsive border-top mb-0">
+                        <!--ABSENCE candidats -->
+                    
+                          <div style="display: flex;align-items:center;justify-content:flex-end">
+                            <div style="margin-right: 6px">  Rechercher:</div>
+                            <mat-form-field appearance="standard">
+                               <mat-label></mat-label>
+                               <input matInput (keyup)="applyFilter1($event)" placeholder="... " #input>
+                            </mat-form-field>
+                        </div>
+                         <table  mat-table  [dataSource]="dataSource1"  matSort #empTbSort1="matSort">    
+                       
+                          <ng-container matColumnDef="matricule">      
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by matricule"> 
+                              <span style="font-weight:900;font-size: 16px;">MATRICULE</span>    
+                            </th>
+                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.matricule}} </td>
+                          </ng-container>
+                      
+                          <!-- type Column -->
+                          <ng-container matColumnDef="type">  
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">TYPE</span>   </th>
+                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.type }}</td>
+                          </ng-container>
+                      
+                          <!-- marque Column -->  
+                          <ng-container matColumnDef="marque">   
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MARQUE</span> </th>
+                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.marque}} </td>
+                          </ng-container>
+         
+                           <!-- date_vidange Column -->  
+                           <ng-container matColumnDef="date_vidange">   
+                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE VIDANGE</span> </th>
+                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_vidange}} </td>
+                           </ng-container>
+                           <!-- date_prochain_vidange COLUMN -->
+                           <ng-container matColumnDef="date_prochain_vidange">    
+                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE PROCHAIN VIDANGE</span> </th>
+                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_prochain_vidange}} </td>
+                           </ng-container>
+                             <!-- etat COLUMN -->
+                             <ng-container matColumnDef="etat">   
+                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                               <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
+                             </ng-container>
+
+                           <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                           <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                         </table>
+                         <mat-paginator 
+                             #paginatorSecond
+                            [pageSize]="5"  
+                            [pageSizeOptions]="[5, 10, 25, 100]">
+                         </mat-paginator>
+                        <!-- end ABSENCE candidats -->
+                 </div>
+              </div>
+          </div>
+          </mat-card>
+        </div>
+         <div id="tab3" style="display: none;">
+          <mat-card >
+            <div class="card" style="width: 100%;">
+              <div class="card-header" style="display: none;">
+                  <h3 class="card-title"></h3>
+              </div>
+              <div class="card-body">
+                 <div class="table-responsive border-top mb-0">
+                        <!--ABSENCE candidats -->
+                    
+                          <div style="display: flex;align-items:center;justify-content:flex-end">
+                            <div style="margin-right: 6px">  Rechercher:</div>
+                            <mat-form-field appearance="standard">
+                               <mat-label></mat-label>
+                               <input matInput (keyup)="applyFilter1($event)" placeholder="... " #input>
+                            </mat-form-field>
+                        </div>
+                        <table mat-table  [dataSource]="dataSource2"  matSort #empTbSort2="matSort">    
+                                           
+                          <ng-container matColumnDef="matricule">      
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by matricule"> 
+                              <span style="font-weight:900;font-size: 16px;">MATRICULE</span>    
+                            </th>
+                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.matricule}} </td>
+                          </ng-container>
+                      
+                          <!-- type Column -->
+                          <ng-container matColumnDef="type">  
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">TYPE</span>   </th>
+                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.type }}</td>
+                          </ng-container>
+                      
+                          <!-- marque Column -->  
+                          <ng-container matColumnDef="marque">   
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MARQUE</span> </th>
+                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.marque}} </td>
+                          </ng-container>
+         
+                           <!-- date_assurance Column -->  
+                           <ng-container matColumnDef="date_assurance">  
+                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE ASSURANCE</span> </th>
+                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_assurance}} </td>
+                           </ng-container>
+                           <!-- date_expiration_assurance COLUMN -->
+                           <ng-container matColumnDef="date_expiration_assurance">   
+                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE  EXPIRATION ASSURANCE</span> </th>
+                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_expiration_assurance}} </td>
+                           </ng-container>
+                             <!-- etat COLUMN -->
+                             <ng-container matColumnDef="etat">   
+                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                               <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
+                             </ng-container>
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                        </table>
+                        <mat-paginator 
+                          #paginator2
+                          [pageSize]="5"  
+                          [pageSizeOptions]="[5, 10, 25, 100]">
+                        </mat-paginator>
+                           
+                        <!-- end ABSENCE candidats -->
+                 </div>
+              </div>
+          </div>
+          </mat-card>
+        </div>
+        
+      </div>
+  </div>
+  <!-- fin first container -->
+                  
+
+    
+             
+ </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

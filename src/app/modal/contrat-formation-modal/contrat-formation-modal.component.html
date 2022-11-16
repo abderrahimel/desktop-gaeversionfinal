@@ -1,0 +1,162 @@
+<div class="modal-content" style="width: 800px;">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">عقد التكوين</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"  (click)="activeModal.dismiss('Cross click')" >×</span>
+        </button>
+    </div>
+  
+    <div class="card-body" id="printpdf">
+        <div class="content vscroll mCustomScrollbar _mCS_1" style="max-height:500px;"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 500px;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
+            <div id="framecontent">
+
+
+
+
+<meta charset="utf-8">
+<title>عقد التكوين</title>
+<style>
+    table
+    {width: 100%;}
+</style>
+
+
+
+<h2 style="text-align: center;"><strong>عقد التكوين  </strong></h2>
+<h3 style="text-align: center;"><strong>رخصة السياقة من صنف :  B</strong></h3>
+<table>
+    <tbody><tr>
+        <td style="width: 50%;text-align:left"><strong>رقم : {{autoecole?.n_patente}}</strong></td>
+        <td style="width: 50%;text-align:left"><strong>{{data?.date_inscription}} : 13/07/2022</strong></td>
+    </tr>
+    <tr><td style="width: 50%;"><h3><strong>طرفي العقد</strong></h3></td></tr>
+</tbody></table>
+<hr>
+<table>
+     <tbody><tr>
+        <td><strong> مؤسسة تعليم السياقة :  {{autoecole?.nom_auto_ecole}}</strong></td> 
+    </tr>
+    <tr>
+        <td><strong> رقم القيد في السجل الوطني الخاص بمؤسسات تعليم السياقة :  {{autoecole?.n_agrement}}</strong></td> 
+    </tr>
+    <tr>
+        <td style="width: 40%;"><strong> رقم القيد في سجل الضريبة المهنية :  {{autoecole?.identification_fiscale}}</strong></td>
+        <td style="width: 40%;"><strong> رقم القيد في سجل التجاري :  {{autoecole?.n_register_de_commerce}}</strong></td> 
+        <td style="width: 20%;"><strong> {{autoecole?.ville}} :  meknes</strong></td> 
+    </tr>
+    <tr>
+        <td style="width: 50%;"><strong> العنوان :  {{autoecole?.adresse}}</strong></td>
+    </tr>
+    <tr>
+        <td style="width: 30%;"><strong> الهاتف :  {{autoecole?.telephone}}</strong></td> 
+        <td style="width: 30%;"><strong> الفاكس :  {{autoecole?.fax}}</strong></td> 
+        <td style="width: 40%;"><strong> البريد الالكتروني: {{user?.user?.email}}  </strong></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: left;">
+            <strong>المسماة المؤسسة </strong>
+        </td>
+    </tr>
+</tbody></table>
+<hr>
+<table>
+    <tbody><tr>
+        <td>
+            <strong>والسيد(ة) : {{data?.nom_ar}}{{" "}}{{data?.prenom_ar}}</strong>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 33%;">
+            <strong>رقم ب.و.ت.إ : {{data?.cin}}</strong>
+        </td>
+        <td style="width: 33%;">
+            <strong>المزداد(ة) ب : {{data?.lieu_naissance}}</strong>
+        </td>
+        <td style="width: 33%;">
+            <strong>بتاريخ : {{data?.date_naissance}}/</strong>
+        </td>
+    </tr>
+    <tr>  
+        <td>
+             <strong>القاطن(ة) ب : {{data?.adresse_ar}}</strong>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>رقم تسجيل المرشح الممنوح من طرف الإدارة : {{data?.ref_web}}</strong>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" style="text-align: left;"><strong>المسمى(ة) المرشح(ة) </strong></td>
+    </tr>
+</tbody></table>
+<h5><strong>المادة الأولى : موضوع العقد</strong></h5>
+<p>يهدف هذا العقد الى تكوين المترشح وتمكينه من اكتساب المعارف والمهارات الضرورية اللازمة التي تمكنه من سياقة مركبة تتطلب قيادتها رخصة السياقة من صنف {{data?.categorie}}، طبقا للبرامج المحددة من طرف الإدارة.</p>
+<p>كما يحدد حقوق وواجبات كلا الطرفين مع مراعاة القوانين والأنظمة الجاري بها العمل في هذا الشأن.</p>
+<h5><strong>المادة 2: مدة العقد </strong></h5>
+<p>يمتد هذا العقد لمدة ستة أشهر ومن تاريخ توقيعه، ويمكن تمديده، في حالة الاتفاق بين الطرفين، لمدة لا تتعدى ثلاثة أشهر.</p>
+
+<h5><strong>المادة 3: التزامات المؤسسة </strong></h5>
+<p>تلتزم المؤسسة بتكوين المرشح طبقا للبرنامج الوطني لتعليم السياقة.</p>
+<p>تلقن الدروس النظرية والتطبيقية، تحت إشراف مدير المؤسسة، من طرف مدرب أو مدربي تعليم السياقة مرخص لهم، تشغلهم المؤسسة لهذا الغرض وبواسطة مركبات لتعليم السياقة في ملكيتها.</p>
+<p>تلتزم المؤسسة بتوفير المركبة التي يتم بواسطتها إجراء الاختبار التطبيقي.</p>
+<p>لا يمكن الشروع في التكوين النظري إلا بعد حصول المرشح على رقم التسجيل الممنوح من طرف الإدارة</p>
+<p>تلتزم المؤسسة بإخبار المرشح فورا بحصوله على هذا الرقم، كما تلتزم بتسليم المرشح شهادة نهاية التكوين فور إنهائه له.</p>
+<p>تحتفظ المؤسسة بحق إرجاء دروس التكوين إلى تاريخ لاحق في حالة قوة قاهرة وفي كل الحالات التي تكون فيها السلامة غير متوفرة.</p>
+<p>بعد استفادة المرشح من عدد ساعات التكوين النظري والتطبيقي المتفق عليها، تلتزم المؤسسة بتقديمه لاجتياز الامتحانات لنيل رخصة السياقة في حدود المقاعد الممنوحة من طرف الإدارة.</p>
+
+<h5><strong>المادة 4: التزامات المرشح </strong></h5>
+<p>إذا توقف المرشح عن التكوين، سواء بصفة مؤقتة أو نهائية، م كيفما كانت الأسباب، يلتزم بإخبار المؤسسة كتابيا.</p>
+<p>في حالة التوقف لأكثر من ثلاثة (3) أشهر متتالية، يحق للمؤسسة مطالبة المرشح بأداء مبالغ الخدمات المتبقية، وغير المؤدة، إذا انقطع المرشح عن التكوين لمدة تفوق ستة (6) أشهر، يعتبر متخليا عن التكوين ولا يحق له أن يسترجع ما دفعه من أجله.</p>
+<p>إذا تخلى المرشح عن التكوين لسبب يعود له، يؤدي التعريفة كاملة.</p>
+<p>في حالة عدم النجاح في الامتحان، يلتزم المرشح بأداء مصاريف إعادة تكوينه وفقا لنفس التعريفة.</p>
+
+<h5><strong>المادة 5: مدة التكوين </strong></h5>
+<p>اتفق الطرفان على تحديد عدد ساعات التكوين في  {{data?.nbr_heure_theorique}}  ساعة بالنسبة للتكوين النظري و  {{data?.nbr_heure_pratique
+}}  ساعة بالنسبة للتكوين التطبيقي’ لا يقل هذا العدد
+     عن العدد الأدنى المحدد بالمادة 32 من دفتر التحملات الخاص بفتح واستغلال مؤسسات تعليم السياقة.</p>
+
+
+<h5><strong>المادة 6: تعريفة التكوين </strong></h5>
+<p>تحتسب التعريفة الإجمالية للتكوين على أساس تعريفة ساعة التكوين النظري والتطبيقي المحدد في المادة 1 من القرار الذي يحدد تعريفة ساعة التكوين النظري والتطبيقي.</p>
+
+<h5><strong>المادة 7: كيفيات الأداء </strong></h5>
+<p>تسلم للمرشح فاتورة تحدد المبالغ المدفوعة للمؤسسة، تكون هذه الفاتورة مؤرخة م موقعة من طرف صاحب المؤسسة تحمل هذه الفاتورة اسم وطابع المؤسسة، وفقا للتشريعات الجاري بها العمل.</p>
+<p>في حالة الاتفاق بين الطرفين، يمكن أداء مبلغ التكوين على أقساط.</p>
+
+<h6 style="text-align: center;"><strong style="font-size: 16px;">ﻋﻘﺩ ﻣﺣﺭﺭ ﻓﻲ ﻧﻅﻳﺭﻳﻥ ﺍﺻﻠﻳﻳﻥ. </strong></h6>
+<table style="text-align: center;width: 100%;">
+    <tbody><tr>
+        <td>
+        ﻓﻲ :<strong> {{autoecole?.ville}} </strong>
+        </td>
+
+        <td>
+         ﺑﺗﺎﺭﻳﺦ : <strong> {{date_inscriptioncontrat}}</strong>
+        </td>
+    </tr>
+</tbody></table>
+
+<br>
+<div class="col-md-12">
+    <div class="col-md-4 float-right" style="width: 50%">
+        <p>ﺗﻭﻗﻳﻊ ﺻﺎﺣﺏ ﺍﻟﻣﺅﺳﺳﺔ ﺍﻭ ﻣﻣﺛﻠﻪ ﺍﻟﻘﺎﻧﻭﻧﻲ </p>
+    </div>
+    <div class="col-md-4 float-left" style="width: 50%">
+        <p>توقيع المرشح أو ولي أمره مصادق عليه</p>
+    </div>
+</div>
+
+
+                </div>
+        </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px; display: block; height: 126px; max-height: 490px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+    </div>
+
+    <div class="card-footer">
+        <button style="background:red;border:none" class="btn btn-danger"
+        printTitle="Gestion Auto-écoles - J2HB Plus Editeur de la securité routiére au maroc."
+       (click)="activeModal.dismiss('Cross click')" printSectionId="printpdf" #print ngxPrint>Imprimer</button>
+         <button class="btn" style="background: black;color:white" data-dismiss="modal"  (click)="activeModal.dismiss('Cross click')" >Fermer</button>
+    </div>
+
+</div>

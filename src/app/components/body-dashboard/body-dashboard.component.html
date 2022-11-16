@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(202, 213, 218);font-size: 14px;">
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 90px;margin-bottom: 10px;margin-left: -1px;">
+      <div style="display: flex;">
+        <div class="container-child-dashboard">
+            <div class="child1">
+                <span> CANDIDATS </span>
+                <a class="btn btn-sm btn-primary" style="height: 30px;" href="/candidat">Voir</a>
+            </div>
+            <hr>
+            <span>Total</span>
+            <h3>1</h3>
+            <div class="progress progress-sm mt-0 mb-2">
+                <div class="progress-bar bg-primary w-100" role="progressbar"></div>
+            </div>
+            <div>100%</div>
+        </div>
+        <div class="container-child-dashboard">
+            <div class="child1">
+                <span> NOUVELLE INSCRIPTION
+                </span>
+                <a class="btn btn-sm bg-success" style="height: 30px;" href="/candidat_form">Voir</a>
+            </div>
+            <hr>
+            <span>Total</span>
+            <h3>1</h3>
+            <div class="progress progress-sm mt-0 mb-2">
+                <div class="progress-bar bg-success w-100" role="progressbar"></div>
+            </div>
+            <div>0 / Mois</div>
+        </div>
+        <div class="container-child-dashboard">
+            <div class="child1">
+                <span> RECETTES
+                </span>
+                <a class="btn btn-sm bg-warning" style="height: 30px;" href="/listes-recettes">Voir</a>
+            </div>
+            <hr>
+            <span>Total</span>
+            <h3>1</h3>
+            <div class="progress progress-sm mt-0 mb-2">
+                <div class="progress-bar bg-warning w-100" role="progressbar"></div>
+            </div>
+            <div>100%</div>
+        </div>
+        <div class="container-child-dashboard">
+            <div class="child1">
+                <span> DÉPENSES </span>
+                <a class="btn btn-sm bg-secondary" style="height: 30px;" href="/listes-depenses">Voir</a>
+            </div>
+            <hr>
+            <span>Total</span>
+            <h3>1</h3>
+            <div class="progress progress-sm mt-0 mb-2">
+                <div class="progress-bar bg-secondary w-100" role="progressbar"></div>
+            </div>
+            <div>100%</div>
+        </div>
+    </div>
+    <!-- fin first container -->
+                      <!-- examen CANDIDAT  -->
+                      <div class="row examen-vehicule" style="margin-left: 0;margin-right:0;background: #e8eeea;">
+                        <div class="d-flex my-1">
+                          <mat-card style="width: 50%;margin-right: 20px;">
+                            <div class="card">
+                              <div class="card-header">
+                                  <h3 class="card-title">EXAMEN
+                                  </h3>
+                              </div>
+              
+                              <!-- end table examen -->
+                              <div style="display: flex;align-items:center;justify-content:flex-end">
+                                <div style="margin-right: 6px">  Rechercher:</div>
+                                <mat-form-field appearance="standard">
+                                   <mat-label></mat-label>
+                                   <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                                </mat-form-field>
+                            </div>
+                             <table mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
+                               <!-- cin Column --> 
+                               <ng-container matColumnDef="cin">     
+                                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by candidat"> 
+                                   <span style="font-weight:900;font-size: 16px;">CIN</span>    
+                                 </th>
+                                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.cin}} </td>
+                               </ng-container>
+                           
+                               <!-- candidat Column -->
+                               <ng-container matColumnDef="candidat">  
+                                 <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">CANDIDAT</span>   </th>
+                                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.candidat?.nom_fr }}{{" "}}{{ element?.candidat?.prenom_fr }} </td>
+                               </ng-container>
+                           
+                               <!-- date_examen Column -->  
+                               <ng-container matColumnDef="date_examen">   
+                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE EXAMEN</span> </th>
+                                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_examen}} </td>
+                               </ng-container>
+
+                                <!-- etat Column -->  
+                                <ng-container matColumnDef="etat">   
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                                  <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.etat}} </td>
+                                </ng-container>
+
+                               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                             </table>
+                             <mat-paginator 
+                               #paginatorFirst
+                               [pageSize]="5"  
+                               [pageSizeOptions]="[5, 10, 25, 100]">
+                             </mat-paginator>
+                          </div>
+                          </mat-card>
+                          <mat-card style="width: 50%;">
+                            <div class="card" style="width: 100%;">
+                              <div class="card-header">
+                                  <h3 class="card-title">ABSENCE</h3>
+                              </div>
+                              <div class="card-body">
+                                 <div class="table-responsive border-top mb-0">
+                                        <!--ABSENCE candidats -->
+                                    
+                                          <div style="display: flex;align-items:center;justify-content:flex-end">
+                                            <div style="margin-right: 6px">  Rechercher:</div>
+                                            <mat-form-field appearance="standard">
+                                               <mat-label></mat-label>
+                                               <input matInput (keyup)="applyFilter1($event)" placeholder="... " #input>
+                                            </mat-form-field>
+                                        </div>
+                                         <table  mat-table  [dataSource]="dataSource1"  matSort #empTbSort1="matSort">    
+                                       
+                                           <!-- candidat Column -->
+                                           <ng-container matColumnDef="candidat">  
+                                             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"><span style="font-weight:900;font-size: 16px;">CANDIDAT</span>   </th>
+                                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.candidat?.nom_fr }}{{" "}}{{ element?.candidat?.prenom_fr }} </td>
+                                           </ng-container>
+                                       
+                                           <!-- absence Column -->  
+                                           <ng-container matColumnDef="absence">   
+                                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ABSENCE</span> </th>
+                                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.absence}} </td>
+                                           </ng-container>
+        
+                                           <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                                           <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                                         </table>
+                                         <mat-paginator 
+                                             #paginatorSecond
+                                            [pageSize]="5"  
+                                            [pageSizeOptions]="[5, 10, 25, 100]">
+                                         </mat-paginator>
+                                        <!-- end ABSENCE candidats -->
+                                 </div>
+                              </div>
+                          </div>
+                          </mat-card>
+                        </div>
+                        
+    
+                          
+                         <div class="row"  >
+                            <div class="col-md-12" >
+                              <div class="card" style="border-radius: 6px;padding-top: 3px;">
+                                <div class="card-header">
+                                    <h3 class="card-title">VÉHICULES</h3>
+                                </div>
+                                <div class="card-body">
+                                   <div class="table-responsive border-top mb-0">
+                                          <!--ABSENCE candidats -->
+                                      
+                                            <div style="display: flex;align-items:center;justify-content:flex-end">
+                                              <div style="margin-right: 6px">  Rechercher:</div>
+                                              <mat-form-field appearance="standard">
+                                                 <mat-label></mat-label>
+                                                 <input matInput (keyup)="applyFilter2($event)" placeholder="... " #input>
+                                              </mat-form-field>
+                                          </div>
+                                           <table mat-table  [dataSource]="dataSource2"  matSort #empTbSort2="matSort">    
+                                           
+                                             <!-- vehicule Column -->
+                                             <ng-container matColumnDef="vehicule">  
+                                               <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">VEHICULE</span>   </th>
+                                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.matricule}} </td>
+                                             </ng-container>
+                                         
+                                             <!-- date Column -->  
+                                             <ng-container matColumnDef="date">   
+                                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE</span> </th>
+                                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_visite}} </td>
+                                             </ng-container>
+          
+                                              <!-- type Column -->  
+                                              <ng-container matColumnDef="type">   
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">TYPE</span> </th>
+                                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.type}} </td>
+                                              </ng-container>
+  
+                                                <!-- etat Column -->  
+                                                <ng-container matColumnDef="etat">   
+                                                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                                                  <td mat-cell *matCellDef="let element" style="text-align: center;"> - </td>
+                                                </ng-container>
+  
+                                             <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                                             <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                                           </table>
+                                           <mat-paginator 
+                                             #paginator2
+                                             [pageSize]="5"  
+                                             [pageSizeOptions]="[5, 10, 25, 100]">
+                                           </mat-paginator>
+                                          <!-- end ABSENCE candidats -->
+                                   </div>
+                                </div>
+                            </div>
+                            </div>
+                         </div>
+                      
+                        <!-- chart  -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card" style="border-radius: 6px;padding-top: 3px;">
+                                    <div class="card-header">
+                                        <h1 class="card-title">CHART
+                                        </h1>
+                                    </div>
+                                    <div class="card-body">
+                                      <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"></highcharts-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- fin chart -->
+                        <!-- LISTE DES EXAMENS -->
+                        <div class="row">
+                          <div class="col-md-12">
+                              <div class="card" style="border-radius: 6px;padding-top: 3px;">
+                                  <div class="card-header">
+                                      <h1 class="card-title">LISTE DES EXAMENS</h1>
+                                  </div>
+                                  <div class="card-body">
+                                      <!-- tabs -->
+                                        <div style="display: flex;align-items:center;">
+                                            <div  style="display: flex;align-items:center;">
+                                              <div id="btn1" style="text-align: center;width:90px;margin-right: 7px;color: red;border: 1px solid red; padding:7px 10px;border-radius:5px;font-size: 14px;cursor: pointer;font-weight: 500;" onclick="document.getElementById('tab1').style.display='block';document.getElementById('tab2').style.display='none';document.getElementById('btn1').style.border='1px solid red';document.getElementById('btn1').style.color='red';document.getElementById('btn2').style.border='1px solid rgb(247, 245, 245)';document.getElementById('btn2').style.color='black';">Réussi</div> 
+
+                                              <div  id="btn2" style="text-align: center;width:90px;border: 1px solid rgb(247, 245, 245); padding:7px 10px;border-radius:5px;font-size: 14px;cursor: pointer;font-weight: 500;"  onclick="document.getElementById('tab1').style.display='none';document.getElementById('tab2').style.display='block';document.getElementById('btn1').style.border='1px solid rgb(247, 245, 245)';document.getElementById('btn1').style.color='black';document.getElementById('btn2').style.border='1px solid red';document.getElementById('btn2').style.color='red';">Non réussi</div>
+                                            </div>
+                                            <div  style="display: flex;align-items:center;flex: 1;justify-content: end;">
+                                              <div class="col-3">
+                                                  <select name="" id="" style="width: 200px;height:40px;font-size: 14px;" class="form-control" (change)="onChange($event)">
+                                                    <option value="">Choisissez catégorie</option>
+                                                    <option value="A">A</option>
+                                                    <option value="A1">A1</option>
+                                                    <option value="AM">AM</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="EB">EB</option>
+                                                    <option value="EC">EC</option>
+                                                    <option value="ED">ED</option>
+                                                    <option value="F">F</option>
+                                                    <option value="FC">FC</option>
+                                                    <option value="FP">FP</option>
+                                                    <option value="FP/FC">FP/FC</option>
+                                                  </select>
+                                              </div>
+                                              <div class="col-3" >
+                                                  <input class="form-control" style="margin-left: 10px;width: 200px;height:40px;font-size: 14px;" type="date"  (change)="onchangeInput($event)">
+                                              </div>
+                                            
+                                            </div>
+                                        </div>
+                                       <hr>
+                                       <!-- examen reussi tab -->
+                                        <div id="tab1">
+                                          <!--reussi candidats -->
+                                    
+                                          <div style="display: flex;align-items:center;justify-content:flex-end">
+                                            <div style="margin-right: 6px">  Rechercher:</div>
+                                            <mat-form-field appearance="standard">
+                                               <mat-label></mat-label>
+                                               <input matInput (keyup)="applyFilter5($event)" placeholder="... " #input>
+                                            </mat-form-field>
+                                         </div>
+                                    <!-- <table mat-table  [dataSource]="dataSource2"  matSort #empTbSort2="matSort">   -->
+                                         <table mat-table  [dataSource]="dataSource5"  matSort #empTbSort5="matSort">    
+                                       
+                                           <!-- nom Column -->
+                                           <ng-container matColumnDef="nom">  
+                                             <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">NOM</span>   </th>
+                                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.candidat?.nom_fr}}{{" "}}{{ element?.candidat?.prenom_fr}} </td>
+                                           </ng-container>
+                                       
+                                           <!-- cin Column -->  
+                                           <ng-container matColumnDef="cin">   
+                                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">CIN</span> </th>
+                                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.cin}} </td>
+                                           </ng-container>
+        
+                                            <!-- categorie Column -->  
+                                            <ng-container matColumnDef="categorie">   
+                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">CATEGORIE</span> </th>
+                                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie}} </td>
+                                            </ng-container>
+
+                                              <!-- date_examen Column -->  
+                                              <ng-container matColumnDef="date_examen">   
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE EXAMEN</span> </th>
+                                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_examen}} </td>
+                                              </ng-container>
+
+                                              <!-- date_depot Column -->  
+                                              <ng-container matColumnDef="date_depot">   
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE DEPOT</span> </th>
+                                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_depot}} </td>
+                                              </ng-container>
+                                           <tr mat-header-row *matHeaderRowDef="displayedColumns5"></tr>
+                                           <tr mat-row *matRowDef="let row; columns: displayedColumns5;"></tr>
+                                         </table>
+                                         <mat-paginator 
+                                          #paginator5
+                                          [pageSize]="5"  
+                                          [pageSizeOptions]="[5, 10, 25, 100]">
+                                         >
+
+                                         </mat-paginator>
+                                        <!-- end reussi candidats -->
+                                        </div>
+                                       <!-- end examen tab reussi -->
+                                       <!-- examen no reussi tab -->
+                                        <div id="tab2" style="display:none;">
+                                            <!--NO reussi candidats -->
+                                    
+                                          <div style="display: flex;align-items:center;justify-content:flex-end">
+                                            <div style="margin-right: 6px">  Rechercher:</div>
+                                            <mat-form-field appearance="standard">
+                                               <mat-label></mat-label>
+                                               <input matInput (keyup)="applyFilter6($event)" placeholder="... " #input>
+                                            </mat-form-field>
+                                         </div>
+                                         <table mat-table  [dataSource]="dataSource6"  matSort #empTbSort6="matSort">    
+                                        
+                                           <!-- nom Column -->
+                                           <ng-container matColumnDef="nom">  
+                                             <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">NOM</span>   </th>
+                                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.candidat?.nom_fr}}{{" "}}{{ element?.candidat?.prenom_fr}} </td>
+                                           </ng-container>
+                                       
+                                           <!-- cin Column -->  
+                                           <ng-container matColumnDef="cin">   
+                                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">CIN</span> </th>
+                                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.cin}} </td>
+                                           </ng-container>
+        
+                                            <!-- categorie Column -->  
+                                            <ng-container matColumnDef="categorie">   
+                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">CATEGORIE</span> </th>
+                                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie}} </td>
+                                            </ng-container>
+
+                                              <!-- date_examen Column --> 
+                                              <ng-container matColumnDef="date_examen">   
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE EXAMEN</span> </th>
+                                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_examen}} </td>
+                                              </ng-container>
+
+                                              <!-- date_depot Column -->  
+                                              <ng-container matColumnDef="date_depot">   
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE DEPOT</span> </th>
+                                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_depot}} </td>
+                                              </ng-container>
+                                           <tr mat-header-row *matHeaderRowDef="displayedColumns6"></tr>
+                                           <tr mat-row *matRowDef="let row; columns: displayedColumns6;"></tr>
+                                         </table>
+                                         <mat-paginator 
+                                            #paginator6
+                                            [pageSize]="5"  
+                                            [pageSizeOptions]="[5, 10, 25, 100]">
+                                         </mat-paginator>
+                                        <!-- end NO reussi candidats -->
+                                        </div>
+                                       <!-- end no reussi examen tab -->
+                                      <!-- end tabs -->
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- fin LISTE DES EXAMENS -->
+                      <!-- inscription statistique -->
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card" style="border-radius: 6px;padding-top: 3px;">
+                            <div class="card-header d-flex">
+                                <h3 class="card-title">INSCRIPTION STATISTIQUE
+                                </h3>
+                                <div  style="display: flex;align-items:center;flex: 1;justify-content: end;">
+                                  <div class="col-3">
+                                      <select name="" id="" style="width: 200px;height:40px;font-size: 14px;" class="form-control" (change)="onChange3($event)">
+                                        <option value="">Choisissez catégorie</option>
+                                        <option value="A">A</option>
+                                        <option value="A1">A1</option>
+                                        <option value="AM">AM</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="EB">EB</option>
+                                        <option value="EC">EC</option>
+                                        <option value="ED">ED</option>
+                                        <option value="F">F</option>
+                                        <option value="FC">FC</option>
+                                        <option value="FP">FP</option>
+                                        <option value="FP/FC">FP/FC</option>
+                                      </select>
+                                  </div>
+                                  <div class="col-3" >
+                                      <input class="form-control" style="margin-left: 10px;width: 200px;height:40px;font-size: 14px;" type="date"  (change)="onchangeInput3($event)">
+                                  </div>
+                                
+                                </div>
+                            </div>
+                            <div class="card-body">
+                               <div class="table-responsive border-top mb-0">
+                                      <!--inscription candidats -->
+                                  
+                                        <div style="display: flex;align-items:center;justify-content:flex-end">
+                                          <div style="margin-right: 6px">  Rechercher:</div>
+                                          <mat-form-field appearance="standard">
+                                             <mat-label></mat-label>
+                                             <input matInput (keyup)="applyFilter3($event)" placeholder="... " #input>
+                                          </mat-form-field>
+                                      </div>
+                                       <table mat-table  [dataSource]="dataSource3"  matSort #empTbSort3="matSort">    
+                                        
+                                         <!-- cin Column -->
+                                         <ng-container matColumnDef="cin">  
+                                           <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">CIN</span>   </th>
+                                           <td mat-cell *matCellDef="let element"> {{ element?.cin}} </td>
+                                         </ng-container>
+                                     
+                                         <!-- nom Column -->  
+                                         <ng-container matColumnDef="nom">   
+                                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">NOM</span> </th>
+                                           <td mat-cell *matCellDef="let element"> {{element?.nom_fr}}{{" "}}{{element?.prenom_fr}} </td>
+                                         </ng-container>
+      
+                                          <!-- date_inscription Column -->  
+                                          <ng-container matColumnDef="date_inscription">   
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE INSCRIPTION</span> </th>
+                                            <td mat-cell *matCellDef="let element"> {{element?.date_inscription}} </td>
+                                          </ng-container>
+
+                                            <!-- numero_contrat Column -->  
+                                            <ng-container matColumnDef="numero_contrat">   
+                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">NUMERO CONTRAT</span> </th>
+                                              <td mat-cell *matCellDef="let element"> {{element?.numero_contrat}} </td>
+                                            </ng-container>
+
+                                         <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+                                         <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+                                       </table>
+                                       <mat-paginator 
+                                          #paginator3
+                                          [pageSize]="5"  
+                                          [pageSizeOptions]="[5, 10, 25, 100]">
+                                       </mat-paginator>
+                                      <!-- end inscription candidats -->
+                               </div>
+                            </div>
+                        </div>
+                        </div>
+                       
+                    </div>
+                      <!-- end inscription statistique -->
+                        
+                   <!-- RECETTE STATISTIQUE-->
+                   <div class="row">
+                    <div class="col-md-12">
+                      <div class="card" style="border-radius: 6px;padding-top: 3px;">
+                        <div class="card-header">
+                            <h3 class="card-title">RECETTE STATISTIQUE</h3>
+                        </div>
+                        <div class="card-body">
+                           <div class="table-responsive border-top mb-0">
+                                  <!--ABSENCE candidats -->
+                              
+                                    <div style="display: flex;align-items:center;justify-content:flex-end">
+                                      <div style="margin-right: 6px">  Rechercher:</div>
+                                      <mat-form-field appearance="standard">
+                                         <mat-label></mat-label>
+                                         <input matInput (keyup)="applyFilter4($event)" placeholder="... " #input>
+                                      </mat-form-field>
+                                  </div>
+                                   <table mat-table [dataSource]="dataSource4" matSort>    
+                                    
+                                     <!-- mois Column -->
+                                     <ng-container matColumnDef="mois">  
+                                       <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">MOIS</span>   </th>
+                                       <td mat-cell *matCellDef="let element"> {{ element?.mois}} </td>
+                                     </ng-container>
+                                 
+                                     <!-- montant Column -->  
+                                     <ng-container matColumnDef="montant">   
+                                       <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MONTANT</span> </th>
+                                       <td mat-cell *matCellDef="let element"> {{element?.montant}} </td>
+                                     </ng-container>
+
+                                     <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+                                     <tr mat-row *matRowDef="let row; columns: displayedColumns4;"></tr>
+                                   </table>
+                                   <mat-paginator 
+                                     [length]="lengthVehicules" 
+                                     [pageSize]="5"  
+                                     [pageSizeOptions]="[5, 10, 25, 100]">
+                                   </mat-paginator>
+                                  <!-- end ABSENCE candidats -->
+                           </div>
+                        </div>
+                    </div>
+                    </div>
+                   
+                </div>
+                  <!-- end RECETTE STATISTIQUE -->
+                   <!-- STATISTIQUE -->
+                   <div class="row">
+                    <div class="col-md-12">
+                        <div class="card" style="border-radius: 6px;padding-top: 3px;">
+                            <div class="card-header">
+                                <h1 class="card-title">STATISTIQUE</h1>
+                            </div>
+                            <div class="card-body">
+                              <div class="table-responsive">
+                                <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Mois</th>
+                                  <th>Dépense</th>
+                                  <th>Recette</th>
+                                  <th>Solde</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let data of statistique">
+                                  <td>{{data?.month}}</td>
+                                  <td style="display: flex;align-items:center;justify-content:space-between">
+                                    <span class="badge" style="background: red;">
+                                      <strong>
+                                        <i class="fa fa-caret-down"></i>{{data?.depense}}
+                                      </strong>
+                                    </span>
+                                    <a href="{{data?.url}}" class="btn btn-primary p-0 float-right" style="background-color: #7e9be3;border-color: #7e9be3;padding: 7px;font-size:12px">Voir</a>
+                                  </td>
+                                  <td >
+                                    <div style="display: flex;align-items:center;justify-content:space-between">
+                                      <span class="badge" style="background: rgb(4, 250, 4);">
+                                        <strong>
+                                          <i class="fa fa-caret-up"></i> {{data?.recette}}
+                                        </strong>
+                                      </span>
+                                      <a href="{{data?.recetteUrl}}" class="btn btn-primary p-0 float-right" style="background-color: #7e9be3;border-color: #7e9be3;padding: 7px;font-size:12px">Voir</a>
+                                    </div>
+                                    
+                                  </td>
+               
+                                  <td>
+                                      <span class="badge" style="background: red;">
+                                      <strong>
+                                        <i class="fa fa-caret-down"></i> {{data?.solde}}
+                                      </strong>
+                                    </span>
+                                 </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3"><strong>Total</strong></td>
+                                  <td>
+                                                            <span class="badge badge-danger">
+                                      <strong>
+                                        <i class="fa fa-caret-down"></i> {{total}}
+                                      </strong>
+                                    </span>
+                                                          </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            </div>
+                          </div>	
+                        </div>
+                    </div>
+                </div>
+                <!-- fin STATISTIQUE-->
+                    </div>
+
+      
+               
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

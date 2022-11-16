@@ -1,0 +1,9 @@
+*{
+    font-size: 16px
+}
+input[type=date]{
+    text-transform: uppercase;
+}
+input, select, textarea, button{
+   font-size: 16px;
+}

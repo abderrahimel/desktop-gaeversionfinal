@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style="font-size: 14px;">
+  <div class="h-55">
+    <app-headerlogged></app-headerlogged>
+  </div>
+   <app-menu-sb></app-menu-sb>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
+    <div style="display: flex;">
+      <div class="wrap-table100" style="margin-bottom: 100px">
+        <div class="mat-elevation-z8">
+          <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+            <div style="font-size: 16px;font-weight: 600;">HISTORIQUE DES CANDIDATS
+            </div>
+            <div class="col-3 add-btn-div">
+              <button class="btn btn-primary add-btn" routerLink="/candidat" style="width: 160px; color: white;background: #198754;border-radius: 5px;box-shadow: none;">
+                <i style="margin-right: 5px;" class="fa fa-users"></i>{{ "Liste candidats" | translate }}
+              </button>
+            </div>
+        </div>
+        <hr>
+        <mat-card>
+          <div class="card" style="width: 100%;">
+            <div class="card-body">
+               <div class="table-responsive border-top mb-0">
+                      <!--ABSENCE candidats -->
+                  
+                        <div style="display: flex;align-items:center;justify-content:flex-end">
+                          <div style="margin-right: 6px">  Rechercher:</div>
+                          <mat-form-field appearance="standard">
+                             <mat-label></mat-label>
+                             <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                          </mat-form-field>
+                      </div>
+                       <table  mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
+                     
+                        <ng-container matColumnDef="cin">    
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by login"> 
+                            <span style="font-weight:900;font-size: 16px;">{{ "CIN" | translate }}</span>    
+                          </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.cin}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="numero_contrat">  
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">{{ "Declaration" | translate }}</span>   </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.numero_contrat}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="nom">   
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">{{ "Nom & Prénom" | translate }}</span> </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.nom_fr}}{{" "}}{{element?.prenom_fr}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="date_inscription">  
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "Date inscription" | translate }}</span> </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.date_inscription}} </td>
+                        </ng-container>   
+                
+                        <ng-container matColumnDef="categorie"> 
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "CATEGORIE" | translate }}</span> </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.categorie}} </td>
+                        </ng-container>
+                    
+                       <ng-container matColumnDef="actions">  
+                        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "Actions" | translate }}</span>  </th>
+                        <td mat-cell *matCellDef="let element"> 
+                          <span  class="btn" style="background: #198754;width: 90px;color: white;margin-right: 2px;">
+                            <a href="#" style="color: white;text-decoration: none;" (click)="activerCandidat(element?.id, $event)" >{{ "Activer" | translate }}</a>
+                          </span>
+                        
+                          <span class="btn" style="background-color: #ff382b;color: white;
+                          width: 90px;">  
+                           <a href="#" style="color: white;text-decoration: none;" (click)="deleteCandidat(element?.id, $event)" >{{ "Supprimer" | translate }}</a>
+                          </span>
+                        </td>
+                      </ng-container>
+      
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+                      <mat-paginator 
+                        [length]="n" 
+                        [pageSize]="5"  
+                        [pageSizeOptions]="[5, 10, 25, 100]">
+                      </mat-paginator>
+                      <!-- end ABSENCE candidats -->
+               </div>
+            </div>
+        </div>
+        </mat-card>
+           <!-- <div style="display: flex;align-items:center;justify-content:flex-end">
+               <div style="margin-right: 6px">  Rechercher:</div>
+               <mat-form-field appearance="standard">
+                  <mat-label></mat-label>
+                  <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+               </mat-form-field>
+           </div>
+            <table mat-table [dataSource]="dataSource" matSort>    
+          
+              <ng-container matColumnDef="cin">    
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by login"> 
+                  <span style="font-weight:900;font-size: 16px;">{{ "CIN" | translate }}</span>    
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="numero_contrat">  
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">{{ "Declaration" | translate }}</span>   </th>
+                <td mat-cell *matCellDef="let element"> {{element.numero_contrat}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="nom">   
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">{{ "Nom & Prénom" | translate }}</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element?.nom_fr}}{{" "}}{{element?.prenom_fr}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="date_inscription">  
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "Date inscription" | translate }}</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.date_inscription}} </td>
+              </ng-container>   
+      
+              <ng-container matColumnDef="categorie"> 
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "CATEGORIE" | translate }}</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
+              </ng-container>
+          
+             <ng-container matColumnDef="actions">  
+              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "Actions" | translate }}</span>  </th>
+              <td mat-cell *matCellDef="let element"> 
+                <span  class="btn" style="background: #198754;width: 90px;color: white;margin-right: 2px;">
+                  <a href="#" style="color: white;text-decoration: none;" (click)="activerCandidat(element.id, $event)" >{{ "Activer" | translate }}</a>
+                </span>
+              
+                <span class="btn" style="background-color: #ff382b;color: white;
+                width: 90px;">  
+                 <a href="#" style="color: white;text-decoration: none;" (click)="deleteCandidat(element.id, $event)" >{{ "Supprimer" | translate }}</a>
+                </span>
+              </td>
+            </ng-container>
+      
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator 
+              [length]="n" 
+              [pageSize]="5"  
+              [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator> -->
+          </div>
+  
+  </div>
+  </div>
+  <!-- fin first container -->
+                  
+
+    
+             
+ </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

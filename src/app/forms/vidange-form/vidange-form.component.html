@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);">
+	<app-headerlogged></app-headerlogged>
+  <app-menu-sb></app-menu-sb>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+        <!-- first container -->
+      <div style=" display: flex;background:rgb(233, 236, 236);padding: 20px;">
+        <form class="form" [formGroup]="form" (ngSubmit)='AddVidange()'  method="POST" action="" 
+        enctype="multipart/form-data">
+            <div class="container-form col-12">
+                <div class="container">
+                    <section class="content" id="form-font">       
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group" style="display: flex;flex-direction: column;">
+                                        <label for="first-name-column">{{ "vehicule" | translate }} :</label>
+                                        <select style="margin-left: 65px;height: 40px;outline: none;border: 1px solid rgb(219, 209, 209);" name="vehicule" id="vehicule" formControlName='vehicule_id'>
+                                            <option *ngFor="let data of vehiculesData" value="{{data.id}}">{{data.matricule}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.vehicule_id.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.vehicule_id.errors.required">
+                                              {{'vehicule required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group" style="display: flex;flex-direction: column;">
+                                        <label for="city-column">{{ "Employe" | translate }}:</label>
+                                        <select style="margin-left: 65px;margin-right: 38px; height: 40px;outline: none;border: 1px solid rgb(219, 209, 209);" name="employe"  id="employe" formControlName='employe_id'>
+                                            <option *ngFor="let data of employeData" value="{{data.id}}">{{data.nom}}{{" "}}{{data.prenom}}</option>
+                                        </select>   
+                                    </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.employe_id.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.employe_id.errors.required">
+                                              {{'employe required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="city-column">{{ "Fournisseur*" | translate }}:</label>
+                                        <input type="text" id="appt" name="appt" class="form-control input" formControlName='	fournisseur_id'>    
+                                    </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.fournisseur_id.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.fournisseur_id.errors.required">
+                                              {{'fourniseur required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Montant" | translate }}:</label>
+                                        <input type="number" id="appt" name="appt" class="form-control input" formControlName='montant'>
+                                    </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.montant.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
+                                              {{'montant required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "date de vidange" | translate }}:</label>
+                                        <input type="date" id="appt" name="appt" class="form-control input" formControlName='date_vidange'>
+                                    </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.date_vidange.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.date_vidange.errors.required">
+                                              {{'date vidange required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="first-name-column">{{ "Date de prochaine vidange" | translate }} :</label>
+                                        <input type="date" id="date_vidange_p" name="date_vidange_p" class="form-control input" formControlName='date_vidange_p'>
+                                    </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.date_vidange_p.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.date_vidange_p.errors.required">
+                                              {{'Date de prochaine vidange required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                
+                            
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Image de facture" | translate }}:</label>
+                                        <input type="file" id="img_facture" name="img_facture" class="form-control input" formControlName='img_facture' 
+                                        (change)="fileChangeEvent($event)"
+                                       >
+                                    </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.img_facture.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.img_facture.errors.required">
+                                              {{'Image de facture required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                     
+                    </section>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 ajouterfermer">
+                            <button style="margin-right: 10px; background: #0ca930;" class="btn next-btn" id="button1-fnt" type="submit" >
+                                <i class="fa fa-plus"></i>
+                                {{ "Ajouter" | translate }}
+                                
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+  
+
+
+      </div>
+                     
+                  
+   </div>
+
+
+</body>
+</html>
+
+
+<!--  -->
+
+
+<!--  -->

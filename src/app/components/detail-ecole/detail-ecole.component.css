@@ -1,0 +1,163 @@
+.container-list-blog{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: white;}
+    
+    .child-container-blog{
+        display:flex;
+        align-items:center;
+        flex-direction: column;
+    }
+.container-blog-content{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 200px;
+}
+
+
+.child-blog-left{
+    flex-grow: 1;
+    background: white;
+    display: flex;
+    flex-wrap: wrap;
+}
+.child-blog-right{
+    margin-left: 10px;
+    border: 1px solid rgb(239, 239, 243);
+    /* background: white; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+    margin-top: 10px;
+}
+.rechercher>input{
+    border: 1px solid rgb(224, 211, 211);
+    outline: none;
+    margin-right: 5px;
+    height: 40px;
+}
+.child-blog{
+    border: 1px solid rgb(253, 247, 247);
+    background: white;
+    width: 400px;
+    margin: 10px;
+}
+
+.child-blog>img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+.date-blog{
+    display: flex;
+    align-items: center;
+}
+.date-blog>span{
+    padding: 10px;
+}
+.date-blog>div{
+    margin-left: 5px;
+}
+.blog-description{
+    padding: 10px;
+}
+.child-blog-left{
+    background:rgb(239, 239, 243);
+}
+.container-rechercher{
+    background:rgb(239, 239, 243);
+}
+
+.copyright{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding: 10px;
+}
+
+.containerbottom{
+    background-color: #f0f3fa;
+    color:black;
+
+}
+
+a:hover{
+    color:red;
+    border:none;
+    outline: none;
+}
+
+.form-section{
+    padding-left: 15px;
+    display: none;
+}
+
+.form-section.current
+{
+    display: block;
+}
+
+/* .btn-success
+{
+    margin-left: 20px;
+} */
+/* .btn-info, .btn-success
+{
+    margin-top: 10px;
+    font-size: 1rem;
+} */
+
+.form-label {
+    font-size: 20px;
+}
+
+.form-navigation
+{
+    text-align: center;
+}
+
+.modal h5
+{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+#registerMission
+{
+    display: none;
+}
+#loginMission
+{
+ display: none;   
+}
+
+
+
+
+.parsley-required,.parsley-type
+{
+    margin: 2px 0px 3px;
+    padding: 0;
+    list-style-type: none;
+    color: red;
+}
+.navhome:after{
+    content:"";
+	position: absolute;
+	background-color: red;
+	height: 3px;
+	width: 70%;
+	left: 0;
+	bottom: -22px;
+    margin-left: 15px;
+}
+
+.bg-danger{
+    background-color: #dc3545!important;
+}

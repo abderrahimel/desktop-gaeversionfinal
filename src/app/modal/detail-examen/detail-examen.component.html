@@ -1,0 +1,138 @@
+
+<form *ngIf="showformExam" class="form" [formGroup]="form" style="padding: 7px;"  method="POST" action="" id="ajoute_cours" 
+enctype="multipart/form-data">
+         
+<!-- examen theorique -->
+<div class="row d-flex align-items-center">
+  <div class="col-4">
+  <div class="form-group" style="margin-right: 60px;">
+        <label for="city-column">{{ "Examen" | translate }}:</label>
+        <select class="form-control " style="height:30px;width: 162px;margin-right: 7px;" name="examenTheorique" formControlName="examenTheorique" readonly="readonly">
+          <option value="examenTheorique" disabled>Examen Theorique 1</option>
+          <option value="examenPratique" disabled>Examen Pratique</option>
+        </select>  
+      </div>
+  
+  </div>
+  <div class="col-4">
+  <div class="form-group">
+      <label for="city-column">{{ "Note 1" | translate }}:</label>
+      <input class="form-control" type="text"  style="height:30px;width:150px"
+      formControlName="note1"
+      (ngModelChange)="change()"
+      readonly="readonly"> 
+      <div class="err" *ngIf="submitted && this.form.controls.note1.errors">
+          <div style="color: red;" *ngIf="this.form.controls.note1.errors.required">
+                {{'field required ' | translate}}  
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="col-4">
+  <div class="form-group">
+    <label for="city-column">{{ "Date Note 1" | translate }}:</label>
+    <input class="form-control" type="date" formControlName="date_note1" readonly="readonly"> 
+    <div class="err" *ngIf="submitted && this.form.controls.date_note1.errors">
+        <div style="color: red;" *ngIf="this.form.controls.date_note1.errors.required">
+              {{'field required ' | translate}}  
+        </div>
+    </div>
+  </div>
+  </div>
+<!--  -->
+</div>
+<!-- ratrapage examen theorique -->
+<div class="row" *ngIf="ratrapage">
+<div class="col-4">
+<div class="form-group">
+    <label for="city-column">{{ "Note 2" | translate }}:</label>
+    <input type="text" class="form-control"
+     name="note2" formControlName="note2"
+     (ngModelChange)="changenote2()"
+     readonly="readonly">
+   
+   </div>
+   <div class="err" *ngIf="submitted && this.form.controls.note2.errors">
+       <div style="color: red;" *ngIf="this.form.controls.note2.errors.required">
+             {{'field required ' | translate}}  
+       </div>
+
+   </div>
+</div>
+<div class="col-4">
+<div class="form-group">
+   <label for="city-column">{{ "Date note2" | translate }}:</label>
+   <input type="date" class="form-control" name="date_note2" formControlName="date_note2" readonly="readonly"/>
+   
+   <div class="err" *ngIf="submitted && this.form.controls.date_note2.errors">
+       <div style="color: red;" *ngIf="this.form.controls.date_note2.errors.required">
+             {{'field required ' | translate}}  
+       </div>
+   </div>
+</div>
+</div>
+<!-- examen pratique  -->
+</div>  
+<div class="row" *ngIf="examenPratique" >  
+<div class="col-3">
+<div class="form-group">
+  <label for="city-column">{{ "Examen" | translate }}:</label>
+  <select class="form-control"  style="height:30px;width: 200px;" name="examenPratique" formControlName="examenPratique" readonly="readonly">
+    <option value="examenPratique1" disabled>Examen Pratique 1</option>
+    <option value="examenPratique" disabled>Examen Pratique 2</option>
+  </select>  
+ </div>
+ <div class="err" *ngIf="submitted && this.form.controls.examenPratique.errors">
+     <div style="color: red;" *ngIf="this.form.controls.examenPratique.errors.required">
+           {{'field required ' | translate}}  
+     </div>
+
+ </div>
+
+</div>
+<div class="col-4" style="margin-left: 80px;">
+<div class="form-group">
+ <label for="city-column">{{ "Etat 1" | translate }}:</label>
+ <input class="form-control" type="text" name="etat_1" style="height: 30px;;width: 150px;"
+ (ngModelChange)="changeEtat1()" 
+ formControlName="etat_1" readonly="readonly">
+ 
+</div>
+</div>
+<div class="col-4">
+<div class="form-group">
+<label for="city-column">{{ "Date Etat 1" | translate }}:</label>
+<input class="form-control" type="date" formControlName="date_etat1" (change)="dateExamenP(form.value.date_etat1)" readonly="readonly"> 
+
+</div>
+</div>
+<!--  -->
+</div> 
+<!-- rattrapage examen pratique -->
+<div class="row" *ngIf="ratrapageExamenPratique">
+<div class="col-4">
+<div class="form-group">
+  <label for="city-column">{{ "Etat 2" | translate }}:</label>
+  <input class="form-control" type="text" name="etat_2" style="height:30px"
+  formControlName="etat_2" readonly="readonly">
+ </div>
+
+</div>
+
+<div class="col-4">
+<div class="form-group">
+<label for="city-column">{{ "Date Etat 2" | translate }}:</label>
+<input class="form-control" type="date" formControlName="date_etat2" readonly="readonly"> 
+</div>
+</div>
+<!--  -->
+</div>
+<div class="container">
+<div  style="display: flex;align-items: center;margin-top: 7px;">
+    <div class="col-2 d-flex align-items-center" >
+        <button type="button" class="btn" style="background: black;color:white" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+    </div>
+   
+</div>
+</div>
+</form>

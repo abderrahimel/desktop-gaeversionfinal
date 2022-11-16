@@ -1,0 +1,34 @@
+<table  class="table ">
+                   
+    <thead>
+      <tr style="color: black;" >
+        <th scope="col">{{ "CATEGORIE" | translate }}</th>
+        <th scope="col">{{ "ACTIONS" | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mydata of dataPersonnel; ">
+        <td> {{mydata.categorie}}</td>
+        <td>
+          <button style="padding: 5px;width: 150px; border-radius: 5px;width: 130px;box-shadow: none;background: red;color: white;margin-right: 10px;" class="btn" 
+              type="button"
+              (click)="open('personnel', 'Modifier', mydata)">
+            Modifier 
+          </button>
+          <button style="padding: 5px;width: 130px; border-radius: 5px;box-shadow: none;background: black;color: white;" class="btn" (click)="deleteDepenseCategorie(mydata.id)">
+            supprimer
+          </button>
+        </td>
+      </tr>
+      </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2" style="margin-top: 20px;" >
+    <ngb-pagination class="listPage" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+    </ngb-pagination>
+  
+    <select class="form-select item" style="width: auto;box-shadow: none;" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+      <option [ngValue]="2">2 </option>
+      <option [ngValue]="4">4</option>
+      <option [ngValue]="5">5 </option>
+    </select>
+  </div>

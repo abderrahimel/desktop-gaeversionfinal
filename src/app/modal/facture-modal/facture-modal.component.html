@@ -1,0 +1,70 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">Ajouter facture</h5>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+    <div class="modal-body">
+              <div class="card-body">
+              <div class="row">
+
+                  <div class="col-md-12">
+                      <div id="AddMessage" class="alert" style="display: none;">
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label">Date*</label>
+                          <div class="wd-200 mg-b-30">
+                              <div class="input-group">
+                                  <input class="form-control" style="font-size: 16px;text-transform: uppercase" placeholder="DD/MM/YYYY" type="date" name="date" formControlName="date">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label">Candidat*</label>   
+                          <select name="candidat" class="form-control" style="font-size: 16px;height: 30px;" formControlName="candidat_id">
+                              <option value="">Choisir un candidat</option>
+                              <option *ngFor="let data of candidats" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label"> Taux de TVA*</label>       
+                          <input type="text" class="form-control" style="font-size: 16px;" name="tva" formControlName="tva">
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label">Montant_ht*</label>
+                          <input type="text" class="form-control" name="ht" style="font-size: 16px;" formControlName="montant_ht" >
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label">Montant_ttc*</label>
+                          <input type="text" class="form-control" name="ttc" style="font-size: 16px;" formControlName="montant_ttc">
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label">Remarques</label>
+                          <textarea rows="5" class="form-control" placeholder="Votre Remarques!" style="font-size: 16px;" formControlName="remarque" name="remarques"></textarea>
+                      </div>
+                  </div>
+
+              </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+              <button type="submit" class="btn"  style="background: #198754;color: white;font-size: 16px;" id="button_add" (click)="add_orUpdatefacture()"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{btn}}</button>
+            <button type="button" class="btn btn-danger"  style="font-size: 16px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+        </div>
+    </form>
+  </div>

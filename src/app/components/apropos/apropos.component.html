@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Job board html template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+    <meta name="keywords" content=""/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta property="og:image" content="/assets/img/logo_gae.png">
+    <link rel="icon" href="/assets/img/logo_gae.png" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo_gae.png" />
+<!-- font style -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet"> 
+    <!-- Title -->
+    <title>Gestion Auto-écoles - J2HB Plus Editeur de la securité routiére au maroc.</title>
+    <!-- Réalisation Yancom Création <a href="www.yancom-creation.com" target="_blank">Yancom Création</a> -->
+    
+    <link href="https://gestionautoecole.com/fi/css/flag-icons.min.css" rel="stylesheet" />
+    <!-- Bootstrap Css -->
+    <link href="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+            
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- Dashboard Css -->
+    <link href="https://gestionautoecole.com/css/style.css" rel="stylesheet" />
+
+    
+    <!-- Font-awesome  Css -->
+    <link href="https://gestionautoecole.com/css/icons.css" rel="stylesheet"/>
+    <link href="https://gestionautoecole.com/fonts/fonts/font-awesome.min.css" rel="stylesheet"/>
+
+    <!--Horizontal Menu-->
+    <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/animation/fade-down.css" rel="stylesheet" />
+    <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/horizontal.css" rel="stylesheet" />
+
+    <!--Select2 Plugin -->
+    <link href="https://gestionautoecole.com/plugins/select2/select2.min.css" rel="stylesheet" />
+
+    <!-- Time picker Plugin -->
+    <!-- <link href="https://gestionautoecole.com/plugins/time-picker/jquery.timepicker.css" rel="stylesheet" /> -->
+
+    <!-- Date Picker Plugin -->
+    <link href="https://gestionautoecole.com/plugins/date-picker/spectrum.css" rel="stylesheet" />
+    
+    <!-- file Uploads -->
+    <link href="https://gestionautoecole.com/plugins/fileuploads/css/dropify.css" rel="stylesheet" type="text/css" />
+
+    <!-- jquery ui RangeSlider -->
+
+    <link href="https://gestionautoecole.com/plugins/jquery-uislider/jquery-ui.css" rel="stylesheet">
+
+    <!-- Owl Theme css-->
+    <link href="https://gestionautoecole.com/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" />
+
+    <!-- Custom scroll bar css-->
+    <link href="https://gestionautoecole.com/plugins/scroll-bar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
+    <!-- Accordion Css -->
+    <link href="https://gestionautoecole.com/plugins/accordion/accordion.css" rel="stylesheet" />
+   
+    <!-- Custom Css -->
+   <link href="https://gestionautoecole.com/css/custom.css" rel="stylesheet" />
+
+    <!-- Tags Input -->
+    <link href="https://gestionautoecole.com/css/bootstrap-tagsinput.css" rel="stylesheet" />
+
+    <!-- Color-Skins -->
+    <link rel="stylesheet" media="all" href="https://gestionautoecole.com/color-skins/color10.css" />
+
+    <link href="https://gestionautoecole.com/plugins/sweet-alert/sweetalert.css"  rel="stylesheet"/>
+    
+    <!-- JQuery js-->
+    <script src="https://gestionautoecole.com/js/jquery-3.5.1.js"></script>
+    <script src="https://gestionautoecole.com/js/vendors/jquery-3.2.1.min.js"></script>
+    <script src="https://gestionautoecole.com/js/validate/jquery.validate.js" ></script>
+    <script src="https://gestionautoecole.com/js/validate/login.js"></script>
+    <script src="https://gestionautoecole.com/js/validate/register.js"></script>
+    <script src="https://gestionautoecole.com/js/date.js"></script>
+    <script src="https://gestionautoecole.com/js/fr-FR.js"></script>
+    <style>
+
+ 
+        .form-section{
+            padding-left: 15px;
+            display: none;
+        }
+        
+        .form-section.current
+        {
+            display: block;
+        }
+        
+        
+        .form-label {
+            font-size: 20px;
+        }
+        
+        .form-navigation
+        {
+            text-align: center;
+        }
+        
+        .modal h5
+        {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        
+        #registerMission
+        {
+            display: none;
+        }
+        #loginMission
+        {
+         display: none;   
+        }      
+        .parsley-required,.parsley-type
+        {
+            margin: 2px 0px 3px;
+            padding: 0;
+            list-style-type: none;
+            color: red;
+        }
+        
+        </style>
+</head>
+<body>
+<app-header></app-header>
+<div style="margin-top: -480px"></div>
+
+    <style>.avatar{background: #e5e5e5 no-repeat center/cover !important;background-size: cover !important}</style>
+    <!--Sliders Section-->
+    <div> 
+        <div class="bannerimg cover-image bg-background3" data-image-src="/assets/img/banner1.jpg" style="background: url(&quot;../assets/images/banners/banner2.jpg&quot;) center center;"> 
+            <div class="header-text mb-0"> 
+                <div class="container"> 
+                    <div class="text-center text-white "> 
+                        <h1 class="">J2HB</h1> 
+                        <ol class="breadcrumb text-center"> 
+                            <li class="breadcrumb-item"><a routerLink="/"> Accueil </a></li> 
+                            <li class="breadcrumb-item active text-white" aria-current="page">J2HB </li> 
+                        </ol> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div>
+    <!--/Sliders Section-->
+    <section class="sptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title" >Apropos de J2HB</h3>
+                        </div>
+                        <div class="card-body">
+                            
+            <div class="text-wrap">
+            <p> ✔ <b style ="color:red">J2HB</b> est un éditeur en sécurité routière, on a développés et commercialisés ces dernières années des outils pédagogiques pour les auto-écoles du Maroc (www.jhbplus.com).</p>
+            <p>✔ La société  <b style ="color:red">J2HB</b> est à l’origine des nombreuses innovations dans le monde de la formation au permis de conduire.</p>
+            <p>✔ <b style ="color:red"> J2HB</b> développe et commercialise tous les produits nécessaires aux auto-écoles, notamment les programmes pédagogiques liés à la préparation à tous les types d'examens du permis de conduire (théorie et pratique) et les programmes pour la gestion et le fonctionnement des auto-écoles.</p>
+            <p>✔ <b style ="color:red">J2HB</b> importe également des équipements technologiques modernes de l'étranger, tels que le double commande (double commande européenne) et les simulateurs de conduite (simulateur), après avoir réussi à gagner la confiance de grandes entreprises internationales, pionnières dans le domaine du développement dans le secteur de la sécurité routière, l'éducation à la conduite et au code de la route, et a tissé avec eux des partenariats exclusifs.</p>
+            <p>✔ Depuis sa création, <b style ="color:red">J2HB</b> accompagne les professionnels avec plusieurs services gratuits comme le conseil et l'orientation, la mise en ligne d'annonces d'achat et de vente de véhicules adaptés aux cours de conduite, la recherche d'un entraîneur...etc. <b style ="color:red">J2HB</b> a également fourni des programmes pédagogiques aux candidats. Tous les produits <b style ="color:red">J2HB</b> intègrent les dernières technologies innovantes (tests interactifs en classe ou en ligne, enseignement à distance)</p>
+            <p>✔ Ces nouveaux produits contribuent à moderniser l'image des auto-écoles, faciliter le travail des formateurs et développer l'autonomie des candidats</p>
+            <p>✔ L'entreprise <b style ="color:red">J2HB</b> est également spécialisée dans le domaine de la formation professionnelle des conducteurs professionnels</p>
+            <p>✔ Chaque jour, <b style ="color:red">J2HB</b> contribue à un développement responsable et durable, en apportant des solutions préventives concrètes à impact efficace ! Notre objectif est de rendre chaque individu actif dans sa propre sécurité et celle des autres.</p>
+        </div>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="font-size: medium "><b>El Amrani Jalal</b> </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                    <div class="card box-size">
+                                        <div class="card-body" style="padding-bottom: 45px;">
+                                            <div class="item-box text-center">
+                                                <div class="stamp text-center stamp-lg bg-primary "><i class="fa fa-user"></i></div>
+                                                <div class="item-box-wrap">
+                                                    <h5 class="mb-2"> Entrepreneur </h5>
+                                                    <p class="text-muted mb-0"> Est un jeune Entrepreneur avec 18 ans d&#039;expériences dans le domaine de la sécurité routière. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                    <div class="card box-size">
+                                        <div class="card-body" style="padding-bottom: 45px;">
+                                            <div class="item-box text-center">
+                                                <div class="stamp text-center stamp-lg bg-success"><i class="fa fa-address-book"></i></div>
+                                                <div class="item-box-wrap">
+                                                    <h5 class="mb-2"> Directeur </h5>
+                                                    <p class="text-muted mb-0"> Directeur de la société J2HB et JHB PLUS, Éditeurs en sécurité routière depuis 2011 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                                    <div class="card box-size">
+                                        <div class="card-body">
+                                            <div class="item-box text-center">
+                                                <div class="stamp text-center stamp-lg bg-info"><i class="fa fa-university"></i></div>
+                                                <div class="item-box-wrap">
+                                                    <h5 class="mb-2"> Educations et Diplômes </h5>
+                                                    <p class="text-muted mb-0"> Une licence universitaire en 2004 et Master en Ingénierie d&#039;Affaires et Marketing Digital (en préparation 2022/2023) </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <section class="sptb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title" >Apropos de El Amrani Jalal</h3>
+                        </div>
+                        <div class="card-body">
+                            
+            <div class="text-wrap">
+            <p>✔ Directeur des ventes chez Codes Rousseau de 2004 à 2011.</p>
+            <p>✔ Propriétaire et directeur de l'auto-école marocaine PLUS de 2005 à 2014 (www.autoecolefes.com).</p>
+            <p>✔ Directeur de la société (MSY) spécialisée dans la sécurité et la gestion routières.</p>
+            <p>✔ Membre fondateur et trésorier de l'Association (réseau) des Auto-Ecoles du Maroc (ECM) Partenaire officiel de l'Association des Auto-Ecoles Françaises Ecole de Conduite Française (ECF) (http://www.ecf.asso.fr) depuis un an 2006 .</p>
+            <p>✔ Propriétaire et directeur de l'auto-école marocaine Planet Permi (PLANETE PERMIS) depuis 2014</p>
+            <p>✔ Président de l'Association Marocaine pour la Conduite et la Sécurité Routière (ECMSR) depuis 2014 jusqu'à aujourd'hui.</p>
+            <p>✔ Directeur de la société JHB PLUS spécialisée dans la production, l'importation et la vente de programmes, produits et équipements pour la sécurité routière, l'éducation à la conduite et le code de la route (www.jhbplus.com).</p>
+            <p>✔ Administrateur de J2HB, spécialisée dans l'accompagnement des professionnels et le développement du secteur de l'éducation à la conduite (www.j2hb.com).</p>
+            <p>✔ Fondateur du projet CLUSTER DES ECOLES DE CONDUITE, la nouvelle génération d'auto-écoles qui adoptent la digitalisation comme élément essentiel de développement et de modernisation (www.cluster-cec.com)</p>
+        </div>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<script src="https://gestionautoecole.com/js/Filter/ecole.js"></script>
+<section class="main-footer" style="background-color: white;">
+<footer class="bg-footer text-white " >
+<div class="text-white-50 border-top p-0">
+    <div class="container pb-4">
+        <div class="row d-flex">
+            <div class="text-center col-md-3 col-12">
+                <a class="header-brand" routerLink="/">
+                    <img src="/assets/img/logo_gae.png"  class="header-brand-img" alt="Jobslist logo" style="height: 4.5rem !important;">
+                </a>
+            </div>
+            <div class="col-md-3 col-12">
+                <ul>
+                    <li><a routerLink="/" class="btn copy-footer"><b> Accueil</b></a></li>
+                    <li><a routerLink="/apropos" class="btn copy-footer"><b> Logiciel GAE PLUS</b></a></li>
+                    <li><a routerLink="/boutique-j2hb" class="btn copy-footer"><b> Boutique j2hb</b></a></li>
+                    
+                </ul>
+            </div>
+            <div class="col-md-3 col-12">
+                <ul><li><a routerLink="/contact" class="btn copy-footer"><b> Contact</b></a></li>
+                    <li><a routerLink="/ministre_notes" class="btn copy-footer"><b>Téléchargement</b></a></li>
+                    <li><a routerLink="/ecoles" class="btn copy-footer"><b> Auto-écoles</b></a></li>
+                </ul>
+            </div>
+            
+            <div class=" d-flex flex-column justify-content-center col-md-3 col-12">
+                <form method="post" id="AddAbonner" >
+                   	<div id="AddMessageFR" class="alert"></div>
+                    <div class="input-group ">
+                        <input name="email" type="text" class="form-control" placeholder="Entrer vôtre email" aria-label="Entrer vôtre email" aria-describedby="basic-addon2" style="border: 2px solid #c6c6c6 !important;">
+                        <div class="input-group-append">
+                            <button type="submit" id="basic-addon2" class="input-group-text btn btn-primary btn-block" style="border: 2px solid red !important;background-color: white;color: red;margin-inline-start: -1px;position: relative;height: 39px;">Abonner</button> 
+                        </div>
+                    </div>
+                </form>
+                
+                <ul class="social-f text-center mb-0" style="margin-top: 2rem">
+                        <li>
+                            <a class="social-icon hov-footer" routerLink="https://www.facebook.com/jalal.elamrani.756" style="font-size: 20px !important"><i class="fa fa-facebook" ></i></a>
+                        </li>
+                        <li>
+                            <a class="social-icon hov-footer" routerLink="https://api.whatsapp.com/send?phone=212661072777" style="font-size: 20px !important"><i class="fa fa-phone" ></i></a>
+                        </li>
+                        <li>
+                            <a class="social-icon hov-footer" routerLink="https://www.youtube.com/channel/UCd97nMww3vq2ts3pr86QN3Q/videos" style="font-size: 20px !important"><i class="fab fa-youtube"></i></a>
+                        </li>
+                        <li>
+                            <a class="social-icon hov-footer" routerLink="mailto:jhb.plus@yahoo.com" style="font-size: 20px !important"><i class="fa fa-envelope" ></i></a>
+                        </li>
+                    </ul>
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="containner-fluid">
+        <div class="row">
+            <div class="col-12 cp-ft">
+                <div class="copy-footer text-center">
+                    <hr style="border-top: 3px solid #e6e6e6 !important;margin-top:auto;margin-bottom:auto">
+                    <br>
+                    <b>	Copyright © 2022 GAE.</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+</section>
+<script src="https://gestionautoecole.com/js/Abonner/abonner.js"></script>
+<!--Footer Section-->   
+
+<!-- Back to top -->
+<a routerLink="#top" id="back-to-top" ><i class="fa fa-arrow-up"></i></a>
+
+<!-- Bootstrap js -->
+
+<script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/popper.min.js"></script>
+<script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+
+<!-- Tags Input -->
+<script src="https://gestionautoecole.com/js/bootstrap-tagsinput.js"></script>
+
+<!-- Sweet alert Plugin -->
+<script src="https://gestionautoecole.com/plugins/sweet-alert/sweetalert.min.js"></script>
+<script src="https://gestionautoecole.com/js/sweet-alert.js"></script>
+
+<!---Accordion Js-->
+<script src="https://gestionautoecole.com/plugins/accordion/accordion.min.js"></script>
+<script src="https://gestionautoecole.com/js/accor.js"></script>
+
+<!--JQuery Sparkline Js-->
+<script src="https://gestionautoecole.com/js/vendors/jquery.sparkline.min.js"></script>
+
+<!-- Circle Progress Js-->
+<script src="https://gestionautoecole.com/js/vendors/circle-progress.min.js"></script>
+
+<!-- Star Rating Js-->
+<script src="https://gestionautoecole.com/plugins/rating/jquery.rating-stars.js"></script>
+
+<!--Counters -->
+<script src="https://gestionautoecole.com/plugins/counters/counterup.min.js"></script>
+<script src="https://gestionautoecole.com/plugins/counters/waypoints.min.js"></script>
+<script src="https://gestionautoecole.com/plugins/counters/numeric-counter.js"></script>
+
+<!--Owl Carousel js -->
+<script src="https://gestionautoecole.com/plugins/owl-carousel/owl.carousel.js"></script>
+
+<!--Horizontal Menu-->
+<script src="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/horizontal.js"></script>
+
+<!--JQuery TouchSwipe js-->
+<script src="https://gestionautoecole.com/js/jquery.touchSwipe.min.js"></script>
+
+<!--Select2 js -->
+<script src="https://gestionautoecole.com/plugins/select2/select2.full.min.js"></script>
+<script src="https://gestionautoecole.com/js/select2.js"></script>
+
+<!-- Datepicker js -->
+<script src="https://gestionautoecole.com/plugins/date-picker/spectrum.js"></script>
+<script src="https://gestionautoecole.com/plugins/date-picker/jquery-ui.js"></script>
+<!-- <script src="https://gestionautoecole.com/plugins/input-mask/jquery.maskedinput.js"></script> -->
+
+<!-- Inline js -->
+<script src="https://gestionautoecole.com/js/formelements.js"></script>
+
+<!-- file uploads js -->
+<script src="https://gestionautoecole.com/plugins/fileuploads/js/dropify.js"></script>
+
+<!-- sticky Js-->
+<script src="https://gestionautoecole.com/js/sticky.js"></script>
+
+<!-- Ion.RangeSlider -->
+<script src="https://gestionautoecole.com/plugins/jquery-uislider/jquery-ui.js"></script>
+
+<!--Showmore Js-->
+<script src="https://gestionautoecole.com/js/jquery.showmore.js"></script>
+<script src="https://gestionautoecole.com/js/showmore.js"></script>
+
+<!-- Custom scroll bar Js-->
+<script src="https://gestionautoecole.com/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<!-- Swipe Js-->
+<script src="https://gestionautoecole.com/js/swipe.js"></script>
+
+<!-- Scripts Js-->
+<script src="https://gestionautoecole.com/js/scripts2.js"></script>
+
+<!-- Custom Js-->
+<script src="https://gestionautoecole.com/js/custom.js"></script>
+</body>
+</html>
+
+

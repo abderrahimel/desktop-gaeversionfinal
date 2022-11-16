@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);" id="boutique">
+	<!-- <app-headerlogged></app-headerlogged> -->
+    <!-- <app-menu-admin></app-menu-admin> -->
+    <app-slide-bar></app-slide-bar>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style="display: flex;background:rgb(233, 236, 236);">
+<div class="wrap-table100">
+   
+  <div class="tableDiv">
+
+    <div class="mat-elevation-z8">
+     
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+        <div style="font-size: 16px;font-weight: 600;">
+          <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;">
+            <div style="font-size: 14px;">GESTION AUTO-ÉCOLE
+            </div>
+            <div>
+              <button style="outline:none;border:none;background:#05a8e9;color: white;border-radius: 5px;padding: 7px;">
+                 <i class="fa fa-archive"></i>
+                 Archives
+              </button>
+            </div>
+        </div>
+      <div class="tableDiv" >
+          <!--  -->
+        <div class="detail" id="newProduit" *ngIf="hiddingNewAbonnement">
+            <div class="childNewProduit">
+              <span style="padding-left: 10px;">Modifier Abonnement </span> 
+                <hr>
+                <div class="formulaire" >
+                  <form [formGroup]="form"  method="POST" action="" id="register" 
+                  enctype="multipart/form-data" style="margin-right: 10px;margin: 60px;" >
+                  <!-- first row -->
+                     <div class="row">
+                      <div class="col-6">
+                        <div class="form-group"> 
+                            <label class="form-label">Prix*</label>
+                            <input type="text" name="prix" class="form-control"  formControlName="prix">
+                            <div class="err" *ngIf="submitted && this.form.controls.prix.errors">
+                                <div style="color: red;" *ngIf="this.form.controls.prix.errors.required">
+                                    {{'field required.' | translate}} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     </div>
+                     <!-- second row -->
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group"> 
+                              <label class="form-label">Date Debut</label> 
+                              <input type="date"   name="date_debut" class="form-control" formControlName="date_debut"/>
+                              <div class="err" *ngIf="submitted && this.form.controls.date_debut.errors">
+                                  <div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
+                                      {{' field required.' | translate}} 
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                     
+                     </div>
+                     <div class="row">
+                      <div class="col-6">
+                          <div class="form-group"> 
+                              <label class="form-label">Date Fin*   
+                              </label>  
+                              <input type="date" name="date_fin" class="form-control"  formControlName="date_fin">
+                              <div class="err" *ngIf="submitted && this.form.controls.date_fin.errors">
+                                  <div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
+                                      {{' field required.' | translate}} 
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                     </div>
+                        <div> 
+                          <button type="submit" class="ajouter" (click)="abonnement(idAbonnemet)" >{{action}}</button>
+                          <button  class="fermer" style="color: white;" (click)="hiddingNewP(false)">Fermer</button>
+                        </div>
+                  </form>
+                </div>
+          
+            </div>
+          </div>
+        <table class="table" >
+          <thead>
+            <tr  style="color: black;" >
+                <th scope="col">{{ "NOM" | translate }}</th>
+                <th scope="col">{{ "RESPONSABLE" | translate }}</th>
+                <th scope="col">{{ "ETAT" | translate }}</th>
+                <th scope="col">{{ "TELE ECOLE" | translate }}</th>
+                <th scope="col">{{ "TELE RESPONSABLE" | translate }}</th>
+                <th scope="col">{{ "PAYS/VILLE" | translate }}</th>
+                <th scope="col">{{ "ACTIONS" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>    
+            <tr *ngFor="let data of autoEcoleApprouver; " class="td_paiment">
+              <th scope="row">{{data.nom_auto_ecole}}</th>
+              <!-- <td>{{data.nom_auto_ecole}}</td> -->
+              <td>{{data.nom_responsable}}{{" "}}{{data.prenom_responsable}}</td>
+              <td><p style="background-color: rgb(0, 255, 13);color: white;">Approuvé</p> </td>
+              <td> {{data.telephone}}</td> 
+              <td> {{data.tel_responsable}}</td>
+              <td> {{data.pays}}/{{data.ville}}</td>
+              <td>
+                <a  href="detail-auto-ecole/{{data.id}}"  title="detail" class="btn" style="border-color:rgb(3, 197, 245); background: rgb(3, 197, 245);color: white;">
+                    Detail
+                </a>
+                <button title="Contrat"class="btn" style="background: rgb(24, 235, 5);color: white;">
+                  Contrat
+                </button> 
+                <button title="approver" *ngIf="data.etat === 'en_attente'" (click)="approver(data.id)"  class="btn" style="background: orange;color: white;">
+                  Approver
+                </button>  
+                <!-- -->
+                <button title="désapprouver" *ngIf="data.etat === 'approuve'" (click)="desapprover(data.id)"   class="btn" style="background: orange;color: white;">
+                  Desapprouver
+              </button> 
+                <button (click)="deleteAutoEcole(data.id)" title="supprimer" class="btn" style="background: black;color: white;">
+                  Supprimer
+                </button>
+                <button title="abonnement" (click)="open(data?.abonnement, 'Abonnement')"  class="btn" style="background: orange;color: white;">
+                  Abonnement
+                </button> 
+              </td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+        </div>
+        
+    </div>   
+      </div>
+  </div>
+</div>
+      </div>
+   </div>
+</body>
+</html>

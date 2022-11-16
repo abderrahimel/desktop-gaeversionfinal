@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Description" content="Job board html template">
+  <meta name="Author" content="Spruko Technologies Private Limited">
+  <meta name="keywords" content=""/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="csrf-token" content="EyyYSiAbcWCiTKOK2fPvbpBLxLevZOVzfgZLQKLS">
+  <link rel="icon" href="/assets/img/logo_gae.png" type="image/x-icon"/>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo_gae.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);" id="boutique">
+  <app-slide-bar></app-slide-bar>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style="display: flex;background:rgb(233, 236, 236);">
+<div class="wrap-table100">
+  <div class="tableDiv" >
+    <div class="mat-elevation-z8">
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+        <div style="font-weight: 600;">GESTION DES MONITEURS
+        </div>
+         <div>
+            <button class="btn btn-success" (click)="open(null, 'Ajouter')">Nouvel moniteur</button>
+         </div>
+    </div>
+    <hr>
+       <div style="display: flex;align-items:center;justify-content:flex-end">
+           <div style="margin-right: 6px">  Rechercher:</div>
+           <mat-form-field appearance="standard">
+              <mat-label></mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+           </mat-form-field>
+       </div>
+        <table mat-table [dataSource]="dataSource" matSort>    
+      
+          <!-- image Column -->    
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by imege"> 
+              <span style="font-weight:900;font-size: 11px;">IMAGE</span>    
+            </th>
+            <td mat-cell *matCellDef="let element"> <img src="{{element.image}}" style="width: 90px;height:90px;" alt=""> </td>
+          </ng-container>
+          <!-- NOM Column --> 
+          <ng-container matColumnDef="nom">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 11px;">NOM</span>   </th>
+            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+          </ng-container>
+      
+          <!-- date Column --> 
+          <ng-container matColumnDef="date">    
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 11px;">DATE</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+          </ng-container>
+      
+          <!-- salaire Column -->
+          <ng-container matColumnDef="salaire">        
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">SALAIRE</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element.salaire}} </td>
+          </ng-container>   
+         <!-- actions Column -->
+         <ng-container matColumnDef="actions">  
+          <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 11px;">ACTIONS</span>  </th>
+          <td mat-cell *matCellDef="let element"> 
+                <button (click)="open(element, 'detail')"  
+                class="btn" 
+                style="background: rgb(3, 197, 245);color: white;padding: 10px;">
+                Detail 
+                </button>
+                <button   (click)="open(element, 'Modifier')" class="btn" 
+                style="background: rgb(245, 3, 3);color: white;padding: 10px;">
+                    Modifier 
+                </button>
+                <button (click)="deleteProduitAdmin(element?.id)"   class="btn" style="background: black; color: white;padding: 10px;">
+                    Supprimer 
+                </button>
+          </td>
+        </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator 
+        [length]="n" 
+        [pageSize]="5"  
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+      </div>
+  </div>
+</div>
+      </div>
+   </div>
+</body>
+</html>

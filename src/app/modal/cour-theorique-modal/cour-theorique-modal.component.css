@@ -1,0 +1,18 @@
+.list_candidat{
+    height: 60px;
+    outline: none;
+    border: 1px solid rgb(207, 202, 202);
+    padding-left: 5px;
+  }
+
+  *{
+    font-size: 16px;
+}
+
+input, select, textarea, button{
+    font-size: 16px;
+}
+
+input[type=date]{
+    text-transform: uppercase;
+}

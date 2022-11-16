@@ -1,0 +1,38 @@
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">{{ "CATEGORIE" | translate }}</th>
+        <th scope="col">{{ "MOYEN" | translate }}</th>
+        <th scope="col">{{ "Nombre des questions" | translate }}</th>
+        <th scope="col">{{ "ACTIONS" | translate }}</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataNote">
+        <th>{{data.categorie}}</th>
+        <td>{{data.moyen}}</td>
+        <td>{{data.note_generale}}</td>
+
+        <td>
+          <button 
+               (click)="open('Modifier', data)"
+               style="width: 70px; box-shadow: none;padding: 5px;width: 110px;" class="btn btn-danger ">
+             Modifier
+          </button>
+          <button class="btn" style="margin-left: 5px;box-shadow: none;background: black;color: white;padding: 5px;width: 110px;" (click)="deletNote(data.id)">
+            Supprimer
+          </button>
+        </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2" style="margin-top: 20px;" >
+    <ngb-pagination class="listPage" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+    </ngb-pagination>
+  
+    <select class="form-select item" style="width: auto;box-shadow: none;" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+      <option [ngValue]="2">2 </option>
+      <option [ngValue]="4">4</option>
+      <option [ngValue]="5">5 </option>
+    </select>
+  </div>

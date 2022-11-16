@@ -1,0 +1,278 @@
+<!--  -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+    </head>
+    <body style="font-size: 14px;">
+      <div class="h-55">
+        <app-headerlogged></app-headerlogged>
+      </div>
+       <app-menu-sb></app-menu-sb>
+       <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e8eeea;;">
+        <div style="display: flex;background: #e8eeea;;">
+          <div class="wrap-table100">
+            <div class="mat-elevation-z8">
+            <mat-card>
+              <div class="card" style="width: 100%;">
+                <div class="card-body">
+                    <div class="container-form col-12" style="margin: 15px">
+                        <div class="container">
+                            <section class="content" id="form-font">
+                                <div style="display: flex;align-items: center;justify-content: space-between;margin-left: 20px;margin-right: 20px;">
+                                    <span>NOUVEL MONITEUR
+                                    </span>
+                                    <a routerLink="/listes-moniteurs" style="border-radius: 5px; color: white;text-decoration: none; background: #198754;border: 1px solid #198754;;padding: 5px;">Listes des moniteurs</a>
+                                </div>
+                                <hr style="color: #b8babb;">
+                                <span style="margin-left: 10px; color: red;">(*) Champs obligatoire</span>
+                                <form class="form" [formGroup]="form" (ngSubmit)="addMoniteur()" method="POST" action=""
+                                enctype="multipart/form-data">
+                                    <div class="row" >
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "nom" | translate }}:</label>
+                                                <input type="text" id="appt" name="appt" style="font-size:16px" class="form-control input-class" formControlName="nom">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.nom.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.nom.errors.required">
+                                                      {{'Nom required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div> 
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "prenom" | translate }}:</label>
+                                                <input type="text" id="appt" style="font-size:16px"  name="appt" class="form-control input-class" formControlName="prenom">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.prenom.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.prenom.errors.required">
+                                                      {{'Prenom required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "CIN" | translate }}:</label>
+                                                <input type="text" style="font-size:16px"  id="cin" name="cin" class="form-control input-class" formControlName="cin">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.cin.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.cin.errors.required">
+                                                      {{'Cin required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="last-name-column">{{ "Date de naissance" | translate }}:</label>
+                                                <input type="date" style="font-size:16px"  id="date_naissance" name="date_naissance" class="form-control input-class" formControlName="date_naissance">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.date_naissance.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.date_naissance.errors.required">
+                                                      {{'Date de naissance required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "Lieu de naissance" | translate }}:</label>
+                                                <input type="text" id="lieu_naissance" style="font-size:16px"  name="lieu_naissance" class="form-control input-class" formControlName="lieu_naissance">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.lieu_naissance.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.lieu_naissance.errors.required">
+                                                      {{'Lieu de naissance required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div> 
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "email" | translate }}:</label>
+                                                <input type="text" id="email" style="font-size:16px"  name="email" class="form-control input-class" formControlName="email">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.email.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
+                                                      {{'Email required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "telephone" | translate }}:</label>
+                                                <input type="text" id="telephone" style="font-size:16px"  name="telephone" class="form-control input-class" formControlName="telephone">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.telephone.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required">
+                                                      {{'Telephone required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="last-name-column">{{ "Date de embauche" | translate }}:</label>
+                                                <input type="date" id="date_embauche" style="font-size:16px"  name="date_embauche" class="form-control input-class" formControlName="date_embauche">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.date_embauche.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.date_embauche.errors.required">
+                                                      {{'Date de embauche required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div> 
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "Type Moniteur*" | translate }}:</label>
+                                                <select name="type_moniteur" style="font-size:16px;height:30px"  class="form-control" formControlName="type_moniteur">
+                                                    <option value="">Choisissez type</option>
+                                                    <option value="Moniteur Théorique">Moniteur Théorique</option>
+                                                    <option value="Moniteur Pratique">Moniteur Pratique</option>
+                                                </select>
+                                                <div class="err" *ngIf="submitted && this.form.controls.type_moniteur.errors">
+                                                    <div style="color: red;" *ngIf="this.form.controls.type_moniteur.errors.required">
+                                                          {{'Type Moniteur required ' | translate}}  
+                                                    </div>
+                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "C.A.P.N" | translate }}:</label>
+                                                <input type="text" id="capn" style="font-size:16px"  name="capn" class="form-control input-class" formControlName="capn">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.capn.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.capn.errors.required">
+                                                      {{'C.A.P.N required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="city-column">{{ "N° P Conduire" | translate }}:</label>
+                                                <input type="text" id="conduire" style="font-size:16px"  name="conduire" class="form-control input-class" formControlName="conduire">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.conduire.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.conduire.errors.required">
+                                                      {{'N° P Conduire required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="email-id-column">{{ "adresse:" | translate }}:</label>
+                                                <textarea class="form-control adresse input-class" style="font-size:16px"  name="adresse" id="adresse" rows="3"
+                                                    placeholder="{{ 'Adresse' | translate }}" formControlName="adresse"></textarea>
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.adresse.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.adresse.errors.required">
+                                                      {{'Adresse required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="email-id-column">{{ "Catégorie" | translate }}:</label>
+                                                <select name="categorie" class="form-control" style="font-size:16px;height:30px"  formControlName="categorie" id="categorie" (change)="addCategorie($event)">
+                                                    <option value="">Choisissez catégorie</option>
+                                                    <option value="AM">AM</option>
+                                                    <option value="A1">A1</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="E">E</option>
+                                                    <option value="EB">EB</option>
+                                                    <option value="EC">EC</option>
+                                                    <option value="ED">ED</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-3" >
+                                            <div class="form-group">
+                                                <label for="email-id-column">{{ "List" | translate }}:</label>
+                                                <textarea class="list_candidat" style="font-size:16px"   name="categorie_list" id="categorie_list" cols="30" rows="10">{{categorie_list}}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="email-id-column">{{ "Observations:" | translate }}:</label>
+                                                <textarea class="form-control adresse input-class" style="font-size:16px" name="observations" id="observations" rows="3"
+                                                    placeholder="{{ 'Observations' | translate }}" formControlName="observations"></textarea>
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.observations.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.observations.errors.required">
+                                                      {{'Observations required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="email-id-column">{{ "Carte moniteur*" | translate }}:</label>
+                                                <input type="file"  class="form-control" name="carteMoniteur" id="carteMoniteur" rows="3"
+                                                    (change)="fileChangeEvent($event)"
+                                                    data-allowed-file-extensions="jpeg jpg png"
+                                                    accept="image/*"
+                                                    formControlName="carteMoniteur"
+                                                    />
+                                            </div>
+                                            <div  class="err" *ngIf="submitted && this.form.controls.carteMoniteur.errors && !is_update">
+                                                <div style="color: red;" *ngIf="this.form.controls.carteMoniteur.errors.required">
+                                                      {{'Carte moniteur required ' | translate}}  
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3">
+                                    <button class="btn next-btn" id="button1-fnt" style="margin: 10px;"  (click)="addMoniteur()">
+                                        <i class="fa fa-plus"></i>
+                                        {{action}}
+                                        
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </div>
+            </mat-card>
+          </div>
+          </div>
+      </div>
+      <!-- fin first container -->
+                      
+    
+        
+                 
+     </div>
+    
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+    </html>

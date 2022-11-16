@@ -1,0 +1,403 @@
+import { ThisReceiver } from '@angular/compiler';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { take } from 'rxjs/operators';
+import { DataService } from '../services/data.service';
+import { loadExamenAction } from '../state/examen/examen.actions';
+import { ExamenState } from '../state/examen/examen.state';
+import Swal from 'sweetalert2';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DetailexamenmodalComponent } from '../modal/detailexamenmodal/detailexamenmodal.component';
+import { UpdateexamenmodalComponent } from '../modal/updateexamenmodal/updateexamenmodal.component';
+import { NoteexamenModalComponent } from '../modal/noteexamen-modal/noteexamen-modal.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import * as _ from 'lodash';
+import { AuthService } from '../services/auth/auth.service';
+
+@Component({
+  selector: 'app-examen',
+  templateUrl: './examen.component.html',
+  styleUrls: ['./examen.component.css']
+})
+export class ExamenComponent implements OnInit {        
+  displayedColumns: string[] = ['candidat', 'cin', 'categorie', 'moniteur', 'date_examen', 'date_depot', 'actions'];    
+  dataSource!: MatTableDataSource<any>;
+  n:any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  dateVal = new Date();
+  examen:any;
+  give_note:boolean = false;
+  data_examen:any;
+  date_examen:any;
+  bool1:any = false;
+  bool2:any = false;
+  bool3:any = false;
+  categorieId:any;
+  ratrapage: boolean = false;
+  result:any;
+  moyenCategorie:any;
+  categorie:any;
+  idExamen:any;
+  ex:any;
+  mnths:any = { Jan: "01",  Feb: "02",  Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12"};
+  categorie_moyen:any = {};
+  dataExamen:any;
+  examenPratique: boolean = false;
+  ratrapageExamenPratique: boolean = false;
+  showformExam:boolean = false
+  showformconfigureNote:boolean = false;
+  notes:any;
+  etat1:any;
+  datamoniteurP:any;
+  show:boolean = false;
+  etat2:any;
+  currentDate:any = new Date().getTime();
+  showmessageAttendateExamen:boolean = false;
+  submitted:boolean = false;
+  candidats:any;
+  clicked :boolean = false;
+  form = new FormGroup({
+    examenTheorique: new FormControl(''),
+    note1: new FormControl('', Validators.required),
+    note2: new FormControl(''),
+    date_note1: new FormControl(''),
+    date_note2: new FormControl(''),
+    date_etat1: new FormControl(''),
+    date_etat2: new FormControl(''),
+    examenPratique: new FormControl(''),
+    etat_1: new FormControl(''),
+    etat_2: new FormControl(''),
+    resultat: new FormControl(''),
+  })
+  constructor(private dataservice: DataService,
+              private store:Store<{examen: ExamenState}>,
+              private modalService: NgbModal,
+              private auth:AuthService
+    ) { }
+
+  ngOnInit(): void {
+    this.auth.authStatus.subscribe(value=>{
+      if(value){
+        this.getExamens();
+        this.getCandidats();
+        this.reloadData();
+      }
+     })
+  
+  }
+  onChange(e:any){
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.data_examen);
+    }else{
+        let filterData = _.filter(this.data_examen, (item)=>{
+          return item.categorie.toLowerCase() == e.target.value.toLowerCase()
+        })
+
+        this.dataSource = new MatTableDataSource(filterData);
+
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+  }
+  onChangeMoniteur(e:any){
+    // id moniteur
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.data_examen);
+    }else{
+        let filterData = _.filter(this.data_examen, (item)=>{
+          return item.moniteur_pratique_id == e.target.value
+        })
+        this.dataSource = new MatTableDataSource(filterData);
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  onChangeCandidat(e:any){
+       if(e.target.value === ''){
+         this.dataSource = new MatTableDataSource(this.data_examen);
+       }else{
+           let filterData = _.filter(this.data_examen, (item)=>{
+             return item.candidat.id == e.target.value
+           })
+           this.dataSource = new MatTableDataSource(filterData);
+       }
+       this.dataSource.paginator = this.paginator;
+       this.dataSource.sort = this.sort;
+  }
+  onchangeInput(e:any){
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.data_examen);
+    }else{
+        let filterData = _.filter(this.data_examen, (item)=>{
+          return item.date_examen.toLowerCase() == e.target.value.toLowerCase()
+        })
+       
+        this.dataSource = new MatTableDataSource(filterData);
+       
+    }
+  
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  
+  }
+  applyFilter(event:any){
+    let value = event.target.value
+    this.dataSource.filter = value.trim().toLowerCase()
+  }
+getData(){
+  this.store.pipe(take(1)).subscribe(store =>{
+    if(!store.examen.examen.loaded){
+      this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+    }
+    })
+    this.store.select(state=>state.examen.examen.examen).subscribe(data=>{
+      this.data_examen = data;
+    })
+
+    let ecole_id = localStorage.getItem('autoEcole_id');
+    this.dataservice.getNotes(ecole_id).subscribe(data=>{
+      this.notes = JSON.parse(data);
+      this.notes.map(data=>{
+          this.categorie_moyen[data.categorie] = data.moyen;
+      })
+    })
+}
+getCandidats(){
+  this.dataservice.getCandidats(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+    this.candidats = JSON.parse(data)
+  })
+}
+reloadData(){
+  this.dataservice.getMoniteurP(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+      this.datamoniteurP = data;
+  });
+ }
+getExamens(){
+  this.dataservice.getExamen(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+    this.data_examen = data;
+    this.dataSource = new MatTableDataSource(this.data_examen)
+
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
+  })
+  this.dataservice.getNotes(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+    this.notes = JSON.parse(data);
+    this.notes.map(data=>{
+        this.categorie_moyen[data.categorie] = data.moyen;
+    })
+  })
+}
+  valider(){
+    this.submitted = true;
+    if(this.form.invalid){
+        return;
+    }
+
+   
+   this.dataservice.addNoteCandidat(this.idExamen,{
+    etat_1: this.form.value.etat_1,
+    date_etat1: this.form.value.date_etat1,
+    etat_2: this.form.value.etat_2,
+    date_etat2: this.form.value.date_etat2,
+    note1: this.form.value.note1,
+    date_note1: this.form.value.date_note1,
+    note2: this.form.value.note2,
+    date_note2: this.form.value.date_note2,
+    moyen: this.categorieId.moyen
+   }).subscribe(data=>{
+     this.showformExam = false;
+   })
+  }
+
+  deletExamen(id:any){
+    Swal.fire({
+      title: 'confirmation',
+      text: "Vous voulez vraiment confirmer la suppression !",
+      icon: 'error',
+      showCancelButton: true,
+      cancelButtonText: 'annuler',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'oui, supprimer'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataservice.deleteExamen(id).subscribe(data =>{
+        })
+      }
+      this.getData();
+    })
+        
+        
+  }
+showForm(idExamen:any, dateExamen:any, categorie:any){
+    this.date_examen = dateExamen;
+    let DateE = new Date(dateExamen).getTime();
+
+    this.dataservice.getNotes(localStorage.getItem('autoEcole_id')).subscribe(data =>{
+     this.categorieId = JSON.parse(data).filter(note => note.categorie === categorie)[0];
+     
+     if(this.categorieId?.categorie === categorie){
+      this.showformconfigureNote = false;
+      // if dateExamen<= current date then show form note to add note candida 
+      if(DateE <= this.currentDate){
+          this.showformExam = true
+          this.showmessageAttendateExamen = false;
+      }
+      // else show message you need to wait until come the day of the examen
+      else{
+         this.showformExam = false;
+         this.showmessageAttendateExamen = true;
+      }
+     }else{
+      // else show message to tell them we need to configure note categorie
+      this.showformconfigureNote = true;
+      this.showformExam =false;
+      this.showmessageAttendateExamen = false;
+     }
+    })
+    this.idExamen = idExamen;
+    this.dataservice.getExamenById(this.idExamen).subscribe(data=> {
+      this.ex = data;
+      let dateExam = [dateExamen.split('-')[1], dateExamen.split('-')[2], dateExamen.split('-')[0]].join('/');
+      var someDate = new Date([dateExam.split('/')[0], dateExam.split('/')[1], dateExam.split('/')[2]].join('/'));
+      var numberOfDaysToAdd = 15;
+      var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+      let string = new Date(result).toDateString().split(" ");
+      this.form.patchValue({
+       note1: data['note1'] === '-1'? null:data['note1'],
+       note2: data['note2'] === '-1'? null:data['note2'],
+       etat_1: data['etat_1'],
+       etat_2: data['etat_2'],
+       date_etat1: data['date_etat1'],
+       date_etat2: data['date_etat2'],
+       date_note1: dateExamen,
+       date_note2: [string[3], this.mnths[string[1]], string[2]].join("-"),
+       examenPratique: 'examenPratique1',
+       examenTheorique: 'examenTheorique',
+     });
+
+      if(this.form.value.note2 === '-1' || this.form.value.note2 === null){
+       this.ratrapage = false;
+      }else{
+       this.ratrapage = true;
+      }
+      if(this.form.value.etat_1 ==='en_attente'){
+       this.examenPratique = false;
+      }else{
+       this.examenPratique = true;
+      }
+      if(this.form.value.etat_2 === 'en_attente'){
+       this.ratrapageExamenPratique = false;
+      }else{
+       this.ratrapageExamenPratique = true;
+      }
+
+    })
+}
+ 
+  
+
+    hiddenDiv(){
+      this.showformconfigureNote = false;
+      this.showmessageAttendateExamen = false;
+    }
+
+    hiddenform(){
+      this.ratrapage = false;
+      this.examenPratique = false;
+      this.ratrapageExamenPratique = false;
+      this.showformExam = false;
+      
+      this.form.patchValue({
+        examenTheorique: '',
+        note1: null,
+        note2: null,
+        date_note1: null,
+        date_note2: null,
+        date_etat1: null,
+        date_etat2: null,
+        examenPratique: '',
+        etat_1: null,
+        etat_2: null,
+        resultat: null,
+      })
+    }
+    
+    change(){
+      // // examen theorique
+      if(this.form.value.note1){  
+        if(this.form.value.note1 >= this.categorieId?.moyen){
+          this.examenPratique = true;
+          this.ratrapageExamenPratique = false;
+          this.ratrapage = false;
+        }else{
+          // this.ratrapage = true;
+          this.examenPratique = false;
+          this.ratrapageExamenPratique = false;
+          this.ratrapage = true;
+        }
+      }else{
+        this.ratrapage = false;
+        this.examenPratique = false;
+        this.ratrapageExamenPratique = false;
+      }
+    }
+
+    changenote2(){
+      // examen pratique
+      if(this.form.value.note2){
+        if(this.form.value.note2 >= this.categorieId?.moyen){
+          this.examenPratique = true;
+          this.ratrapageExamenPratique = false;
+        
+        }else{
+          this.examenPratique = false;
+        }
+      }
+      
+    }
+
+    changeEtat1(){
+      if(this.form.value?.etat_1 === 'noValide'){
+          this.ratrapageExamenPratique = true;
+      }else{
+        this.ratrapageExamenPratique = false;
+      }
+    }
+
+    dateExamenP(date:any){
+      let date_etat1 = this.form.value.date_etat1;
+      let dateExam = [date_etat1.split('-')[1], this.form.value.date_etat1.split('-')[2], this.form.value.date_etat1.split('-')[0]].join('/');
+      let mnths = { Jan: "01",  Feb: "02",  Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12"};
+      var someDate = new Date([dateExam.split('/')[0], dateExam.split('/')[1], dateExam.split('/')[2]].join('/'));
+      var numberOfDaysToAdd = 15;
+      var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+      let string = new Date(result).toDateString().split(" ");
+      this.form.patchValue({
+        date_etat2:  [string[3], mnths[string[1]], string[2]].join("-"),
+      });
+
+    }
+    open(data:any) {
+      const modalRef = this.modalService.open(DetailexamenmodalComponent);
+      modalRef.componentInstance.data = data;
+    }
+    open1(data:any, btn:any) {
+      const modalRef = this.modalService.open(UpdateexamenmodalComponent);
+      modalRef.componentInstance.data = data;
+      modalRef.componentInstance.btn = btn;
+    }
+    openNoteForm(data:any, idexamen:any, categoriee:any) {
+      const modalRef = this.modalService.open(NoteexamenModalComponent);
+      modalRef.componentInstance.data = data;
+      modalRef.componentInstance.idexamen = idexamen;
+      modalRef.componentInstance.categoriee = categoriee;
+    }
+}
+

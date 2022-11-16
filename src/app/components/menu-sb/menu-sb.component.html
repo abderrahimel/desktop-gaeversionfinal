@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <mat-card class="menu-fix" style="width: 225px;height: 100%;margin: 3px;z-index: 200;">
+      <div class="content">
+        <div class="logoAutoEcole">
+          <img class="imgAutoEcole"  src="https://gestionautoecole.com/storage/WCC0eSAEX1kMywrcfAxB4QX2ox6b7tVMqzIb51Xe.jpg" alt="">
+          <a routerLink="/auto-ecole" class="text-white" style="font-family: 'Roboto', sans-serif;font-size: 15px;text-decoration: none;font-weight: 400">auto ecole 1</a>
+        </div>
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active"  orientation="vertical">
+        <li ngbNavItem="top" routerLink="/dashboard" onclick="document.getElementById('id10').style.display = 'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';" style="border-bottom: 1px solid rgb(238, 238, 243);">
+          <a  [ngClass]="{
+            'text-secondary bg-danger text-white':active === 'top'
+          }" class="option" style="border-radius: 0px;"  ngbNavLink>
+            <span style="font-size: 15px;"  class="fa fa-tachometer text-danger "></span>
+            <span class="text-secondary" [ngClass]="{
+            'text-white':active === 'top','text-dark':active !== 'top'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;">Tableau de bord</span>
+          </a>
+          <ng-template ngbNavContent>
+              <!-- <span>li</span> -->
+          </ng-template>
+        </li>
+        <li ngbNavItem="middle" style="border-bottom: 1px solid rgb(238, 238, 243);" onclick="this.clickC = !this.clickC;document.getElementById('id1').style.display = clickC ? 'block':'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';document.getElementById('id10').style.display = 'none';" >
+          <a   style="border-radius: 0px;"
+             [ngClass]="{
+            'text-secondary bg-danger text-white':active === 'middle'
+          }" ngbNavLink>
+          <span style="font-size: 15px;"  class="fa fa-users text-danger"></span>
+          
+          <span  [ngClass]="{     
+            'text-white':active === 'middle','text-dark':active !== 'middle'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" id="candidats"
+          >candidats </span>
+         </a>
+         
+          <ul  class="listCandidat " style="width: 100%;display: none;" id="id1" >
+             <div class="d-flex">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li ngbNavItem="top28" style="border-bottom: 1px solid rgb(238, 238, 243);">
+                  <a [ngClass]="'text-dark fw-3'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/candidat_form', 'id1')"  ngbNavLink>Nouvel Candidat</a>
+                </li>
+                <li ngbNavItem="middle281">
+                  <a [ngClass]="' fw-3'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;color: black;" href="javascript:void(0)" (click)="redirect_to('/candidat', 'id1')"  ngbNavLink>Listes Candidats</a>
+                </li>
+                <li ngbNavItem="middle282">
+                  <a [ngClass]="' fw-3'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;color: black;" href="javascript:void(0)" (click)="redirect_to('/archive-candidat', 'id1')"  ngbNavLink>Archive</a>
+                </li>
+                <li ngbNavItem="bottom283">
+                  <a [ngClass]="' fw-3'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;color: black;" href="javascript:void(0)" (click)="redirect_to('/historique-candidats', 'id1')"  ngbNavLink>Historique</a>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            </div>
+          </ul> 
+          <ng-template ngbNavContent>
+          </ng-template>
+        </li>
+        <li style="border-bottom: 1px solid rgb(238, 238, 243);" ngbNavItem="middle1" onclick="this.clickT = !this.clickT;document.getElementById('id3').style.display = 'none';getElementById('id2').style.display = clickT ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';document.getElementById('id10').style.display = 'none';">
+          <a   
+            style="border-radius: 0px;"
+            [ngClass]="{
+            'text-secondary bg-danger text-white':active === 'middle1'
+          }"  ngbNavLink>
+          <span style="font-size: 15px;"  class="fa fa-tv text-danger"></span>
+          <span  [ngClass]="{
+            'text-white':active === 'middle1','text-dark':active !== 'middle1'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" id="candidats"
+          >Cours théorique </span>
+          </a>
+          <ul  class="listCandidat" style="width: 100%;display: none;" id="id2">
+         
+             <div class="d-flex">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li ngbNavItem="top27" style="border-bottom: 1px solid rgb(238, 238, 243);width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-cours', 'id2')" ngbNavLink>Gestion plannings</a>
+                </li>
+               
+                <li ngbNavItem="bottom271" style="width: 200px;"> 
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-presencesC', 'id2')" ngbNavLink>Gestion presence</a>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            </div>
+         </ul> 
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+        <li ngbNavItem="middle2" style="border-bottom: 1px solid rgb(238, 238, 243);"  onclick="this.clickP = !this.clickP;document.getElementById('id3').style.display = clickP ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';document.getElementById('id10').style.display = 'none';">
+          <a    style="border-radius: 0px;"
+             [ngClass]="{
+               'text-secondary bg-danger text-white':active === 'middle2'
+               }"
+            ngbNavLink>
+          <span style="font-size: 15px;" class="fa fa-thumbs-up text-danger"></span>
+          <span  [ngClass]="{
+            'text-white':active === 'middle2','text-dark':active !== 'middle2'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" id="candidats"
+          >Cours pratique </span>
+          
+        </a>
+          <ul class="listCandidat"  style="width: 100%;display: none;"  id="id3">
+         
+            <div class="d-flex">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li ngbNavItem="top27" style="border-bottom: 1px solid rgb(238, 238, 243);width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-conduites', 'id3')" ngbNavLink>Gestion plannings</a>
+                </li>
+                <li ngbNavItem="bottom271" style="width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-presences', 'id3')" ngbNavLink>Gestion presence</a>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            </div>
+         </ul> 
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+        <li style="border-bottom: 1px solid rgb(238, 238, 243);"  ngbNavItem="middle3" onclick="this.clickV = !this.clickV;document.getElementById('id4').style.display = clickV ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';document.getElementById('id10').style.display = 'none';">
+          <a  style="border-radius: 0px;"
+             [ngClass]="{
+            'text-secondary bg-danger text-white':active === 'middle3'
+            }"  ngbNavLink>
+          <span style="font-size: 15px;" class="fa fa-car text-danger"></span> 
+          <span  [ngClass]="{
+            'text-white':active === 'middle3','text-dark':active !== 'middle3'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" 
+          >Vehicules </span>
+          </a>
+          <ul  class="listCandidat" style="width: 100%;display: none;"  id="id4">
+          
+            <div class="d-flex">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li ngbNavItem="top26" style="border-bottom: 1px solid rgb(238, 238, 243);width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/vehicule', 'id4')" ngbNavLink>Gestion vehicules</a>
+                </li>
+                <li ngbNavItem="bottom26">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-vidange', 'id4')" ngbNavLink>Gestion rappel</a>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            </div>
+        </ul> 
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+        <li ngbNavItem="middle4" style="border-bottom: 1px solid rgb(238, 238, 243);"  onclick="this.clickE = !this.clickE;document.getElementById('id5').style.display = clickE ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';document.getElementById('id10').style.display = 'none';">
+          <a  style="border-radius: 0px;"
+             [ngClass]="{
+            'text-secondary bg-danger text-white':active === 'middle4'
+            }"  ngbNavLink>
+          <span  style="font-size: 15px;" class="fa fa-graduation-cap text-danger"></span> 
+          <span  [ngClass]="{
+            'text-white':active === 'middle4','text-dark':active !== 'middle4'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" 
+          >Examen </span>
+          </a>
+          <ul  class="listCandidat" style="width: 100%;display: none;"  id="id5">
+           
+            <div class="d-flex">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li ngbNavItem="top25" style="border-bottom: 1px solid rgb(238, 238, 243);width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-examens', 'id5')" ngbNavLink>Gestion Examens</a>
+                </li>
+                <li ngbNavItem="middle25" style="border-bottom: 1px solid rgb(238, 238, 243);width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-resultatV', 'id5')" ngbNavLink>Resultats Candidats</a>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            </div>
+        </ul> 
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+        <li ngbNavItem="middle5" style="border-bottom: 1px solid rgb(238, 238, 243);"  onclick="this.clickEm = !this.clickEm;document.getElementById('id6').style.display = clickEm ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';document.getElementById('id10').style.display = 'none';">
+          <a   style="border-radius: 0px;"
+          [ngClass]="{
+            'text-secondary bg-danger text-white':active === 'middle5'
+            }"  ngbNavLink>
+          <span   style="font-size: 15px;" class="fa fa-user text-danger"></span> 
+          <span  [ngClass]="{
+            'text-white':active === 'middle5','text-dark':active !== 'middle5'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" 
+          >Employes </span>
+          </a>
+          <ul  class="listCandidat employes" style="width: 100%;display: none;" id="id6">
+           
+            <div class="d-flex">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li ngbNavItem="top24" style="border-bottom: 1px solid rgb(238, 238, 243);width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-employees', 'id6')" ngbNavLink>Gestion Employes</a>
+                </li>
+               
+                <li ngbNavItem="bottom24" style="width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-absences', 'id6')" ngbNavLink>Gestion Absences</a>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            </div>
+         </ul> 
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+        <li ngbNavItem="middle6" style="border-bottom: 1px solid rgb(238, 238, 243);"  onclick="this.clickMo = !this.clickMo;document.getElementById('id7').style.display = clickMo ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';document.getElementById('id10').style.display = 'none';">
+          <a   style="border-radius: 0px;"
+              [ngClass]="{
+            'text-secondary bg-danger text-white':active === 'middle6'
+            }"  ngbNavLink>
+          <span style="font-size: 15px;" class="fa fa-user-circle-o text-danger" aria-hidden="true"></span>
+
+          <span  [ngClass]="{
+            'text-white':active === 'middle6','text-dark':active !== 'middle6'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" 
+          >Moniteur </span>
+          </a>
+          <ul  class="listCandidat employes" style="width: 100%;display: none;"  id="id7">
+            
+            <div class="d-flex">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li ngbNavItem="top23" style="border-bottom: 1px solid rgb(238, 238, 243);">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/ajouter-moniteur', 'id7')" ngbNavLink>Ajouter Moniteur</a>
+                </li>
+                <li ngbNavItem="middle23" style="border-bottom: 1px solid rgb(238, 238, 243);width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-moniteurs', 'id7')" ngbNavLink>List des moniteurs</a>
+                </li>
+                <li ngbNavItem="bottom23" style="width: 200px;">
+                  <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-absencesM', 'id')" ngbNavLink>Gestion Absences</a>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            </div>
+         </ul> 
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+    
+        <li ngbNavItem="middle7" style="border-bottom: 1px solid rgb(238, 238, 243);"  onclick="this.clickb = !this.clickb;document.getElementById('id8').style.display = clickb ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id9').style.display = 'none';document.getElementById('id10').style.display = 'none';">
+          <a  style="border-radius: 0px;"
+                [ngClass]="{
+               'text-secondary bg-danger text-white':active === 'middle7'
+               }"  ngbNavLink>
+          <i  style="font-size: 15px;" class="fas fa-store text-danger"></i>
+          <span  [ngClass]="{
+            'text-white':active === 'middle7','text-dark':active !== 'middle7'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" 
+          >Boutique </span>
+          </a>
+          <ul  class="listCandidat" style="width: 100%;display: none;" id="id8">
+           
+              <div class="d-flex">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                  <li ngbNavItem="top22" style="border-bottom: 1px solid rgb(238, 238, 243);">
+                    <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/produit', 'id8')" ngbNavLink>Gestion Produits</a>
+                  </li>
+                  <li ngbNavItem="middle22">
+                    <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)"  (click)="redirect_to('/vente', 'id8')" ngbNavLink>Gestion ventes</a>
+                  </li>
+                </ul>
+                <div [ngbNavOutlet]="nav" class="ms-4"></div>
+              </div>
+         </ul>
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+        <li ngbNavItem="middle8" style="border-bottom: 1px solid rgb(238, 238, 243);"  onclick="this.clickCa = !this.clickCa;document.getElementById('id9').style.display = clickCa ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id10').style.display = 'none';">
+          <a style="border-radius: 0px;"
+          [ngClass]="{
+         'text-secondary bg-danger text-white':active === 'middle8'
+         }"   ngbNavLink> 
+          <span style="font-size: 15px;" class="fa fa-institution text-danger"></span> 
+          <span  [ngClass]="{
+            'text-white':active === 'middle8','text-dark':active !== 'middle8'
+          }" style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list" 
+          >Caisse</span>
+          </a>
+          <ul  class="listCandidat" style="width: 100%;display: none;" id="id9">
+           
+              <div class="d-flex">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                  <li ngbNavItem="top21" style="border-bottom: 1px solid rgb(238, 238, 243);">
+                    <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-depenses', 'id9')" ngbNavLink>Depenses</a>
+                  </li>
+                  <li ngbNavItem="middle21" style="border-bottom: 1px solid rgb(238, 238, 243);">
+                    <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-recettes', 'id9')" ngbNavLink>Recettes</a>
+                  </li>
+                  <li ngbNavItem="bottom21">
+                    <a [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-factures', 'id9')" ngbNavLink>Factures</a>
+                  </li>
+                </ul>
+                <div [ngbNavOutlet]="nav" class="ms-4"></div>
+              </div>
+         </ul>
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+        <li ngbNavItem="middle9" style="border-bottom: 1px solid rgb(238, 238, 243);"   onclick="this.clickCo = !this.clickCo;document.getElementById('id10').style.display = clickCo ? 'block':'none';document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';document.getElementById('id3').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id9').style.display = 'none';">
+          <a    style="border-radius: 0px;"
+                 [ngClass]="{
+                 'text-secondary bg-danger text-white':active === 'middle9'
+                }"  ngbNavLink>
+          <span  style="font-size: 15px;" class="fa fa-cogs text-danger"></span>
+          <span  [ngClass]="{
+            'text-white':active === 'middle9','text-dark':active !== 'middle9'
+          }"  style="margin-left: 4px;font-family: 'Roboto', sans-serif;font-size: 16px;"  class="row-list " 
+          >Configuration</span>
+           </a>
+           <ul  class="listCandidat" style="width: 100%;display: none;" id="id10">
+            <div class="d-flex">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li ngbNavItem="top20" style="border-bottom: 1px solid rgb(238, 238, 243);">
+                  <a  [ngClass]="'text-dark'" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;" href="javascript:void(0)" (click)="redirect_to('/listes-notes', 'id10')" ngbNavLink>notes</a>
+                </li>
+                <li ngbNavItem="middle20" style="border-bottom: 1px solid rgb(238, 238, 243);width:200px">
+                  <a  [ngClass]="'text-dark'" 
+                  (click)="redirect_to('/listes-depense-categories', 'id10')" style="font-family: 'Roboto', sans-serif;font-size: 16px;background: none;"
+                    ngbNavLink>Depenses Categories</a>
+                </li>
+                <!-- <li ngbNavItem="bottom20">
+                  <a href="javascript:void(0)" style="font-family: 'Roboto', sans-serif;font-size: 16px;" [ngClass]="'text-dark'" ngbNavLink>Configuration</a>
+                </li> -->
+              </ul>
+              <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            </div>
+         </ul>
+          <ng-template ngbNavContent>
+            
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+    </mat-card>
+
+
+</body>
+</html>

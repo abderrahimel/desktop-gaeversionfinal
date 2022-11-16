@@ -1,0 +1,85 @@
+<div class="card">
+    <div style="display: flex;align-items:center;justify-content:flex-end">
+      <div style="margin-right: 6px;font-size: 16px;">  Rechercher:</div>
+      <mat-form-field appearance="standard">
+        <mat-label></mat-label>
+        <input matInput (keyup)="applyFilter($event)" style="font-size: 16px;" placeholder="... " #input>
+      </mat-form-field>
+    </div>
+   <table mat-table [dataSource]="dataSource" matSort>    
+
+   <!-- categorie Column -->
+   <ng-container matColumnDef="categorie">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
+       <span style="font-weight:900;font-size: 16px;">CATEGORIE</span>    
+     </th>
+     <td mat-cell *matCellDef="let element"> {{element?.categorie}} </td>
+   </ng-container>
+   <!-- actions Column -->
+   <ng-container matColumnDef="actions">  
+   <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">ACTIONS</span>  </th>
+   <td mat-cell *matCellDef="let element"> 
+    <button
+    type="button" class="btn"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
+    
+    style="padding: 5px;width: 150px; border-radius: 5px;margin-right:4px;box-shadow: none;background: red;color: white;font-size: 16px;" (click)="open('vehicule', 'Modifier', element)">
+      Modifier 
+    </button>
+    <button style="padding: 5px;width: 130px; border-radius: 5px;box-shadow: none;background: black;color: white;font-size: 16px;" class="btn" (click)="deleteDepenseCategorie(element?.id)">
+      Supprimer
+    </button>
+   </td>
+ </ng-container>
+
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ </table>
+ <mat-paginator 
+   [length]="n" 
+   [pageSize]="5"  
+   [pageSizeOptions]="[5, 10, 25, 100]">
+ </mat-paginator>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <table class="table" >
+    <thead >
+      <tr style="color: black;" >
+        <th scope="col">{{ "CATEGORIE" | translate }}</th>
+        <th scope="col">{{ "ACTIONS" | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mydata of dataVehicule;">
+        <td> {{mydata.categorie}}</td>
+        <td>
+          <button
+          type="button" class="btn"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
+          
+          style="padding: 5px;width: 150px; border-radius: 5px;margin-right:4px;box-shadow: none;background: red;color: white;" (click)="open('vehicule', 'Modifier', mydata)">
+            Modifier 
+          </button>
+          <button style="padding: 5px;width: 130px; border-radius: 5px;box-shadow: none;background: black;color: white;" class="btn" (click)="deleteDepenseCategorie(mydata.id)">
+            supprimer
+          </button>
+        </td>
+      </tr>
+      </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2" style="margin-top: 20px;" >
+    <ngb-pagination class="listPage" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+    </ngb-pagination>
+  
+    <select class="form-select item" style="width: auto;box-shadow: none;" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+      <option [ngValue]="2">2 </option>
+      <option [ngValue]="4">4</option>
+      <option [ngValue]="5">5 </option>
+    </select>
+  </div> -->

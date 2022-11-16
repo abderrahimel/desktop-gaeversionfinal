@@ -1,0 +1,20 @@
+import { createReducer, on } from "@ngrx/store";
+import { Action } from "rxjs/internal/scheduler/Action";
+import { initialState } from "./blog.state";
+import { loadblogadmintostoreaction } from "./bnlog.actions";
+
+
+const _blogReducer = createReducer(initialState,
+    on(loadblogadmintostoreaction, (state, action)=>{
+    return {...state,
+        blog:{
+            blog: action.payload,
+            loaded: true
+         }
+    };
+}), 
+)
+
+export function blogReducer(state, action){
+    return _blogReducer(state, action);
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Description" content="Job board html template">
+  <meta name="Author" content="Spruko Technologies Private Limited">
+  <meta name="keywords" content=""/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta property="og:image" content="/assets/img/logo_gae.png">
+  <meta name="csrf-token" content="l2vGHGGkLfgABEqzYiMOwbuolN7SWzURXuPGWLe5">
+  <link rel="icon" href="/assets/img/logo_gae.png" type="image/x-icon"/>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo_gae.png" />
+  <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);">
+	<!-- <app-headerlogged></app-headerlogged> -->
+  
+    <app-slide-bar></app-slide-bar>
+    <!-- <app-menu-admin></app-menu-admin> -->
+    <div class="container-dashboard-body " style="max-width: 100%;margin-top: 85px;margin-bottom: 10px;">
+       
+        <div style="display: flex;">
+            <div class="container-child-dashboard">
+                <div class="child1">
+                    <span> AUTO ECOLES</span>
+                    <a class="btn btn-sm btn-primary" style="height: 30px;" routerLink="/gestion-auto-ecole">Voir</a>
+                </div>
+                <hr>
+                
+                <span>Total</span>
+                <h3>{{totalAE}}</h3>
+                <div class="progress progress-sm mt-0 mb-2">
+                    <div class="progress-bar bg-primary w-100" role="progressbar"></div>
+                </div>
+                <div>100%</div>
+            </div>
+            <div class="container-child-dashboard">
+                <div class="child1">
+                    <span> ECOLES APPROUVER
+                    </span>
+                    <a class="btn btn-sm bg-success" style="height: 30px;color: white;" routerLink="/gestion-approuve-ecole">Voir</a>
+                </div>
+                <hr>
+                
+                <span>Total</span>
+                <h3>{{totalAEA}}</h3>
+                <div class="progress progress-sm mt-0 mb-2">
+                    <div class="progress-bar bg-success w-100" role="progressbar"></div>
+                </div>
+                <div>0 / Mois</div>
+            </div>
+            <div class="container-child-dashboard">
+                <div class="child1">
+                    <span> ECOLES EN ATTENTE
+                    </span>
+                    <a class="btn btn-sm bg-warning" style="height: 30px;" routerLink="/gestion-enattente-ecole">Voir</a>
+                </div>
+                <hr>
+                
+                <span>Total</span>
+                <h3>{{totalAE_Attente}}</h3>
+                <div class="progress progress-sm mt-0 mb-2">
+                    <div class="progress-bar bg-warning w-100" role="progressbar"></div>
+                </div>
+                <div>100%</div>
+            </div>
+            <div class="container-child-dashboard">
+                <div class="child1">
+                    <span> ARCHIVE </span>
+                    <a class="btn btn-sm bg-secondary" style="height: 30px;color: white;" routerLink="/archive-auto-ecole">Voir</a>
+                </div>
+                <hr>
+                
+                <span>Total</span>
+                <h3>{{totalAECOLEarchive}}</h3>
+                <div class="progress progress-sm mt-0 mb-2">
+                    <div class="progress-bar bg-secondary w-100" role="progressbar"></div>
+                </div>
+                <div>100%</div>
+            </div>
+        </div>
+        <div class="avis">
+            <ul ngbNav #nav="ngbNav" class="nav-tabs">
+                <li ngbNavItem>
+                  <a id="approver" style="color: black;"
+                    ngbNavLink>Approuver</a>
+                  <ng-template ngbNavContent>
+                      <table class="table">
+                        <thead>
+                          <tr style="color: black;" >
+                            <th  scope="col">{{ "AUTO-ECOLE" | translate }}</th>
+                            <th scope="col">{{ "AVIS" | translate }}</th>
+                            <th scope="col">{{ "ETAT" | translate }}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let data of autoEcoleApprouver;" >
+                            <td  >{{data?.nom_auto_ecole}}</td>
+                            <td> avis</td>
+                            <td>
+                                <button title="désapprouver" 
+                                    (click)="desapprover(data?.id)"
+                                    class="btn" style="background-color: #ff8819;color: white;height: 40px;width: 120px;">
+                                    Désapprouver
+                                </button>
+                            </td>
+                        </tr>
+                          </tbody>
+                      </table>
+                      
+                  </ng-template>
+                </li>
+                <li ngbNavItem>
+                  <a id="desapprover"  style="color: black;" ngbNavLink>Désapprouver</a>
+                  <ng-template ngbNavContent>
+                    <table class="table">
+                        <thead>
+                          <tr style="color: black;" >
+                            <th  scope="col">{{ "AUTO-ECOLE" | translate }}</th>
+                            <th scope="col">{{ "AVIS" | translate }}</th>
+                            <th scope="col">{{ "ETAT" | translate }}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let data of autoEcoleEnAttente; " >
+                            <td  >{{data.nom_auto_ecole}}</td>
+                            <td> {{data.avis}}</td>
+                            <td>
+                                <button title="approuver" 
+                                 class="btn"
+                                 (click)="approver(data?.id)"
+                                  style="background: #19ff2c;color: white;height: 40px;width: 120px;">
+                                    Approuver
+                                </button>
+                            </td>
+                        </tr>
+                           
+                        
+                          </tbody>
+                      </table>
+                  </ng-template>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav"></div>
+
+        </div>        
+   </div>
+      
+
+
+</body>
+</html>

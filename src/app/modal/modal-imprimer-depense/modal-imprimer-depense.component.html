@@ -1,0 +1,81 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size:16px">Imprimer Dépenses</h5>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+        <div class="modal-body">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Date début*</label>
+                            <div class="wd-200 mg-b-30">
+                                <div class="input-group">
+                                    <input class="form-control" style="font-size: 16px;text-transform: uppercase;" (change)="date_debut($event)" placeholder="DD/MM/YYYY" formControlName="date_debut" type="date" name="date_debut" id="dp1666620510463">
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.date_debut.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
+                                          {{' field required.' | translate}}  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Date fin*</label>
+                            <div class="wd-200 mg-b-30">
+                                <div class="input-group">
+                                    <input class="form-control" style="font-size: 16px;text-transform: uppercase;" (change)="date_fin($event)" placeholder="DD/MM/YYYY" formControlName="date_fin" type="date" name="date_fin" id="dp1666620510464">
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.date_fin.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
+                                          {{' field required.' | translate}}  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button style="background:red;border:none" (click)="activeModal.dismiss('Cross click')" class="btn btn-success" style="background:green;color:white;font-size: 16px;"  printSectionId="printpdf" #print ngxPrint> <i class="fa fa-print" aria-hidden="true"></i>Imprimer</button>
+            <!-- <button type="submit" class="btn btn-success"  (click)="imprimer()"><i class="fa fa-print" aria-hidden="true"></i> Imprimer</button> -->
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')" style="font-size: 16px">Fermer</button>
+        </div>
+    </form>
+</div>
+  <!-- table printed -->
+  <div style="display: none;">
+      
+    <div id="printpdf">
+      <table style="font-family: arial, sans-serif;border-collapse: collapse;width: 100%;">
+        <tr>
+          <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">CATEGORIE DEPENSE</th>
+          <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">DESIGNATION</th>
+          <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">DATE </th>
+          <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">MONTANT</th>           
+      
+        </tr>
+        <tr *ngFor="let element of dataLoad">
+          <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">{{element?.categorie?.categorie}} </td>
+          <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">{{element?.employe?.nom}}{{" "}}{{element?.employe?.prenom}} </td>
+          <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">{{element?.date}}</td>
+          <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">{{element?.montant}}</td>
+       
+        </tr>
+        <tr>
+            <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;"></td>
+            <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;"></td>
+            <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">Total</td>
+            <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;">{{total}}</td>
+         
+          </tr>
+        
+      </table>
+    </div>
+</div>

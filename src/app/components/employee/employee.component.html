@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style="font-size: 14px;">
+  <div class="h-55">
+    <app-headerlogged></app-headerlogged>
+  </div>
+   <app-menu-sb></app-menu-sb>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
+    <div style="display: flex;">
+      <div class="wrap-table100">
+          
+        <div class="mat-elevation-z8">
+   
+          <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+            <div style="font-size: 16px;font-weight: 600;">GESTION DES EMPLOYÉS
+            </div>
+            <button (click)="open('Ajouter', null)" style="font-size: 16px;font-weight: 600;background: green;color: white;border:none;border-radius: 7px;padding: 10px;">Nouvel Employe
+            </button>
+        </div>
+        <hr>
+        <mat-card>
+          <div class="card" style="width: 100%;">
+            <div class="card-body">
+               <div class="table-responsive border-top mb-0">
+                      <!--ABSENCE candidats -->
+                  
+                        <div style="display: flex;align-items:center;justify-content:flex-end">
+                          <div style="margin-right: 6px">  Rechercher:</div>
+                          <mat-form-field appearance="standard">
+                             <mat-label></mat-label>
+                             <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                          </mat-form-field>
+                      </div>
+                       <table  mat-table [dataSource]="dataSource" matSort>    
+                     
+                        <ng-container matColumnDef="cin">   
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by employee"> 
+                            <span style="font-weight:900;font-size: 16px;"> {{ "CIN" | translate }}</span>    
+                          </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.cin}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="employee">   
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;"> {{ "Nom" | translate }}</span>   </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.nom}}{{" "}}{{element?.prenom}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="telephone">   
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">  {{ "TELEPHONE" | translate }}</span> </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.telephone}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="type">  
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">  {{ "TYPE"| translate }}</span> </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.type}} </td>
+                        </ng-container>   
+                
+                        <ng-container matColumnDef="date_embauche"> 
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "DATE EMBAUCHE" | translate }}</span> </th>
+                          <td mat-cell *matCellDef="let element"> {{element?.date_embauche}} </td>
+                        </ng-container>
+                       <ng-container matColumnDef="actions">  
+                        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+                        <td mat-cell *matCellDef="let element"> 
+                          <button class="btn btn-danger button-class" style="padding: 10px;" (click)="deletEmploye(element?.id)">
+                            Supprimer
+                          </button>
+                          <button  (click)="open('Modifier', element)" style="padding: 10px;" class="btn btn-primary button-class" >
+                            Modifier
+                          </button>
+                        </td>
+                      </ng-container>
+                
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+                      <mat-paginator 
+                      [length]="n" 
+                      [pageSize]="5"  
+                      [pageSizeOptions]="[5, 10, 25, 100]">
+                      </mat-paginator>
+                      <!-- end ABSENCE candidats -->
+               </div>
+            </div>
+        </div>
+        </mat-card>
+           <!-- <div style="display: flex;align-items:center;justify-content:flex-end">
+               <div style="margin-right: 6px">  Rechercher:</div>
+               <mat-form-field appearance="standard">
+                  <mat-label></mat-label>
+                  <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+               </mat-form-field>
+           </div>
+            <table mat-table [dataSource]="dataSource" matSort>    
+             
+              <ng-container matColumnDef="cin">   
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by employee"> 
+                  <span style="font-weight:900;font-size: 16px;"> {{ "CIN" | translate }}</span>    
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="employee">   
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;"> {{ "Nom" | translate }}</span>   </th>
+                <td mat-cell *matCellDef="let element"> {{element.nom}}{{" "}}{{element.prenom}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="telephone">   
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">  {{ "TELEPHONE" | translate }}</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="type">  
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">  {{ "TYPE"| translate }}</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+              </ng-container>   
+      
+              <ng-container matColumnDef="date_embauche"> 
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "DATE EMBAUCHE" | translate }}</span> </th>
+                <td mat-cell *matCellDef="let element"> {{element.date_embauche}} </td>
+              </ng-container>
+             <ng-container matColumnDef="actions">  
+              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+              <td mat-cell *matCellDef="let element"> 
+                <button class="btn btn-danger button-class" style="padding: 10px;" (click)="deletEmploye(element.id)">
+                  Supprimer
+                </button>
+                <button  (click)="open('Modifier', data)" style="padding: 10px;" class="btn btn-primary button-class" >
+                  Modifier
+                </button>
+              </td>
+            </ng-container>
+      
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator 
+              [length]="n" 
+              [pageSize]="5"  
+              [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator> -->
+          </div>
+     
+      </div>
+  </div>
+  <!-- fin first container -->
+                  
+
+    
+             
+ </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

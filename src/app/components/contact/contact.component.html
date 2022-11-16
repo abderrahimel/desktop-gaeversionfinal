@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Job board html template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+    <meta name="keywords" content=""/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta property="og:image" content="/assets/img/logo_gae.png">
+    <link rel="icon" href="/assets/img/logo_gae.png" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo_gae.png" />
+    <link href="/assets/css/gestion.css" rel="stylesheet" />
+<!-- font style -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet"> 
+    <!-- Title -->
+    <title>Gestion Auto-écoles - J2HB Plus Editeur de la securité routiére au maroc.</title>
+    <!-- Réalisation Yancom Création <a href="www.yancom-creation.com" target="_blank">Yancom Création</a> -->
+    
+    <link href="https://gestionautoecole.com/fi/css/flag-icons.min.css" rel="stylesheet" />
+    <!-- Bootstrap Css -->
+    <link href="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+            
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+
+
+    
+    <!-- Font-awesome  Css -->
+    <!-- <link href="https://gestionautoecole.com/css/icons.css" rel="stylesheet"/> -->
+    <!-- <link href="https://gestionautoecole.com/fonts/fonts/font-awesome.min.css" rel="stylesheet"/> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Horizontal Menu-->
+    <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/animation/fade-down.css" rel="stylesheet" />
+    <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/horizontal.css" rel="stylesheet" />
+
+    <!--Select2 Plugin -->
+    <link href="https://gestionautoecole.com/plugins/select2/select2.min.css" rel="stylesheet" />
+
+    <!-- Time picker Plugin -->
+    <!-- <link href="https://gestionautoecole.com/plugins/time-picker/jquery.timepicker.css" rel="stylesheet" /> -->
+
+    <!-- Date Picker Plugin -->
+    <link href="https://gestionautoecole.com/plugins/date-picker/spectrum.css" rel="stylesheet" />
+    
+    <!-- file Uploads -->
+    <link href="https://gestionautoecole.com/plugins/fileuploads/css/dropify.css" rel="stylesheet" type="text/css" />
+
+    <!-- jquery ui RangeSlider -->
+
+    <link href="https://gestionautoecole.com/plugins/jquery-uislider/jquery-ui.css" rel="stylesheet">
+
+    <!-- Owl Theme css-->
+    <link href="https://gestionautoecole.com/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" />
+
+    <!-- Custom scroll bar css-->
+    <link href="https://gestionautoecole.com/plugins/scroll-bar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
+    <!-- Accordion Css -->
+    <link href="https://gestionautoecole.com/plugins/accordion/accordion.css" rel="stylesheet" />
+   
+    <!-- Custom Css -->
+   <link href="https://gestionautoecole.com/css/custom.css" rel="stylesheet" />
+
+    <!-- Tags Input -->
+    <link href="https://gestionautoecole.com/css/bootstrap-tagsinput.css" rel="stylesheet" />
+
+
+
+    <link href="https://gestionautoecole.com/plugins/sweet-alert/sweetalert.css"  rel="stylesheet"/>
+    
+    <!-- JQuery js-->
+    <script src="https://gestionautoecole.com/js/jquery-3.5.1.js"></script>
+    <script src="https://gestionautoecole.com/js/vendors/jquery-3.2.1.min.js"></script>
+    <script src="https://gestionautoecole.com/js/validate/jquery.validate.js" ></script>
+    <script src="https://gestionautoecole.com/js/validate/login.js"></script>
+    <script src="https://gestionautoecole.com/js/validate/register.js"></script>
+    <script src="https://gestionautoecole.com/js/date.js"></script>
+    <script src="https://gestionautoecole.com/js/fr-FR.js"></script>
+    <style>
+
+ 
+        .form-section{
+            padding-left: 15px;
+            display: none;
+        }
+        
+        .form-section.current
+        {
+            display: block;
+        }
+        
+        /* .btn-success
+        {
+            margin-left: 20px;
+        } */
+        /* .btn-info, .btn-success
+        {
+            margin-top: 10px;
+            font-size: 1rem;
+        } */
+        
+        .form-label {
+            font-size: 20px;
+        }
+        
+        .form-navigation
+        {
+            text-align: center;
+        }
+        
+        .modal h5
+        {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        
+        #registerMission
+        {
+            display: none;
+        }
+        #loginMission
+        {
+         display: none;   
+        }
+        .parsley-required,.parsley-type
+        {
+            margin: 2px 0px 3px;
+            padding: 0;
+            list-style-type: none;
+            color: red;
+        }
+        
+        </style>
+</head>
+<body>
+    <!-- <app-header></app-header> -->
+    <app-headerlogged></app-headerlogged>
+    <div style="margin-top: -480px"></div>
+    <style>.avatar{background: #e5e5e5 no-repeat center/cover !important;background-size: cover !important} #message{padding: 10px 30px;margin-bottom: 20px;display: none;}.error
+        {font-weight: bolder;font-size: 87.5%;color: #ff382b !important;} #EmailMessage{text-align:left;}</style>
+    <!--Sliders Section-->
+<div style="margin-top: 15px;"> 
+    <div class="bannerimg cover-image bg-background3 bg-danger" data-image-src="https://gestionautoecole.com/images/banners/banner1.jpg"> 
+        <div class="header-text mb-0"> 
+            <div class="container"> 
+                <div class="text-center text-white "> 
+                    <h1 class=""> Nous contacter </h1> 
+                    <ol class="breadcrumb text-center"> 
+                        <li class="breadcrumb-item"><a routerLink="/"> Accueil </a></li> 
+                        <li class="breadcrumb-item active text-white" aria-current="page"> Contact </li> 
+                    </ol> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div>
+<!--/Sliders Section-->    
+<div class="sptb bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="single-page">
+				<div class="col-lg-8 col-xl-12 col-md-12 d-block mx-auto">
+					<div class="wrapper wrapper2">
+						
+						<form  [formGroup]="form" (ngSubmit)="sendEmail()"  enctype="multipart/form-data" >
+						<div class="card-body">
+							<div class="row">
+								<div class="col-6">
+									<div class="alert" id="EmailMessage" style="display:none;">
+									</div>
+									<ul class="list-group mb-4">
+										<li class="list-group-item py-3" style="color: black"><i class="far fa-phone-alt"></i> +212661-072777</li>
+										<li class="list-group-item py-3" style="color: black"><i class="far fa-map-marker"></i>  45 AVENUE HASSAN 2 IMMEUBLE WATANIYA 8ÈME ETAGE NUMÉRO 802 - FÈS</li>
+									</ul>
+									<div class="form-group">
+										<label class="form-label">Nom </label>
+										<input name="nom" class="form-control" formControlName="nom" placeholder="votre nom" >
+									</div>
+                                    <div class="err" style="margin-top: -20px" *ngIf="submitted && this.form.controls.nom.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.nom.errors.required">
+                                              {{'champs obligatoire *' | translate}}  
+                                        </div>
+           
+                                    </div>
+									<div class="form-group">
+										<label class="form-label">Email </label>
+										<input name="email" class="form-control" formControlName="email" placeholder="votre email">
+									</div>
+                                    <div class="err" style="margin-top: -20px" *ngIf="submitted && this.form.controls.email.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
+                                              {{'champs obligatoire *' | translate}}  
+                                        </div>
+                                        <div style="color: red;" *ngIf="this.form.controls.email.errors.email">
+                                            {{'email invalid *' | translate}}  
+                                      </div>
+                                    </div>
+									<div class="form-group">
+									<label class="form-label">Message </label>
+									<textarea class="form-control" name="message" formControlName="message" rows="6" placeholder="votre message"></textarea>
+                                    <div class="err" *ngIf="submitted && this.form.controls.message.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.message.errors.required">
+                                              {{'champs obligatoire *' | translate}}
+                                        </div>
+           
+                                    </div>
+									</div>
+								</div>
+								<div class="col-6">
+									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.062375877423!2d-5.000435985362007!3d34.04227102570417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8b40cf952467%3A0x15db367b095e9bf6!2sJ2HB!5e0!3m2!1sen!2sma!4v1656579146116!5m2!1sen!2sma" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+								</div>
+							</div>
+							
+						</div>
+						<div class="card-footer">
+							<div class="submit">
+								<button class="btn btn-primary btn-sm pull-left" type="submit"> Envoyer </button>
+							</div>
+						</div>	
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<section class="main-footer" style="background-color: white;">
+	<footer class="bg-footer text-white " >
+		<div class="text-white-50 border-top p-0">
+			<div class="container pb-4">
+				<div class="row d-flex">
+					<div class="text-center col-md-3 col-12">
+						<a class="header-brand" routerLink="javascript:void(0)">
+							<img src="/assets/img/logo_gae.png"  class="header-brand-img" alt="Jobslist logo" style="height: 4.5rem !important;">
+						</a>
+					</div>
+					<div class="col-md-3 col-12">
+						<ul>
+							<li><a routerLink="/" class="btn copy-footer"><b> Accueil</b></a></li>
+							<li><a routerLink="/apropos" class="btn copy-footer"><b> Logiciel GAE PLUS</b></a></li>
+							<li><a routerLink="/boutique-j2hb" class="btn copy-footer"><b> Boutique j2hb</b></a></li>
+							
+						</ul>
+					</div>
+					<div class="col-md-3 col-12">
+						<ul><li><a routerLink="/contact" class="btn copy-footer"><b> Contact</b></a></li>
+							<li><a routerLink="/ministre_notes" class="btn copy-footer"><b>Téléchargement</b></a></li>
+							<li><a routerLink="/ecoles" class="btn copy-footer"><b> Auto-écoles</b></a></li>
+						</ul>
+					</div>
+					
+					<div class=" d-flex flex-column justify-content-center col-md-3 col-12">
+						<form method="post" id="AddAbonner" >
+							<input type="hidden" name="_token" value="id7gAWbe3lIZG7gN0YoA8nMrEF3dbHPojLcg0lM6">							<div id="AddMessageFR" class="alert"></div>
+							<div class="input-group ">
+								<input name="email" type="text" class="form-control" placeholder="Entrer vôtre email" aria-label="Entrer vôtre email" aria-describedby="basic-addon2" style="border: 2px solid #c6c6c6 !important;">
+								<div class="input-group-append">
+									<button type="submit" id="basic-addon2" class="input-group-text btn btn-primary btn-block" style="border: 2px solid red !important;background-color: white;color: red;margin-inline-start: -1px;position: relative;height: 39px;">Abonner</button> 
+								</div>
+							</div>
+						</form>
+						
+						<ul class="social-f text-center mb-0" style="margin-top: 2rem">
+								<li>
+									<a class="social-icon hov-footer" routerLink="https://www.facebook.com/jalal.elamrani.756" style="font-size: 20px !important"><i class="fa-brands fa-facebook-f"></i></a>
+								</li>
+								<li>
+									<a class="social-icon hov-footer" routerLink="https://api.whatsapp.com/send?phone=212661072777" style="font-size: 20px !important"><i class="fa fa-phone" ></i></a>
+								</li>
+								<li>
+									<a class="social-icon hov-footer" routerLink="https://www.youtube.com/channel/UCd97nMww3vq2ts3pr86QN3Q/videos" style="font-size: 20px !important"><i class="fab fa-youtube"></i></a>
+								</li>
+								<li>
+									<a class="social-icon hov-footer" routerLink="mailto:jhb.plus@yahoo.com" style="font-size: 20px !important"><i class="fa fa-envelope" ></i></a>
+								</li>
+							</ul>
+						
+					</div>
+					
+				</div>
+			</div>
+			<div class="containner-fluid">
+				<div class="row">
+					<div class="col-12 cp-ft">
+						<div class="copy-footer text-center">
+							<hr style="border-top: 3px solid #e6e6e6 !important;margin-top:auto;margin-bottom:auto">
+							<br>
+							<b>	Copyright © 2022 GAE.</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</footer>
+</section>
+        
+        <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/popper.min.js"></script>
+        <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

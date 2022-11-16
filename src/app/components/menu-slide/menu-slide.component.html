@@ -1,0 +1,268 @@
+<nav id="sidebar" class="active" [ngClass]="{ active: navbarOpen }" 
+style="height: 100vh ;position: fixed;">
+<div style="display: flex;align-items: center;flex-direction: column;">
+ <!-- class="logo-auto-ecole" -->
+   <img style="object-fit: contain;margin-top: 60px;border-radius: 50%;height: 80px;width: 80px;" src="{{logo}}" alt="">
+   <span style="margin-left: 40px;">{{ 'Auto Ecole Erahha' }}</span>
+</div>
+   
+   <ul class="container-menu-left" style="list-style-type: none;margin-top: 10px;" 
+   
+   ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+     <li class="row-list" ngbNavItem="top">
+       <a routerLink="/dashboard" style="text-decoration: none;"
+       ngbNavLink>
+         <span style="font-size: 20px;" class="fa fa-home fa-2x"></span>
+
+         {{ "Tableau de bord" | translate }}
+       </a>
+     </li>
+   
+     <li class="row-list" ngbNavItem="middle">
+       <span   onclick=" document.getElementById('candidat_icon').style.transform = this.clickC ? 'rotate(0deg)':'rotate(90deg)'; document.getElementById('id8').style.display = 'none';document.getElementById('id11').style.display = 'none';document.getElementById('id7').style.display = 'none'; document.getElementById('id12').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id3').style.display = 'none'; document.getElementById('id2').style.display = 'none';this.clickC=!this.clickC; document.getElementById('id1').style.display = this.clickC ?'block': 'none';"  class="row-list" id="candidats"
+         > 
+         <div style="display:flex;align-items:center; justify-content:space-between;margin-top: -20px;">
+           <div>
+             <span style="color: red;font-size: 20px;"  class="fa fa-users"></span>
+           <span style="margin-left: 5px;"  >{{ "candidats" | translate }}</span> 
+           </div>
+          <span id="candidat_icon"  style="margin-right: 34px;" >
+           <i class="angle fa fa-angle-right"></i>
+         </span>
+           
+         </div>
+      
+       </span>
+    
+     </li>
+     <ul  class="listCandidat candidat activeClass" style="width: 100%;"  id="id1">
+       <li class="row-list hover-class class-candidat">
+         <a href="javascript:void(0)" (click)="redirect_to('/candidat_form', 'id1')" > Nouvel Candidat</a>
+       </li>
+       <li class="row-list hover-class class-listCandidat">
+         <a href="javascript:void(0)" (click)="redirect_to('/candidat', 'id1')">Listes Candidats</a>
+       </li>
+       <li class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/archive-candidat', 'id1')">Archive</a>
+       </li>
+       <li class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/historique-candidats', 'id1')">Historique</a>
+       </li>
+    </ul> 
+     <li style="margin-top: -10px;" ngbNavItem="middle1">
+       <a onclick="document.getElementById('cours_the_icon').style.transform = this.clickT ? 'rotate(0deg)':'rotate(90deg)'; document.getElementById('id8').style.display = 'none'; document.getElementById('id12').style.display = 'none';document.getElementById('id11').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id3').style.display = 'none'; document.getElementById('id1').style.display = 'none';this. clickT = !this. clickT; document.getElementById('id2').style.display = this. clickT ? 'block':'none'; " class="row-list" 
+       ngbNavLink>
+         <div style="display:flex;align-items:center; justify-content:space-between;">
+           <div>
+             <span style="color: red;font-size: 20px;"  class=" fa fa-tv"></span>
+             <span style="margin-left: 5px;">{{ "Cours theorique" | translate }}</span>  
+           </div>
+           <span id="cours_the_icon"  style="margin-right: 40px;" >
+             <i class="angle fa fa-angle-right"></i>
+           </span>
+         </div>
+        
+         
+       </a>
+   
+     </li>
+     <ul  class="listCandidat" style="width: 100%;" id="id2">
+       <li class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-cours', 'id2')" >Gestion plannings</a> 
+       </li>
+       <li class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-presencesC', 'id2')">Gestion presence</a>  
+        </li>
+    </ul> 
+     <li style="margin-top: -10px;" ngbNavItem="middle2">
+       <a onclick="document.getElementById('cours_pra_icon').style.transform = this.clickP ? 'rotate(0deg)':'rotate(90deg)'; document.getElementById('id8').style.display = 'none';document.getElementById('id11').style.display = 'none';document.getElementById('id7').style.display = 'none'; document.getElementById('id12').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id4').style.display = 'none'; document.getElementById('id1').style.display = 'none';document.getElementById('id2').style.display = 'none';this. clickP = !this. clickP; document.getElementById('id3').style.display = this. clickP ? 'block':'none'; " class="row-list" 
+       ngbNavLink>
+         <div  style="display:flex;align-items:center; justify-content:space-between;">
+           <div>
+             <span style="color: red;font-size: 20px;" class=" fa fa-thumbs-up"></span>
+             <span style="margin-left: 5px;">{{ "Cours pratique" | translate }}</span>
+           </div>
+             <span id="cours_pra_icon"  style="margin-right: 40px;" >
+               <i class="angle fa fa-angle-right"></i>
+             </span>
+         </div>
+         
+         
+       </a>
+      
+     </li>
+     <ul class="listCandidat" style="width: 100%;" id="id3">
+       <li class="row-list hover-class" >
+        <a href="javascript:void(0)" (click)="redirect_to('/listes-conduites', 'id3')">Gestion plannings</a>  
+       </li>
+       <li class="row-list hover-class"> 
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-presences', 'id3')">Gestion presences</a> 
+       </li>
+    </ul> 
+     <li style="margin-top: -10px;" ngbNavItem="middle3">
+       <a  onclick="document.getElementById('veh_icon').style.transform = this.clickV ? 'rotate(0deg)':'rotate(90deg)'; document.getElementById('id8').style.display = 'none';document.getElementById('id11').style.display = 'none'; document.getElementById('id12').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id5').style.display = 'none';this.clickV = ! this.clickV; document.getElementById('id4').style.display = this.clickV ? 'block': 'none';document.getElementById('id1').style.display = 'none'; document.getElementById('id2').style.display =  'none';document.getElementById('id3').style.display =  'none';  " class="row-list" 
+       ngbNavLink>
+         <div style="display:flex;align-items:center; justify-content: space-between;">
+           <div >
+             <span style="color: red;font-size: 20px;" class="fa fa-car"></span>
+             <span style="margin-left: 5px;">{{ "Véhicules" | translate }}</span>
+           </div>
+              <span id="veh_icon"  style="margin-right: 40px;">
+               <i class="angle fa fa-angle-right"></i>
+             </span>
+         </div>
+         
+       </a>
+     </li>
+       <ul  class="listCandidat" style="width: 100%;" id="id4">
+         <li class="row-list hover-class">
+           <a href="javascript:void(0)" (click)="redirect_to('/vehicule', 'id4')">Gestion vehicules</a> 
+         </li>
+         <li class="row-list hover-class">
+           <a href="javascript:void(0)" (click)="redirect_to('/listes-vidange', 'id4')">Gestion rappel</a>
+         </li>
+     </ul> 
+     <li style="margin-top: -10px;margin-bottom: -20px;" ngbNavItem="middle4">
+       <a  onclick="document.getElementById('ex_icon').style.transform = this.clickE ? 'rotate(0deg)':'rotate(90deg)'; this.clickE = !this.clickE; document.getElementById('id5').style.display = this.clickE ? 'block':'none'; document.getElementById('id12').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id11').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id3').style.display = 'none'; document.getElementById('id2').style.display =  'none';document.getElementById('id1').style.display =  'none';" class="row-list" 
+       ngbNavLink>
+         <div style="display:flex;align-items:center; justify-content:space-between;">
+           <div>
+             <span style="color: red;font-size: 20px;" class="fa fa-graduation-cap"></span>
+             <span style="margin-left: 5px;">{{ "Examens" | translate }}</span>
+           </div>
+             <span id="ex_icon"  style="margin-right: 40px;">
+               <i class="angle fa fa-angle-right"></i>
+             </span>
+         </div>
+        
+         
+       </a>
+       
+     </li>
+     <ul  class="listCandidat" style="width: 100%;" id="id5" ngbNavItem="middle5">
+       <li class="row-list hover-class"> 
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-examens', 'id5')">Gestion Examens</a></li>
+       <li class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-resultatV', 'id5')">Resultats Candidats</a></li>
+    </ul> 
+    <li>
+     <span onclick="document.getElementById('em_icon').style.transform = this.clickEm ? 'rotate(0deg)':'rotate(90deg)'; this.clickEm =!this.clickEm; document.getElementById('id6').style.display = this.clickEm ?'block':'none'; document.getElementById('id12').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id8').style.display = 'none';document.getElementById('id11').style.display = 'none'; document.getElementById('id5').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id3').style.display = 'none'; document.getElementById('id2').style.display =  'none';document.getElementById('id1').style.display =  'none';" class="row-list" 
+         >  
+         <div style="display:flex;align-items:center; justify-content:space-between;">
+           <div>
+             <span style="color: red;font-size: 20px;" class="fa fa-user"></span>
+             <span style="margin-left: 5px;"> {{ "Employes" | translate }}</span>
+           </div>
+             <span id="em_icon"  style="margin-right: 40px;">
+               <i class="angle fa fa-angle-right"></i>
+             </span>
+         </div>
+         
+        
+       </span>
+     </li>
+     <ul  class="listCandidat employes" style="width: 100%;"  id="id6">
+       <li class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-employees', 'id6')" >Gestion Employes</a>
+       </li>
+       <li class="row-list hover-class"> 
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-absences', 'id6')">Gestion Absences</a>
+       </li>
+    </ul> 
+    <!-- moniteur -->
+    <li ngbNavItem="middle6">
+     <span onclick="document.getElementById('mo_icon').style.transform = this.clickMo ? 'rotate(0deg)':'rotate(90deg)'; this.clickMo =!this.clickMo; document.getElementById('id11').style.display = this.clickMo ?'block':'none'; document.getElementById('id12').style.display = 'none';document.getElementById('id7').style.display = 'none'; document.getElementById('id8').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id3').style.display = 'none'; document.getElementById('id2').style.display =  'none';document.getElementById('id1').style.display =  'none';" class="row-list" 
+         >  
+         <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -30px;margin-top: -25px;">
+           <div>
+             <span style="color: red;font-size: 20px;" class="bi bi-person-circle"></span>
+             <span style="margin-left: 5px;"> {{ "Moniteur" | translate }}</span>
+           </div>
+             <span id="mo_icon"  style="margin-right: 40px;">
+               <i class="angle fa fa-angle-right"></i>
+             </span>
+         </div>
+         
+        
+       </span>
+     </li>
+     <ul  class="listCandidat employes" style="width: 100%;"  id="id11">
+       <li class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/ajouter-moniteur', 'id11')" >Ajouter Moniteur</a>
+       </li>
+       <li class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-moniteurs', 'id11')" >List des moniteurs</a>
+       </li>
+       <li class="row-list hover-class"> 
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-absences', 'id11')">Gestion Absences</a>
+       </li>
+    </ul> 
+    <!-- end moniteur -->
+    <!-- begin boutique -->
+    <li style="margin-top: -10px;margin-bottom: -2px;" ngbNavItem="middle7">
+     <span  onclick="document.getElementById('bou_icon').style.transform = this.clickBou ? 'rotate(0deg)':'rotate(90deg)'; this.clickBou = !this.clickBou; document.getElementById('id12').style.display = this.clickBou ? 'block':'none';document.getElementById('id8').style.display = 'none';document.getElementById('id11').style.display = 'none';document.getElementById('id7').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id3').style.display = 'none'; document.getElementById('id2').style.display =  'none';document.getElementById('id1').style.display =  'none';" class="row-list" 
+       >
+       <div style="display:flex;align-items:center; justify-content:space-between;margin-top: -10px;margin-bottom: -30px;">
+         <div style="margin-bottom: 30px;">
+           <span style="color: red;font-size: 20px;" class="fas fa-store"></span>
+           <span style="margin-left: 5px;">{{ "Boutique" | translate }}</span>
+         </div>
+           <span id="bou_icon"  style="margin-top: -25px; margin-right: 44px;" >
+             <i class="angle fa fa-angle-right"></i>
+           </span>
+       </div>
+      
+       
+     </span>
+     
+   </li>
+   <ul  class="listCandidat" style="width: 100%;margin-top: -25px;" id="id12">
+     <li class="row-list hover-class" style="margin-top: 5px;"> 
+       <a href="javascript:void(0)" (click)="redirect_to('/produit', 'id12')">Gestion Produits</a></li>
+     <li class="row-list hover-class">
+       <a href="javascript:void(0)"  (click)="redirect_to('/vente', 'id12')">Gestion ventes</a></li>
+  </ul>
+    <!-- end boutique -->
+     <li  class="row-list" style="margin-bottom: -20px;margin-top: 30px;" ngbNavItem="middle8">
+       <span onclick="document.getElementById('cai_icon').style.transform = this.clickCa ? 'rotate(0deg)':'rotate(90deg)';this.clickCa = !this.clickCa; document.getElementById('id7').style.display = this.clickCa ? 'block':'none';document.getElementById('id8').style.display = 'none'; document.getElementById('id12').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id11').style.display = 'none'; document.getElementById('id5').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id3').style.display = 'none'; document.getElementById('id2').style.display =  'none';document.getElementById('id1').style.display =  'none';" class="row-list" style="margin-left: -5px;">
+          <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -15px;margin-top: -68px;">
+            <div>
+               <span style="color: red;font-size: 20px;" class="fa fa-institution"></span>
+               <span style="margin-left: 5px;"> {{ "Caisse" | translate }}</span>
+            </div>
+            <span id="cai_icon"  style="margin-right: 40px;" >
+             <i class="angle fa fa-angle-right"></i>
+           </span>
+          </div>
+         
+       </span>
+     </li>
+     <ul  class="listCandidat" style="width: 100%;" id="id7">
+       <li class="row-list hover-class">
+        <a href="javascript:void(0)" (click)="redirect_to('/listes-depenses', 'id7')">Depenses</a> </li>
+       <li class="row-list hover-class"><a href="javascript:void(0)" (click)="redirect_to('/listes-recettes', 'id7')">Recettes</a></li>
+       <li class="row-list hover-class"><a href="javascript:void(0)" (click)="redirect_to('/listes-factures', 'id7')">Factures</a></li>
+    </ul>
+     <li  class="row-list" ngbNavItem="middle9">
+       <a onclick="this.clickCo = !this.clickCo;document.getElementById('ui_icon').style.transform = this.clickCo ? 'rotate(90deg)':'rotate(0deg)'; document.getElementById('id8').style.display = this.clickCo ? 'block':'none';document.getElementById('id11').style.display = 'none'; document.getElementById('id12').style.display = 'none'; document.getElementById('id7').style.display = 'none';document.getElementById('id6').style.display = 'none';document.getElementById('id5').style.display = 'none';document.getElementById('id4').style.display = 'none';document.getElementById('id3').style.display = 'none'; document.getElementById('id2').style.display =  'none';document.getElementById('id1').style.display =  'none';" class="row-list" style="margin-left: -5px;">
+         <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -35px;margin-top: -35px;">
+             <div>
+               <span style="color: red;font-size: 20px;" class="fa fa-cogs"></span>
+               <span style="margin-left: 5px;"> {{ "Configurations" | translate }} </span>
+             </div>
+               <span id="ui_icon"  style="margin-right: 40px;">
+                 <i class="angle fa fa-angle-right"></i>
+               </span>
+         </div>
+       </a>
+     </li>
+     <ul  class="listCandidat" style="width: 100%;" id="id8">
+       <li style="margin-top:5px;" class="row-list hover-class">
+         <a href="javascript:void(0)" (click)="redirect_to('/listes-notes', 'id8')">notes</a> 
+       </li>
+       <li class="row-list hover-class">
+        <a href="javascript:void(0)" (click)="redirect_to('/listes-depense-categories', 'id8')">Depenses Categories</a>  
+       </li>
+    </ul>
+   </ul>
+</nav>

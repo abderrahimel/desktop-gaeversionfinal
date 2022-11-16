@@ -1,0 +1,59 @@
+
+.container-list-auto-ecole{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: white;}
+
+    .child-container-boutique{
+        display:flex;
+        align-items:center;
+        flex-direction: column;
+    }
+    .copyright{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 70px;
+        margin-right: 70px;
+        padding: 10px;
+    }
+
+
+
+    .containerbottom{
+        background-color:#312828;
+        color:white;
+        margin-top: 100px;
+    
+    }
+
+    .form-control:focus, input:focus {
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 0;
+      }
+
+.containerContact{
+    border: 1px solid rgb(240, 233, 233);
+    margin: 80px;
+    padding: 40px;
+    box-shadow: -6px -1px 19px 0px rgba(227,208,208,0.75);
+-webkit-box-shadow: -6px -1px 19px 0px rgba(227,208,208,0.75);
+-moz-box-shadow: -6px -1px 19px 0px rgba(227,208,208,0.75);
+}
+
+
+/*  */
+.navhome:after{
+    content:"";
+	position: absolute;
+	background-color: red;
+	height: 3px;
+	width: 70%;
+	left: 0;
+	bottom: -22px;
+    margin-left: 15px;
+}

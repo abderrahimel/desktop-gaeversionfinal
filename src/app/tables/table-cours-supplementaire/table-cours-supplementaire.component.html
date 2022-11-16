@@ -1,0 +1,56 @@
+<div style="display: flex;align-items:center;justify-content:flex-end">
+    <div style="margin-right: 6px">  Rechercher:</div>
+    <mat-form-field appearance="standard">
+       <mat-label></mat-label>
+       <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+    </mat-form-field>
+</div>
+ <table mat-table [dataSource]="dataSource" matSort>    
+
+   <!-- cour Column -->
+   <ng-container matColumnDef="cour">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by candidat"> 
+       <span style="font-weight:900;font-size: 16px;margin-right:7px">{{ "COURS" | translate }}</span>    
+     </th>
+     <td mat-cell *matCellDef="let element" style="text-align: center;">  {{ "Pratique" | translate }}</td>
+   </ng-container>   
+
+   <!-- nbr_heure_pratique Column -->
+   <ng-container matColumnDef="nbr_heure_pratique">  
+     <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;margin-right:7px">{{ "NOMBRE HEURE" | translate }}</span>   </th>
+     <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.nbr_heure_pratique}} </td>
+   </ng-container>
+
+   <!-- candidat Column --> 
+   <ng-container matColumnDef="candidat">   
+     <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;margin-right:7px">{{ "CANDIDATS" | translate }}</span> </th>
+     <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.nom_fr}}{{" "}}{{element?.candidat?.prenom_fr}} </td>
+   </ng-container>
+
+   <!-- categorie Column -->
+   <ng-container matColumnDef="categorie">  
+     <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right:7px">{{ "CATEGORIE" | translate }}</span> </th>
+     <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.categorie}} </td>
+   </ng-container>   
+
+   <!-- date Column -->
+   <ng-container matColumnDef="date"> 
+     <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right:7px">{{ "DATE" | translate }}</span> </th>
+     <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date}} </td>
+   </ng-container>
+   <!-- montant Column -->
+   <ng-container matColumnDef="montant">  
+     <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "MONTANT" | translate }}</span> </th>
+     <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.montant}} </td>
+   </ng-container> 
+
+
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ </table>
+ <mat-paginator 
+   [length]="n" 
+   [pageSize]="5"  
+   [pageSizeOptions]="[5, 10, 25, 100]">
+ </mat-paginator>
+

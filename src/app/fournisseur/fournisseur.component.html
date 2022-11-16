@@ -1,0 +1,68 @@
+<div class="wrap-table100">
+    <div class="table-header">
+      <div class="row">
+        <div class="col-9">
+          <div class="title">
+            <form>
+              <input class = "form-control srch" id = "demo" type = "text" placeholder = "Rechercher ici..." > 
+                </form>
+          </div>
+        </div>
+        
+        <div class="col-3 add-btn-div">
+          <button class="btn btn-primary add-btn" routerLink="/fournisseur_form">
+            <i class="fa fa-plus"></i>{{ "Nouveau fournisseur" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="tableDiv">
+      <table id="sailorTable" class="table table-light table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">{{ "Raison social" | translate }}</th>
+            <th scope="col">{{ "Type" | translate }}</th>
+            <th scope="col">{{ "Telephone" | translate }}</th>
+            <th scope="col">{{ "ville" | translate }}</th>
+            <th scope="col">{{ "pays" | translate }}</th>
+            <th scope="col">{{ "plus d'informations" | translate }}</th>
+            <th scope="col">{{ "Opérations" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>test</th>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>
+              <button class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+              <button class="btn btn-primary">
+                <i class="fa fa-edit"></i>
+              </button>
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-12 py-3">
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a href="#" class="page-link">«</a></li>
+              <li class="active"><a href="#" class="page-link">1</a></li>
+              <li class="page-item"><a href="#" class="page-link">2</a></li>
+              <li class="page-item"><a href="#" class="page-link">3</a></li>
+              <li class="page-item"><a href="#" class="page-link">4</a></li>
+              <li class="page-item"><a href="#" class="page-link">5</a></li>
+              <li class="page-item"><a href="#" class="page-link">»</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

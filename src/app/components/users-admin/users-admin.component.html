@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);">
+  <app-slide-bar></app-slide-bar>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style="display: flex;background:rgb(233, 236, 236);">
+        
+<div class="wrap-table100">
+ 
+  <!-- <div class="tableDiv" >
+    <table  class="bi-table">
+      <thead style="padding: 50px;">
+        <tr class="colonnetable" style="padding: 50px;color: black;" >
+          <th  scope="col">{{ "LOGIN" | translate }}</th>
+          <th scope="col" style="width: 220px;">{{ "EMAIL" | translate }}</th>
+          <th scope="col">{{ "TYPE" | translate }}</th>
+          <th scope="col">{{ "VILLE" | translate }}</th>
+          <th scope="col">{{ "FIXE" | translate }}</th>
+          <th scope="col">{{ "GSM" | translate }}</th>
+          <th scope="col">{{ "ACTIONS" | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataOfUser;">
+          <td>{{data.login}}</td> 
+          <td style="width: 220px;"> {{data.email}}</td>
+          <td> {{data.type}}</td>
+          <td> {{data.ville}}</td>
+          <td> {{data.fax}}</td>
+          <td> {{data.tel_responsable}}</td>
+         
+          <td >
+            <button (click)="deletUser(data.id)"  
+                title="Peiment" class="btn" style="width: 100px; background: black;display: flex;align-items: center;color: white;padding: 10px;">
+             Supprimer
+            </button>
+             
+          </td>
+        </tr>
+        </tbody>
+    </table>
+  </div> -->
+  <div class="mat-elevation-z8">
+     
+    <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+      <div style="font-weight: 600;">GESTION UTILISATEURS
+      </div>
+       
+  </div>
+  <hr>
+     <div style="display: flex;align-items:center;justify-content:flex-end">
+         <div style="margin-right: 6px;font-size: 15px">  Rechercher:</div>
+         <mat-form-field appearance="standard">
+            <mat-label></mat-label>
+            <input matInput (keyup)="applyFilter($event)" style="font-size: 15px" placeholder="... " #input>
+         </mat-form-field>
+     </div>
+      <table mat-table [dataSource]="dataSource" matSort>    
+    
+        <!-- login Column -->
+        <ng-container matColumnDef="login">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by login"> 
+            <span style="font-weight:900;font-size: 11px;">LOGIN</span>    
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element?.login}} </td>
+        </ng-container>
+    
+        <!-- email Column -->
+        <ng-container matColumnDef="email">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 11px;">EMAIL</span>   </th>
+          <td mat-cell *matCellDef="let element"> {{element?.email}} </td>
+        </ng-container>
+    
+        <!-- type Column --> 
+        <ng-container matColumnDef="type">   
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 11px;">TYPE</span> </th>
+          <td mat-cell *matCellDef="let element"> {{element?.type}} </td>
+        </ng-container>
+    
+        <!-- ville Column -->
+        <ng-container matColumnDef="ville">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">VILLE</span> </th>
+          <td mat-cell *matCellDef="let element"> {{element?.autoecole[0]?.ville}} </td>
+        </ng-container>   
+
+        <!-- fixe Column -->
+        <ng-container matColumnDef="fixe"> 
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">FIXE</span> </th>
+          <td mat-cell *matCellDef="let element"> {{element?.autoecole[0]?.fax}} </td>
+        </ng-container>
+        <!-- gsm Column -->
+        <ng-container matColumnDef="gsm">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">GSM</span> </th>
+          <td mat-cell *matCellDef="let element"> {{element?.autoecole[0]?.tel_responsable}} </td>
+        </ng-container> 
+ 
+    
+       <!-- actions Column -->
+       <ng-container matColumnDef="actions">  
+        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 11px;">ACTIONS</span>  </th>
+        <td mat-cell *matCellDef="let element"> 
+          <button (click)="deletUser(element?.id)"  
+                title="Peiment" class="btn" style="width: 100px; background: black;display: flex;align-items: center;color: white;padding: 10px;">
+             Supprimer
+            </button>
+        </td>
+      </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator 
+        [length]="n" 
+        [pageSize]="5"  
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+</div>
+      </div>
+
+   </div>
+</body>
+</html>

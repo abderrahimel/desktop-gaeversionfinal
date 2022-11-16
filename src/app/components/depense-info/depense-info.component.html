@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);">
+	<app-headerlogged></app-headerlogged>
+  <app-menu-sb></app-menu-sb>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style=" display: flex;background:rgb(233, 236, 236);padding: 20px;">
+      
+        <div class="wrap-table100">
+          <div class="table-header">
+            <div class="row">
+              <div class="col-9" style="font-size: 15px;">
+                LISTE DES DÉPENSES À MOIS {{id}}
+              </div>
+            </div>
+          </div>
+        
+          <nav ngbNav #nav="ngbNav" class="nav-tabs" style="margin-left: 15px;">
+            <ng-container ngbNavItem>
+              <a ngbNavLink id="personnel"  style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);padding: 5px;"> D.Employés</a>
+              <ng-template ngbNavContent>
+                <div class="tableDiv">
+                  <table  class="table ">
+                   
+                    <thead>
+                      <tr style="color: black;" >
+                        <th scope="col">{{ "EMPLOYE" | translate }}</th>
+                        <th scope="col">{{ "CATEGORIE" | translate }}</th>
+                        <th scope="col">{{ "DATE" | translate }}</th>
+                        <th scope="col">{{ "MONTANT" | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let mydata of data1personnel; ">
+                        <td> {{mydata?.employe?.nom}}{{" "}}{{mydata?.employe?.prenom}}</td>
+                        <td> {{mydata?.categorie?.categorie}}</td>
+                        <td> {{mydata?.date}}</td>
+                        <td> {{mydata?.montant}}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+                   
+                </div>
+              </ng-template>
+            </ng-container>
+            <ng-container ngbNavItem>
+              <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);padding: 5px;">D.Voitures</a>
+              <ng-template ngbNavContent>
+                <div class="tableDiv">
+                 
+                  <table class="table" >
+                    <thead >
+                      <tr style="color: black;" >
+                        <th scope="col">{{ "VOITURE" | translate }}</th>
+                        <th scope="col">{{ "CATEGORIE" | translate }}</th>
+                        <th scope="col">{{ "DATE" | translate }}</th>
+                        <th scope="col">{{ "MONTANT" | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let mydata of depenseVehicule;">
+                        <td> {{mydata?.vehicule?.matricule}}</td>
+                        <td> {{mydata?.categorie?.categorie}}</td>
+                        <td> {{mydata?.date}}</td>
+                        <td> {{mydata?.montant}}</td>
+                     
+                      </tr>
+                      </tbody>
+                  </table>
+                 
+                </div>
+              </ng-template>
+            </ng-container>
+            <ng-container ngbNavItem>
+              <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95); padding: 5px;">D.Local</a>
+              <ng-template ngbNavContent>
+                <div class="tableDiv" > 
+                  <table  class="table" >
+                    <thead>
+                      <tr style="color: black;" >
+                        <th scope="col">{{ "CATEGORIE" | translate }}</th>
+                        <th scope="col">{{ "DATE" | translate }}</th>
+                        <th scope="col">{{ "MONTANT" | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let mydata of depenseLocal;">
+                        <td> {{mydata?.categorie?.categorie}}</td>
+                        <td> {{mydata?.date}}</td>
+                        <td> {{mydata?.montant}}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+                </div>
+              </ng-template>
+            </ng-container>
+           
+          </nav>
+          
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+
+
+
+      </div>
+                   
+   </div>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<div class="modal-content" style="font-size: 15px;position: absolute;margin-top: 100px;">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 15px;">{{btn}} planning</h5>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <form class="form"  [formGroup]="form" method="POST" action="" id="ajoute_cours" enctype="multipart/form-data">
+        <div class="card-body">
+            <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire</p>
+            <div class="col-md-12">
+                <div class="alert" id="AddMessage" style="display: none;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Date*</label>
+                        <div class="wd-200 mg-b-30">
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                              </div><input class="form-control" placeholder="DD/MM/YYYY" type="date" name="date" formControlName="date" >
+                          </div>
+                          <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                              <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                                    {{'Date is required ' | translate}}  
+                              </div>
+
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Heure début*</label>
+                        <input type="time" name="heure_debut" class="form-control" placeholder="Heure Début 08:00" formControlName="date_debut">
+                    </div>
+                    <div class="err" *ngIf="submitted && this.form.controls.date_debut.errors">
+                      <div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
+                            {{'Date debut required ' | translate}}  
+                      </div>
+
+                  </div>
+                </div>   
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label">Heure fin*</label>
+                      <input type="time" name="heure_fin" class="form-control" placeholder="Heure Fin 18:00" formControlName="date_fin">
+                    </div>
+                    <div class="err" *ngIf="submitted && this.form.controls.date_fin.errors">
+                      <div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
+                            {{'Date fin required ' | translate}}  
+                      </div>
+
+                  </div>
+                </div>  
+                <div class="col-md-6">
+                  <label class="form-label">Permis</label>
+                  <select id="permis_add" name="permis" class="form-control valid" formControlName="permis" style="font-size: 16px;height:30px">
+                      <option value="AM">AM</option>
+                      <option value="A1">A1</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="EB">EB</option>
+                      <option value="EC">EC</option>
+                      <option value="ED">ED</option>
+                  </select>
+                  <div class="err" *ngIf="submitted && this.form.controls.permis.errors">
+                      <div style="color: red;" *ngIf="this.form.controls.permis.errors.required">
+                            {{'Permis required ' | translate}}  
+                      </div>
+
+                  </div>
+                </div>
+              <div class="col-md-6">  
+                  <label class="form-label">Type</label>
+                  <div class="input-group mb-3">
+                      <select name="type" class="form-control" formControlName="type" style="font-size: 16px;height:30px">
+                          <option value="">Choisir un type</option>
+                          <option value="cours">Cours</option>
+                          <option value="examen">Examen</option>
+                      </select>
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.type.errors">
+                      <div style="color: red;" *ngIf="this.form.controls.type.errors.required">
+                            {{'Type required ' | translate}}  
+                      </div>
+
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">     
+                      <label class="form-label">Moniteur</label>
+                      <select id="monitor_add" name="moniteur" class="form-control" formControlName="moniteur_theorique_id" style="font-size: 16px;height:30px">
+                          <option value="">Choisissez moniteur</option>
+                          <option *ngFor="let mP of moniteurTheorique_data" value="{{ mP?.id }}">{{ mP?.nom }}{{ " " }}{{ mP?.prenom }}</option>
+                      </select>
+                      <div class="err" *ngIf="submitted && this.form.controls.moniteur_theorique_id.errors">
+                          <div style="color: red;" *ngIf="this.form.controls.moniteur_theorique_id.errors.required">
+                                {{'Moniteur required ' | translate}}  
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+            </div>  
+            <div class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label class="form-label">Candidat</label>
+                          <select class="form-control"  formControlName="candidat" (change)="add_to_list($event)" style="font-size: 16px;height:30px">
+                                  <option value="">Choisissez candidats</option>
+                                  <option *ngFor="let data of candidatBasic" value="{{ data.id }}">{{ data.nom_fr }}{{ " " }}{{ data.prenom_fr }}</option>
+                                  <option *ngFor="let data of candidatSupplementaire" value="{{ data.id }}">{{ data.nom_fr }}{{ " " }}{{ data.prenom_fr }}</option>
+                          </select>
+                          <div class="err" *ngIf="submitted && this.form.controls.candidat.errors">
+                              <div style="color: red;" *ngIf="!is_update && form.controls.candidat.errors.required">
+                                    {{'Candidat required ' | translate}}  
+                              </div>
+                          </div>
+                      </div> 
+                  </div>
+
+                  <div class="col-md-8">
+                      <div class="form-group">
+                          <label>{{ "List" | translate }}:</label>
+                          <textarea class="list_candidat"  name="list_candidat" id="list_candidat" cols="30" rows="10" readonly="readonly">{{candidat_list}}</textarea>
+                      </div>
+                  </div>
+
+              </div>
+        </div>
+
+        <div class="card-footer" style="margin-top:7px;">
+            <button type="submit" class="btn" style="background: #198754;color: white;" (click)="addOrModifierCours_theorique()">{{btn}}</button>
+            <button type="button" class="btn btn-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+        </div>
+    </form>	
+</div>

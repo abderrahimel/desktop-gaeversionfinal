@@ -1,0 +1,161 @@
+
+<!--  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style="font-size: 14px;">
+  <div class="h-55">
+    <app-headerlogged></app-headerlogged>
+  </div>
+   <app-menu-sb></app-menu-sb>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e8eeea;;">
+    <div style="display: flex;background: #e8eeea;;">
+      <div class="wrap-table100">
+        <div class="mat-elevation-z8">
+          <div class="card" style="width: 100%;">
+            <div class="card-body">
+              
+ <div class="wrap-table100">
+  <div class="tableDiv">           
+    <div class="mat-elevation-z8">
+
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;border-bottom: 1px solid rgb(219, 212, 212);">
+        <div style="font-size: 16px;font-weight: 600;">GESTION DES EXAMENS 
+        </div>
+        <div class="col-3 add-btn-div">
+          <button style="border-radius: 5px;background: #0CA930;color: white;" class="btn  add-btn"    (click)="open1(null, 'Réserver')">
+             {{ "Nouveau examen" | translate }}
+          </button>
+        </div>
+    </div>
+    
+    <div style="display: flex;align-items: center;padding-left: 7px;padding-right: 7px;">
+      <select name="categorie"  class="form-control" (change)="onChange($event)" id="categorie" style="margin-right: 5px;font-size: 15px;height:40px" >
+          <option value="">Choisissez catégorie</option>
+          <option value="A">A</option>
+          <option value="A1">A1</option>
+          <option value="AM">AM</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="EB">EB</option>
+          <option value="EC">EC</option>
+          <option value="ED">ED</option>
+          <option value="F">F</option>
+          <option value="FC">FC</option>
+          <option value="FP">FP</option>
+          <option value="FP/FC">FP/FC</option>
+        
+      </select>
+      <input type="date"  class="form-control" (change)="onchangeInput($event)" style="margin-right: 5px;font-size: 15px;height:40px" />
+      <select name="moniteur" (change)="onChangeMoniteur($event)"  class="form-control" id="moniteur" style="margin-right: 5px;font-size: 15px;height:40px">
+        <option value="">Choisissez Moniteur</option>
+        <option *ngFor="let data of datamoniteurP" value="{{data?.id}}">{{data?.nom}}{{" "}}{{data?.prenom}}</option>
+      </select>
+      <select name="categorie" (change)="onChangeCandidat($event)"  class="form-control" id="categorie" style="font-size: 15px;height:40px">
+        <option value="">Choisissez candidat</option>
+        <option *ngFor="let data of candidats" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
+      </select>
+    </div>
+
+    <mat-card>
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+           <div class="table-responsive border-top mb-0">
+                  <!--ABSENCE candidats -->
+              
+                    <div style="display: flex;align-items:center;justify-content:flex-end">
+                      <div style="margin-right: 6px">  Rechercher:</div>
+                      <mat-form-field appearance="standard">
+                         <mat-label></mat-label>
+                         <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                      </mat-form-field>
+                  </div>
+                   <table  mat-table [dataSource]="dataSource" matSort>    
+                 
+                    <ng-container matColumnDef="cin">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by moniteur"> 
+                        <span style="font-weight:900;font-size: 16px;margin-right:5px">{{ "CIN" | translate }}</span>    
+                      </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.candidat?.cin}} </td>
+                    </ng-container>
+                 
+                    <ng-container matColumnDef="candidat">  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;margin-right:5px">{{ "NOM" | translate }}</span>   </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.candidat?.nom_fr}}{{" "}}{{element?.candidat?.prenom_fr}}</td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="categorie">   
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;margin-right:5px">{{ "CATEGORIE" | translate }}</span> </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="moniteur">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right:5px">{{ "MONITEUR" | translate }}</span> </th>
+                      <td mat-cell *matCellDef="let element">{{element?.moniteur?.nom}}{{" "}}{{element?.moniteur?.prenom}}</td>
+                    </ng-container>   
+            
+                    <ng-container matColumnDef="date_examen"> 
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right:5px">{{ "DATE EXAMEN" | translate }}</span> </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.date_examen}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="date_depot">  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right:5px">{{ "DATE DEPOT" | translate }}</span> </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.date_depot}} </td>
+                    </ng-container> 
+             
+                
+                   <ng-container matColumnDef="actions">  
+                    <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+                    <td mat-cell *matCellDef="let element" style="display: flex;align-items:center;padding: 5px;color: white;"> 
+                      <button id="noteItem" data-id="23" style="color: white;" class="btn btn-warning fs-5" (click)="openNoteForm(element, element?.id, element?.categorie)" > Noter</button>
+                      <button id="detailItem" data-id="23" class="btn btn-info fs-5"  (click)="open(element)">Détail</button>
+                      <button id="editItem" data-id="23" class="btn btn-primary fs-5" (click)="open1(element, 'Modifier')">Modifier</button> 
+                      <button data-id="23" id="deleteItem" class="btn btn-danger fs-5" (click)="deletExamen(element?.id)">Supprimer</button>
+                    </td>
+                  </ng-container>
+            
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  <mat-paginator 
+                  [length]="n" 
+                  [pageSize]="5"  
+                  [pageSizeOptions]="[5, 10, 25, 100]">
+                  </mat-paginator>
+                  <!-- end ABSENCE candidats -->
+           </div>
+        </div>
+    </div>
+    </mat-card>
+                   </div> 
+   
+  </div>
+  
+</div>
+            </div>
+        </div>
+      </div>
+      </div>
+  </div>
+  <!-- fin first container -->
+                  
+
+    
+             
+ </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

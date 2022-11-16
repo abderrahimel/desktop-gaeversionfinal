@@ -1,0 +1,167 @@
+<div class="modal-content" style="width: 800px;">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">Détails  Véhicule</h5>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data" style="padding: 20px;">
+        <div class="card-body">
+             <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire </p>
+            
+             <div class="row">
+                 <div class="col-md-6">
+                   <div class="form-group">
+                       <label for="first-name-column">{{ "matricule" | translate }} :</label>
+                       <input type="text" id="appt" name="appt" style="font-size: 16px;height: 30px;" class="form-control input" formControlName='matricule' readonly="readonly">
+                   </div>
+          
+                 </div>
+
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Type</label>
+                         <div class="input-group mb-3">
+                             <input type="text" name="type" class="form-control"  style="font-size: 16px;height: 30px;"  id="add_type" formControlName='type' readonly="readonly">
+                            
+                         </div>
+                  
+                     </div>
+                 </div>
+                 
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Fournisseur*</label>
+                         <input type="text" name="fournisseur"  style="font-size: 16px"  class="form-control" formControlName='fourniseur' readonly="readonly">
+                     </div>
+         
+                 </div>
+
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Marque*</label>
+                         <input type="text" name="marque"  style="font-size: 16px"  class="form-control" formControlName='marque' readonly="readonly">
+                     </div>
+              
+                 </div>
+
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Modéle*</label>
+                         <input type="text" name="modele"  style="font-size: 16px"  class="form-control" formControlName='modele' readonly="readonly">
+                     </div>
+                    
+                 </div>
+                 <div class="col-md-6">
+                     <label class="form-label">Catégorie</label>
+                     <input type="text" name="categorie" class="form-control "  style="font-size: 16px;height: 30px;"  formControlName='categorie' readonly="readonly">
+                 </div>
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Date visite technique</label>
+                         <div class="wd-200 mg-b-30">
+                             <div class="input-group">
+                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_visite' readonly="readonly">
+                             </div>
+                         </div>
+                        
+                     </div>
+                 </div>
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Date prochain visite technique</label>
+                         <div class="wd-200 mg-b-30">
+                             <div class="input-group">
+                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_prochain_visite' readonly="readonly">
+                             </div>
+                         </div>
+                         
+                     </div>
+                 </div>
+
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Date vidange</label>
+                         <div class="wd-200 mg-b-30">
+                             <div class="input-group">
+                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_vidange' readonly="readonly">
+                             </div>
+                         </div>
+                         
+                       
+                     </div>
+                 </div>
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Date prochain vidange</label>
+                         <div class="wd-200 mg-b-30">
+                             <div class="input-group">
+                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_prochain_vidange' readonly="readonly">
+                             </div>
+                         </div>
+                         
+                     </div>
+                 </div>
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Date assurance</label>
+                         <div class="wd-200 mg-b-30">
+                             <div class="input-group">
+                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_assurance' readonly="readonly">
+                             </div>
+                         </div>
+                        
+                     </div>
+                 </div>
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="form-label">Date expiration assurance</label>
+                         <div class="wd-200 mg-b-30">
+                             <div class="input-group">
+                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_expiration_assurance' readonly="readonly">
+                             </div>
+                           
+                         </div>
+
+                     </div>
+                 </div>
+
+                 <div class="col-md-3">
+                   <div class="form-group" style="display: flex;flex-direction: column;" >
+                       <label for="last-name-column">{{ "Carte grise" | translate }}:</label>
+                      <img *ngIf="data?.carte_grise" src="{{data?.carte_grise}}" style="height: 70px;width:70px" alt="">
+                   </div>
+                   
+                 </div>
+ 
+                 <div class="col-md-3">
+                   <div class="form-group" style="display: flex;flex-direction: column;" > 
+                       <label for="last-name-column">{{ "assurance" | translate }}:</label>
+                       <img *ngIf="data?.assurance" src="{{data?.assurance}}" style="height: 70px;width:70px" alt="">
+                   </div>
+                  
+                 </div>
+ 
+                 <div class="col-md-3">
+                   <div class="form-group" style="display: flex;flex-direction: column;" > 
+                       <label for="last-name-column">{{ "visite technique" | translate }}:</label>
+                       <img *ngIf="data?.visite" src="{{data?.visite}}" style="height: 70px;width:70px" alt="">
+                   </div>
+                 
+                 </div>
+ 
+                 <div class="col-md-3">
+                   <div class="form-group" style="display: flex;flex-direction: column;" >
+                       <label for="last-name-column">{{ "vignette" | translate }}:</label>
+                       <img *ngIf="data?.vignette" src="{{data?.vignette}}" style="height: 70px;width:70px" alt="">
+                   </div>
+               
+                 </div>
+
+             </div>	
+         </div>
+         <div class="card-footer" *ngIf="show" style="margin-top: 7px;">
+             <button type="button" class="btn btn-danger" style="font-size: 16px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+         </div>
+     </form>	
+  </div>

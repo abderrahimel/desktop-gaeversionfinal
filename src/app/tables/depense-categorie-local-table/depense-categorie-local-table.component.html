@@ -1,0 +1,46 @@
+
+  <div class="card">
+    <!-- end table examen -->
+    <div style="display: flex;align-items:center;justify-content:flex-end">
+      <div style="margin-right: 6px;font-size: 15px;">  Rechercher:</div>
+      <mat-form-field appearance="standard">
+         <mat-label></mat-label>
+         <input matInput (keyup)="applyFilter($event)" style="font-size: 15px;" placeholder="... " #input>
+      </mat-form-field>
+  </div>
+   <table mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
+     <!-- categorie Column --> 
+     <ng-container matColumnDef="categorie">     
+       <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by candidat"> 
+         <span style="font-weight:900;font-size: 16px;">CATEGORIE</span>    
+       </th>
+       <td mat-cell *matCellDef="let element" style="text-align: center;font-size: 15px;"> {{element?.categorie}} </td>
+     </ng-container>
+ 
+     <!-- ACTIONS Column -->
+     <ng-container matColumnDef="actions">  
+       <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">ACTIONS</span>   </th>
+       <td mat-cell *matCellDef="let element" style="text-align: center;">
+        <button style="padding: 5px;width: 150px; border-radius: 5px;margin-right:4px;width: 130px;box-shadow: none;background: red;color: white;font-size: 15px;" class="btn" (click)="open('local', 'Modifier', element)">
+          Modifier 
+        </button>
+        <button style="padding: 5px;width: 130px; border-radius: 5px;box-shadow: none;background: black;color: white;font-size: 15px;" class="btn" (click)="deleteDepenseCategorie(element?.id)">
+          Supprimer
+        </button>
+      </td>
+     </ng-container>
+ 
+
+
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
+   <mat-paginator 
+     #paginatorFirst
+     [length]="n" 
+     [pageSize]="5"  
+     [pageSizeOptions]="[5, 10, 25, 100]">
+   </mat-paginator>
+</div>
+
+

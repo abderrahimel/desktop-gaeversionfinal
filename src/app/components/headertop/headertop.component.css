@@ -1,0 +1,137 @@
+.header-container1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background: linear-gradient(to right, #333, #a41f20);
+    color: white;
+
+}
+
+.header-left1{
+    display: flex;
+    align-items: center;
+    margin-left: 60px;
+    color: white;
+    margin-left: 50px;
+}
+.header-right1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 130px;
+}
+.header-right1>a, .header-left>a{
+    color: white;
+}
+
+
+
+.header-left1>a>i{
+    height: 20px;
+    margin-left: 20px;
+}
+
+.section1{
+    margin-left: 10PX;
+}
+.section1>a{
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+
+.container-menu1{
+    text-decoration: none;
+    flex-grow: 1;
+}
+
+.horizontalMenu-list1>span>a{
+    text-decoration: none;
+}
+.container-menu1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-right: 80px;
+    margin-left: 100px;
+}
+
+.container-menuright1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 60px;
+}
+
+.horizontalMenu-list1>span>a{
+    margin-left: 20px;
+    color: black;
+}
+.horizontalMenu-list1>span>a:hover{
+    color: #2B51E4;
+}
+.MenuUser1{
+    color: black;
+    position: fixed;
+    z-index: 5;
+    width: 250px;
+    border: 1px solid rgb(245, 242, 242);
+    padding: 10px;
+    border-radius: 3px;
+    display: none;
+    flex-direction: column;
+    top: 40px;
+    margin-right: 60px;
+    /* height: 130px; */
+    background: white;
+    box-shadow: -8px 10px 31px -4px rgba(230,210,210,0.75);
+-webkit-box-shadow: -8px 10px 31px -4px rgba(230,210,210,0.75);
+-moz-box-shadow: -8px 10px 31px -4px rgba(230,210,210,0.75);
+}
+.MenuUser1:before{
+    position: absolute;
+	top: -5px;
+	left: 185px;
+	display: inline-block;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #fff;
+	border-left: 5px solid transparent;
+	content: '';
+    
+}
+
+.menuTop1{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+.buttonclass1{
+    position: fixed;
+    top: 10px;
+    color: white;
+}
+.menuTop1>button{
+    border: none;
+    color: white;
+    background: none;
+}
+
+.MenuUser1>a{
+    text-decoration: none;
+    color: black;
+}
+.MenuUser1>a>span{
+    margin-left: 5px;
+}
+.MenuUser1>a>i{
+    color: blue;
+}
+.MenuUser1>button, .MenuUser1>a{
+    margin-bottom: 10px;
+}

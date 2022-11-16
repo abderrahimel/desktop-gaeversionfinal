@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);">
+  <app-headerlogged></app-headerlogged>
+  <app-menu-sb></app-menu-sb>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+        <!-- first container -->
+      <div style=" display: flex;background:rgb(233, 236, 236);padding: 20px;">
+      
+         <!-- table -->
+         <div class="container-form" style="padding: 20px;">
+            <div style="display: flex;align-items: center;justify-content: space-between;">
+                <span>LISTE DES PLANNINGS
+                </span>
+                
+                <div class="button_cours_pratique" style="color: white;">
+                    <i class="fa fa-list"></i>
+                    <a href="/ajouter-conduite" style="margin-left: 5px;text-decoration: none;color: white;">Nouveau planning</a>
+                </div>
+            </div>
+            <hr style="color:rgb(221, 214, 214)" >
+     
+            <span>Afficher les cours par date <br>
+            </span>            
+            <input placeholder="DD/MM/YYYY" style="width: 300px;height: 30px; background: #eceff1; padding-left: 5px; outline: none;border: 1px solid rgb(223, 217, 217);" type="date" name="date_cours_pratique" id="date_cours_pratique">
+    
+            <div style="display: flex;align-items: center;justify-content: space-between;margin: 10px;">
+                <div style="display: flex;align-items: center;">
+                    <span>Afficher</span>
+                    <select style="margin: 5px; outline: none;border: 1px solid rgb(221, 214, 214);" name="select_list_planning_cours" id="select_list_planning_cours">
+                        <option value="10">5</option>
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span>elements</span>
+                </div>
+                <div style="display: flex;align-items: center;">
+                    <span>Rechercher:</span>
+                    <input type="text" name="rechercher_in_planning" placeholder="..." style="margin-left: 10px; padding-left: 10px;outline: none;border: 1px solid rgb(230, 220, 220);" id="rechercher_in_planning">
+                </div>
+            </div>
+            <table  class="table" >
+                <thead style="padding: 50px;">
+                  <tr class="colonnetable" style="padding: 50px;color: black;" >
+                    <th  scope="col">{{ "DATE" | translate }}</th>
+                    <th  scope="col">{{ "SEANCE" | translate }}</th>
+                    <th  scope="col">{{ "TYPE" | translate }}</th>
+                    <th scope="col">{{ "MONITEUR" | translate }}</th>
+                    <th scope="col">{{ "VEHICULE" | translate }}</th>
+                    <th scope="col">{{ "Actions" | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody style="padding: 50px;width: 70%;" >
+                  <!-- *ngFor="let mydata of cours_theorique_data" -->
+                  <tr  class="td_paiment">
+                    <td> V</td>
+                    <td> V</td>
+                    <td style="margin-left: 40px">V</td>
+                    <td style="position: absolute;right: 5;margin-left: 100px">V</td>
+                    <td style="position: absolute;right: 200px;margin-right: 130px;">V</td>
+          
+                    <td class="button_action">
+                      
+                      <a href="#" class="btn btn-primary" style="padding: 15px; border-color:#1984ff ;background-color: #19a3ff;display: flex;align-items: center;color: white;position: absolute;right: 140px;">
+                        Modifier
+                      </a>
+                      <a href="/listes-conduites" class="btn btn-primary" style="position: absolute;right: 0;margin-right: 50px; padding-left: 5px; border-color:#ff3b19 ;background-color: #ff1919;display: flex;align-items: center;color: white;">
+                        Supprimer
+                      </a>
+                    </td>
+                  </tr>
+                  </tbody>
+              </table>
+            </div>
+            
+            
+
+
+
+      </div>
+
+                  
+   </div>
+      
+
+
+</body>
+</html>

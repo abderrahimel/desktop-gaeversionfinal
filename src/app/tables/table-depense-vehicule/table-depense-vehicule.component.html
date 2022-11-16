@@ -1,0 +1,118 @@
+
+<mat-card>
+  <div class="card">
+    <!-- end table examen -->
+    <div style="margin-left: 70%;display: flex;align-items:center;" >
+      <button (click)="modalImprimer()" class="btn btn-sm" style="background: red; color: white;box-shadow: none;outline: none;margin-right: 20px;padding: 5px;font-size: 16px;">
+        <i class="fa fa-print"></i>
+        Imprimer 
+      </button>
+      <button  (click)="openvehicule(null, 'Ajouter')" style="background:#198754;border: 1px solid rgb(228, 224, 224);padding: 5px;border-radius: 5px;color: white;font-size: 16px;">Depense Vehicule</button>
+    </div>
+    <div style="display: flex;align-items:center;justify-content:flex-end">
+      
+      <div style="margin-right: 6px;font-size: 16px;">  Rechercher:</div>
+      <mat-form-field appearance="standard">
+         <mat-label></mat-label>
+         <input matInput (keyup)="applyFilter($event)" style="font-size: 16px;" placeholder="... " #input>
+      </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="dataSource" matSort>    
+  
+    <!-- categorie Column -->
+    <ng-container matColumnDef="categorie">    
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
+        <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "CATEGORIE" | translate }}</span>    
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie?.categorie}} </td>
+    </ng-container>
+   
+    <!-- date Column -->
+    <ng-container matColumnDef="date">  
+      <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "DATE" | translate }}</span>   </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date}} </td>
+    </ng-container>
+   
+    <!-- montant Column --> 
+    <ng-container matColumnDef="montant">   
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "MONTANT" | translate }}</span> </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.montant}}</td>
+    </ng-container>
+   
+   <!-- actions Column -->
+   <ng-container matColumnDef="actions">  
+    <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+    <td mat-cell *matCellDef="let element"> 
+     <button  (click)="openvehicule(element, 'detail')" style="margin-right:4px; border-radius: 4px; width: 110px; box-shadow: none;background: #0d6efd;color: white;font-size: 16px;" class="btn ">
+         Detail
+       </button>
+       <button (click)="openvehicule(element, 'Modifier')" style="border-radius: 5px;margin-right:4px; margin-left: 5px;width: 110px;box-shadow: none;background: red;color: white;padding: 5px;font-size: 16px;" class="btn">
+         Modifier 
+       </button>
+       <button (click)="deletedepense(element?.id, 'v')" style="border-radius: 5px; margin-left: 5px;width: 110px;box-shadow: none;background: black;color: white;padding: 5px;font-size: 16px;" class="btn">
+         Supprimer
+       </button>
+    </td>
+   </ng-container>
+   
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
+   <mat-paginator 
+    [length]="n" 
+    [pageSize]="5"  
+    [pageSizeOptions]="[5, 10, 25, 100]">
+   </mat-paginator>
+ 
+</div>
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+<!-- <div style="display: flex;align-items:center;justify-content:flex-end">
+  <div style="margin-right: 6px">  Rechercher:</div>
+  <mat-form-field appearance="standard">
+     <mat-label></mat-label>
+     <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+  </mat-form-field>
+</div> -->
+
+
+
+   <!-- <table  class="table">
+        <thead>
+          <tr  style="color: black;">
+            <th  scope="col">{{ "VEHICULES" | translate }}</th>
+            <th scope="col">{{ "CATEGORIE" | translate }}</th>
+            <th scope="col">{{ "DATE" | translate }}</th>
+            <th scope="col">{{ "MONTANT" | translate }}</th>
+            <th scope="col">{{ "ACTION" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mydata of data_v;">
+            <td  >{{mydata?.vehicule?.matricule}}</td>
+            <td> {{mydata?.categorie?.categorie}}</td>
+            <td  >{{mydata?.date}}</td>
+            <td  >{{mydata?.montant}}</td>
+            <td>
+              <button  (click)="openvehicule(mydata, 'detail')" style="margin-right:4px; border-radius: 4px; width: 110px; box-shadow: none;background: #0d6efd;color: white;" class="btn ">
+                Detail
+              </button>
+              <button (click)="openvehicule(mydata, 'Modifier')" style="border-radius: 5px;margin-right:4px; margin-left: 5px;width: 110px;box-shadow: none;background: red;color: white;padding: 5px;" class="btn">
+                Modifier 
+              </button>
+              <button (click)="deletedepense(mydata?.id, 'v')" style="border-radius: 5px; margin-left: 5px;width: 110px;box-shadow: none;background: black;color: white;padding: 5px;" class="btn">
+                supprimer
+              </button>
+            </td>
+          </tr>
+          </tbody>
+      </table> -->

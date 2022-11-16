@@ -1,0 +1,122 @@
+
+
+<!--  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style="font-size: 14px;">
+  <div class="h-55">
+    <app-headerlogged></app-headerlogged>
+  </div>
+   <app-menu-sb></app-menu-sb>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e8eeea;;">
+    <div style="display: flex;background: #e8eeea;;">
+      <div class="wrap-table100">
+        <div class="mat-elevation-z8">
+          <div class="card" style="width: 100%;background: #e8eeea;">
+            <div class="card-body" style="margin: 10px;">
+              
+  <div class="wrap-table100"> 
+    <mat-card>
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+           <div class="table-responsive border-top mb-0">
+                  <!--ABSENCE candidats -->
+              
+                  <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+                    <div style="font-size: 16px;font-weight: 600;"> {{ "GESTION DES VÉHICULES" | translate }}
+                    </div>
+                    <div class="col-3 ">
+                      <button
+                        (click)="open1( 'Ajouter', null)"
+                      class="btn  add-btn"  style="background: #198754;">
+                      {{ "Nouveau véhicule" | translate }}
+                      </button>
+                    </div>
+                </div>
+                    <div style="display: flex;align-items:center;justify-content:flex-end">
+                      <div style="margin-right: 6px;font-size: 16px;">  Rechercher:</div>
+                      <mat-form-field appearance="standard">
+                         <mat-label></mat-label>
+                         <input matInput (keyup)="applyFilter($event)" style="font-size: 16px;" placeholder="... " #input>
+                      </mat-form-field>
+                  </div>
+                   <table mat-table [dataSource]="dataSource" matSort>    
+                 
+                    <ng-container matColumnDef="matricule">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by modele"> 
+                        <span style="font-weight:900;font-size: 16px;">{{ "MATRICULE" | translate }}</span>    
+                      </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.matricule}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="type">  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">{{ "TYPE" | translate }}</span>   </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.type}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="marque">   
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">{{ "MARQUE" | translate }}</span> </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.marque}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="modele">  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "MODELE" | translate }}</span> </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.modele}} </td>
+                    </ng-container>   
+                
+                   <ng-container matColumnDef="actions">  
+                    <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+                    <td mat-cell *matCellDef="let element"> 
+                      <button
+                      (click)="open( 'detail', element)" style="padding: 4px;color: white; background: #17acda;padding: 5px;font-size: 16px;" class="btn">
+                        {{ "Detail" | translate }}
+                      </button>
+                      <button
+                          (click)="open1( 'Modifier', element)"
+                          style="padding: 4px;color: white;width: 100px;padding: 5px;font-size: 16px;margin-left: 2px;" class="btn btn-danger">
+                        {{ "Modifier" | translate }}
+                      </button>
+                      <button style="padding: 4px;width: 100px;background: black;color: white;margin-left: 2px;font-size: 16px;" class="btn" (click)="deleteVehicule(element?.id)">
+                        {{ "Supprimer" | translate }}
+                      </button>
+                    </td>
+                  </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  <mat-paginator 
+                      [length]="n" 
+                      [pageSize]="5"  
+                      [pageSizeOptions]="[5, 10, 25, 100]">
+                  </mat-paginator>
+                  <!-- end ABSENCE candidats -->
+           </div>
+        </div>
+    </div>
+    </mat-card>
+  </div>
+            </div>
+        </div>
+      </div>
+      </div>
+  </div>
+  <!-- fin first container -->
+                  
+
+    
+             
+ </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

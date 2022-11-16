@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);">
+	<app-headerlogged></app-headerlogged>
+    <app-menu-sb></app-menu-sb>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+        <!-- first container -->
+      <div style="display: flex;background:rgb(233, 236, 236);padding: 20px;">
+      
+         <!-- table -->
+         <div class="container-form col-12">
+            <div style="display: flex;align-items: center;justify-content: space-between;margin: 10px;">
+                <span>NOUVEAU PLANNING
+                </span>
+                <div style="border-radius: 3px; cursor: pointer; background: #198754;width: 170px;height: 40px;text-align: center;text-align: center;padding-top: 7px;">
+                    <a style="text-decoration: none;color: white;" href="/listes-cours">Listes des plannings</a>
+                </div>
+            </div>
+            <hr style="color: rgb(163, 162, 162);">
+            <div class="container">
+                <span style="margin-left: 10px;color: red;">(*) Champs obligatoire
+
+                </span>
+                <section class="content" id="form-font">
+                    <form class="form"  [formGroup]="form" method="POST" action="" id="ajoute_cours" 
+                    enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label class="first-name-column" for="first-name-column">{{ "Date*" | translate }} :</label>
+                                        <input type="date" name="begin" class="form-control" placeholder="dd-mm-yyyy " value="" formControlName="date">
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                                          {{'Date is required ' | translate}}  
+                                    </div>
+    
+                                </div>
+                            </div>
+            
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="last-name-column">{{ "Heure de début" | translate }}:</label>
+                                    <input type="time" id="appt" name="appt" class="form-control" formControlName="date_debut" >
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.date_debut.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
+                                          {{'Date debut required ' | translate}}  
+                                    </div>
+    
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="last-name-column">{{ "Heure de Fin" | translate }}:</label>
+                                    <input type="time" id="appt" name="appt" class="form-control" formControlName="date_fin">
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.date_fin.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
+                                          {{'Date fin required ' | translate}}  
+                                    </div>
+    
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="city-column">{{ "Permis" | translate }}:</label>
+                                    <select name="permis" class="form-control valid" aria-invalid="false" formControlName="permis">
+										<option value="AM">AM</option>
+										<option value="A1">A1</option>
+										<option value="A">A</option>
+										<option value="B">B</option>
+										<option value="C">C</option>
+										<option value="D">D</option>
+										<option value="E">E</option>
+										<option value="EB">EB</option>
+										<option value="EC">EC</option>
+										<option value="ED">ED</option>
+									</select>
+                                    <div class="err" *ngIf="submitted && this.form.controls.permis.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.permis.errors.required">
+                                              {{'Permis required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="email-id-column">{{ "Type" | translate }}:</label>
+                                    <select name="type" class="form-control valid" aria-invalid="false" formControlName="type">
+                                        <option value="cours">Cours</option>
+                                        <option value="examen">Examen</option>
+                                    </select>
+                                    <div class="err" *ngIf="submitted && this.form.controls.type.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.type.errors.required">
+                                              {{'Type required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="email-id-column">{{ "Candidat" | translate }}:</label>
+                                    <select name="type" (change)="add_to_list($event)" class="form-control valid" formControlName="candidat">
+                                        <option *ngFor="let data of candidatBasic" value="{{ data.id }}">{{ data.nom_fr }}{{ " " }}{{ data.prenom_fr }}</option>
+                                        <option *ngFor="let data of candidatSupplementaire" value="{{ data.id }}">{{ data.nom_fr }}{{ " " }}{{ data.prenom_fr }}</option>
+                                    </select>
+                                    <div class="err" *ngIf="submitted && this.form.controls.candidat.errors">
+                                        <div style="color: red;" *ngIf="!is_update && form.controls.candidat.errors.required">
+                                              {{'Candidat required ' | translate}}  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3" >
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{ "List" | translate }}:</label>
+                                        <textarea class="list_candidat"  name="list_candidat" id="list_candidat" cols="30" rows="10">{{candidat_list}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="email-id-column">{{ "Moniteur theorique" | translate }}:</label>
+                                    <select name="type" class="form-control valid" aria-invalid="false" formControlName="moniteur_theorique_id">
+                                        <option *ngFor="let mP of moniteurTheorique_data" value="{{ mP.id }}">{{ mP.employe.nom }}{{ " " }}{{ mP.employe.prenom }}</option>
+                                    </select>
+                                    <div class="err" *ngIf="submitted && this.form.controls.moniteur_theorique_id.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.moniteur_theorique_id.errors.required">
+                                              {{'Moniteur required ' | translate}}  
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </form>
+                    <div class="container button_ajouter_cours" >
+                        <button class="btn next-btn" id="button1-fnt" style="background: #198754;" (click)="addOrModifierCours_theorique()">
+                         {{modifierOrAjouter}}
+                        </button>
+            </div>
+                </section>
+            </div>
+           
+            </div>
+            
+
+
+
+      </div>
+      <!-- fin first container -->
+                        <!-- examen vehicule  -->
+
+                  
+   </div>
+      
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #fbfbfb;
+    overflow-x: hidden;
+  }
+  @import '~ng-wizard/themes/ng_wizard_theme_dots.min.css';
+
+
+
+body.rtl {
+    direction: rtl;
+    font-family: Almarai;
+    font-size: 14px;
+}
+
+#sidebar.rds{
+    border-bottom-right-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    font-family: Almarai;
+}
+
+#form-font.fnt{
+    font-family: Almarai;
+}
+#form2-font.fnt{
+    font-family: Almarai;
+}
+
+#button1-fnt.fnt{
+    font-family: Almarai;
+}
+#button2-fnt.fnt{
+    font-family: Almarai;
+}
+#button3-fnt.fnt{
+    font-family: Almarai;
+}
+
+/*********************************Wizard*****************************************/
+
+.ng-wizard-theme-dots .ng-wizard-container{
+    min-height:420px;
+}
+
+.ng-wizard-theme-dots .step-content{
+    padding: 2%;
+    border:none;
+    text-align:center;
+    font-family: Roboto;
+    background-color: rgba(255, 99, 71, 0);
+}
+
+/*********************************Calendar*****************************************/
+
+.ng-wizard-theme-dots .ng-wizard-toolbar{
+    display: none;
+}
+
+.step-anchor{
+    display: none;
+}
+
+
+.fc .fc-daygrid-day-frame {
+    background-color: rgb(255, 249, 249);
+}
+
+.fc .fc-daygrid-day-number {
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(141, 141, 141);
+   }
+
+
+.page {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

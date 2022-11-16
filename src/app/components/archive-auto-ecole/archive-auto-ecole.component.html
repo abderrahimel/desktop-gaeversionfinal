@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);">
+	<!-- <app-headerlogged></app-headerlogged> -->
+    <app-slide-bar></app-slide-bar>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style="display: flex;background:rgb(233, 236, 236);">
+        
+<div class="wrap-table100">
+   
+  <div>
+
+    <div class="mat-elevation-z8">
+     
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+        <div style="font-weight: 600;">GESTION ARCHIVE
+        </div>
+         <div>
+          <a routerLink="/gestion-auto-ecole" class="btn"  style="background-color: rgb(7, 223, 252);color:white;padding: 5px;margin-left: 5px;">  AutoEcole</a>
+         </div>
+    </div>
+    <hr>
+       <div style="display: flex;align-items:center;justify-content:flex-end">
+           <div style="margin-right: 6px">  Rechercher:</div>
+           <mat-form-field appearance="standard">
+              <mat-label></mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+           </mat-form-field>
+       </div>
+         <table mat-table [dataSource]="dataSource" matSort>    
+      
+          <ng-container matColumnDef="nom_auto_ecole">         
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom_auto_ecole"> 
+              <span style="font-weight:900;font-size: 11px;">Nom</span>    
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.nom_auto_ecole}}</td>
+          </ng-container>
+      
+          <ng-container matColumnDef="nom_responsable">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 11px;">RESPONSABLE</span>   </th>
+            <td mat-cell *matCellDef="let element"> {{element.nom_responsable}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="etat">   
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 11px;">ETAT</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element.etat}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="telephone">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">TEL AUTO-ECOLE</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+          </ng-container>   
+  
+          <ng-container matColumnDef="tel_responsable">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">TEL DE  GERANT(e) </span> </th>
+            <td mat-cell *matCellDef="let element"> {{element.tel_responsable}} </td>
+          </ng-container>
+          <ng-container matColumnDef="pays">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">PAYS/VILLE </span> </th>
+            <td mat-cell *matCellDef="let element"> {{element.pays}}/{{element.ville}} </td>
+          </ng-container> 
+   
+      
+         <ng-container matColumnDef="actions">  
+          <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 11px;">ACTIONS</span>  </th>
+          <td mat-cell *matCellDef="let element"> 
+              <a routerLink="/detail-auto-ecole/{{element.id}}/archive"  title="Peiment" class="btn" style=" background: rgb(19, 157, 221);display: flex;align-items: center;color: white;padding: 10px;width: 70px;">
+                Detail 
+              </a>
+              
+              <button (click)="recuperAutoEcole(element.id)"  class="btn btn-green" style="background: #198754;display: flex;align-items: center;padding: 10px;color: white;width: 100px;">
+                  Recupérer 
+              </button> 
+          </td>
+        </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [length]="100"
+          [pageSize]="5"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page">
+        </mat-paginator> 
+
+
+      </div>
+  </div>
+</div>
+      </div>
+     
+   </div>
+</body>
+</html>

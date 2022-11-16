@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);" id="boutique">
+	<!-- <app-headerlogged></app-headerlogged> -->
+    <!-- <app-menu-admin></app-menu-admin> -->
+    <app-slide-bar></app-slide-bar>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style="display: flex;background:rgb(233, 236, 236);">
+<div class="wrap-table100">
+    <div *ngIf="!dataAutoEcole" class="spinner-border text-danger" style="margin-top:100px;position: absolute;z-index: 1000;right: 0;margin-right: 45%;font-size: 20px;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+  <div *ngIf="dataAutoEcole" class="tableDiv">
+
+    <div class="mat-elevation-z8">
+     
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+        <div style="font-size: 16px;font-weight: 600;">
+            <div class="containerregister">
+                <div class="formulaireregister" style="padding-bottom:35px">
+                    <span> {{'INFORMATIONS DE L\'AUTO-ÉCOLE' | translate}}</span>
+                    <hr>
+                    <form [formGroup]="form"  method="POST" action="" id="register" 
+                    enctype="multipart/form-data" >
+                                             
+                     <div class="card-body">
+                         <div class="row">
+                             <!--  -->
+                             
+                             <div class="col-3">
+                                 <label>{{ "Logo de votre etablissement" | translate }}:</label>
+                                 <!-- <div class="form-group">
+                                     <input type="file"   class="form-control" formControlName="image" 
+                                     data-allowed-file-extensions="jpeg jpg png"
+                                     accept="image/*"
+                                     readonly>
+                                 </div> -->
+                                <img style="width:150px; height:150px;" src="{{img}}" alt="">
+                             </div>
+                             <!--  -->
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Nom Auto-école' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="nom_auto_ecole" value="" formControlName="nom_auto_ecole" readonly>
+                                    
+                                    
+                                     <label class="form-label text-dark">{{'Date d\'Overture' | translate}}</label>
+                                     <div class="wd-200 mg-b-30">
+                                         <div class="input-group">
+                                           
+                                             <input 
+                                                 class="form-control" 
+                                                 placeholder="DD/MM/YYYY" type="date" name="date_ouverture"
+                                                  value="" id="dp1645567079409" formControlName="date_ouverture" readonly>
+                                                 
+                                              
+                                         </div>
+                                        
+                                     </div>
+         
+                                     <label class="form-label text-dark"> {{'N. Registre de Commerce' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="n_register_de_commerce" value="" formControlName="n_register_de_commerce" readonly>
+                                  
+                                     
+                                 </div>
+                             </div>
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Identification Fiscale' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="identification_fiscale" value="" formControlName="identification_fiscale" readonly>
+                                    
+                                    
+                                     <label class="form-label text-dark">{{'Date Autorisation' | translate}}</label>
+                                     <div class="wd-200 mg-b-30">
+                                         <div class="input-group">
+                                            
+                                             <input 
+                                                 class="form-control input_shadow datepickerNoOfMonths da hasDatepicker"
+                                                 placeholder="DD/MM/YYYY" 
+                                                 type="date" id="date autorisation"
+                                                 name="date_autorisation" value="" formControlName="date_autorisation" readonly>
+                                                
+                                               
+                                         </div>
+                                         
+                                     </div>
+         
+                                     <label class="form-label text-dark">{{'N. Agrément' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="n_agrement" value=""  formControlName="n_agrement" readonly>
+                                     
+                                    
+                                 </div>
+                             </div>
+         
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'N. Patente' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="n_patente" value="" formControlName="n_patente" readonly>
+                                   
+                                    
+                                 </div>
+                             </div>
+                             <!--  -->
+                             <div class="col-md-3">
+                                 <label>{{ "Image de RC" | translate }}:</label>
+                                 <!-- <div class="form-group">
+                                     <input type="file"   class="form-control" 
+                                     data-allowed-file-extensions="jpeg jpg png"
+                                     accept="image/*"
+                                     formControlName="image_rc"
+                                     readonly>
+                                    
+                                 </div> -->
+                                  <img style="width:150px; height:150px;" src="{{img_rc}}" alt="">
+                             </div>
+                             <!--  -->
+                                <!--  -->
+                                <div class="col-md-3">
+                                 <label>{{ "Image de N. Agrément" | translate }}:</label>
+                                 <!-- <div class="form-group">
+                                     <input type="file"   class="form-control"
+                                     data-allowed-file-extensions="jpeg jpg png"
+                                     accept="image/*"
+                                     formControlName="image_agrement"
+                                     readonly>
+                                 </div> -->
+                                 <img style="width:220px; height:150px;" src="{{image_agrement}}" alt="">
+                             </div>
+                             <!--  -->
+                         </div>
+                         <hr>
+                         <div class="row">
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'N. CNSS' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="n_cnss" value="" formControlName="n_cnss" readonly>
+                                     
+                                 </div>
+                             </div>
+         
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'ICE' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="ice" value="" formControlName="ice" readonly>
+                                
+                                 </div>
+                             </div>
+         
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Compte Bancaire' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="n_compte_bancaire" value="" formControlName="n_compte_bancaire" readonly>
+                                    
+                                 </div>
+                             </div>
+         
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'TVA' | translate}}</label>
+                                     <input type="number" class="form-control input_shadow" name="tva" value="" formControlName="tva" readonly>
+                                     
+                                 </div>
+                             </div>
+                         </div>
+                         <hr>
+                         <div class="row">
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Pays' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="pays" value=""  formControlName="pays" readonly>
+                                     
+                                     <label class="form-label text-dark">{{'Téléphone' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="telephone" value="" formControlName="telephone" readonly>
+                                 </div>
+                             </div>
+         
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Ville' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="ville" value="" formControlName="ville" readonly>
+                                     
+                                     <label class="form-label text-dark">{{'Fax' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="fax" value="" formControlName="fax" readonly>
+                                 </div>
+                             </div>
+     
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                 <label class="form-label  text-dark" style="display: flex;align-items: center;">{{'Adresse' | translate}}</label>
+                                     <textarea 
+                                         rows="5" 
+                                         class="form-control input_shadow" 
+                                         name="adresse" 
+                                         value="" 
+                                         formControlName="adresse" readonly>
+                                     </textarea>
+                                     <label class="form-label text-dark">{{'Site Web' | translate}}</label>
+                                     <!-- <input type="text" class="form-control" name="site_web" value="" formControlName="site_web"> -->
+                                     <input formControlName="site_web" name="site_web" type="text" class="form-control input_shadow"  i18n="site_web" readonly/>
+                                 </div>
+                             </div>
+                         </div>
+                         <hr>
+                         <div class="row">
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Cin' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="cin_responsable" value="" formControlName="cin_responsable" readonly>
+                                     
+                                 </div>
+                             </div>
+         
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Nom de Résponsable' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="nom_responsable" value="" formControlName="nom_responsable" readonly>
+                                     
+                                 </div>
+                             </div>
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Prenom Responsable' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="prenom_responsable" value="" formControlName="prenom_responsable" readonly>
+                                    
+                                 </div>
+                             </div>
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                     <label class="form-label text-dark">{{'Tél de Résponsable' | translate}}</label>
+                                     <input type="text" class="form-control input_shadow" name="tel_responsable" value="" formControlName="tel_responsable" readonly>
+                                    
+                                 </div>
+                             </div>
+                               <!--  -->
+                               <div class="col-md-3">
+                                 <label>{{ "Image de CIN" | translate }}:</label>
+                                 <!-- <div class="form-group">
+                                     <input type="file"   class="form-control" 
+                                     data-allowed-file-extensions="jpeg jpg png"
+                                     accept="image/*"
+                                     formControlName="image_cin"
+                                     readonly>
+                                 </div> -->
+                                 <img style="width:220px; height:150px;" src="{{img_cin}}" alt="">
+                             </div>
+                             <!--  -->
+                             <div class="col-md-9"> 
+                                 <div class="form-group"> 
+                                     <label class="form-label text-dark">{{'Adresse de Résponsable' | translate}}</label> 
+                                     <textarea 
+                                         rows="5" 
+                                         class="form-control input_shadow"  
+                                         name="adresse_responsable"  
+                                         value=""  
+                                         formControlName="adresse_responsable" readonly>
+                                     </textarea>
+                                
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                    
+                 </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+   
+      
+    
+      
+       
+      </div>
+  </div>
+</div>
+      </div>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style="font-size: 14px;">
+  <div class="h-55">
+    <app-headerlogged></app-headerlogged>
+  </div>
+   <app-menu-sb></app-menu-sb>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
+    <div style="display: flex;">
+            
+        <div class="wrap-table100">
+          <div class="table-header">
+            <div class="row">
+              <div class="col-9" style="font-size: 15px;font-weight: 700;">
+                GESTION DES DEPENSES
+              </div>
+            </div>
+          </div>
+      
+<nav ngbNav #nav="ngbNav" class="nav-tabs">
+  <ng-container ngbNavItem>
+    <a ngbNavLink style="border:1px solid red; border-radius: 0;margin-right: 4px;color: red;font-weight: 500;font-size: 16px;" class="dg" (click)="changestyle('.dg')">Depense general</a>
+    <ng-template ngbNavContent>
+      <div class="tableDiv">
+        <div style="display: flex; align-items:flex-end; justify-content:flex-end;margin: 5px;">
+          <button class="btn btn-sm" (click)="modalImprimer()" style="background: red; color: white;box-shadow: none;outline: none;margin: 7px;padding: 5px;font-size: 16px;">
+            <i class="fa fa-print"></i>
+            Imprimer
+          </button>
+        </div>
+        <mat-card>
+          <div class="card">
+            
+
+            <!-- end table examen -->
+            <div style="display: flex;align-items:center;justify-content:flex-end">
+              <div style="margin-right: 6px">  Rechercher:</div>
+              <mat-form-field appearance="standard">
+                 <mat-label></mat-label>
+                 <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+              </mat-form-field>
+          </div>
+           <table mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
+             <!-- date Column --> 
+             <ng-container matColumnDef="date">    
+               <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
+                 <span style="font-weight:900;font-size: 16px;">DATE</span>    
+               </th>
+               <td mat-cell *matCellDef="let element" style="text-align: center;">{{element?.date}}</td>
+             </ng-container>
+         
+             <!-- categorie Column -->
+             <ng-container matColumnDef="categorie">  
+               <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">CATEGORIE</span>   </th>
+               <td mat-cell *matCellDef="let element" style="text-align: center;">{{element?.categorie }}</td>
+             </ng-container>
+             <!-- designation column -->
+             <ng-container matColumnDef="designation">   
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DESIGNATION</span> </th>
+              <td mat-cell *matCellDef="let element" style="text-align: center;"> designation</td>
+            </ng-container>
+             <!-- montant Column -->  
+             <ng-container matColumnDef="montant">   
+               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MONTANT</span> </th>
+               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.montant}} </td>
+             </ng-container>
+
+              <!-- etat Column -->  
+              <ng-container matColumnDef="etat">   
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.etat}} </td>
+              </ng-container>
+
+             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+           </table>
+           <mat-paginator 
+             #paginatorFirst
+             [pageSize]="5"  
+             [pageSizeOptions]="[5, 10, 25, 100]">
+           </mat-paginator>
+        </div>
+        </mat-card>
+
+      </div>
+    </ng-template>
+  </ng-container>
+  <div style="position: absolute;background: #0ca930;margin-right: 60px;display: none;" id="hidden">
+   
+    <!-- begin form add depense employee -->
+    <form [formGroup]="form"  method="POST" action="" id="register" 
+    enctype="multipart/form-data" style="margin-right: 10px;margin: 60px;;font-size: 16px">
+    <span>Ajouter depense</span>
+    <hr>
+       <div class="containercandidat">
+         <div class="card m-b-20"  style="border-color: #0ca930;">
+             <div class="card-body" style="background: #0ca930;height: 370px;border-color: #0ca930;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Categorie*</label>
+                            <select class="form-control datepickerNoOfMonths hasDatepicker" formControlName="id_categorie">
+                              <option value="">Choisissez une categorie</option>
+                              <option *ngFor="let data of categories" value="{{data?.id}}">{{data?.categorie}}</option>
+                            </select>
+                            <div class="err" *ngIf="submitted && this.form.controls.id_categorie.errors">
+                                <div style="color: red;" *ngIf="this.form.controls.id_categorie.errors.required">
+                                    {{' field required.' | translate}} 
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-md-6" *ngIf="personnel">
+                        <div class="form-group">
+                            <label class="form-label">Employe*</label>
+                            <div class="wd-200 mg-b-30"> 
+                                <div class="input-group"> 
+                                    <select class="form-control datepickerNoOfMonths hasDatepicker" formControlName="id_employe"> 
+                                      <option value="">Choisissez un employe</option>
+                                      <option *ngFor="let data of employees" value="{{data?.id}}">{{data?.nom}}{{' '}}{{data?.prenom}}</option> 
+                                    </select> 
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.id_employe.errors"> 
+                                    <div style="color: red;" *ngIf="this.form.controls.id_employe.errors.required"> 
+                                        {{' field required.' | translate}} 
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="vehicule">
+                      <div class="form-group">
+                          <label class="form-label">Vehicule*</label>
+                          <div class="wd-200 mg-b-30">
+                              <div class="input-group"> 
+                                  <select class="form-control datepickerNoOfMonths hasDatepicker" formControlName="id_vehicule">
+                                    <option value="">Choisissez un vehicule</option>
+                                    <option *ngFor="let data of vehicules" value="{{data?.id}}">{{data?.matricule}}</option>
+                                  </select>
+                              </div>
+                              <div class="err" *ngIf="submitted && this.form.controls.id_vehicule.errors">
+                                  <div style="color: red;" *ngIf="this.form.controls.id_vehicule.errors.required">
+                                      {{' field required.' | translate}} 
+                                  </div>
+      
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                    <div class="col-md-6"> 
+                        <div class="form-group"> 
+                            <label class="form-label">Date*</label>
+                            <input type="date" class="form-control" formControlName="date">
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                          <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                              {{' field required.' | translate}} 
+                          </div>
+
+                      </div>
+                    </div>
+                        
+                    <div class="col-md-6"> 
+                        <div class="form-group">
+                            <label class="form-label">Montant*</label>
+                            <input type="text"  class="form-control" formControlName="montant">
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.montant.errors">
+                          <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
+                              {{' field required.' | translate}} 
+                          </div>
+
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">  
+                          <label class="form-label">Remarques</label>
+                          <textarea type="text" style="height: 100px;"  class="form-control" formControlName="remarque"></textarea>
+                      </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
+                            {{' field required.' | translate}}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                      <button  *ngIf="is_add" (click)="addOrUpdateDepenseCategorie()"  type="submit"  class="btn btn-success" style="box-shadow: none;font-size: 16px;"> 
+                        <span>{{action}}</span>
+                      </button>
+                      <button  type="submit" (click)="showForm(true, '')" class="btn btn-success" style="box-shadow: none;font-size: 16px;"> 
+                        <span>{{'Annuler' | translate }}</span>
+                      </button>
+                  </div>
+                  </div>
+                </div>
+             </div>
+             </div>
+            
+    
+           </div>
+    
+     
+    </form>
+    <!-- end form add depense employee -->
+</div>
+  <ng-container ngbNavItem>
+    <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);font-weight: 500;;font-size: 16px" class="dp" (click)="changestyle('.dp')">Personnel</a>
+    <ng-template ngbNavContent>
+      <div class="tableDiv">
+       <app-table-depense-personnel></app-table-depense-personnel>
+      </div>
+    </ng-template>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);font-weight: 500;;font-size: 16px" class="dv" (click)="changestyle('.dv')">Vehicules</a>
+    <ng-template ngbNavContent>
+      <div class="tableDiv" >
+        <app-table-depense-vehicule></app-table-depense-vehicule>
+      </div>
+    </ng-template>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: #75809c;font-weight: 500;;font-size: 16px" class="dl" (click)="changestyle('dl')">Local</a>
+    <ng-template ngbNavContent>
+      <div class="tableDiv" >
+        <app-table-depense-local></app-table-depense-local>
+      </div>
+        
+    </ng-template>
+  </ng-container>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+ </div>
+  </div>
+  <!-- fin first container -->
+                  
+
+    
+             
+ </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+a{
+    text-decoration: none;
+}
+
+
+ul{
+    list-style-type:none;
+
+} 
+.sub-menu>a{
+    color: black;
+}
+
+
+.dashboard {
+    display: flex;
+    top: 10%;
+    height: 90%;
+    width: 259px;
+    position: fixed;
+    overflow-y : visible;
+    margin-top: 35px;
+  }
+  
+  .content {
+    overflow-y: auto;
+    flex: 1;
+  }
+  
+  .imgAutoEcole{
+    height: 60px;
+    width: 60;
+    border-radius: 50%;
+  }
+
+  .logoAutoEcole{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 50%;
+  }
+
+
+.menu-fix{
+  position: fixed;
+}

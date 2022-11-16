@@ -1,0 +1,148 @@
+<!-- https://ng-bootstrap.github.io/#/components/nav/examples -->
+<div class="headerintop" >
+  <!-- <div class="leftsidebar1">
+    <img class="logogae" src="https://www.gestionautoecole.com/images/brand/logo_gae.png" alt="">
+  </div>
+  <div class="rightsidebar1" style="display:flex;">
+     
+     <div class="iconnotification" style="margin-right: 20px ;">
+      <span>0</span>
+      <i class="bi bi-bell"></i>
+      </div>
+
+      <div class="iconMenu" (click)="menu($event)" > 
+          <i class="bi bi-grid"></i>
+      </div>
+     <span class="menu-user"  *ngIf="clicked">
+      <a href="#" class="menu-child">
+          <i class="dropdown-icon fa fa-car"></i>
+          <span> Auto Ecole </span>
+      </a>
+      <a href="/parametres" class="menu-child">
+          <i class="bi bi-gear"></i>
+          <span>Paramètres du compte</span>
+      </a>
+      <a href="/login" class="menu-child" (click)="logoutUser($event)" >
+          <i class="bi bi-power"></i>
+          <span>Se déconnecter</span>
+      </a>
+  </span>
+   
+  </div> -->
+  <app-headerlogged></app-headerlogged>
+</div>
+<div class="d-flex menu card" style="position:fixed;margin-top: 53px;height: 100%;top: 0;">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+      <li ngbNavItem="top">
+        <a (click)="redirect_to('/admin')" [ngClass]="{
+          'text-secondary':active !== 'top'
+        }" class="option"  ngbNavLink>
+        <span style="font-size: 15px;color:red" class="fa fa-tachometer "></span>
+         Tableau de bord</a>
+        <ng-template ngbNavContent>
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle">
+        <a (click)="redirect_to('/gestion-auto-ecole')" [ngClass]="{
+          'text-secondary':active !== 'middle'
+        }" ngbNavLink>
+        <span style="font-size: 15px;color:red"  class="fa fa-car"></span>
+        Gestion Auto Ecole</a>
+        <ng-template ngbNavContent>
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle1">
+        <a (click)="redirect_to('/archive-auto-ecole')"  [ngClass]="{
+          'text-secondary':active !== 'middle1'
+        }"  ngbNavLink>
+        <span style="font-size: 15px;color:red"  class="fa fa-archive"></span>
+        Archive Auto Ecole</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle2">
+        <a (click)="redirect_to('/abonnement')"  [ngClass]="{
+          'text-secondary':active !== 'middle2'
+        }"  ngbNavLink>
+        <span style="font-size: 15px;color:red" class="fa fa-dollar"></span>
+        Abonnement</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle3">
+        <a (click)="redirect_to('/admin-boutique')"  [ngClass]="{
+          'text-secondary':active !== 'middle3'
+        }"  ngbNavLink>
+        <span style="font-size: 15px;color:red" class="fa fa-cubes"></span> 
+        Boutique J2HB</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle4">
+        <a (click)="redirect_to('/admin-moniteur')"  [ngClass]="{
+          'text-secondary':active !== 'middle4'
+        }"  ngbNavLink>
+        <span style="font-size: 15px;color:red" class="fas fa-user-circle"></span> 
+        Moniteur</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle5">
+        <a (click)="redirect_to('/admin-ecole-vendre')"  [ngClass]="{
+          'text-secondary':active !== 'middle5'
+        }"  ngbNavLink>
+        <span style="font-size: 15px;color:red" class="fas fa-car-building"></span> 
+        Auto-ecole</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle6">
+        <a (click)="redirect_to('/notes_min')"  [ngClass]="{
+          'text-secondary':active !== 'middle6'
+        }"  ngbNavLink>
+        <span style="font-size: 15px;color:red" class="fas fa-car-building"></span> 
+        Note ministérielle</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle7">
+        <a (click)="redirect_to('/blog')"  [ngClass]="{
+          'text-secondary':active !== 'middle7'
+        }"  ngbNavLink>
+        <span style="font-size: 15px;color:red" class="fa fa-feed"></span>
+        Gestion Blogs</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle8">
+        <a (click)="redirect_to('/gestion-users')"  [ngClass]="{
+          'text-secondary':active !== 'middle8'
+        }"  ngbNavLink> 
+        <span style="font-size: 15px;color:red" class="fa fa-users"></span> 
+        Gestion Utilisateurs</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+      <li ngbNavItem="middle9">
+        <a  (click)="redirect_to('/messagerie')"  [ngClass]="{
+          'text-secondary':active !== 'middle9'
+        }"  ngbNavLink>
+        <span style="font-size: 15px;color:red" class="fa fa-send"></span>
+         Messagerie</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </li>
+    </ul>
+  
+    <div [ngbNavOutlet]="nav" class="ms-4"></div>
+  </div>
+  

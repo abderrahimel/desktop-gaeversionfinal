@@ -1,0 +1,216 @@
+<div class="modal-content" style="height: 450px;width: 700px;">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Ajouter note</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <form *ngIf="showformExam" class="form" [formGroup]="form" style="padding: 7px;"  method="POST" action="" id="ajoute_cours" 
+  enctype="multipart/form-data">
+              <!-- time to set the note -->
+              <div *ngIf="showformconfigureNote" class="note-div" style="width: 600px;height: 200px;padding: 10px;">
+                  <div style="padding: 10px;">
+                    <h3>Oops! Attention!
+                    </h3>
+                    <p>Vous devez premièrement complétez la configuration avant d'ajouter la note.</p>
+                    <!-- <p [hidden]="true">Vous devez attender la date d'examen pour ajouter la note.</p> -->
+                  <hr style="background: white;">
+                    <div style="display: flex;align-items: center;">
+                          <a class="btn btn-success" style="text-decoration: none;color: white;"   
+                               routerLink="/listes-notes">Ajouter Note</a>
+                          <button style="cursor: pointer; width: 140px;height: 35px;background: black;color: white; padding: 5px; border-radius: 5px;text-align: center;" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+                    </div>
+                  </div>               
+                </div> 
+                <!--  -->
+                <div *ngIf="showmessageAttendateExamen"  class="note-div" style="width: 600px;height: 200px;padding: 10px;" >
+                  <div style="padding: 10px;">
+                    <h3>Oops! Attention!
+                    </h3>
+                    <p>Vous devez attender la date d'examen pour ajouter la note.</p>
+                  <hr style="background: white;" >
+                    <div style="display: flex;align-items: center;">
+                      <button style="cursor: pointer; width: 140px;height: 35px;background: black;color: white; padding: 5px; border-radius: 5px;text-align: center;" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+                    </div>
+                  </div>               
+                </div>
+  <!-- examen theorique -->
+  <div class="row">
+  <div class="col-4">
+   <div class="form-group">
+        <label for="city-column">{{ "Examen" | translate }}:</label>
+        <select class="form-control " style="height:30px;width: 200px;margin-right: 7px;" name="examenTheorique" formControlName="examenTheorique">
+          <option value="examenTheorique" disabled>Examen Theorique 1</option>
+          <option value="examenPratique" disabled>Examen Pratique</option>
+        </select>  
+       </div>
+       <div class="err" *ngIf="submitted && this.form.controls.examenTheorique.errors">
+           <div style="color: red;" *ngIf="this.form.controls.examenTheorique.errors.required">
+                 {{'field required ' | translate}}  
+           </div>
+  
+       </div>
+   
+  </div>
+  <div class="col-3">
+   <div class="form-group">
+       <label for="city-column">{{ "Note 1" | translate }}:</label>
+       <input class="form-control" type="text"  style="height:30px;width:150px"
+       formControlName="note1"
+       (ngModelChange)="change()"
+       > 
+       <div class="err" *ngIf="submitted && this.form.controls.note1.errors">
+           <div style="color: red;" *ngIf="this.form.controls.note1.errors.required">
+                 {{'field required ' | translate}}  
+           </div>
+       </div>
+   </div>
+  </div>
+  <div class="col-3">
+  <div class="form-group">
+     <label for="city-column">{{ "Date Note 1" | translate }}:</label>
+     <input class="form-control" type="date" formControlName="date_note1" readonly> 
+     <div class="err" *ngIf="submitted && this.form.controls.date_note1.errors">
+         <div style="color: red;" *ngIf="this.form.controls.date_note1.errors.required">
+               {{'field required ' | translate}}  
+         </div>
+     </div>
+  </div>
+  </div>
+  <!--  -->
+  </div>
+  <!-- ratrapage examen theorique -->
+  <div class="row" *ngIf="ratrapage">
+  <div class="col-4">
+  <div class="form-group">
+      <label for="city-column">{{ "Note 2" | translate }}:</label>
+      <input type="text" class="form-control"
+       name="note2" formControlName="note2"
+       (ngModelChange)="changenote2()"
+       >
+     
+     </div>
+     <div class="err" *ngIf="submitted && this.form.controls.note2.errors">
+         <div style="color: red;" *ngIf="this.form.controls.note2.errors.required">
+               {{'field required ' | translate}}  
+         </div>
+  
+     </div>
+  </div>
+  <div class="col-3">
+  <div class="form-group">
+     <label for="city-column">{{ "Date note2" | translate }}:</label>
+     <input type="date" class="form-control" name="date_note2" formControlName="date_note2" />
+     
+     <div class="err" *ngIf="submitted && this.form.controls.date_note2.errors">
+         <div style="color: red;" *ngIf="this.form.controls.date_note2.errors.required">
+               {{'field required ' | translate}}  
+         </div>
+     </div>
+  </div>
+  </div>
+  <!-- examen pratique  -->
+  </div>  
+  <div class="row" *ngIf="examenPratique">  
+  <div class="col-4">
+  <div class="form-group">
+    <label for="city-column">{{ "Examen" | translate }}:</label>
+    <select class="form-control"  style="height:30px;width: 200px;" name="examenPratique" formControlName="examenPratique">
+      <option value="examenPratique1" disabled>Examen Pratique 1</option>
+      <option value="examenPratique" disabled>Examen Pratique 2</option>
+    </select>  
+   </div>
+   <div class="err" *ngIf="submitted && this.form.controls.examenPratique.errors">
+       <div style="color: red;" *ngIf="this.form.controls.examenPratique.errors.required">
+             {{'field required ' | translate}}  
+       </div>
+  
+   </div>
+  
+  </div>
+  <div class="col-3">
+  <div class="form-group">
+   <label for="city-column">{{ "Etat 1" | translate }}:</label>
+   <select class="form-control" name="etat_1" style="height: 30px;;width: 150px;"
+   (ngModelChange)="changeEtat1()" 
+   formControlName="etat_1">
+     <option value="">Choissir</option>
+     <option value="valide">Valide</option>
+     <option value="noValide"> No valide</option>
+   </select>  
+   <div class="err" *ngIf="submitted && this.form.controls.etat_1.errors">
+       <div style="color: red;" *ngIf="this.form.controls.etat_1.errors.required">
+             {{'field required ' | translate}}  
+       </div>
+   </div>
+  </div>
+  </div>
+  <div class="col-3">
+  <div class="form-group">
+  <label for="city-column">{{ "Date Etat 1" | translate }}:</label>
+  <input class="form-control" type="date" formControlName="date_etat1" (change)="dateExamenP(form.value.date_etat1)"> 
+  <div class="err" *ngIf="submitted && this.form.controls.date_etat1.errors">
+     <div style="color: red;" *ngIf="this.form.controls.date_etat1.errors.required">
+           {{'field required ' | translate}}  
+     </div>
+  </div>
+  </div>
+  </div>
+  <!--  -->
+  </div> 
+  <!-- rattrapage examen pratique -->
+  <div class="row" *ngIf="ratrapageExamenPratique">
+  <div class="col-4">
+  <div class="form-group">
+    <label for="city-column">{{ "Etat 2" | translate }}:</label>
+    <select class="form-control" name="etat_2" style="height:30px"
+    formControlName="etat_2">
+      <option value="">Choissir </option>
+      <option value="valide">Valide</option>
+      <option value="noValide">No valide</option>
+    </select>  
+   </div>
+   <div class="err" *ngIf="submitted && this.form.controls.etat_2.errors">
+       <div style="color: red;" *ngIf="this.form.controls.etat_2.errors.required">
+             {{'field required ' | translate}}  
+       </div>
+   </div>
+  </div>
+  
+  <div class="col-3">
+  <div class="form-group">
+  <label for="city-column">{{ "Date Etat 2" | translate }}:</label>
+  <input class="form-control" type="date" formControlName="date_etat2" readonly> 
+  <div class="err" *ngIf="submitted && this.form.controls.date_etat2.errors">
+     <div style="color: red;" *ngIf="this.form.controls.date_etat2.errors.required">
+           {{'field required ' | translate}}  
+     </div>
+  </div>
+  </div>
+  </div>
+  <!--  -->
+  </div>
+  <div class="container">
+  <div  style="display: flex;align-items: center;margin-top: 7px;">
+      <div class="col-2 d-flex align-items-center" >
+          <button type="submit" class="btn" style="background: #198754;color: white;" id="button1-fnt" (click)="valider()">Valider</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+      </div>
+     
+  </div>
+  </div>
+  </form>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,217 @@
+<!-- <div class="modal-dialog modal-lg">
+
+  </div> -->
+  <div class="modal-content" style="font-size: 16px;width: 700px;">
+    <div class="modal-header" style="width: 800px;">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} employe</h5>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+      <div class="card-body">
+          <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire</p>
+          <div class="col-md-12">
+              <div class="alert" id="EditMessage" style="display: none;">
+              </div>
+          </div>
+          <input type="hidden" name="employe_id" id="employe_id" value="6">
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">Nom*</label>
+                      <input type="text" name="nom" class="form-control" id="nom2" formControlName="nom">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.nom.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.nom.errors.required">
+                          {{'Nom required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">Cin*</label>
+                      <input type="text" name="cin" class="form-control" id="cin2" formControlName="cin">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.cin.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.cin.errors.required">
+                          {{'Cin required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">Prénom*</label>
+                      <input type="text" name="prenom" class="form-control" id="prenom2"formControlName=prenom >
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.prenom.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.prenom.errors.required">
+                          {{'Prenom required ' | translate}}  
+                    </div>
+
+                </div>
+              </div>
+
+                
+
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">Date naissance*</label>
+                      <div class="wd-200 mg-b-30">
+                          <div class="input-group">
+                              <input class="form-control" placeholder="DD/MM/YYYY" type="date" formControlName="date_naissance">
+                          </div>
+                          <div class="err" *ngIf="submitted && this.form.controls.date_naissance.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.date_naissance.errors.required">
+                                  {{'Date de naissance required ' | translate}}  
+                            </div>
+
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">Lieu naissance</label>
+                      <input type="text" name="lieu_naissance" class="form-control" id="lieu_naissance2" formControlName="lieu_naissance">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.lieu_naissance.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.lieu_naissance.errors.required">
+                          {{'Lieu de naissance required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+              
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">Email*</label>
+                      <input type="text" name="email" class="form-control" id="email2" formControlName="email">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.email.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
+                          {{'Email required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">Téléphone*</label>
+                      <input type="text" name="telephone" class="form-control" id="telephone2" formControlName="telephone">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.telephone.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required">
+                          {{'Telephone required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+                
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">Date d'embauche*</label>
+                      <div class="wd-200 mg-b-30">
+                          <div class="input-group">
+                              <input class="form-control" placeholder="DD/MM/YYYY" type="date" formControlName="date_embauche">
+                          </div>
+                      </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.date_embauche.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.date_embauche.errors.required">
+                              {{'Date de embauche required ' | translate}}  
+                        </div>
+                    </div>
+                  </div>
+              </div> 
+              <div class="col-md-4">
+                  <label class="form-label">Type*</label>
+                  <div class="input-group mb-3">
+                      <select  name="type_employe" style="height: 30px;" class="form-control" id="type2" formControlName="type">
+                          <option value="">Choisir un type</option>
+                          <option value="Directeur">Directeur</option>
+                          <option value="Secretaire">Secretaire</option>
+                      </select>
+                      <input  type="text" name="type_employe_autre" style="display: none;" id="authertype" class="form-control" placeholder="Autre ..."   formControlName="type">
+                      <div class="input-group-append">
+                          <button type="button" class="btn btn-success" title="Autre type" (click)="otherType()">
+                            <i class="fa fa-plus" *ngIf="!add_type"></i>
+                            <i class="fa fa-minus" *ngIf="add_type"></i>
+                        </button>
+                      </div>
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.type.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.type.errors.required">
+                          {{'Type required ' | translate}}  
+                    </div>
+
+                </div>
+              </div>
+               
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">C.A.P.N</label>
+                      <input type="text" name="capn" class="form-control" id="capn2" formControlName="capn">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.capn.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.capn.errors.required">
+                          {{'C.A.P.N required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="form-label">N p conduire</label>
+                      <input type="text" name="n_p_conduire" class="form-control" id="n_p_conduire2" formControlName="conduire">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.conduire.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.conduire.errors.required">
+                          {{'Conduire required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+               
+              <div class="col-md-4">
+              </div>
+
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="form-label">Adresse*</label>
+                      <textarea rows="5" class="form-control" name="adresse" id="adresse2" formControlName="adresse"></textarea>
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.adresse.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.adresse.errors.required">
+                          {{'Adresse required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="form-label">Observations</label>
+                      <textarea rows="5" class="form-control" name="observation" id="observation2" formControlName="observations"></textarea>
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.observations.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.observations.errors.required">
+                          {{'Observations required ' | translate}}  
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="card-footer marginclass">
+        <button type="submit" class="btn"  style="background:#198754 ;color: white;" (click)="employe()" >{{btn}}</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+      </div>
+  </form>	
+</div>
+
+
+
+
+
+
+
+

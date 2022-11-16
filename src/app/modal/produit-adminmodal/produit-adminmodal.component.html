@@ -1,0 +1,178 @@
+
+<div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{btn}}</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+    <div class="modal-body">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label">Titre*</label>
+                          <input type="text" class="form-control" name="titre" formControlName="titre">
+                      </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.titre.errors.required">
+                            {{' field required.' | translate}} 
+                        </div>
+                    </div>
+                  </div>    
+
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label">Catégorie</label>
+                          <select id="list_categorie" style="height: 32px;" class="form-control" name="categorie" formControlName="categorie" (ngModelChange)="boolShow($event)">
+                              <option value="">Choisir</option>
+                              <option value="materiel informatique">Materiel informatique</option>
+                              <option value="vehicule occasion">Vehicule occasion</option>
+                              <option value="equipement véhicule">Equipement véhicule</option>
+                              <option value="bureau immobilier">Bureau immobilier</option>
+                              <option value="simulateur de conduite">Simulateur de conduite</option>
+                              <option value="ouvrage">ouvrage</option>
+                          </select>
+                          <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
+                                {{' field required.' | translate}} 
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                 
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label">Prix*</label>
+                          <input type="text" class="form-control" name="prix" id="prix" formControlName="prix">
+                      </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.prix.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.prix.errors.required">
+                            {{' field required.' | translate}} 
+                        </div>
+                    </div>
+                  </div>
+              
+                  <div class="col-md-12" id="car_detail" >
+                      <div class="row" *ngIf="hidd">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <label class="form-label">Marque*</label>
+                                  <input type="text" class="form-control" name="marque" formControlName="marque" (keyup)="check()">
+                              </div>
+                              <div class="err" *ngIf="submitted && this.form.controls.marque.errors && hidd">
+                                <div style="color: red;" *ngIf="this.form.controls.marque.errors.required">
+                                    {{' field required.' | translate}} 
+                                </div>
+                            </div>
+                          </div>
+                         
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <label class="form-label">Modéle*</label>
+                                  <input type="text" class="form-control" name="modele" formControlName="model">
+                              </div>
+                              <div class="err" *ngIf="submitted && this.form.controls.model.errors && hidd">
+                                <div style="color: red;" *ngIf="this.form.controls.model.errors.required">
+                                    {{' field required.' | translate}} 
+                                </div>
+                            </div>
+                          </div>
+                        
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <label class="form-label">Carburant*</label>
+                                  <select class="form-control" name="carburant" formControlName="carburant">
+                                      <option value="">Carburant</option>
+                                      <option value="Diesel">Diesel</option>
+                                      <option value="Essence">Essence</option>
+                                  </select>
+                                  <div class="err" *ngIf="submitted && this.form.controls.carburant.errors && hidd">
+                                    <div style="color: red;" *ngIf="this.form.controls.carburant.errors.required">
+                                        {{' field required.' | translate}} 
+                                    </div>
+                                </div>
+                              </div>
+                          </div>
+                        
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <label class="form-label">
+                                      Kilometrage*</label>
+                                  <input type="text" class="form-control" name="kilometrage" formControlName="kilometrage">
+                              </div>
+                              <div class="err" *ngIf="submitted && this.form.controls.kilometrage.errors && hidd">
+                                <div style="color: red;" *ngIf="this.form.controls.kilometrage.errors.required">
+                                    {{' field required.' | translate}} 
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label class="form-label">Promotion</label>
+                          <label class="custom-control custom-checkbox mb-3">
+                              <input id="radio1" name="etat" type="radio" class="custom-control-input" value="non" (click)="showPrix($event)">
+                              <span class="custom-control-label">
+                                  Non
+                              </span>
+                          </label>
+
+                          <label class="custom-control custom-checkbox mb-3">
+                              <input id="radio2" name="etat" type="radio" class="custom-control-input" value="oui"  (click)="showPrix($event)" >
+                              <span class="custom-control-label">
+                                  Oui
+                              </span>
+                          </label>
+                      </div>
+                  </div>
+                     
+                  <div class="col-md-6" *ngIf="show_prix">
+                      <div id="div_promotion" style="display: block;">
+                          <div class="form-group">
+                              <label class="form-label">Prix promotion*</label>
+                              <input type="text" class="form-control" name="promotion" id="prix_promotion" formControlName="prixPromotion">
+                          </div>
+                          <div class="err" *ngIf="submitted && this.form.controls.prixPromotion.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.prixPromotion.errors.required">
+                                {{' field required.' | translate}} 
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                     
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label">Description</label>
+                          <textarea  class="form-control" name="description" id="description" cols="30" rows="10" formControlName="description"></textarea>
+                      </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.description.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.description.errors.required">
+                            {{' field required.' | translate}} 
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label">Image de produit</label>
+                          <input type="file" name="cin" class="form-control" (change)="fileChangeEvent($event)"  formControlName="image">
+                          <div class="err" *ngIf="submitted && this.form.controls.image.errors">
+                              <div style="color: red;" *ngIf="this.form.controls.image.errors.required">
+                                  {{' field required.' | translate}} 
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+    <div class="modal-footer">
+          <button  type="submit" class="btn" style="background: #198754;color: white;" (click)="newProduit()">{{btn}}</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+    </div>
+    </form>
+  </div>

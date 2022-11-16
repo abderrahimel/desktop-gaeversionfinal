@@ -1,0 +1,75 @@
+
+  <div class="modal-content" >
+    <div class="modal-header">
+        <h5  style="padding-top: -100px;border-top: none;font-size: 16px;">{{btn}} depense</h5>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data" style="width:480px">
+        <div class="modal-body">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">  
+                            <label class="form-label">Catégorie*</label>
+                            <select name="categorie" class="form-control" style="font-size: 16px;height: 30px;"  id="categorie" formControlName="id_categorie">
+                                <option value="">Choisissez catégorie</option>
+                                <option *ngFor="let data of categories" value="{{data?.categorie?.id}}">{{data?.categorie?.categorie}}</option>
+                           </select>
+                           <div class="err" *ngIf="submitted && this.form.controls.id_categorie.errors">
+                              <div style="color: red;" *ngIf="this.form.controls.id_categorie.errors.required">
+                                  {{' field required.' | translate}} 
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Date*</label>
+                            <div class="wd-200 mg-b-30">
+                                <div class="input-group">
+                                    <input class="form-control" style="font-size: 16px;text-transform: uppercase;" placeholder="DD/MM/YYYY" type="date"  formControlName="date">
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                                  <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                                      {{' field required.' | translate}} 
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Montant*</label>
+                            <input type="text" class="form-control" style="font-size: 16px;" name="montant" formControlName="montant">
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.montant.errors">
+                          <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
+                              {{' field required.' | translate}} 
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label">Remarques</label>
+                            <textarea rows="5" class="form-control" style="font-size: 16px;" placeholder="Votre Remarques!" name="remarques" formControlName="remarque"></textarea>
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
+                          <div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
+                              {{' field required.' | translate}}
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button
+            (click)="Depenselocal()"
+                *ngIf="show"
+                type="submit" class="btn" style="background: #198754;color: white;font-size: 16px;" id="button_addl"   >{{btn}}</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')" style="font-size: 16px;">Fermer</button>
+        </div>
+    </form>
+</div>

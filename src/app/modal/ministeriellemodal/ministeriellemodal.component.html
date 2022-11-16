@@ -1,0 +1,85 @@
+<div class="modal-content">
+    <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{btn}} note</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">×</span>
+          </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+        <div class="modal-body">
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <label class="form-label">Messages.caregory*</label>
+                                <div class="mb-3" style="display: flex;align-items: center;">
+                                    <select *ngIf="!add_type" name="category" class="form-control" style="height: 32px" id="category" formControlName="category">
+                                        <option value="">Choisissez catégorie</option>
+                                        <option value="المذكرات الوزارية">المذكرات الوزرارية</option>
+                                        <option value="بلاغ صحفي">بلاغ صحفي</option>
+                                        <option value="دفتر تحملات المتعلق بفتح واستغلال مؤسسات تعليم السياقة">دفتر تحملات المتعلق بفتح واستغلال مؤسسات تعليم السياقة</option>
+                                        <option value="قرارات ومراسيم خاصة بمدونة السير 52.05">قرارات ومراسيم خاصة بمدونة السير 52.05</option>
+                                      </select>
+                                    <input  type="text" name="type_employe_autre" style="display: none;" id="authertype" class="form-control" placeholder="Autre ..."   formControlName="category">
+                                        <button type="button" class="btn btn-success" style="padding: 7px;margin-top: -5px;" title="Autre type" (click)="otherType()">
+                                          <i class="fa fa-plus" *ngIf="!add_type"></i>
+                                          <i class="fa fa-minus" *ngIf="add_type"></i>
+                                      </button>
+                             
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.category.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.category.errors.required">
+                                          {{'field required ' | translate}}  
+                                    </div>
+    
+                                </div>
+                      </div>
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label class="form-label">Titre*</label>
+                              <input type="text" class="form-control" name="titre" formControlName="titre">
+                          </div>
+                          <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.titre.errors.required">
+                                  {{' field required.' | translate}}  
+                            </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label class="form-label">Liens youtube</label>
+                              <input class="form-control" type="text" formControlName="lien">
+                          </div> 
+                          <div class="err" *ngIf="submitted && this.form.controls.lien.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.lien.errors.required">
+                                  {{' field required.' | translate}}  
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label">Fichier PDF*</label>
+                            <input type="file" class="form-control" formControlName="fichier" name="fichier" 
+                            (change)="fileChangeEvent($event)"
+                            data-allowed-file-extensions="pdf doc"
+                            accept=".pdf,.doc">
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.fichier.errors">
+                          <div style="color: red;" *ngIf="this.form.controls.fichier.errors.required">
+                                {{' field required.' | translate}}  
+                          </div>
+
+                      </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn" style="background:#198754 ;color: white;" (click)="gestionAutoEcole()">{{btn}}</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+          </div>
+    </form>
+  </div>
+

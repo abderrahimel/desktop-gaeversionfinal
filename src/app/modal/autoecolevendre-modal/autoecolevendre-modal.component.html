@@ -1,0 +1,76 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{btn}} Auto-ecole</h5>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form class="form"  [formGroup]="form" method="POST" action="" enctype="multipart/form-data">
+    <div class="modal-body">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label">Titre*</label>
+                          <input type="text" style="font-size: 14px;" class="form-control" name="titre" placeholder="titre" formControlName="titre">
+                      </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.titre.errors.required">
+                              {{'field required ' | translate}}  
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label">Description*</label>
+                          <textarea rows="5"  style="font-size: 14px;" class="form-control" placeholder="Description auto ecole" name="description" formControlName="description"></textarea>
+                          <div class="err" *ngIf="submitted && this.form.controls.description.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.description.errors.required">
+                                  {{'field required ' | translate}}  
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label">Prix*</label>
+                          <input type="text" class="form-control"  style="font-size: 14px;" name="prix" placeholder="Prix" formControlName="prix">
+                      </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.prix.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.prix.errors.required">
+                              {{'field required ' | translate}}  
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label">Date*</label>
+                          <input type="date" class="form-control"  style="font-size: 14px;" name="date" placeholder="Date" formControlName="date">
+                      </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                              {{'field required ' | translate}}  
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="form-label" *ngIf="show" >Image*</label>
+                          <input *ngIf="show" class="form-control" type="file"  name="image" formControlName="image" (change)="fileChangeEvent($event)"
+                          data-allowed-file-extensions="jpeg jpg png"
+                          accept="image/*">
+                          <img *ngIf="data?.image" src="{{data?.image}}" alt="" style="width: 200px;height:200px;">
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+    <div class="modal-footer">
+          <button *ngIf="show" type="submit" class="btn" style="background: #198754;color: white;" (click)="gestionAutoEcole()">{{btn}}</button>
+          <button type="button" class="btn btn-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+    </div>
+    </form>
+  </div>

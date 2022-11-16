@@ -1,0 +1,123 @@
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.login-form-1{
+    padding: 5%;
+    background: white;
+}
+.image {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #fff;
+}
+.login-form-2{
+    padding: 5%;
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+.login-container form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 250px;
+    height: 50px;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #a19293;
+    background-color: #fff;
+    
+}
+.btnSubmit:hover {
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    border: 3px solid #fff;
+  }
+/* .login-form-1 .btnSubmit{
+    
+    
+} */
+
+.login-form-1 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+
+
+}
+.d{
+    margin: 2%;
+    border-radius: 3rem;
+
+}
+.f{
+
+    align-items: center;
+    align-self: center;
+}
+
+.l{
+    height: 60px;
+}
+
+/*  */
+
+
+.containerlogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f3fa;
+    height: 100vh;
+}
+
+.logincontent{
+    margin-top: 60px;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+
+*::-ms-backdrop, .custom-pages.page{
+	height:100%;
+}
+.card-header {
+	background: 0 0;
+	padding: .5rem 1.5rem;
+	display: -ms-flexbox;
+	display: flex;
+	min-height: 3.5rem;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.copyright{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding: 10px;
+}
+
+.containerbottom{
+    color:white;
+}
+
+body{
+    overflow: hidden;
+}

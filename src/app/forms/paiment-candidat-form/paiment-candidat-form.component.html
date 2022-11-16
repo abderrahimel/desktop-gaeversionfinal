@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);">
+    <app-headerlogged></app-headerlogged>
+    <app-menu-sb></app-menu-sb>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+        <!-- first container -->
+      <div style=" display: flex;background:rgb(233, 236, 236);padding: 20px;">
+      
+        <div class="container-form col-12">
+            <div class="container">
+                <section class="content" id="form-font">
+                    <div style="margin-left: 15px;display: flex;align-items: center;justify-content: space-between;margin-right: 10px;">
+                        <span>Ajouter paiment
+                        </span>
+                        <div style="background: #198754;padding: 6px;border-radius: 2px;cursor: pointer;">
+                            <a href="/listes-paiement/{{id_c}}" style=" text-decoration: none;color: white;">Liste des paiment</a>
+                        </div>
+                      
+                    </div>
+                    <hr style="color: rgb(204, 211, 211);">
+                    <div style="color: red;margin-left: 10px;">
+                         (*) Champs obligatoire
+                    </div>
+                    <form class="form" [formGroup]="form" (ngSubmit)="AddOrUpdatepaiment()" method="POST" action="" id="AddPaiment" 
+                    enctype="multipart/form-data" 
+                    >
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="first-name-column">{{ "Date*" | translate }} :</label>
+                                            <input type="date"  class="form-control" name="date" formControlName="date" required/>
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                                          {{'field required ' | translate}}  
+                                    </div>
+    
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="city-column">{{ "Montant*" | translate }}:</label>
+                                    <input type="text" class="form-control" formControlName="montant" required>   
+                                </div>
+                                <div class="err"  *ngIf="submitted && this.form.controls.montant.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
+                                          {{'field required ' | translate}}  
+                                    </div>
+    
+                                </div>
+                            </div>
+            
+                          
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="city-column">{{ "Banque" | translate }}:</label>
+                                    <input type="text" placeholder="Banque" class="form-control" name="banque" formControlName="banque" required/>
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.banque.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.banque.errors.required">
+                                          {{'field required ' | translate}}  
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group typeContainer">
+                                    <label for="city-column">{{ "Type" | translate }}:</label>
+                                   <select name="type" id="type" formControlName="type" (change)="setHidden($event)" required>
+                                       <option value="">Choisir un type</option>
+                                       <option value="espece">Espece</option>
+                                       <option value="cheque">Cheque</option>
+                                       <option value="virement">Virement</option>
+                                       <option value="verssement">verssement</option>
+                                       <option value="traite">Traite</option>
+                                   </select>
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.type.errors">
+                                    <div style="color: red;margin-top: 8px;" *ngIf="this.form.controls.type.errors.required">
+                                          {{'field required ' | translate}}  
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-6" *ngIf="hidden">
+                                <div class="form-group">
+                                    <label for="city-column">{{ "Numero" | translate }}:</label>
+                                    <textarea rows="5" placeholder="Numero" class="form-control" name="numero" formControlName="numero" required></textarea>
+                                </div>
+                              
+                            </div>
+                             <div class="col-6" *ngIf="hidden">
+                                <div class="form-group">
+                                    <label for="city-column">{{ "image" | translate }}:</label>
+                                    <input type="file" 
+                                        (change)="fileChangeEvent($event)"
+                                        data-allowed-file-extensions="jpeg jpg png"
+                                        accept="image/*"
+                                     class="form-control dropify" name="image" formControlName="image" />
+                                </div>
+                               
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group classRemarque">
+                                    <label for="city-column">{{ "Remarque" | translate }}:</label>
+                                    <textarea  class="form-control" name="remarque" formControlName="remarque"></textarea>
+                                </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
+                                          {{'field required ' | translate}}  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3" style="margin-top: 20px;">
+                                    <button  type="submit"  class="btn next-btn">
+                                        {{updateOrAdd}}
+                                    </button>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+           
+            </div>
+      </div>
+                 
+                  
+   </div>
+      
+
+
+</body>
+</html>
+
+
+
+
+<!-- 
+     -->

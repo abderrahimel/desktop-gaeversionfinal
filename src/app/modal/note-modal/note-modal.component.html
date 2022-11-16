@@ -1,0 +1,57 @@
+<div class="modal-content" style="height: 450px;">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px">Ajouter note</h5>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+        <form class="form" [formGroup]="form"  method="POST" action="" enctype="multipart/form-data">
+          <div class="card-body" style="width: 300px;">
+              <p style="color: red; font-weight: bold;font-size: 12px;">(*)Champs obligatoire</p>
+              <div class="col-md-12">
+                  <div class="alert" id="AddMessage">
+                  </div>
+              </div>
+         
+                  <div class="col-md-16" style="margin-left: 20px;">
+                      <div class="form-group">
+                          <label class="form-label" style="font-size: 16px">Catégorie</label>
+                          <select name="categorie" class="form-control" style="font-size: 16px;height: 30px;" formControlName="categorie">
+                              <option value="A">A</option>
+                              <option value="A1">A1</option>
+                              <option value="AM">AM</option>
+                              <option value="B">B</option>
+                              <option value="C">C</option>
+                              <option value="D">D</option>
+                              <option value="EB">EB</option>
+                              <option value="EC">EC</option>
+                              <option value="ED">ED</option>
+                              <option value="F">F</option>
+                              <option value="FC">FC</option>
+                              <option value="FP">FP</option>
+                              <option value="FP/FC">FP/FC</option>
+                          </select>
+                      </div>
+                  </div>
+                  
+                  <div class="col-md-16"  style="margin-left: 20px;">
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 16px">Moyen</label>    
+                        <input type="text" name="moyen" class="form-control" style="font-size: 16px;height: 30px;" formControlName="moyen">
+                    </div>
+                </div>
+                <div class="col-md-16"  style="margin-left: 20px;">
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 16px">Nombre des questions</label>
+                        <input type="text" name="nombre_question" style="font-size: 16px;height: 30px;" class="form-control" formControlName="note_generale">
+                    </div>
+                </div>
+           
+          </div>
+
+          <div class="card-footer"  style="margin-top: 20px;margin-left: 20px;">
+              <button type="submit" class="btn" style="background: #198754;color: white;font-size: 16px" id="button_add" (click)="AddOrModifierNote()"><i class="fa fa-plus-circle" aria-hidden="true"></i>{{btn}}</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"  (click)="activeModal.dismiss('Cross click')" style="font-size: 16px">Annuler</button>
+          </div>
+      </form>	
+  </div> 

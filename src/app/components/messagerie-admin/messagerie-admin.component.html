@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Description" content="Job board html template">
+  <meta name="Author" content="Spruko Technologies Private Limited">
+  <meta name="keywords" content=""/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="csrf-token" content="EyyYSiAbcWCiTKOK2fPvbpBLxLevZOVzfgZLQKLS">
+  <link rel="icon" href="/assets/img/logo_gae.png" type="image/x-icon"/>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo_gae.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);" id="boutique">
+  <app-slide-bar></app-slide-bar>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style="display: flex;background:rgb(233, 236, 236);">
+<div class="wrap-table100">
+
+  <div class="tableDiv" >
+    <div class="mat-elevation-z8">
+     
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-right: 6px;padding: 10px;">
+        <div style="font-weight: 600;width: 100%;">
+            
+<div style="margin-top:15px;margin-left:15px;margin-right:15px;background-color: white;padding-top: 10px;">
+    <span style="margin-left: 15px;font-size: 13px;" >ENVOI DE MESSAGE</span>
+    <hr style="background: rgb(149, 149, 151);">
+    <div style="border: 1px solid rgb(235, 235, 236);margin: 20px;">
+        <div style="display: flex; align-items:center; justify-content:flex-start;">
+            <div style="outline: none;margin-right: 5px;padding: 7px;margin-top: 7px;margin-left: 10px;cursor: pointer;background: black;color: white;font-size: 14px;" id="envoi" (click)="changeBorder(1)"  >Envoi pour tous</div>
+            <div style="border: 1px solid rgb(235, 235, 236);outline: none;padding: 7px;margin-top: 7px;margin-top: 7px;cursor: pointer;font-size: 14px;" id='envoiSpecifier' (click)="changeBorder(2)">Envoi specifier</div>
+        </div>
+        <div *ngIf="!hidden">
+            <!-- start messagers for one auto ecole-->
+            <form class="form" [formGroup]="form1" method="POST" action="" style="padding: 20px;" 
+            enctype="multipart/form-data">
+            <div class="row">
+            <div class="col-6">  
+                <div class="form-group">
+                    <label for="city-column" style="font-size: 15px">{{ "Objet*" | translate }}</label>
+                    <input type="text" id="appt" name="appt" class="form-control" formControlName="object"/>
+                    <div class="err" *ngIf="submitted1 && this.form1.controls.object.errors">
+                        <div style="color: red;" *ngIf="this.form1.controls.object.errors.required">
+                            {{' field required.' | translate}} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+        
+            </div>
+                <div class="row">
+                    
+                    <!--  -->
+                    <div class="col-6">
+                        <div class="form-group">   
+                            <label for="last-name-column" style="font-size: 15px">{{ "Message" | translate }}</label>
+                            <textarea  id="appt" name="appt" class="form-control" formControlName="message"> </textarea>
+                            <div class="err" *ngIf="submitted1 && this.form1.controls.message.errors">
+                                <div style="color: red;" *ngIf="this.form1.controls.message.errors.required">
+                                    {{' field required.' | translate}} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                </div>
+                <div class="row">
+                    <!--  -->
+                    <div class="col-6"> 
+                        <div class="form-group"> 
+                            <label for="last-name-column" style="font-size: 15px">{{ "Fichier" | translate }}:</label>
+                            <input type="file" id="appt" name="appt" class="form-control"  (change)="fileChangeEvent($event)" formControlName="fichier">
+                            <div class="err" *ngIf="submitted1 && this.form1.controls.fichier.errors">
+                                <div style="color: red;" *ngIf="this.form1.controls.fichier.errors.required">
+                                    {{'field required.' | translate}} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+            </form>
+            <!-- send email to specifique auto ecole -->
+            <button  type="submit" class="btn" style="background:#198754 ;color: white;margin-left: 6px;" (click)="EnvoyeretoAll()">Envoyer</button>
+           
+            <!-- end messagers -->
+        </div>
+
+
+
+          <div *ngIf="hidden" >
+              <!-- send to all  -->
+                    <!-- start messagers for one auto ecole-->
+            <form class="form" [formGroup]="form2" method="POST" action="" style="padding: 20px;" 
+            enctype="multipart/form-data">
+            <div class="row">
+            <div class="col-6">  
+                <div class="form-group">
+                    <label for="city-column" style="font-size: 15px">{{ "Objet*" | translate }}</label>
+                    <input type="text" id="appt" name="appt" class="form-control" formControlName="object"/>
+                    <div class="err" *ngIf="submitted && this.form2.controls.object.errors">
+                        <div style="color: red;" *ngIf="this.form2.controls.object.errors.required">
+                            {{' field required.' | translate}} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="col-6" >   
+                <div class="form-group">
+                    <label for="last-name-column" style="font-size: 15px">{{ "Ecoles" | translate }}</label>
+                    <select  id="appt" name="appt" class="form-control" style="height: 32px;font-size: 14px" formControlName="id_autoEcole" >
+                        <option value="">Choisir Ecole</option>
+                        <option *ngFor="let data of dataAutoEcole" value="{{data?.id}}">{{data?.nom_auto_ecole}}</option>
+                    </select>
+                    <div class="err" *ngIf="submitted && this.form2.controls.id_autoEcole.errors">
+                        <div style="color: red;" *ngIf="this.form2.controls.id_autoEcole.errors.required">
+                            {{' field required.' | translate}} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+                <div class="row">
+                    
+                    <!--  -->
+                    <div class="col-6">
+                        <div class="form-group">   
+                            <label for="last-name-column" style="font-size: 15px">{{ "Message" | translate }}</label>
+                            <textarea  id="appt" name="appt" class="form-control" formControlName="message"> </textarea>
+                            <div class="err" *ngIf="submitted && this.form2.controls.message.errors">
+                                <div style="color: red;" *ngIf="this.form2.controls.message.errors.required">
+                                    {{' field required.' | translate}} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="col-6" >
+                        <div class="form-group"> 
+                            <label for="last-name-column" style="font-size: 15px">{{ "List" | translate }}:</label>
+                            <input type="text" id="appt" name="appt" class="form-control" formControlName="liste">
+                            <div class="err" *ngIf="submitted && this.form2.controls.liste.errors">
+                                <div style="color: red;" *ngIf="this.form2.controls.liste.errors.required">
+                                    {{ 'field required.' | translate}} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="row">
+                    <!--  -->
+                    <div class="col-6"> 
+                        <div class="form-group"> 
+                            <label for="last-name-column" style="font-size: 15px">{{ "Fichier" | translate }}:</label>
+                            <input type="file" id="appt" name="appt" class="form-control"  (change)="fileChangeEvent($event)" formControlName="fichier">
+                            <div class="err" *ngIf="submitted && this.form2.controls.fichier.errors">
+                                <div style="color: red;" *ngIf="this.form2.controls.fichier.errors.required">
+                                    {{'field required.' | translate}} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+            </form>
+            <!-- send email to all auto ecoles -->
+            <button type="submit" class="btn" style="background:#198754 ;color: white;margin-left: 6px;" (click)="EnvoyereMail()">Envoyer</button>
+            <!-- end messagers -->
+          </div> 
+    </div>
+   
+</div>      
+
+        </div>
+        
+    </div>
+      </div>
+  </div>
+</div>
+      </div>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
+
+

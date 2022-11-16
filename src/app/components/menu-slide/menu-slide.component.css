@@ -1,0 +1,51 @@
+nav>ul>li{
+  /* background: white; */
+
+  cursor: pointer;
+}
+.row-list, .row-list>a{
+  color: black;
+  text-decoration: black;
+  list-style-type: none;
+  padding: 5px;
+  font-size: 16px;
+  
+}
+.mCS_img_loaded{
+  height: 100px;
+}
+.mCustomScrollBox{
+  margin-top: 60px;
+}
+.listCandidat{
+  display: none;
+}
+.logo-auto-ecole{
+  height: 70px;
+  width:  70px;
+  border-radius: 50%;
+  margin-top: 60px;
+  margin-left: 50px;
+}
+
+nav{
+  width: 250px;
+  border: 1px solid rgb(243, 235, 235);
+  margin-bottom: 20px;
+}
+
+.hover-class>a:hover{
+  color: blue;
+}
+
+.class-candidat>a:active .candidat {
+  display: block;
+}
+
+.class-candidat>a:active .activeClass{
+  display: block;
+}
+.class-listCandidat:active .candidat{
+  display: block;
+  background: red;
+}

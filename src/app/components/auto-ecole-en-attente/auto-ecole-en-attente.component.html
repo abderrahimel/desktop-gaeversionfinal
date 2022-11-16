@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);" id="boutique">
+	<!-- <app-headerlogged></app-headerlogged> -->
+    <!-- <app-menu-admin></app-menu-admin> -->
+    <app-slide-bar></app-slide-bar>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style="display: flex;background:rgb(233, 236, 236);">
+<div class="wrap-table100">
+   
+  <div class="tableDiv">
+
+    <div class="mat-elevation-z8">
+     
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+        <div style="font-size: 16px;font-weight: 600;">
+          <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;">
+            <div style="font-size: 14px;">GESTION AUTO-ÉCOLE
+            </div>
+            <div>
+              <button style="outline:none;border:none;background:#05a8e9;color: white;border-radius: 5px;padding: 7px;">
+                 <i class="fa fa-archive"></i>
+                 Archives
+              </button>
+            </div>
+        </div>
+      <div class="tableDiv" >
+    
+        <table class="table">
+          <thead>
+            <tr  style="color: black;" >
+                <th scope="col">{{ "NOM" | translate }}</th>
+                <th scope="col">{{ "RESPONSABLE" | translate }}</th>
+                <th scope="col">{{ "ETAT" | translate }}</th>
+                <th scope="col">{{ "TELE ECOLE" | translate }}</th>
+                <th scope="col">{{ "TELE RESPONSABLE" | translate }}</th>
+                <th scope="col">{{ "PAYS/VILLE" | translate }}</th>
+                <th scope="col">{{ "ACTIONS" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>    
+            <tr *ngFor="let data of autoEcoleEnAttente;">
+              <th>{{data?.nom_auto_ecole}}</th>
+              <td>{{data?.nom_responsable}}{{" "}}{{data?.prenom_responsable}}</td>
+              <td><p style="background-color: rgb(240, 162, 17);color: white;">en_attente</p> </td>
+              <td> {{data?.telephone}}</td> 
+              <td> {{data?.tel_responsable}}</td>
+              <td> {{data?.pays}}/{{data?.ville}}</td>
+              <td>
+                <a  href="detail-auto-ecole/{{data?.id}}"  title="detail" class="btn" style="border-color:rgb(3, 197, 245); background: rgb(3, 197, 245);color: white;">
+                    Detail
+                </a>
+    
+                <button title="approver"  (click)="approver(data?.id)"   class="btn" style="background: rgb(2, 245, 34);color: white;">
+                    Approuver
+                </button>  
+              
+                <button (click)="deleteAutoEcole(data?.id)" title="supprimer" class="btn btn-green" style="background: black;color: white;">
+                    Supprimer
+                </button>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+        </div>
+        
+    </div>
+   
+      
+    
+      
+       
+      </div>
+  </div>
+</div>
+      </div>
+   </div>
+</body>
+</html>

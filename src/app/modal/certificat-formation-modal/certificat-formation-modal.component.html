@@ -1,0 +1,110 @@
+<div class="modal-content" style="width: 800px;height: 996px;">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">شهادة نهاية السنة في تعليم السياقة </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="card-body" id="printpdf">
+        <div class="content vscroll mCustomScrollbar _mCS_3" style="max-height:500px;"><div id="mCSB_3" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 500px;" tabindex="0"><div id="mCSB_3_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+            <div id="printpdf" style=" font-size: 19px;">
+        <meta charset="utf-8">
+        <title>شهادة نهاية التكوين في تعليم السياقة </title>
+        <h1 style="text-align: center;"><strong>شهادة نهاية التكوين في تعليم السياقة  </strong></h1>
+        <br>
+        <div style="text-align: right;">
+          
+          <p class="d-block my-1"> {{autoecole?.nom_auto_ecole}} <strong>:العلامة التجارية للمؤسسة أو الإسم التجاري للمؤسسة</strong></p>
+          <p class="d-block my-1">{{autoecole?.n_patente}} <strong>:رقم الرخصة</strong></p>
+          
+          <p class="d-block my-1">{{autoecole?.n_agrement}} <strong>:رقم القيد في السجل الوطني الخاص بمؤسسات تعليم السياقة</strong></p>
+          
+          <table class="my-1 ml-auto w-100">
+            <tbody><tr>
+                <td>{{autoecole?.ville}} <strong>:المدينة</strong></td>
+                <td>{{autoecole?.n_register_de_commerce}} <strong>:رقم القيد في السجل التجاري </strong></td>
+                <td>{{autoecole?.identification_fiscale}}  <strong>:رقم القيد في سجل الضريبة المهنية </strong></td>
+            </tr>
+          </tbody></table>
+  
+  <p class="d-block my-1">{{autoecole?.adresse}} <strong>:العنوان</strong></p>
+  
+  <table class="my-1 ml-auto w-100">
+    <tbody><tr>
+      <td>{{autoecole?.fax}} <strong> :الفاكس</strong></td>
+      <td>{{autoecole?.telephone}}<strong>:الهاتف</strong></td>
+    </tr>
+  </tbody></table><p class="d-block my-1">{{user?.user?.email}}<strong>:البريد الالكتروني</strong></p><u class="my-5"><strong> الممثل القانوني للمؤسسة</strong></u><div class="border border-secondary px-2 py-1 my-3">
+  <p class="d-block my-2"> {{autoecole?.prenom_responsable}}<strong>:الإسم الشخصي</strong></p>
+  <p class="d-block my-2"> {{autoecole?.nom_responsable}} <strong>:الإسم العائلي</strong></p>
+  <p class="d-block my-2">{{autoecole?.adresse_responsable}} <strong>:العنوان</strong></p>
+  <p class="d-block my-2">{{autoecole?.tel_responsable}} <strong>:رقم الهاتف</strong></p>
+ </div><div class="my-2">
+      <p class="d-block my-1"><strong>أشهد أن السيد(ة):</strong> {{data?.nom_ar}}{{" "}}{{data?.prenom_ar}}</p>
+      <p class="d-block my-1">{{data?.cin}} <strong>:الحامل(ة) للبطاقة الوطنية التعريف رقم </strong></p>
+      
+      <p class="d-block my-1">{{data?.ref_web}} <strong>: (Référence web) الرقم الممنوح من طرف الإدارة</strong></p>
+      <p class="d-block my-1"> {{data?.date_inscription}} <strong>:بناء على عقد التكوين الموقع بين الطرفين بتاريخ</strong></p>
+  </div><p class="d-block my-4">  
+  
+    {{data?.categorie}}
+    <strong>تلقى(تلقت) بهذه المؤسسة  دروسا نظرية و تطبيقية في تعليم سياقة المركبات من صنف</strong>  
+     <br>
+    <strong>بما مجموعه </strong>
+    {{data?.nbr_heure_theorique}}
+  
+    <strong>ساعة بالنسبة للتكوين النظري و</strong> 
+    {{data?.nbr_heure_pratique}} 
+    <strong>ساعة بالنسبة للتكوين التطبيقي طبقا للبرنامج الوطني لتعليم السياقة</strong>
+  </p><div>
+      <strong>:و قد أشرف على التكوين النظري المدرب الوارد إسمه بعده</strong>
+      </div><table>
+
+ </table><table class="ml-auto w-100">
+        <tbody><tr>
+          <td><p class="my-1">{{data?.MoniteurTheorique?.conduire}}<strong>:رقم رخصته</strong></p></td>
+          <td><p class="my-1">{{data?.MoniteurTheorique?.nom}}{{" "}}{{data?.MoniteurTheorique?.prenom}}<strong>:إسم المدرب</strong></p></td>
+        </tr>
+      </tbody></table>
+      
+      <strong>:و أشرف على التكوين التطبيقي المدرب الوارد إسمه بعده</strong>
+      <table class="ml-auto w-100">
+        <tbody><tr><td><p class="my-1 mr-5">{{data?.MoniteurPratique?.conduire}}<strong>:رقم رخصته </strong></p></td>
+        <td><p class="my-1">{{data?.MoniteurPratique?.nom}}{{" "}}{{data?.MoniteurPratique?.prenom}}<strong>:إسم المدرب</strong></p></td>
+      </tr></tbody></table>
+  </div>
+
+<div class="my-4" style="text-align: right;">
+<p>{{data?.vehicule?.categorie}}<strong>كما تلقى(تلقت) تكوينه(ها) بواسطة المركبة من صنف</strong></p>
+{{autoecole?.nom_auto_ecole}}<strong>المسجلة تحث رقم</strong>
+{{data?.vehicule?.matricule}}
+<strong>في إسم المؤسسة</strong>
+</div>
+<br>
+<table class="mt-3 mb-5 ml-auto w-100" style="text-align: right">
+    <tbody><tr>
+      <td><strong>إسم و توقيع المرشح</strong></td>
+      <td><strong>طابع المؤسسة وإسم توقيع الممثل القانوني للمؤسسة</strong></td>
+   </tr>
+</tbody></table>
+<br>
+<br>
+<br>
+<table class="my-3 ml-auto w-100" style="text-align: right">
+  <tbody>
+    <tr>
+      <td>{{date_certificat}} <strong> بتاريخ</strong></td>
+      <td>{{autoecole?.ville}}<strong>حرر ب</strong></td>
+    </tr>
+</tbody></table>
+</div>
+        </div><div id="mCSB_3_scrollbar_vertical" class="mCSB_scrollTools mCSB_3_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_3_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px; display: block; height: 180px; max-height: 490px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+    </div>
+    
+<hr>
+    <div style="margin: 20px; margin-top: 60px;">
+        <button  class="btn" (click)="activeModal.dismiss('Cross click')" printSectionId="printpdf" style="background: red;color:white" #print ngxPrint>Imprimer</button>
+         <button  class="btn" style="background:black;color:white" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+    </div>
+    
+</div>

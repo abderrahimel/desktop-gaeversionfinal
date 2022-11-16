@@ -1,0 +1,77 @@
+<!-- <div class="modal-dialog modal-lg">
+
+  </div> -->
+  <div class="modal-content" style="font-size: 16px;width: 700px;">
+    <div class="modal-header" style="width: 800px;">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">Détail employe</h5>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">    
+                        <label class="form-label">Candidat</label>
+                        <input class="form-control" name="id_c" id="detail_cin" readonly="readonly" formControlName="candidat"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Moniteur</label>
+                        <input class="form-control" id="detail_moniteur" readonly="readonly" formControlName="moniteur_pratique"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Catégorie</label>
+                        <input type="text" class="form-control" id="detail_categorie" readonly="readonly" formControlName="categorie">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">  
+                        <label class="form-label">Date dépôt</label>
+                        <input type="text" class="form-control" id="detail_date_depot" readonly="readonly" formControlName="date_examen">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Date examen</label>
+                        <input type="text" class="form-control" id="detail_date_examen" readonly="readonly" formControlName="date_depot">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

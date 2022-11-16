@@ -1,0 +1,122 @@
+<div class="modal-content" style="width: 800px;position: absolute;margin-top: 150px;margin-right: 200px;">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} examen</h5>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+	<form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+		<div class="modal-body">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="form-label">Candidat</label>
+							<select class="form-control" style="height: 30px;" formControlName="candidat_id">
+								<option *ngFor="let data of this.candidats;" value="{{data?.id}}">{{data?.nom_fr}}{{ " " }}{{data?.prenom_fr}}</option>
+							</select>
+							<div class="err" *ngIf="submitted && this.form.controls.candidat_id.errors">
+								<div style="color: red;" *ngIf="this.form.controls.candidat_id.errors.required">
+									  {{'Candidat required ' | translate}}  
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<br>
+					<div class="col-md-6">   
+						<div class="form-group">
+							<label class="form-label" >Catégorie</label>
+							<select name="categorie" style="height: 30px;" class="form-control" formControlName="categorie">
+								<option value="">Choisissez Categorie</option>
+								<option value="A">A</option>
+								<option value="A1">A1</option>
+								<option value="AM">AM</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+								<option value="D">D</option>
+								<option value="EB">EB</option>
+								<option value="EC">EC</option>
+								<option value="ED">ED</option>
+								<option value="F">F</option>
+								<option value="FC">FC</option>
+								<option value="FP">FP</option>
+								<option value="FP/FC">FP/FC</option>
+							</select>
+							<div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
+								<div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
+									  {{'Catégorie required ' | translate}}  
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="form-label">Date dépôt</label>
+							<div class="wd-200 mg-b-30">
+								<div class="input-group">
+									<input class="form-control" placeholder="DD/MM/YYYY" type="date" formControlName="date_depot">
+								</div>
+								<div class="err" *ngIf="submitted && this.form.controls.date_depot.errors">
+									<div style="color: red;" *ngIf="this.form.controls.date_depot.errors.required">
+										  {{'Date de dépot required ' | translate}}  
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="form-label">Date examen</label>
+							<div class="wd-200 mg-b-30">
+								<div class="input-group">   
+									<input class="form-control" placeholder="DD/MM/YYYY" type="date" formControlName="date_examen">
+								</div>
+								<div class="err" *ngIf="submitted && this.form.controls.date_examen.errors">
+									<div style="color: red;" *ngIf="this.form.controls.date_examen.errors.required">
+										  {{'Date d\'examen required ' | translate}}  
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="form-label">Moniteur</label>
+							<select class="form-control" style="height: 30px;" formControlName="moniteur_pratique_id">
+								<option *ngFor="let data of this.moniteurP;" value="{{data?.id}}">{{data?.nom}}{{ " " }}{{data?.prenom}}</option>
+							</select>
+							<div class="err" *ngIf="submitted && this.form.controls.moniteur_pratique_id.errors">
+								<div style="color: red;" *ngIf="this.form.controls.moniteur_pratique_id.errors.required">
+									  {{'Moniteur required ' | translate}}  
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn" style="background: #198754;color: white;" id="button_edit" (click)="updateExamen()" >{{btn}}</button>
+			<button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+		</div>
+	</form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

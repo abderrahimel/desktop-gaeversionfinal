@@ -1,0 +1,35 @@
+<div class="modal-content" style="font-size: 15px;position: absolute;margin-top: 200px;">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 15px;">{{btn}} catégorie</h5>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST" action="" id="ajoute_cours" enctype="multipart/form-data">
+        <div class="card-body">
+          <p style="color: red; font-weight: bold;font-size: 12px;">(*)Champs obligatoire</p>
+          <div class="col-md-12">
+              <div class="alert" id="AddMessage">
+              </div>
+          </div>
+          <div class="row justify-content-md-center">
+              <div class="col-md-9">
+                  <div class="form-group">
+                      <label class="form-label">Catégorie</label>
+                      <input type="text" name="categorie" style="height: 30px;font-size: 15px;" class="form-control" formControlName="categorie">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
+                          {{'field required ' | translate}}  
+                    </div>
+
+                </div>
+              </div>
+          </div>
+      </div>
+        <div class="card-footer">
+          <button type="submit" class="btn" id="button_addl" (click)="valider()" style="background: #198754;color: white;font-size: 15px;">{{btn}}</button>
+          <button type="button" class="btn btn-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')" style="font-size: 15px;">Annuler</button>
+      </div>
+  </form>	
+</div>

@@ -1,0 +1,11 @@
+input, select, textarea{
+    font-size: 13px;
+}
+
+*{
+    font-style: 15px;
+}
+
+button{
+    padding: 10px;
+}

@@ -1,0 +1,783 @@
+<div class="modal-content" style="width: 800px;height: 996px;">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">بطاقة المرشح(ة)</h5>
+        <button type="button" class="close" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+    </div>
+  
+    <div class="card-body">
+        <div class="content vscroll mCustomScrollbar _mCS_4" style="max-height:500px;"><div id="mCSB_4" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 500px;" tabindex="0"><div id="mCSB_4_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+            <div id="framecontentCarte" style=" font-size: 19px;">
+
+
+<meta charset="utf-8">
+<style>
+.pad-t{
+padding-top: 1rem;
+}
+  @media    print {
+      #footer {
+      bottom: 0% !important;}
+}
+  @media    print {
+      #footer {position: fixed;
+      padding: 20px 20px 0px 20px;
+      bottom: 0% !important;}
+}
+
+</style>
+
+<div id ="printpdf" style="padding: 2px;">
+    <table class="w-100" style="margin: 0;">
+        <tbody>
+            <tr>
+            <td class="left">
+                <div>
+                    <img src="{{data?.image}}" height="100px">
+                </div>
+            </td>
+            <td style="text-align: center;">
+                <h4><strong>Carte Candidat(e)   بطاقة المرشح(ة)</strong></h4>
+                <p>Ecole de Conduite: {{autoecole?.nom_auto_ecole}}</p>
+            </td>
+        </tr>
+    </tbody></table>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Nom : {{data?.nom_fr}} </strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>   الاسم العائلي: {{data?.nom_ar}}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Prénom : {{data?.prenom_fr}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong> الاسم الشخصي: {{data?.prenom_ar}}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>N° Cin : {{data?.cin}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>  رقم البطاقة الوطنية:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Numéro D'indcription National: {{data?.numero_contrat}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>  رقم التسجيل الوطني:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Adresse: {{data?.adresse_fr}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong> العنوان: {{data?.adresse_ar}}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Tél: {{data?.telephone}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>  الهاتف:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>E-mail: {{data?.email}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>  البريد الالكتروني:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Date de Naissance: {{data?.date_naissance}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>  تاريخ الازذياد:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Profession: {{data?.profession}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>  المهنة:</strong></div>
+    </div>
+    <div class="row">
+    <div class="col" style="text-align:left !important; direction: ltr"><strong>Catégorie de permis de Conduite Désirée: {{data?.categorie_demandee}}</strong></div>
+    <div class="col" style="text-align: right !important;direction:rtl"><strong>صنف رخصة السياقة المرغوب في الحصول عليها:</strong></div>
+    </div>
+    <div class="row">
+        
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>بتاريخ:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>رقمها:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>صنف الرخصة المحصل عليها:</strong></div>
+    </div>
+    <div class="row">
+        
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>بتاريخ:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>رقمها:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>صنف الرخصة المحصل عليها:</strong></div>
+    </div>
+    <div class="row">
+        
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>بتاريخ:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>رقمها:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>صنف الرخصة المحصل عليها:</strong></div>
+    </div>
+    <div class="row">
+        
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>بتاريخ:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>رقمها:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>صنف الرخصة المحصل عليها:</strong></div>
+    </div>
+    <div class="row">
+        
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>بتاريخ:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>رقمها:</strong></div>
+        <div class="col" style="text-align:right !important;direction:rtl"><strong>صنف الرخصة المحصل عليها:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>ٍVéhicule de Formation :{{data?.vehicule?.marque}} ({{data?.vehicule?.matricule}})</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong> عربة التكوين:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Moniteur Code de Route : {{data?.MoniteurTheorique?.nom}}{{" "}}{{data?.MoniteurTheorique?.prenom}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>مدرب التكوين النظري:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Moniteur de Conduite : {{data?.MoniteurPratique?.nom}}{{" "}}{{data?.MoniteurPratique?.prenom}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong> مدرب التكوين التطبيقي: el mahdaoui brahim</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Date de début de la Formation : {{data?.date_inscription}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>تاريخ الشروع في التكوين:</strong></div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align:left !important; direction: ltr"><strong>Date Fin de la Formation : {{data?.date_fin_contrat}}</strong></div>
+        <div class="col" style="text-align: right !important;direction:rtl"><strong>تاريخ الانتهاء من التكوين:</strong></div>
+    </div>
+    <div class="row" style="padding-top: 1rem;">
+    <div class="col">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th scope="row" style="text-align: right;direction:rtl">ثمن التكوين المتفق عليه: 2500 </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row" style="text-align: right;">الدفوعات</th>
+                
+                </tr>
+                <tr>
+                </tr></tbody>
+        </table>
+        <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col" style="text-align: right;">رقم التوصيل</th>
+                        <th scope="col" style="text-align: right;">المبلغ</th>
+                        <th scope="col" style="text-align: right;">التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                    </tbody>
+        </table> 
+    </div>
+    <div class="col">
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th scope="row" style="text-align: right;direction:rtl">مصاريف الملف:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row" style="text-align: right;">الدفوعات</th>
+                
+                </tr>
+                <tr>
+                </tr></tbody></table><table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col" style="text-align: right;">رقم التوصيل</th>
+                        <th scope="col" style="text-align: right;">المبلغ</th>
+                        <th scope="col" style="text-align: right;">التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        <td><div style="height:2.7rem">
+                            
+                        </div> </td>
+                        </tr>
+                    </tbody>
+                    </table> 
+    </div>
+    </div>
+    <div class="row" style="padding-top: 1rem;">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="row" style="text-align: right;direction:rtl">حصص التكوين التطبيقي:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    </tr></tbody>
+                </table>
+            <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col" style="text-align: right;">إمضاء المدرب</th>
+                        <th scope="col" style="text-align: right;">إمضاء المرشح</th>
+                        <th scope="col" style="text-align: right;">تاريخ الحصة</th>
+                        <th scope="col" style="text-align: right;"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">1</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">2</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">3</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">4</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">5</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">6</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">7</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">8</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">9</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">10</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">11</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">12</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">13</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">14</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">15</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">16</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">17</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">18</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">19</div></td>
+                    </tr>
+                    <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">20</div></td>
+                    </tr>
+                    </tbody>
+            </table> 
+        </div>
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="row" style="text-align: right;direction:rtl">حصص التكوين النظري:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    </tr></tbody></table><table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col" style="text-align: right;">إمضاء المدرب</th>
+                        <th scope="col" style="text-align: right;">إمضاء المرشح</th>
+                        <th scope="col" style="text-align: right;">تاريخ الحصة</th>
+                        <th scope="col" style="text-align: right;"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">1</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">2</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">3</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">4</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">5</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">6</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">7</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">8</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">9</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">10</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">11</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">12</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">13</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">14</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">15</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">16</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">17</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">18</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">19</div></td>
+                        </tr>
+                        <tr>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem"></div></td>
+                        <td><div style="height:1rem">20</div></td>
+                        </tr>
+                    </tbody>
+                    </table> 
+            
+                
+                
+            
+        </div>
+    </div>
+    <div class="row" style="padding-top: 1rem;">
+        <div class="col" style="text-align:right;direction:rtl">
+            <div style="border: 2px solid #dee2e6;border-radius: 8px;">
+                ملاحظةالمدرب التطبيقي: 
+                <p></p>
+            </div>
+            
+    
+        </div>
+        <div class="col" style="text-align:right;direction:rtl">
+            <div style="border: 2px solid #dee2e6;border-radius: 8px;">
+            ملاحظةالمدرب النظري: 
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end pad-t">
+        <div class="col-2" style="text-align: right !important;direction:rtl;border: 2px solid #dee2e6;border-radius: 8px;">
+            الإمتحانات
+        </div>
+    </div>
+    <div class="row" style="padding-top: 1rem;">
+        <div class="col-8">
+            <table class="table table-bordered">
+                <tbody><tr>
+                    <th rowspan="2">التاريخ</th>
+                <th colspan="2">ناجح</th>
+                <th colspan="2">راسب</th>
+                <th rowspan="2">النقطة</th>
+                <th rowspan="2">الممتحن</th>
+                </tr>
+                <tr>
+                <td>كود</td>
+                <td>سياقة</td>
+                <td>كود</td>
+                <td>سياقة</td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div class="col-3" style="text-align:right;direction:rtl">الإمتحان الأول</div>
+    </div>
+    <div class="row" style="padding-top: 1rem;">
+        <div class="col-8">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th rowspan="2">التاريخ</th>
+                    <th colspan="2">ناجح</th>
+                    <th colspan="2">راسب</th>
+                    <th rowspan="2">النقطة</th>
+                    <th rowspan="2">الممتحن</th>
+                </tr>
+                <tr>
+                    <td>كود</td>
+                    <td>سياقة</td>
+                    <td>كود</td>
+                    <td>سياقة</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div class="col-3" style="text-align:right;direction:rtl">الإمتحان الثاني</div>
+        
+    </div>
+   
+</div>
+
+<div>
+
+  <!-- ************ -->
+  
+  <!-- ************** -->
+  <div class="container">
+      
+            <div style="width: 768px;margin-left: -12px;">
+            
+                <div class="row d-flex p-2">
+                    <button  class="btn"  (click)="activeModal.dismiss('Cross click')" printTitle="Gestion Auto-écoles- Gae PLUS Editeur sécurité Routière" [useExistingCss]="true"  printSectionId="printpdf" style="background: red;color:white;width:100px" #print ngxPrint>Imprimer</button>
+                        <button  class="btn" style="background:black;color:white;width:100px" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>    
+                </div>
+            </div>
+   </div>
+</div>
+     </div>
+        </div></div>
+       
+    </div>
+</div>

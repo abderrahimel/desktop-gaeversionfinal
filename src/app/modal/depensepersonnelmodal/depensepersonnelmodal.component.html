@@ -1,0 +1,65 @@
+
+  <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} depense</h5>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+        <div class="modal-body">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                       
+                        <input type="hidden" style="font-size: 16px;" name="count" id="count">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                            <label class="form-label">Catégorie*</label> 
+                            <select name="categorie" class="form-control" style="font-size: 16px;height: 30px;" id="categorie" formControlName="id_categorie" >
+                                <option value="">Choisissez catégorie</option>
+                                <option *ngFor="let data of categories" value="{{data?.id}}">{{data?.categorie}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="employes_items">
+                        <div class="form-group">
+                            <label class="form-label">Employé*</label>
+                            <select name="employe" class="form-control" style="font-size: 16px;height: 30px;" formControlName="id_employe">
+                                <option value="">Choisir un employe</option>
+                                <option *ngFor="let data of employees" value="{{data?.id}}">{{data?.nom}}{{' '}}{{data?.prenom}}</option> 
+                           </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Date*</label>      
+                            <div class="wd-200 mg-b-30">
+                                <div class="input-group">
+                                    <input class="form-control" style="text-transform: uppercase;font-size: 16px;" placeholder="DD/MM/YYYY" type="date" formControlName="date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Montant*</label>
+                            <input type="text" class="form-control" style="font-size: 16px;height: 30px;" name="montant" formControlName="montant">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label">Remarques</label>
+                            <textarea rows="5" class="form-control" placeholder="Votre Remarques!" style="font-size: 16px;" name="remarques" formControlName="remarque"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button *ngIf="show" type="submit" class="btn" style="background: #198754;color: white;font-size: 16px;" id="button_addv"  (click)="depensepersonnel()" > {{btn}}</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')" style="font-size: 16px;">Fermer</button>
+        </div>
+    </form>
+</div>

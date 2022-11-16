@@ -1,0 +1,102 @@
+<!-- <div class="modal-dialog modal-lg">
+   
+  </div> -->
+  <div class="modal-content" style="padding: 10px;" >
+    <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter produit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
+       <div class="card-body">
+          <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire</p>
+         
+          <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">    
+                        <label class="form-label">Fournisseur</label>
+                        <input type="text" name="fournisseur" class="form-control" formControlName="fournisseur">
+                    </div>
+                    <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.fournisseur.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.fournisseur.errors.required">
+                              {{'field required ' | translate}}  
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Téléphone</label>
+                        <input type="text" name="tel_fournisseur" class="form-control" formControlName="telephone">
+                    </div>
+                    <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.telephone.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required">
+                              {{'field required ' | translate}}  
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">    
+                    <div class="form-group">
+                        <label class="form-label">Libelle</label>
+                        <input type="text" name="Libelle" class="form-control" formControlName="libelle">
+                    </div>
+                    <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.libelle.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.libelle.errors.required">
+                              {{'field required ' | translate}}  
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Prix</label>
+                        <input type="text" name="Prix" class="form-control" formControlName="prix">
+                    </div>
+                    <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.prix.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.prix.errors.required">
+                              {{'field required ' | translate}}  
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Quantité</label>
+                        <input type="text" name="Quantite" class="form-control" formControlName="quantite">
+                    </div>
+                    <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.quantite.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.quantite.errors.required">
+                              {{'field required ' | translate}}  
+                        </div>
+                    </div>
+                </div>
+                <div class="card m-b-20"  style="margin-top: 5px;">
+                    <div class="card-header" style="background: white;">
+                        <h3 class="card-title" style="font-size: 15px">Description</h3>
+                    </div>
+                  
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea rows="5" class="form-control" name="Description" formControlName="description"></textarea>
+                                </div>
+                                <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.description.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.description.errors.required">
+                                          {{'field required ' | translate}}  
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+          </div>
+      </div>
+
+      <div class="card-footer" style="margin-top: 7px;">
+          <button type="submit" class="btn" style="background: #198754;color: white;" (click)="addProduit()"><i class="fa fa-plus-circle" aria-hidden="true"></i>{{btn}}</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+      </div>
+  </form>	
+</div>

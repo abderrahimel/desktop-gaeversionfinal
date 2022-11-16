@@ -1,0 +1,253 @@
+<form (ngSubmit)='AddAutoEcole()'>
+    <div class="container-form">
+        <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+            <ng-wizard-step [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+                <div class="container">
+                    <section class="content" id="form-font">
+                       
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="first-name-column">{{ "Nom" | translate }} :</label>
+                                        <input type="text" class="form-control" placeholder="{{ 'Nom' | translate }}" [(ngModel)]="AE.nom"
+                                            name="fname-column" />
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Regestre commerce" | translate }}:</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            placeholder="{{ 'Regestre commerce' | translate }}" name="lname-column" [(ngModel)]="AE.registre_commerce"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="photo">{{ "Numéro d'argument" | translate }}:</label>
+                                        <input type="number" id="num" class="form-control" name="email-id-column"
+                                            placeholder="{{ 'Numéro d'argument' | translate }}" [(ngModel)]="AE.num_agrement"/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="city-column">{{ "Numéro de patente" | translate }}:</label>
+                                        <input type="text" id="city-column" class="form-control"
+                                            placeholder="{{ 'Numéro de patente' | translate }}" name="city-column" [(ngModel)]="AE.num_patente"/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{ "Date d'autorisation" | translate }}:</label>
+                                        <input type="date" id="email-id-column" class="form-control"
+                                            name="email-id-column"
+                                            placeholder="{{ 'Date d'autorisation' | translate }}" [(ngModel)]="AE.date_autorisation"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{ "identification fiscale" | translate
+                                            }}:</label>
+                                        <input type="text" id="country-floating" class="form-control"
+                                            name="country-floating"
+                                            placeholder="{{ 'identification fiscale' | translate }}" [(ngModel)]="AE.ident_fiscale"/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="company-column">{{ "Date d'ouverture" | translate }}:</label>
+                                        <input type="date" id="company-column" class="form-control"
+                                            name="company-column" placeholder="{{ 'Date d'ouverture' | translate }}" [(ngModel)]="AE.date_ouverture"/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{ "CNSS" | translate }}:</label>
+                                        <input type="text" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="{{ 'CNSS' | translate }}" [(ngModel)]="AE.CNSS"/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{ "ICE" | translate }}:</label>
+                                        <input type="text" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="{{ 'ICE' | translate }}" [(ngModel)]="AE.ICE"/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{ "Compte bancaire" | translate }}:</label>
+                                        <input type="text" id="email-id-column" class="form-control"
+                                            placeholder="Compte bancaire" name="email-id-column" [(ngModel)]="AE.compte_bancaire"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{ "TVA" | translate }}:</label>
+                                        <input type="number" id="email-id-column" class="form-control"
+                                            placeholder="Entrez TVA" name="email-id-column" [(ngModel)]="AE.TVA"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{ "Pays" | translate }}:</label>
+                                        <input type="text" id="email-id-column" class="form-control"
+                                            placeholder="Entrez Pays" name="email-id-column" [(ngModel)]="AE.pays"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{ "Ville" | translate }}:</label>
+                                        <input type="text" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="{{ 'Entrez Ville' | translate }}" [(ngModel)]="AE.ville">
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </section>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-3"></div>
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <button class="btn next-btn" (click)="showNextStep()" id="button1-fnt" type="button">
+                                {{ "suivant" | translate }}
+                                <i class="fa fa-angle-double-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-wizard-step>
+
+            <ng-wizard-step [title]="'Informations de candidat'">
+                <div class="container">
+                    <section class="content" id="form2-font">
+                        
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="first-name-column">{{ "Téléphone" | translate }} :</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="{{ 'telephone' | translate }}" name="fname-column" [(ngModel)]="AE.telephone"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Fax" | translate }}:</label>
+                                        <input type="text" class="form-control" placeholder="{{ 'Fax' | translate }}"
+                                            name="fname-column" [(ngModel)]="AE.fax"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Site web" | translate }}:</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            placeholder="{{ 'votre Site web' | translate }}" name="lname-column" [(ngModel)]="AE.site_web"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Addresse" | translate }}:</label>
+                                        <textarea type="text" id="last-name-column" class="form-control"
+                                            placeholder="{{ 'Addresse' | translate }}" name="lname-column" [(ngModel)]="AE.adresse"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "CIN responsable" | translate }}:</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            placeholder="{{ 'CIN responsable' | translate }}" name="lname-column" [(ngModel)]="AE.CIN_responsable"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Nom responsable" | translate }}:</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            placeholder="{{ 'nom responsable' | translate }}" name="lname-column" [(ngModel)]="AE.nom_responsable"/>
+                                    </div>
+                                </div>
+                                <hr />
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Prénom responsable" | translate }}:</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            placeholder="{{ 'Prénom responsable' | translate }}" name="lname-column" [(ngModel)]="AE.prenom_responsable"/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Téléphone responsable" | translate }}:</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            placeholder="{{ 'Téléphone responsable' | translate }}"
+                                            name="lname-column" [(ngModel)]="AE.tele_responsable"/>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "photo CIN" | translate }}:</label>
+                                        <input type="file" id="last-name-column" class="form-control"
+                                            name="lname-column" [(ngModel)]="AE.photo_cin"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "photo 1" | translate }}:</label>
+                                        <input type="file" id="last-name-column" class="form-control"
+                                            name="lname-column" [(ngModel)]="AE.photo1"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "photo 2" | translate }}:</label>
+                                        <input type="file" id="last-name-column" class="form-control"
+                                            name="lname-column" [(ngModel)]="AE.photo2"/>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{ "Addresse responsable" | translate }}:</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            name="lname-column" [(ngModel)]="AE.adresse_responsable"/>
+                                    </div>
+                                </div>
+                                <hr />
+
+                            </div>
+                        
+                    </section>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <button class="btn next-btn" (click)="showPreviousStep()" id="button2-fnt" type="button">
+                                <i class="fa fa-angle-double-left"></i>
+                                {{ "précedent" | translate }}
+                            </button>
+                        </div>
+                        <div class="col-3"></div>
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <button class="btn next-btn" id="button3-fnt" type="submit">
+                                <i class="fa fa-plus"></i> {{ "sauvegarder" | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-wizard-step>
+        </ng-wizard>
+    </div>
+</form>

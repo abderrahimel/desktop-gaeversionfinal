@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body>
+   <nav id="sidebar" class="active" [ngClass]="{ active: navbarOpen }" 
+   style="height: 100vh ;position: fixed;">
+      <ul class="container-menu-left" style="list-style-type: none;margin-top: 10px;">
+        <li class="active row-list" style="margin-top: 55px;" id="admin">
+          <a href="javascript:void(0)" (click)="redirect_to('/admin', '#admin')">
+            <span style="font-size: 15px;" class="fa fa-tachometer"></span>
+            <span id="tableauBord"> {{ "Tableau de bord" | translate }}</span> 
+          </a>
+        </li>
+        <li class="row-list" id="gestionAE">  
+          <span class="row-list"> 
+            <div style="display:flex;align-items:center; justify-content:space-between;margin-top: -20px;margin-bottom: -10px;">
+              <a href="javascript:void(0)"  (click)="redirect_to('/gestion-auto-ecole', '#gestionAE')"  style="text-decoration: none;color: black;"> 
+                <span style="color: red;font-size: 15px;"  class="fa fa-car"></span>
+              <span style="margin-left: 5px;"  >{{ "Gestion Auto Ecole" | translate }}</span> 
+              </a>      
+            </div>
+          </span>
+          <hr style="margin-bottom: 0;margin-left: -35px;background-color: rgb(254, 254, 255);margin-top: -10px">
+        </li>
+        <li style="margin-top: -10px;" id="archiveAE">
+          <span class="row-list" 
+            >
+            <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -30px;margin-top: -15px;">
+              <a href="javascript:void(0)"  (click)="redirect_to('/archive-auto-ecole', '#archiveAE')" style="text-decoration: none;color: black;"> 
+                <span style="color: red;font-size: 15px;"  class="fa fa-archive"></span>
+                <span style="margin-left: 5px;">{{ "Archive Auto Ecole" | translate }}</span>  
+              </a>   
+            </div>
+          </span>
+          <hr style="margin-top: 10px;margin-bottom: 0;margin-left: -35px;background-color: rgb(169, 169, 185);">
+        </li>
+        <li style="margin-top: -10px;" id="abonnement" >
+          <span  class="row-list" 
+            >
+            <div  style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -30px;margin-top: -10px;">
+              <a href="javascript:void(0)"  (click)="redirect_to('/abonnement', '#abonnement')" style="text-decoration: none;color: black;"> 
+                <span style="color: red;font-size: 15px;" class="fa fa-dollar"></span>
+                <span style="margin-left: 5px;">{{ "Abonnement" | translate }}</span>
+              </a>     
+              
+            </div>
+          </span>
+          <hr style="margin-top: 10px;margin-bottom: 0;margin-left: -35px;background-color: rgb(169, 169, 185);">
+        </li>
+        <li style="margin-top: -10px;margin-bottom: -20px;" id="adminBoutique">
+          <span  class="row-list" 
+            >
+            <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -10px;margin-top: -10px;">
+              <a  href="javascript:void(0)"  (click)="redirect_to('/admin-boutique', '#adminBoutique')" style="text-decoration: none;color: black;"> 
+                <span style="color: red;font-size: 15px;" class="fa fa-cubes"></span> 
+                <span style="margin-left: 5px;">{{ "Boutique J2HB" | translate }}</span>
+              </a>  
+            </div>
+            <hr style="margin-top: 10px;margin-bottom: 0;margin-left: -35px;background-color: rgb(169, 169, 185);">
+          </span>
+        </li>
+        <!-- moniteur search for job -->
+        <li style="margin-top: -10px;margin-bottom: -20px;" id="moniteurJob">
+          <span  class="row-list" 
+            >
+            <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -10px;margin-top: -10px;">
+              <a  href="javascript:void(0)"  (click)="redirect_to('/admin-moniteur', '#moniteurJob')" style="text-decoration: none;color: black;"> 
+                <span style="color: red;font-size: 15px;" class="fas fa-user-circle"></span> 
+                <span style="margin-left: 5px;">{{ "Moniteur" | translate }}</span>
+              </a>  
+            </div>
+            <hr style="margin-top: 10px;margin-bottom: 0;margin-left: -35px;background-color: rgb(169, 169, 185);">
+          </span>
+        </li>
+        <!--  -->
+        <!-- selling auto ecole -->
+        <li style="margin-top: -10px;margin-bottom: -20px;" id="adminecolevendre">
+          <span  class="row-list" 
+            >
+            <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -10px;margin-top: -10px;">
+              <a  href="javascript:void(0)"  (click)="redirect_to('/admin-ecole-vendre', '#adminecolevendre')" style="text-decoration: none;color: black;"> 
+                <span style="color: red;font-size: 15px;" class="fas fa-car-building"></span> 
+                <span style="margin-left: 5px;">{{ "Auto-ecole" | translate }}</span>
+              </a>  
+            </div>
+            <hr style="margin-top: 10px;margin-bottom: 0;margin-left: -35px;background-color: rgb(169, 169, 185);">
+          </span>
+        </li>
+        <!--  -->
+           <!-- Notes ministérielles -->
+           <li style="margin-top: -10px;margin-bottom: -20px;" id="notesmin">
+            <span  class="row-list" 
+              >
+              <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -10px;margin-top: -10px;">
+                <a  href="javascript:void(0)"  (click)="redirect_to('/notes_min', '#notesmin')" style="text-decoration: none;color: black;"> 
+                  <span style="color: red;font-size: 15px;" class="fas fa-car-building"></span> 
+                  <span style="margin-left: 5px;">{{ "Note ministérielle" | translate }}</span>
+                </a>  
+              </div>
+              <hr style="margin-top: 10px;margin-bottom: 0;margin-left: -35px;background-color: rgb(169, 169, 185);">
+            </span>
+          </li>
+          <!--  -->
+        <li style="margin-top: -10px;margin-bottom: -20px;" id="blog">
+          <span  class="row-list" 
+            >
+            <div style="display:flex;align-items:center; justify-content:space-between;margin-top: -25px;margin-bottom: -5px;">
+              <a  href="javascript:void(0)"  (click)="redirect_to('/blog', '#blog')"  style="text-decoration: none;color: black;"> 
+                <span style="color: red;font-size: 15px;" class="fa fa-feed"></span>
+                <span style="margin-left: 5px;">{{ "Gestion Blogs" | translate }}</span>
+              </a> 
+              </div> 
+            <hr style="margin-top: 10px;margin-bottom: 0;margin-left: -35px;background-color: rgb(169, 169, 185);">
+          </span>
+        </li>
+       <li id="gestion-users">
+         <span class="row-list" 
+            >  
+            <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -30px;margin-top: -25px;">
+              <a href="javascript:void(0)"  (click)="redirect_to('/gestion-users', '#gestion-users')" style="text-decoration: none;color: black;">  
+                <span style="color: red;font-size: 15px;" class="fa fa-users"></span> 
+                <span style="margin-left: 5px;"> {{ "Gestion Utilisateurs" | translate }}</span>
+              </a>
+            </div>
+          </span>
+          <hr style="margin-top: 10px;;margin-bottom: 0;margin-left: -35px;background-color: rgb(213, 213, 230);">
+        </li>
+       <li id="messagerie">
+        <span class="row-list" 
+            >  
+            <div style="display:flex;align-items:center; justify-content:space-between;margin-bottom: -30px;margin-top: -25px;">
+              <a href="javascript:void(0)"  (click)="redirect_to('/messagerie', '#messagerie')" style="text-decoration: none;color: black;"> 
+                <span style="color: red;font-size: 15px;" class="fa fa-send"></span>
+                <span style="margin-left: 5px;"> {{ "Messagerie" | translate }}</span>
+              </a>
+            </div>
+          </span>
+          <hr style="margin-top: 10px;margin-bottom: 0;margin-left: -35px;background-color: rgb(169, 169, 185);">
+        </li>
+      </ul>
+   </nav>
+   <script type = "text/javascript">  
+   
+    function myfunction(){   
+        alert("how are you");
+            }
+</script>  
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
+</head>
+<body style=" background:rgb(251, 251, 252);" id="boutique">
+	<!-- <app-headerlogged></app-headerlogged> -->
+    <!-- <app-menu-admin></app-menu-admin> -->
+    <app-slide-bar></app-slide-bar>
+    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
+      <div style="display: flex;background:rgb(233, 236, 236);">
+<div class="wrap-table100">
+  <div class="tableDiv">
+    <div class="mat-elevation-z8">
+     
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;margin-top: 15px;">
+        <div style="font-weight: 600;">GESTION ABONNEMENT
+        </div>
+        <div style="background: #17acda;color: white;padding: 7px;border-radius: 5px;" class="btn">
+          <i class="fa fa-car"></i>
+          <a routerLink="/gestion-approuve-ecole"  style="text-decoration: none;color:white">Ecole Approuve</a>   
+      </div>
+    </div>
+    <hr>
+       <div style="display: flex;align-items:center;justify-content:flex-end">
+           <div style="margin-right: 6px">  Rechercher:</div>
+           <mat-form-field appearance="standard">
+              <mat-label></mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+           </mat-form-field>
+       </div>
+        <table mat-table [dataSource]="dataSource" matSort>    
+      
+          <!-- nom_auto_ecole Column ['nom_auto_ecole', 'date_debut', 'date_fin', 'prix','actions'];     --> 
+          <ng-container matColumnDef="nom_auto_ecole">       
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom_auto_ecole"> 
+              <span style="font-weight:900;font-size: 11px;">AUTO-ECOLE</span>    
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element?.nom_auto_ecole}}</td>
+          </ng-container>
+      
+          <!-- date_debut Column --> 
+          <ng-container matColumnDef="date_debut">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 11px;"> DATE DEBUT</span>   </th>
+            <td mat-cell *matCellDef="let element"> {{element.date_debut}} </td>
+          </ng-container>
+      
+          <!-- date_fin Column --> 
+          <ng-container matColumnDef="date_fin">   
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 11px;">DATE FIN</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element.date_fin}} </td>
+          </ng-container>
+      
+          <!-- prix Column -->
+          <ng-container matColumnDef="prix">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 11px;">PRIX</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element.prix}} </td>
+          </ng-container>   
+         <!-- actions Column -->
+         <ng-container matColumnDef="actions">  
+          <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 11px;">ACTIONS</span>  </th>
+          <td mat-cell *matCellDef="let element"> 
+                <button 
+                (click)="open('Modifier', element)"   title="Modifier" class="btn" style=" background: #198754;color: white;margin-right: 10px;padding: 10px;">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button (click)="deleteAbonnementAutoEcole(element?.id)"  title="Supprimer" class="btn" style="background: black; color: white;padding: 10px;">
+                <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator 
+        [length]="n" 
+        [pageSize]="5"  
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+      </div>
+  </div>
+</div>
+      </div>
+   </div>
+</body>
+</html>

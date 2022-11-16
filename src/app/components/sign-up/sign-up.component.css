@@ -1,0 +1,93 @@
+.containerregister{
+    background-color: white;
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-top: 1%;
+    border: 2px solid white;
+    border-radius: 4px;
+    margin-bottom: 100px;
+}
+.input_shadow{
+    box-shadow: none;
+}
+.input_shadow:focus{
+    border-color: rgb(176, 177, 179);
+}
+.formulaireregister>span{
+    padding: 25px 25px;
+}
+.containerbodyregister{
+    background: linear-gradient(to right, rgba(22, 80, 226, 0.95) 0%, rgba(126, 81, 236, 0.95) 100%);
+
+}
+
+.copyright{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding: 10px;
+}
+
+.containerbottom{
+    background-color:#312828;
+    color:white;
+}
+
+
+ 
+.form-section{
+    padding-left: 15px;
+    display: none;
+}
+
+.form-section.current
+{
+    display: block;
+}
+
+/* .btn-success
+{
+    margin-left: 20px;
+} */
+/* .btn-info, .btn-success
+{
+    margin-top: 10px;
+    font-size: 1rem;
+} */
+
+.form-label {
+    font-size: 20px;
+}
+
+.form-navigation
+{
+    text-align: center;
+}
+
+.modal h5
+{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+#registerMission
+{
+    display: none;
+}
+#loginMission
+{
+ display: none;   
+}
+
+
+
+
+.parsley-required,.parsley-type
+{
+    margin: 2px 0px 3px;
+    padding: 0;
+    list-style-type: none;
+    color: red;
+}
