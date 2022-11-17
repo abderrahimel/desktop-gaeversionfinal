@@ -39,8 +39,6 @@ export class SlideBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.translateService.applyLanguage();
-    console.log("active tab *************");
-    console.log(this.active);
   }
 
 
@@ -84,16 +82,13 @@ export class SlideBarComponent implements OnInit {
   showHidden(e:any){
        e.preventDefault();
        this.hidden = ! this.hidden;
-       console.log(this.hidden);
   }
   
   redirect_to(rout:any){
-    console.log(rout);
     this._router.navigateByUrl(rout);
    }
    menu(e:any){
     this.clicked = !this.clicked;
-    console.log(this.clicked)
     
   }
   logoutUser(e:any){

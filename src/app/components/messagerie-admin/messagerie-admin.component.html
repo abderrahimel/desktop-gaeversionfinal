@@ -24,7 +24,6 @@
     <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
       <div style="display: flex;background:rgb(233, 236, 236);">
 <div class="wrap-table100">
-
   <div class="tableDiv" >
     <div class="mat-elevation-z8">
      
@@ -50,7 +49,7 @@
                     <input type="text" id="appt" name="appt" class="form-control" formControlName="object"/>
                     <div class="err" *ngIf="submitted1 && this.form1.controls.object.errors">
                         <div style="color: red;" *ngIf="this.form1.controls.object.errors.required">
-                            {{' field required.' | translate}} 
+                            {{' champs obligatoire *' | translate}} 
                         </div>
                     </div>
                 </div>
@@ -67,7 +66,7 @@
                             <textarea  id="appt" name="appt" class="form-control" formControlName="message"> </textarea>
                             <div class="err" *ngIf="submitted1 && this.form1.controls.message.errors">
                                 <div style="color: red;" *ngIf="this.form1.controls.message.errors.required">
-                                    {{' field required.' | translate}} 
+                                    {{' champs obligatoire *' | translate}} 
                                 </div>
                             </div>
                         </div>
@@ -83,7 +82,7 @@
                             <input type="file" id="appt" name="appt" class="form-control"  (change)="fileChangeEvent($event)" formControlName="fichier">
                             <div class="err" *ngIf="submitted1 && this.form1.controls.fichier.errors">
                                 <div style="color: red;" *ngIf="this.form1.controls.fichier.errors.required">
-                                    {{'field required.' | translate}} 
+                                    {{'champs obligatoire *' | translate}} 
                                 </div>
                             </div>
                         </div>
@@ -111,7 +110,7 @@
                     <input type="text" id="appt" name="appt" class="form-control" formControlName="object"/>
                     <div class="err" *ngIf="submitted && this.form2.controls.object.errors">
                         <div style="color: red;" *ngIf="this.form2.controls.object.errors.required">
-                            {{' field required.' | translate}} 
+                            {{' champs obligatoire *' | translate}} 
                         </div>
                     </div>
                 </div>
@@ -126,7 +125,7 @@
                     </select>
                     <div class="err" *ngIf="submitted && this.form2.controls.id_autoEcole.errors">
                         <div style="color: red;" *ngIf="this.form2.controls.id_autoEcole.errors.required">
-                            {{' field required.' | translate}} 
+                            {{' champs obligatoire *' | translate}} 
                         </div>
                     </div>
                 </div>
@@ -141,23 +140,23 @@
                             <textarea  id="appt" name="appt" class="form-control" formControlName="message"> </textarea>
                             <div class="err" *ngIf="submitted && this.form2.controls.message.errors">
                                 <div style="color: red;" *ngIf="this.form2.controls.message.errors.required">
-                                    {{' field required.' | translate}} 
+                                    {{' champs obligatoire *' | translate}} 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--  -->
-                    <div class="col-6" >
+                    <!-- <div class="col-6" >
                         <div class="form-group"> 
                             <label for="last-name-column" style="font-size: 15px">{{ "List" | translate }}:</label>
                             <input type="text" id="appt" name="appt" class="form-control" formControlName="liste">
                             <div class="err" *ngIf="submitted && this.form2.controls.liste.errors">
                                 <div style="color: red;" *ngIf="this.form2.controls.liste.errors.required">
-                                    {{ 'field required.' | translate}} 
+                                    {{ 'champs obligatoire *' | translate}} 
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 
                 </div>
                 <div class="row">
@@ -168,7 +167,7 @@
                             <input type="file" id="appt" name="appt" class="form-control"  (change)="fileChangeEvent($event)" formControlName="fichier">
                             <div class="err" *ngIf="submitted && this.form2.controls.fichier.errors">
                                 <div style="color: red;" *ngIf="this.form2.controls.fichier.errors.required">
-                                    {{'field required.' | translate}} 
+                                    {{'champs obligatoire *' | translate}} 
                                 </div>
                             </div>
                         </div>

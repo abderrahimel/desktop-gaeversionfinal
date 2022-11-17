@@ -68,41 +68,41 @@ export class RecetteComponent implements OnInit {
   }
 changestyle(name:any){      
     if(name === '.rpc'){
-      $('.rpc').css('border', '1px solid red');
-      $('.rcs').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rg').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rp').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rpc').css('color', 'red');
-      $('.rcs').css('color', 'rgb(189, 186, 186)');
-      $('.rg').css('color', 'rgb(189, 186, 186)');
-      $('.rp').css('color', 'rgb(189, 186, 186)');
+      $('.rpc').css('background', 'black');
+      $('.rcs').css('background', 'white');
+      $('.rg').css('background', 'white');
+      $('.rp').css('background', 'white');
+      $('.rpc').css('color', 'white');
+      $('.rcs').css('color', 'black');
+      $('.rg').css('color', 'black');
+      $('.rp').css('color', 'black');
     }else if(name === '.rcs'){
-      $('.rcs').css('border', '1px solid red');
-      $('.rpc').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rg').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rp').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rpc').css('color', 'rgb(189, 186, 186)');
-      $('.rcs').css('color', 'red');
-      $('.rg').css('color', 'rgb(189, 186, 186)');
-      $('.rp').css('color', 'rgb(189, 186, 186)');
+      $('.rpc').css('background', 'white');
+      $('.rcs').css('background', 'black');
+      $('.rg').css('background', 'white');
+      $('.rp').css('background', 'white');
+      $('.rpc').css('color', 'black');
+      $('.rcs').css('color', 'white');
+      $('.rg').css('color', 'black');
+      $('.rp').css('color', 'black');
     }else if(name === '.rg'){
-      $('.rcs').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rpc').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rg').css('border', '1px solid red');
-      $('.rp').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rpc').css('color', 'rgb(189, 186, 186)');
-      $('.rcs').css('color', 'rgb(189, 186, 186)');
-      $('.rg').css('color', 'red');
-      $('.rp').css('color', 'rgb(189, 186, 186)');
+      $('.rpc').css('background', 'white');
+      $('.rcs').css('background', 'white');
+      $('.rg').css('background', 'black');
+      $('.rp').css('background', 'white');
+      $('.rpc').css('color', 'black');
+      $('.rcs').css('color', 'black');
+      $('.rg').css('color', 'white');
+      $('.rp').css('color', 'black');
     }else {
-      $('.rcs').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rpc').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rg').css('border', '1px solid rgb(189, 186, 186)');
-      $('.rp').css('border', '1px solid red');
-      $('.rpc').css('color', 'rgb(189, 186, 186)');
-      $('.rcs').css('color', 'rgb(189, 186, 186)');
-      $('.rg').css('color', 'rgb(189, 186, 186)');
-      $('.rp').css('color', 'red');
+      $('.rpc').css('background', 'white');
+      $('.rcs').css('background', 'white');
+      $('.rg').css('background', 'white');
+      $('.rp').css('background', 'black');
+      $('.rpc').css('color', 'black');
+      $('.rcs').css('color', 'black');
+      $('.rg').css('color', 'black');
+      $('.rp').css('color', 'white');
     }
   }
 }

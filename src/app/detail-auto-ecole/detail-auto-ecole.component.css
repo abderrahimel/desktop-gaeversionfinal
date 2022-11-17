@@ -541,5 +541,8 @@ margin-right: 10px;
 }  
 
 input,textarea {
-  font-size: 14px;
+  font-size: 12px;
+}
+label{
+  font-size: 13px;
 }

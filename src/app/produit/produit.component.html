@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,13 +19,13 @@
       <div class="wrap-table100">
         <div class="mat-elevation-z8">
           <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
-            <div style="font-size: 16px;font-weight: 600;">LISTES DES PRODUITS
+            <div style="font-weight: 600;color: black;">LISTES DES PRODUITS
             </div>
             <div class="col-3 add-btn-div" >
               <button 
                   (click)="open('Ajouter', null)"
-                  class="btn  add-btn" 
-                  style="background-color: #198754;color: white;">
+                  class="btn" 
+                  style="background-color: #198754;color: white;font-style: 14px;">
                 <i class="fa fa-plus"></i>{{ "Nouveau Produit" | translate }}
               </button>
             </div>
@@ -49,38 +48,38 @@
                      
                         <ng-container matColumnDef="fournisseur">
                           <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fournisseur"> 
-                            <span style="font-weight:900;font-size: 16px;margin-right: 5px;">FOURNISSEUR</span>    
+                            <span style="font-weight:900;margin-right: 5px;">FOURNISSEUR</span>    
                           </th>
                           <td mat-cell *matCellDef="let element"> {{element.fournisseur}} </td>
                         </ng-container>
                     
                         <ng-container matColumnDef="libelle">    
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;margin-right: 5px;">LIBELLE</span>   </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;margin-right: 5px;">LIBELLE</span>   </th>
                           <td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
                         </ng-container>
                     
                         <ng-container matColumnDef="prix">   
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;margin-right: 5px;">PRIX</span> </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;margin-right: 5px;">PRIX</span> </th>
                           <td mat-cell *matCellDef="let element"> {{element.prix}} </td>
                         </ng-container>
                     
                         <ng-container matColumnDef="quantite">  
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">QUANTITE</span> </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">QUANTITE</span> </th>
                           <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
                         </ng-container>   
                 
                         <ng-container matColumnDef="description"> 
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">DESCRIPTION</span> </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">DESCRIPTION</span> </th>
                           <td mat-cell *matCellDef="let element"> {{element.description}} </td>
                         </ng-container>
                         <ng-container matColumnDef="gsm">  
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">GSM</span> </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">GSM</span> </th>
                           <td mat-cell *matCellDef="let element"> {{element.autoecole[0]?.tel_responsable}} </td>
                         </ng-container> 
                  
                     
                        <ng-container matColumnDef="actions">  
-                        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">ACTIONS</span>  </th>
+                        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">ACTIONS</span>  </th>
                         <td mat-cell *matCellDef="let element"> 
                             <button class="btn btn-danger" style="padding: 5px;" (click)="deleteProduit(element.id)">
                               Supprimer 
@@ -118,38 +117,38 @@
           
               <ng-container matColumnDef="fournisseur">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fournisseur"> 
-                  <span style="font-weight:900;font-size: 16px;margin-right: 5px;">FOURNISSEUR</span>    
+                  <span style="font-weight:900;margin-right: 5px;">FOURNISSEUR</span>    
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.fournisseur}} </td>
               </ng-container>
           
               <ng-container matColumnDef="libelle">    
-                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;margin-right: 5px;">LIBELLE</span>   </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;margin-right: 5px;">LIBELLE</span>   </th>
                 <td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
               </ng-container>
           
               <ng-container matColumnDef="prix">   
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;margin-right: 5px;">PRIX</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;margin-right: 5px;">PRIX</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.prix}} </td>
               </ng-container>
           
               <ng-container matColumnDef="quantite">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">QUANTITE</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">QUANTITE</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
               </ng-container>   
       
               <ng-container matColumnDef="description"> 
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">DESCRIPTION</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">DESCRIPTION</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.description}} </td>
               </ng-container>
               <ng-container matColumnDef="gsm">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">GSM</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">GSM</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.autoecole[0]?.tel_responsable}} </td>
               </ng-container> 
        
           
              <ng-container matColumnDef="actions">  
-              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">ACTIONS</span>  </th>
+              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">ACTIONS</span>  </th>
               <td mat-cell *matCellDef="let element"> 
                   <button class="btn btn-danger" style="padding: 5px;" (click)="deleteProduit(element.id)">
                     Supprimer 

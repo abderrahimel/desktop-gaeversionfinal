@@ -125,27 +125,27 @@ export class DepensesCategoriesComponent implements OnInit {
   }
   changestyle(name:any){
     if(name === '.dcp'){
-      $('.dcp').css('border', '1px solid rgb(238, 127, 127)');
-      $('.dcv').css('border', '1px solid rgb(92, 88, 88)');
-      $('.dcl').css('border', '1px solid rgb(92, 88, 88)');
-      $('.dcp').css('color', 'rgb(238, 127, 127)');
-      $('.dcv').css('color', 'rgb(92, 88, 88)');
-      $('.dcl').css('color', 'rgb(92, 88, 88)');
+      $('.dcp').css('background', 'black');
+      $('.dcv').css('background', 'white');
+      $('.dcl').css('background', 'white');
+      $('.dcp').css('color', 'white');
+      $('.dcv').css('color', 'black');
+      $('.dcl').css('color', 'black');
     }else if(name === '.dcv'){
       // initialise pagination also set the dataSource
-      $('.dcp').css('border', '1px solid rgb(92, 88, 88)');
-      $('.dcv').css('border', '1px solid rgb(238, 127, 127)');
-      $('.dcl').css('border', '1px solid rgb(92, 88, 88)');
-      $('.dcp').css('color', 'rgb(92, 88, 88)');
-      $('.dcv').css('color', 'rgb(238, 127, 127)');
-      $('.dcl').css('color', 'rgb(92, 88, 88)');
+      $('.dcp').css('background', 'white');
+      $('.dcv').css('background', 'black');
+      $('.dcl').css('background', 'white');
+      $('.dcp').css('color', 'black');
+      $('.dcv').css('color', 'white');
+      $('.dcl').css('color', 'black');
     }else {
-      $('.dcp').css('border', '1px solid rgb(92, 88, 88)');
-      $('.dcv').css('border', '1px solid rgb(92, 88, 88)');
-      $('.dcl').css('border', '1px solid rgb(238, 127, 127)');
-      $('.dcp').css('color', 'rgb(92, 88, 88)');
-      $('.dcv').css('color', 'rgb(92, 88, 88)');
-      $('.dcl').css('color', 'rgb(238, 127, 127)');
+      $('.dcp').css('background', 'white');
+      $('.dcv').css('background', 'white');
+      $('.dcl').css('background', 'black');
+      $('.dcp').css('color', 'black');
+      $('.dcv').css('color', 'black');
+      $('.dcl').css('color', 'white');
     }
   }
   hidden(action:any, type:any){

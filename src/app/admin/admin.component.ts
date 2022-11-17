@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -17,19 +21,30 @@ import { DataSuperAdminState } from '../state/dataSuperAdmin/dataSuperAdmin.stat
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  displayedColumns: string[] = ['nom_auto_ecole', 'telephone','etat', 'tel_responsable', 'pays','actions'];    
+  dataSource!: MatTableDataSource<any>;
+  dataSource1!: MatTableDataSource<any>;
+  displayedColumns1: string[] = ['cin', 'numero_contrat', 'nom', 'date_inscription', 'categorie','actions'];     
+  @ViewChild('empTbSort1') empTbSort1 = new MatSort();
+  @ViewChild('paginatorSecond') paginatorSecond!: MatPaginator; 
+  n:any;
+  n1:any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   public etat_auto_ecole = 'en_attente';
    dateVal = new Date();
    urlLogo:any;
    totalAE:any;
    totalAEA:any;
    datang:any;
+
    dataSuperAdmin:any;
    totalAECOLEarchive:any;
    autoEcoleApprouver:any;
    autoEcoleEnAttente:any;
    totalAE_Attente:any;
    public yearsPaiement = ['2017', '2018', '2019']
-   displayedColumns: string[] = ['month', 'depense', 'recette', 'solde'];
+  //  displayedColumns: string[] = ['month', 'depense', 'recette', 'solde'];
   constructor(private dataService: DataService,
               private auth:AuthService,
               private store: Store<{dataSuperAdmin: DataSuperAdminState, autoecolesApprover: AutoecolesApproverState,autoecolesEnAttente: AutoecolesEnAttenteState}>
@@ -38,12 +53,28 @@ export class AdminComponent implements OnInit {
     this.auth.authStatus.subscribe(value=>{
         if(value){
           this.getDataSuperAdmin();
-          this.getAutoEcoleApprouve();
-          this.getAutoEcoleEnAttente();
+          this.loadData();
+          this.getAutoEcolesEnAttente()
         }
     })
 
   }
+  loadData(){
+    this.dataService.getAutoEcoleApprover().subscribe(data=>{
+      this.autoEcoleApprouver = data;
+      this.dataSource = new MatTableDataSource(this.autoEcoleApprouver)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
+   }
+   getAutoEcolesEnAttente(){
+    this.dataService.getAutoEcolesEnAttente().subscribe(data=>{
+      this.autoEcoleEnAttente = JSON.parse(data);
+      this.dataSource1 = new MatTableDataSource(this.autoEcoleEnAttente)
+      this.dataSource1.sort = this.empTbSort1;
+      this.dataSource1.paginator = this.paginatorSecond;
+    })
+   }
   getDataSuperAdmin(){
     this.store.pipe(take(1)).subscribe(store=>{
       if(!store.dataSuperAdmin.dataSuperAdmin.loaded){

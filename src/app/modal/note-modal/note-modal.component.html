@@ -32,6 +32,11 @@
                               <option value="FP/FC">FP/FC</option>
                           </select>
                       </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
+                              {{'champs obligatoire * ' | translate}}  
+                        </div>
+                    </div>
                   </div>
                   
                   <div class="col-md-16"  style="margin-left: 20px;">
@@ -39,11 +44,21 @@
                         <label class="form-label" style="font-size: 16px">Moyen</label>    
                         <input type="text" name="moyen" class="form-control" style="font-size: 16px;height: 30px;" formControlName="moyen">
                     </div>
+                    <div class="err" *ngIf="submitted && this.form.controls.moyen.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.moyen.errors.required">
+                              {{'champs obligatoire * ' | translate}}  
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-16"  style="margin-left: 20px;">
                     <div class="form-group">
                         <label class="form-label" style="font-size: 16px">Nombre des questions</label>
                         <input type="text" name="nombre_question" style="font-size: 16px;height: 30px;" class="form-control" formControlName="note_generale">
+                    </div>
+                    <div class="err" *ngIf="submitted && this.form.controls.note_generale.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.note_generale.errors.required">
+                              {{'champs obligatoire * ' | translate}}  
+                        </div>
                     </div>
                 </div>
            

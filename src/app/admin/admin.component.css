@@ -283,3 +283,8 @@ table {
 .footer{
     text-align: center;
 }
+
+.btn-auto{
+    border: 1px solid rgb(238, 231, 231);
+  
+}

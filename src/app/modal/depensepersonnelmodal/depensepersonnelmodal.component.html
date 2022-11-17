@@ -21,6 +21,11 @@
                                 <option value="">Choisissez catégorie</option>
                                 <option *ngFor="let data of categories" value="{{data?.id}}">{{data?.categorie}}</option>
                             </select>
+                            <div class="err" *ngIf="submitted && this.form.controls.id_categorie.errors">
+                                <div style="color: red;" *ngIf="this.form.controls.id_categorie.errors.required">
+                                    {{' champs obligatoire *' | translate}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6" id="employes_items">
@@ -30,6 +35,11 @@
                                 <option value="">Choisir un employe</option>
                                 <option *ngFor="let data of employees" value="{{data?.id}}">{{data?.nom}}{{' '}}{{data?.prenom}}</option> 
                            </select>
+                           <div class="err" *ngIf="submitted && this.form.controls.id_employe.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.id_employe.errors.required">
+                                {{' champs obligatoire *' | translate}}
+                            </div>
+                        </div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -39,6 +49,11 @@
                                 <div class="input-group">
                                     <input class="form-control" style="text-transform: uppercase;font-size: 16px;" placeholder="DD/MM/YYYY" type="date" formControlName="date">
                                 </div>
+                                <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                                        {{' champs obligatoire *' | translate}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -47,11 +62,21 @@
                             <label class="form-label">Montant*</label>
                             <input type="text" class="form-control" style="font-size: 16px;height: 30px;" name="montant" formControlName="montant">
                         </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.montant.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
+                                {{' champs obligatoire *' | translate}}
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="form-label">Remarques</label>
                             <textarea rows="5" class="form-control" placeholder="Votre Remarques!" style="font-size: 16px;" name="remarques" formControlName="remarque"></textarea>
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
+                                {{' champs obligatoire *' | translate}}
+                            </div>
                         </div>
                     </div>
                 </div>

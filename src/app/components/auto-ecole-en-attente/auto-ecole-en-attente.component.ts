@@ -40,12 +40,11 @@ export class AutoEcoleEnAttenteComponent implements OnInit {
 
   }
   loadData(){
-    this.dataService.getAutoEcoleApprover().subscribe(data=>{
-      this.dataLoad = data;
+    this.dataService.getAutoEcolesEnAttente().subscribe(data=>{
+      this.dataLoad = JSON.parse(data);
       this.dataSource = new MatTableDataSource(this.dataLoad)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
    }
   getAutoEcoleEnAttente(){

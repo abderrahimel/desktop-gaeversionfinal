@@ -46,22 +46,12 @@ export class FactureComponent implements OnInit { //
         this.dataSource = new MatTableDataSource(this.factures)
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        if(this.factures){
-          this.n = this.factures.reduce((acc, o) => acc + Object.keys(o).length, 0)
-        }
+        
       })
     })
     
   }
-  getFacturers(){
-    this.dataService.getFactures(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      this.dataLoad = JSON.parse(data);
-      this.dataSource = new MatTableDataSource(this.dataLoad)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
-    })
-  }
+
   applyFilter(event:any){
     let value = event.target.value
     this.dataSource.filter = value.trim().toLowerCase()

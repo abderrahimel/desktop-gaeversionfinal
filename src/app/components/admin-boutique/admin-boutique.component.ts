@@ -83,7 +83,7 @@ export class AdminBoutiqueComponent implements OnInit,AfterViewInit {
 
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    // this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
   })
  }
  boolShow(event:any){

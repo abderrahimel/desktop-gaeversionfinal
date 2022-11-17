@@ -16,7 +16,7 @@
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
                         <div style="color: red;" *ngIf="this.form.controls.titre.errors.required">
-                              {{'field required ' | translate}}  
+                              {{'champs obligatoire * ' | translate}}  
                         </div>
                     </div>
                   </div>
@@ -27,7 +27,7 @@
                           <textarea rows="5"  style="font-size: 14px;" class="form-control" placeholder="Description auto ecole" name="description" formControlName="description"></textarea>
                           <div class="err" *ngIf="submitted && this.form.controls.description.errors">
                             <div style="color: red;" *ngIf="this.form.controls.description.errors.required">
-                                  {{'field required ' | translate}}  
+                                  {{'champs obligatoire * ' | translate}}  
                             </div>
                         </div>
                       </div>
@@ -40,7 +40,7 @@
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.prix.errors">
                         <div style="color: red;" *ngIf="this.form.controls.prix.errors.required">
-                              {{'field required ' | translate}}  
+                              {{'champs obligatoire * ' | translate}}  
                         </div>
                     </div>
                   </div>
@@ -51,7 +51,7 @@
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.date.errors">
                         <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
-                              {{'field required ' | translate}}  
+                              {{'champs obligatoire * ' | translate}}  
                         </div>
                     </div>
                   </div>

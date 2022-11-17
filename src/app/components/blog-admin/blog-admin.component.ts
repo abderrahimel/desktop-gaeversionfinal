@@ -59,7 +59,6 @@ export class BlogAdminComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource(this.blogs)
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.n = this.blogs.reduce((acc, o) => acc + Object.keys(o).length, 0)
   })
 
  }
@@ -69,7 +68,6 @@ export class BlogAdminComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource(this.blogs)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.blogs.reduce((acc, o) => acc + Object.keys(o).length, 0)
   })
  }
  applyFilter(event:any){

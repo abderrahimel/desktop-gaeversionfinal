@@ -90,7 +90,6 @@ export class NoteMinisterielleComponent implements OnInit, AfterViewInit {
   
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.n = this.noteMinisterielle.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
   }
   newProduit(){

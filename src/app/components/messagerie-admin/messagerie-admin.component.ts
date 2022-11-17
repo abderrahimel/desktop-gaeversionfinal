@@ -40,7 +40,6 @@ export class MessagerieAdminComponent implements OnInit {
   }
   getAllAutoEcole(){
     this.dataService.getAllAutoEcole().subscribe(data =>{
-      console.log(data);
       this.dataAutoEcole = data;
     })
   }
@@ -67,18 +66,14 @@ export class MessagerieAdminComponent implements OnInit {
           const reader = new FileReader();
           reader.readAsDataURL(e.target.files[0]); // read file as data url
           reader.onload = (event) =>{
-            console.log("base64");
-            console.log(reader.result);
             this.url = reader.result;
           }
       }
        
   }
   EnvoyereMail(){
-    console.log("send to one");
     this.submitted = true;
     if(this.form1.invalid){
-      console.log("form invalid");
       return ;
     }
     // send data to api
@@ -88,16 +83,14 @@ export class MessagerieAdminComponent implements OnInit {
       id_autoEcole: this.form2.value.id_auto_ecole,
       message: this.form2.value.message,
       liste: this.form2.value.liste,
-    }).subscribe(data=>console.log(data))
+    }).subscribe(data=>{})
 
 
 
   }
   EnvoyeretoAll(){
-    console.log("send to all");
     this.submitted1 = true;
     if(this.form1.invalid){
-      console.log("form invalid");
       return ;
     }
     // send data to api
@@ -105,7 +98,7 @@ export class MessagerieAdminComponent implements OnInit {
       fichier: this.url,
       object: this.form1.value.object,
       message: this.form1.value.message,
-    }).subscribe(data=>console.log(data))
+    }).subscribe(data=>{})
   
   }
 }

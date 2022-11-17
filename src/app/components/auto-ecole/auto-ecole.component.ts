@@ -41,7 +41,6 @@ export class AutoEcoleComponent implements OnInit {
   this.auth.authStatus.subscribe(value=>{
     if(value){
       this.getAutoEcoles();
-     
     }
   })
      }
@@ -61,7 +60,6 @@ export class AutoEcoleComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.dataLoad)
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
   })
  }
  

@@ -1,6 +1,6 @@
-<div class="modal-content" style="height:460px;">
+<div class="modal-content" >
     <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Modifier vente</h5>
+    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 14px;">Modifier vente</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
     </button>
@@ -14,54 +14,86 @@
                     <div class="col-md-5">
                         <div class="form-group">     
                             <label class="form-label">Candidat</label>  
-                            <select class="form-control" name="candidat" formControlName="candidat_id" >
+                            <select class="form-control selectf" name="candidat" style="font-size: 13px;height:34px" formControlName="candidat_id" >
                                 <option value="">Choisissez un candidat</option>
                                  <option *ngFor="let data of candidatBasic" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
                                  <option *ngFor="let data of candidatSupplementaire" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
-                                  
                             </select>
+                            <div class="err" *ngIf="submitted && this.form.controls.candidat_id.errors">
+                                <div style="color: red;" *ngIf="this.form.controls.candidat_id.errors.required">
+                                    {{' champs obligatoire *' | translate}}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-md-5">
                         <div class="form-group">
                             <label class="form-label">Libelle</label>
-                            <select class="form-control" name="produit" formControlName="produit_id" >
+                            <select class="form-control" style="font-size: 13px;height:34px" name="produit" formControlName="produit_id" >
                                 <option value="">Choisissez un produit</option>
                                <option *ngFor="let data of produits" value="{{data.id}}">{{data.libelle}}</option>
-                                
                             </select>
+                            <div class="err" *ngIf="submitted && this.form.controls.produit_id.errors">
+                                <div style="color: red;" *ngIf="this.form.controls.produit_id.errors.required">
+                                    {{' champs obligatoire *' | translate}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group"> 
                             <label class="form-label">Quantité disponible</label>
-                            <input type="text" name="quantite_dispo" formControlName="quantiteDisponible"  class="form-control" >
-                            
+                            <input type="text" name="quantite_dispo" style="font-size: 13px;" formControlName="quantiteDisponible"  class="form-control" >
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.quantiteDisponible.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.quantiteDisponible.errors.required">
+                                {{' champs obligatoire *' | translate}}
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
                             <label class="form-label">Prix unitaire</label>
-                            <input type="text" name="prix_u"  class="form-control" formControlName="prixUnitaire" >
+                            <input type="text" name="prix_u"  style="font-size: 13px;" class="form-control" formControlName="prixUnitaire" >
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.prixUnitaire.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.prixUnitaire.errors.required">
+                                {{' champs obligatoire *' | translate}}
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
                             <label class="form-label">Quantité</label> 
-                            <input type="text" name="quantite"  class="form-control" formControlName="quantite">
+                            <input type="text" name="quantite"  style="font-size: 13px;" class="form-control" formControlName="quantite">
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.quantite.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.quantite.errors.required">
+                                {{' champs obligatoire *' | translate}}
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">         
                             <label class="form-label">Prix totale</label>
-                            <input type="text" name="prix_t"  class="form-control" formControlName="prixTotale">
+                            <input type="text" name="prix_t"  style="font-size: 13px;" class="form-control" formControlName="prixTotale">
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.prixTotale.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.prixTotale.errors.required">
+                                {{' champs obligatoire *' | translate}}
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5" style="margin-bottom: 10px ;">
                         <div class="form-group">
                             <label class="form-label">Date</label>
-                            <input type="Date" name="date" id="date_edit" class="form-control" formControlName="date">
+                            <input type="Date" name="date" style="font-size: 13px;" id="date_edit" class="form-control" formControlName="date">
+                        </div>
+                        <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                                {{' champs obligatoire *' | translate}}
+                            </div>
                         </div>
                     </div>
               </div>
@@ -70,8 +102,8 @@
       </div>
 
       <div class="card-footer">
-          <button type="submit" class="btn" style="background:#198754 ;color: white;" id="button_edit" (click)="addVente()"><i class="fa fa-edit" aria-hidden="true"></i>  {{btn}}</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+          <button type="submit" class="btn" style="background:#198754 ;color: white;padding: 08px;" id="button_edit" (click)="addVente()"><i class="fa fa-edit" aria-hidden="true"></i>  {{btn}}</button>
+          <button type="button" class="btn btn-danger" style="padding: 08px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
       </div>
   </form>	
 </div>

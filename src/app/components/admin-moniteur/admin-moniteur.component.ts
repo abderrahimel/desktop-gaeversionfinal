@@ -87,7 +87,7 @@ export class AdminMoniteurComponent implements OnInit, AfterViewInit {
 
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.moniteursJob.reduce((acc, o) => acc + Object.keys(o).length, 0)
+      // this.n = this.moniteursJob.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
   }
   newProduit(){

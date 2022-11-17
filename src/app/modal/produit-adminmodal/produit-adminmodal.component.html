@@ -17,7 +17,7 @@
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
                         <div style="color: red;" *ngIf="this.form.controls.titre.errors.required">
-                            {{' field required.' | translate}} 
+                            {{' champs obligatoire *' | translate}} 
                         </div>
                     </div>
                   </div>    
@@ -36,7 +36,7 @@
                           </select>
                           <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
                             <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
-                                {{' field required.' | translate}} 
+                                {{' champs obligatoire *' | translate}} 
                             </div>
                         </div>
                       </div>
@@ -49,7 +49,7 @@
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.prix.errors">
                         <div style="color: red;" *ngIf="this.form.controls.prix.errors.required">
-                            {{' field required.' | translate}} 
+                            {{' champs obligatoire *' | translate}} 
                         </div>
                     </div>
                   </div>
@@ -63,7 +63,7 @@
                               </div>
                               <div class="err" *ngIf="submitted && this.form.controls.marque.errors && hidd">
                                 <div style="color: red;" *ngIf="this.form.controls.marque.errors.required">
-                                    {{' field required.' | translate}} 
+                                    {{' champs obligatoire *' | translate}} 
                                 </div>
                             </div>
                           </div>
@@ -75,7 +75,7 @@
                               </div>
                               <div class="err" *ngIf="submitted && this.form.controls.model.errors && hidd">
                                 <div style="color: red;" *ngIf="this.form.controls.model.errors.required">
-                                    {{' field required.' | translate}} 
+                                    {{' champs obligatoire *' | translate}} 
                                 </div>
                             </div>
                           </div>
@@ -90,7 +90,7 @@
                                   </select>
                                   <div class="err" *ngIf="submitted && this.form.controls.carburant.errors && hidd">
                                     <div style="color: red;" *ngIf="this.form.controls.carburant.errors.required">
-                                        {{' field required.' | translate}} 
+                                        {{' champs obligatoire *' | translate}} 
                                     </div>
                                 </div>
                               </div>
@@ -104,7 +104,7 @@
                               </div>
                               <div class="err" *ngIf="submitted && this.form.controls.kilometrage.errors && hidd">
                                 <div style="color: red;" *ngIf="this.form.controls.kilometrage.errors.required">
-                                    {{' field required.' | translate}} 
+                                    {{' champs obligatoire *' | translate}} 
                                 </div>
                             </div>
                           </div>
@@ -138,7 +138,7 @@
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.prixPromotion.errors">
                             <div style="color: red;" *ngIf="this.form.controls.prixPromotion.errors.required">
-                                {{' field required.' | translate}} 
+                                {{' champs obligatoire *' | translate}} 
                             </div>
                         </div>
                       </div>
@@ -151,7 +151,7 @@
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.description.errors">
                         <div style="color: red;" *ngIf="this.form.controls.description.errors.required">
-                            {{' field required.' | translate}} 
+                            {{' champs obligatoire *' | translate}} 
                         </div>
                     </div>
                   </div>
@@ -162,7 +162,7 @@
                           <input type="file" name="cin" class="form-control" (change)="fileChangeEvent($event)"  formControlName="image">
                           <div class="err" *ngIf="submitted && this.form.controls.image.errors">
                               <div style="color: red;" *ngIf="this.form.controls.image.errors.required">
-                                  {{' field required.' | translate}} 
+                                  {{' champs obligatoire *' | translate}} 
                               </div>
                           </div>
                       </div>

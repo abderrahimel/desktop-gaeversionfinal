@@ -22,7 +22,7 @@
           <div class="mat-elevation-z8">
  
             <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
-              <div style="font-size: 16px;font-weight: 600;">GESTION DES FACTURES
+              <div style="font-weight: 600;color: black;">GESTION DES FACTURES
               </div>
               <div class="col-3 add-btn-div">
                 <button (click)=" open('Ajouter', null)"  style="text-decoration: none;color: white;width: 140px;background: #0ca930;" class="btn add-btn" >
@@ -39,53 +39,53 @@
                         <!--ABSENCE candidats -->
                     
                           <div style="display: flex;align-items:center;justify-content:flex-end">
-                            <div style="margin-right: 6px;font-size: 16px;">  Rechercher:</div>
+                            <div style="margin-right: 6px;">  Rechercher:</div>
                             <mat-form-field appearance="standard">
                                <mat-label></mat-label>
-                               <input matInput (keyup)="applyFilter($event)" style="font-size: 16px;" placeholder="... " #input>
+                               <input matInput (keyup)="applyFilter($event)" style="" placeholder="... " #input>
                             </mat-form-field>
                         </div>
                         <table mat-table [dataSource]="dataSource" matSort>    
             
                           <ng-container matColumnDef="id">  
                             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> 
-                              <span style="font-weight:900;font-size: 16px;">ID</span>    
+                              <span style="font-weight:900;">ID</span>    
                             </th>
                             <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
                           </ng-container>
                       
                           <ng-container matColumnDef="date">      
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">DATE</span>   </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">DATE</span>   </th>
                             <td mat-cell *matCellDef="let element"> {{element?.date}} </td>
                           </ng-container>
                       
                           <ng-container matColumnDef="candidat">   
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">NOM</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">NOM</span> </th>
                             <td mat-cell *matCellDef="let element"> {{element?.candidat?.nom_fr}}{{" "}}{{element?.candidat?.prenom_fr}} </td>
                           </ng-container>
                       
                           <ng-container matColumnDef="tva">        
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">TVA</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">TVA</span> </th>
                             <td mat-cell *matCellDef="let element"> {{element?.tva}} </td>
                           </ng-container>   
                   
                           <ng-container matColumnDef="montant_ht"> 
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">MONTANT HT</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">MONTANT HT</span> </th>
                             <td mat-cell *matCellDef="let element"> {{element?.montant_ht}} </td>
                           </ng-container>
                           <ng-container matColumnDef="montant_ttc">  
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">MONTANT TTC</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">MONTANT TTC</span> </th>
                             <td mat-cell *matCellDef="let element"> {{element?.montant_ttc}} </td>
                           </ng-container> 
                    
                       
                          <ng-container matColumnDef="actions">  
-                          <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">ACTIONS</span>  </th>
+                          <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">ACTIONS</span>  </th>
                           <td mat-cell *matCellDef="let element"> 
-                            <button (click)=" open('Modifier', element)" style="width: 70px; box-shadow: none;padding: 10px;width: 100px;font-size: 16px;" class="btn btn-danger">
+                            <button (click)=" open('Modifier', element)" style="width: 70px; box-shadow: none;padding: 10px;width: 100px;" class="btn btn-danger">
                               Modifier
                              </button>
-                             <button (click)="deletFacture(element?.id)" style="margin-left: 5px;width: 70px;box-shadow: none;padding: 10px;width: 100px;font-size: 16px;" class="btn btn-primary">
+                             <button (click)="deletFacture(element?.id)" style="margin-left: 5px;width: 70px;box-shadow: none;padding: 10px;width: 100px;" class="btn btn-primary">
                                Supprimer
                              </button>
                           </td>

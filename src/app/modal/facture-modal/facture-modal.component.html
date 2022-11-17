@@ -19,8 +19,13 @@
                           <label class="form-label">Date*</label>
                           <div class="wd-200 mg-b-30">
                               <div class="input-group">
-                                  <input class="form-control" style="font-size: 16px;text-transform: uppercase" placeholder="DD/MM/YYYY" type="date" name="date" formControlName="date">
+                                  <input class="form-control" style="font-size: 12px;text-transform: uppercase" placeholder="DD/MM/YYYY" type="date" name="date" formControlName="date">
                               </div>
+                              <div class="err" *ngIf="submitted && this.form.controls.date.errors">
+                                <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
+                                      {{'champs obligatoire * ' | translate}}  
+                                </div>
+                            </div>
                           </div>
                       </div>
                   </div>
@@ -32,6 +37,11 @@
                               <option value="">Choisir un candidat</option>
                               <option *ngFor="let data of candidats" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
                           </select>
+                          <div class="err" *ngIf="submitted && this.form.controls.candidat_id.errors">
+                            <div style="color: red;" *ngIf="this.form.controls.candidat_id.errors.required">
+                                  {{'champs obligatoire * ' | translate}}  
+                            </div>
+                        </div>
                       </div>
                   </div>
                   <div class="col-md-6">
@@ -39,24 +49,44 @@
                           <label class="form-label"> Taux de TVA*</label>       
                           <input type="text" class="form-control" style="font-size: 16px;" name="tva" formControlName="tva">
                       </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.tva.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.tva.errors.required">
+                              {{'champs obligatoire * ' | translate}}  
+                        </div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                       <div class="form-group">
                           <label class="form-label">Montant_ht*</label>
                           <input type="text" class="form-control" name="ht" style="font-size: 16px;" formControlName="montant_ht" >
                       </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.montant_ht.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.montant_ht.errors.required">
+                              {{'champs obligatoire * ' | translate}}  
+                        </div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                       <div class="form-group">
                           <label class="form-label">Montant_ttc*</label>
                           <input type="text" class="form-control" name="ttc" style="font-size: 16px;" formControlName="montant_ttc">
                       </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.montant_ttc.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.montant_ttc.errors.required">
+                              {{'champs obligatoire * ' | translate}}  
+                        </div>
+                    </div>
                   </div>
                   <div class="col-md-12">
                       <div class="form-group">
                           <label class="form-label">Remarques</label>
                           <textarea rows="5" class="form-control" placeholder="Votre Remarques!" style="font-size: 16px;" formControlName="remarque" name="remarques"></textarea>
                       </div>
+                      <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
+                        <div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
+                              {{'champs obligatoire * ' | translate}}  
+                        </div>
+                    </div>
                   </div>
 
               </div>

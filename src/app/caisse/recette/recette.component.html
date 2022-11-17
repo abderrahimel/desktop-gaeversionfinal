@@ -28,7 +28,7 @@
     
         <nav ngbNav #nav="ngbNav" class="nav-tabs">
         <ng-container ngbNavItem>
-          <a ngbNavLink style="border:1px solid red; border-radius: 0;margin-right: 4px;color: red;font-weight: 700;font-size: 15px;" class="rg" (click)="changestyle('.rg')">Recette general</a>
+          <a ngbNavLink style="border:1px solid rgb(204, 198, 198); border-radius: 0;margin-right: 4px;color: white;font-weight: 700;font-size: 15px;background: black;" class="rg" (click)="changestyle('.rg')">Recette general</a>
           <ng-template ngbNavContent>
             <div class="tableDiv">
               <div style="display: flex; align-items:flex-end; justify-content:flex-end;margin: 5px;">
@@ -39,8 +39,6 @@
               </div>
               <mat-card>
                 <div class="card" style="width: 100%;background: white;">      
-
-                  
                   <div style="display: flex;align-items:center;justify-content:flex-end">
                     <div style="margin-right: 6px;font-size: 16px;">  Rechercher:</div>
                     <mat-form-field appearance="standard">

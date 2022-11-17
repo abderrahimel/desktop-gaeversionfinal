@@ -187,41 +187,41 @@ export class DepenceComponent implements OnInit {
   }
 changestyle(name:any){
     if(name === '.dg'){
-      $('.dg').css('border', '1px solid red');
-      $('.dp').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dv').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dl').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dg').css('color', 'red');
-      $('.dp').css('color', 'rgb(189, 186, 186)');
-      $('.dv').css('color', 'rgb(189, 186, 186)');
-      $('.dl').css('color', 'rgb(189, 186, 186)');
+      $('.dg').css('background', 'black');
+      $('.dp').css('background', 'white');
+      $('.dv').css('background', 'white');
+      $('.dl').css('background', 'white');
+      $('.dg').css('color', 'white');
+      $('.dp').css('color', 'black');
+      $('.dv').css('color', 'black');
+      $('.dl').css('color', 'black');
     }else if(name === '.dp'){
-      $('.dg').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dp').css('border', '1px solid red');
-      $('.dv').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dl').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dg').css('color', 'rgb(189, 186, 186)');
-      $('.dp').css('color', 'red');
-      $('.dv').css('color', 'rgb(189, 186, 186)');
-      $('.dl').css('color', 'rgb(189, 186, 186)');
+      $('.dg').css('background', 'white');
+      $('.dp').css('background', 'black');
+      $('.dv').css('background', 'white');
+      $('.dl').css('background', 'white');
+      $('.dg').css('color', 'black');
+      $('.dp').css('color', 'white');
+      $('.dv').css('color', 'black');
+      $('.dl').css('color', 'black');
     }else if(name === '.dv'){
-      $('.dg').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dp').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dv').css('border', '1px solid red');
-      $('.dl').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dg').css('color', 'rgb(189, 186, 186)');
-      $('.dp').css('color', 'rgb(189, 186, 186)');
-      $('.dv').css('color', 'red');
-      $('.dl').css('color', 'rgb(189, 186, 186)');
+      $('.dg').css('background', 'white');
+      $('.dp').css('background', 'white');
+      $('.dv').css('background', 'black');
+      $('.dl').css('background', 'white');
+      $('.dg').css('color', 'black');
+      $('.dp').css('color', 'black');
+      $('.dv').css('color', 'white');
+      $('.dl').css('color', 'black');
     }else {
-      $('.dg').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dp').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dv').css('border', '1px solid rgb(189, 186, 186)');
-      $('.dl').css('border', '1px solid red');
-      $('.dg').css('color', 'rgb(189, 186, 186)');
-      $('.dp').css('color', 'rgb(189, 186, 186)');
-      $('.dv').css('color', 'rgb(189, 186, 186)');
-      $('.dl').css('color', 'red');
+      $('.dg').css('background', 'white');
+      $('.dp').css('background', 'white');
+      $('.dv').css('background', 'white');
+      $('.dl').css('background', 'black');
+      $('.dg').css('color', 'black');
+      $('.dp').css('color', 'black');
+      $('.dv').css('color', 'black');
+      $('.dl').css('color', 'white');
     }
   }
   addOrUpdateDepenseCategorie(){

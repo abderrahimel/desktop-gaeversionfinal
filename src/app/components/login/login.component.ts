@@ -73,9 +73,9 @@ export class LoginComponent implements OnInit {
             }
             localStorage.setItem('login', user?.login)
             // add user to the store
-            this.store.dispatch(addUser({payload: user}));console.log({payload: user});
+            this.store.dispatch(addUser({payload: user}));
             this.dataService.currentAutoEcoleid().subscribe( (data:any)=>
-             {   console.log("auto ecole data");console.log(data);
+             {   
                 localStorage.setItem('autoEcole_id', data.id);
                 localStorage.setItem('logo', data.image);
                 this._auth.changeAuthStatus(true);

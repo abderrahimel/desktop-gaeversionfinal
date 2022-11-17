@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="err" *ngIf="submitted && this.form.controls.category.errors">
                                     <div style="color: red;" *ngIf="this.form.controls.category.errors.required">
-                                          {{'field required ' | translate}}  
+                                          {{'champs obligatoire * ' | translate}}  
                                     </div>
     
                                 </div>
@@ -40,7 +40,7 @@
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
                             <div style="color: red;" *ngIf="this.form.controls.titre.errors.required">
-                                  {{' field required.' | translate}}  
+                                  {{' champs obligatoire *.' | translate}}  
                             </div>
                         </div>
                       </div>
@@ -52,7 +52,7 @@
                           </div> 
                           <div class="err" *ngIf="submitted && this.form.controls.lien.errors">
                             <div style="color: red;" *ngIf="this.form.controls.lien.errors.required">
-                                  {{' field required.' | translate}}  
+                                  {{' champs obligatoire *.' | translate}}  
                             </div>
                         </div>
                       </div>
@@ -62,14 +62,13 @@
                             <label class="form-label">Fichier PDF*</label>
                             <input type="file" class="form-control" formControlName="fichier" name="fichier" 
                             (change)="fileChangeEvent($event)"
-                            data-allowed-file-extensions="pdf doc"
-                            accept=".pdf,.doc">
+                            data-allowed-file-extensions="pdf"
+                            >
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.fichier.errors">
                           <div style="color: red;" *ngIf="this.form.controls.fichier.errors.required">
-                                {{' field required.' | translate}}  
+                                {{' champs obligatoire *.' | translate}}  
                           </div>
-
                       </div>
                       </div>
 

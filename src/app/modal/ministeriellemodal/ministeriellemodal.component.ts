@@ -22,7 +22,7 @@ export class MinisteriellemodalComponent implements OnInit {
     category: new FormControl('', Validators.required),   
     titre: new FormControl('', Validators.required),
     lien: new FormControl('', Validators.required),
-    fichier: new FormControl(''), 
+    fichier: new FormControl('', [Validators.required]), 
   });
   
   constructor(public activeModal: NgbActiveModal,

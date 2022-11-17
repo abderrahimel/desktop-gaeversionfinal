@@ -16,7 +16,7 @@
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
                         <div style="color: red;" *ngIf="this.form.controls.titre.errors.required">
-                            {{' field required.' | translate}} 
+                            {{' champs obligatoire *' | translate}} 
                         </div>
                     </div>
                   </div>
@@ -28,7 +28,7 @@
                         <textarea type="text" name="cin" class="form-control" style="font-size: 14px" formControlName="description"></textarea>
                         <div class="err" *ngIf="submitted && this.form.controls.description.errors">
                             <div style="color: red;" *ngIf="this.form.controls.description.errors.required">
-                                {{' field required.' | translate}} 
+                                {{' champs obligatoire *' | translate}} 
                             </div>
                         </div>
                      </div>
@@ -41,7 +41,7 @@
                         <input type="file" name="cin" class="form-control" (change)="fileChangeEvent($event)"  formControlName="image">
                         <div class="err" *ngIf="submitted && this.form.controls.image.errors">
                             <div style="color: red;" *ngIf="this.form.controls.image.errors.required">
-                                {{' field required.' | translate}} 
+                                {{' champs obligatoire *' | translate}} 
                             </div>
                         </div>
                         <img *ngIf="data?.image" src="{{data?.image}}" alt="" style="height: 200px;width:200px;">
