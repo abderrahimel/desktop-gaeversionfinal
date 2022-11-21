@@ -30,16 +30,13 @@ export class DepenseCategorieModalComponent implements OnInit {
   valider(){
     this.submitted = true;
     if(this.form.invalid){
-      console.log("form invalid");
       return;
     }
-    console.log("form is valid");
     let id_autoEcole = localStorage.getItem('autoEcole_id');
     let data = {
       categorie: this.form.value.categorie,
       type: this.type
     }
- 
     if(this.btn === 'Ajouter'){
       // dispatch action add categorie depense; 
       this.store.dispatch(addDepenseCategorie({idAutoEcole: id_autoEcole,data}))
@@ -47,13 +44,7 @@ export class DepenseCategorieModalComponent implements OnInit {
       // dispatch action update categorie depense
       this.store.dispatch(updateDepenseCategorie({id:this.data.id, data }));
       }
-      console.log("the value of the input");
-      console.log(this.type);
-      console.log(this.btn);
       this.activeModal.dismiss('Cross click')
 
     }
-      
-   
-  
 }

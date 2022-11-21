@@ -53,14 +53,11 @@ export class MoniteurFormComponent implements OnInit {
   addMoniteur(){
     this.submitted = true;
     if(this.form.invalid){
-        console.log("form invalid ");
         return;
       }
       
     const string = this.categorie_list.split(',')
     string.pop();
-    console.log(string.join(','));
-
     let dataMoniteur =  {
       nom: this.form.value.nom,
       prenom: this.form.value.prenom,

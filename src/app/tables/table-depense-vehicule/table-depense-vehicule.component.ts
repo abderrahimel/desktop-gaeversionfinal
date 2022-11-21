@@ -187,5 +187,4 @@ getData(){
     const modalRef = this.modalService.open(ModalImprimerVehiculeComponent);
     modalRef.componentInstance.data = this.depenseLocal;
   }
-
 }

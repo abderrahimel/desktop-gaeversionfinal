@@ -38,7 +38,6 @@ export class NoteModalComponent implements OnInit {
  AddOrModifierNote(){
     this.submitted = true;
     if(this.form.invalid){
-      console.log("form invalid ");
       return;
     }
       let data = { categorie: this.form.value.categorie, moyen: this.form.value.moyen, note_generale: this.form.value.note_generale};

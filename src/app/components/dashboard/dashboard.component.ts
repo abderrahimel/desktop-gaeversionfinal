@@ -172,7 +172,6 @@ export class DashboardComponent implements OnInit {
      this.getdata();
     //   recette array and sold array  calculated after calling getrecette()
      this.getrecette();
-     
      this.initStatistique();
      this.getExamenCandidat()
      // absence candidat
@@ -186,7 +185,7 @@ export class DashboardComponent implements OnInit {
       this.dataSource  = new MatTableDataSource(this.examenCandidats);
       this.dataSource.sort = this.empTbSort;
       this.dataSource.paginator = this.paginatorFirst;
-      this.lengthExamen = this.examenCandidats.reduce((acc, o) => acc + Object.keys(o).length, 0)
+      // this.lengthExamen = this.examenCandidats.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
   }
   applyFilter(event:any){

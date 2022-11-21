@@ -19,7 +19,7 @@
        <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e8eeea;;">
         <div style="display: flex;background: #e8eeea;;">
           <div class="wrap-table100">
-            <div class="mat-elevation-z8">
+            <div class="mat-elevation-z8" style="box-shadow: none">
             <mat-card>
               <div class="card" style="width: 100%;">
                 <div class="card-body">
@@ -43,7 +43,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.nom.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.nom.errors.required">
-                                                      {{'Nom required ' | translate}}  
+                                                      {{'Nom obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.prenom.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.prenom.errors.required">
-                                                      {{'Prenom required ' | translate}}  
+                                                      {{'Prenom obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -67,7 +67,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.cin.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.cin.errors.required">
-                                                      {{'Cin required ' | translate}}  
+                                                      {{'Cin obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -80,7 +80,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.date_naissance.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.date_naissance.errors.required">
-                                                      {{'Date de naissance required ' | translate}}  
+                                                      {{'Date de naissance obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -92,7 +92,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.lieu_naissance.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.lieu_naissance.errors.required">
-                                                      {{'Lieu de naissance required ' | translate}}  
+                                                      {{'Lieu de naissance obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -104,7 +104,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.email.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
-                                                      {{'Email required ' | translate}}  
+                                                      {{'Email obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -116,7 +116,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.telephone.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required">
-                                                      {{'Telephone required ' | translate}}  
+                                                      {{'Telephone obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -128,7 +128,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.date_embauche.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.date_embauche.errors.required">
-                                                      {{'Date de embauche required ' | translate}}  
+                                                      {{'Date de embauche obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -143,7 +143,7 @@
                                                 </select>
                                                 <div class="err" *ngIf="submitted && this.form.controls.type_moniteur.errors">
                                                     <div style="color: red;" *ngIf="this.form.controls.type_moniteur.errors.required">
-                                                          {{'Type Moniteur required ' | translate}}  
+                                                          {{'Type Moniteur obligatoire * ' | translate}}  
                                                     </div>
                     
                                                 </div>
@@ -156,7 +156,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.capn.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.capn.errors.required">
-                                                      {{'C.A.P.N required ' | translate}}  
+                                                      {{'C.A.P.N obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -168,7 +168,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.conduire.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.conduire.errors.required">
-                                                      {{'N° P Conduire required ' | translate}}  
+                                                      {{'N° P Conduire obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -182,7 +182,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.adresse.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.adresse.errors.required">
-                                                      {{'Adresse required ' | translate}}  
+                                                      {{'Adresse obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -221,7 +221,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.observations.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.observations.errors.required">
-                                                      {{'Observations required ' | translate}}  
+                                                      {{'Observations obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>
@@ -239,7 +239,7 @@
                                             </div>
                                             <div  class="err" *ngIf="submitted && this.form.controls.carteMoniteur.errors && !is_update">
                                                 <div style="color: red;" *ngIf="this.form.controls.carteMoniteur.errors.required">
-                                                      {{'Carte moniteur required ' | translate}}  
+                                                      {{'Carte moniteur obligatoire * ' | translate}}  
                                                 </div>
                     
                                             </div>

@@ -45,7 +45,6 @@ export class FactureModalComponent implements OnInit {
   add_orUpdatefacture(){
     this.submitted = true; 
     if(this.form.invalid){
-      console.log("form invalid ");
       return;
     }
     let data =  {

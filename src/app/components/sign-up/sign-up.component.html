@@ -160,7 +160,7 @@
     #view_eye{display:none;}
 </style>
 <!--Header Main-->
-<div class="header-main" id="top_scroll" style="display: flex;align-items: center;justify-content: center;margin-top: 120px;">
+<div class="header-main" id="top_scroll" style="display: flex;align-items: center;justify-content: center;margin-top: 30px;">
  
     <div class="desktoplogo d-flex align-content-center">
         <a routerLink="/" >
@@ -169,6 +169,7 @@
 
 </div>
 <!--/Header Main-->
+
 <!--Page-->
  <div class="page custom-pages" style="margin-top:-215px" >
     <div class="page-content z-index-10">
@@ -177,7 +178,13 @@
                 <div style="margin-top: 170px;margin-bottom: 600px;margin-bottom: 0;" class="card">
                     <form [formGroup]="form"  method="POST" action=""  
                     enctype="multipart/form-data" >
-                                             
+                     <!-- spinner -->
+                     <!-- <div *ngIf="!form.invalid && loadSpinner" style="position:fixed;z-index: 4000;margin-left: 40%;margin-top: 10%;" >
+                        <div class="spinner-border text-danger"  role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                     </div> -->
+                     <!-- end spinner -->
                      <div class="card-body"  style="background: white;">
                          <p style="color: red; font-weight: bold;font-size: 12px;">
                              {{'(*) Champs obligatoire' | translate}} </p>
@@ -197,7 +204,7 @@
                                  </div>
                                  <div class="err" *ngIf="submitted && this.form.controls.image.errors">
                                      <div style="color: red;" *ngIf="this.form.controls.image.errors.required">
-                                         {{'field required ' | translate}}
+                                         {{'Champ obligatoire ' | translate}}
                                      </div>
                                      <span style="color: red;"  *ngIf="this.form.controls.image.status === 'INVALID' && this.form.controls.image.touched">{{' extension  .jpeg, .jpg, .png' | translate}} </span>
                                  </div>
@@ -210,7 +217,7 @@
                                     
                                      <div class="err" *ngIf="submitted && this.form.controls.nom_auto_ecole.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.nom_auto_ecole.errors.required">
-                                               {{'Nom auto ecole is required ' | translate}}  
+                                               {{'Nom auto ecole is obligatoire ' | translate}}  
                                          </div>
             
                                      </div>
@@ -227,7 +234,7 @@
                                          </div>
                                          <div class="err" *ngIf="submitted && this.form.controls.date_ouverture.errors">
                                              <div style="color: red;" *ngIf="this.form.controls.date_ouverture.errors.required">
-                                                   {{'date ouverture is required ' | translate}}  
+                                                   {{'date ouverture is obligatoire ' | translate}}  
                                              </div>
              
                                          </div>
@@ -238,7 +245,7 @@
                                   
                                      <div class="err" *ngIf="submitted && this.form.controls.n_register_de_commerce.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.n_register_de_commerce.errors.required">
-                                               {{'Registre commerce required ' | translate}}  
+                                               {{'Registre commerce obligatoire ' | translate}}  
                                          </div>
             
                                      </div>
@@ -251,7 +258,7 @@
                                     
                                      <div class="err" *ngIf="submitted && this.form.controls.identification_fiscale.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.identification_fiscale.errors.required">
-                                               {{'ident fiscale required ' | translate}}  
+                                               {{'ident fiscale obligatoire ' | translate}}  
                                          </div>
             
                                      </div>
@@ -269,7 +276,7 @@
                                          </div>
                                          <div class="err" *ngIf="submitted && this.form.controls.date_autorisation.errors">
                                              <div style="color: red;" *ngIf="this.form.controls.date_autorisation.errors.required">
-                                                   {{'date autorisation required ' | translate}}  
+                                                   {{'date autorisation obligatoire ' | translate}}  
                                              </div>
              
                                          </div>
@@ -280,7 +287,7 @@
                                      
                                      <div class="err" *ngIf="submitted && this.form.controls.n_agrement.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.n_agrement.errors.required">
-                                               {{'N. Agrement required' | translate}}  
+                                               {{'N. Agrement obligatoire' | translate}}  
                                          </div>
             
                                      </div>
@@ -294,7 +301,7 @@
                                    
                                      <div class="err" *ngIf="submitted && this.form.controls.n_patente.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.n_patente.errors.required">
-                                               {{' N. patente required.' | translate}}  
+                                               {{' N. patente obligatoire.' | translate}}  
                                          </div>
             
                                      </div>
@@ -313,7 +320,7 @@
                                  </div>
                                  <div class="err" *ngIf="submitted && this.form.controls.image_rc.errors">
                                      <div style="color: red;" *ngIf="this.form.controls.image_rc.errors.required">
-                                         {{'field required ' | translate}}
+                                         {{'Champ obligatoire ' | translate}}
                                      </div>
                                      <span style="color: red;"  *ngIf="this.form.controls.image_rc.status === 'INVALID' && this.form.controls.image_rc.touched">{{' extension  .jpeg, .jpg, .png' | translate}} </span>
                                  </div>
@@ -331,7 +338,7 @@
                                  </div>
                                  <div class="err" *ngIf="submitted && this.form.controls.image_agrement.errors">
                                      <div style="color: red;" *ngIf="this.form.controls.image_agrement.errors.required">
-                                         {{'field required ' | translate}}
+                                         {{'Champ obligatoire ' | translate}}
                                      </div>
                                      <span style="color: red;"  *ngIf="this.form.controls.image_agrement.status === 'INVALID' && this.form.controls.image_agrement.touched">{{' extension  .jpeg, .jpg, .png' | translate}} </span>
                                  </div>
@@ -346,7 +353,7 @@
                                      <input type="text" class="form-control input_shadow" name="n_cnss" value="" formControlName="n_cnss" required>
                                          <div class="err" *ngIf="submitted && this.form.controls.n_cnss.errors">
                                              <div style="color: red;" *ngIf="this.form.controls.n_cnss.errors.required">
-                                                 {{'N. Cnss required.' | translate}} 
+                                                 {{'N. Cnss obligatoire.' | translate}} 
                                              </div>
                  
                                          </div>
@@ -359,7 +366,7 @@
                                      <input type="text" class="form-control input_shadow" name="ice" value="" formControlName="ice" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.ice.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.ice.errors.required">
-                                             {{'Ice required.' | translate}} 
+                                             {{'Ice obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
@@ -372,7 +379,7 @@
                                      <input type="text" class="form-control input_shadow" name="n_compte_bancaire" value="" formControlName="n_compte_bancaire" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.n_compte_bancaire.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.n_compte_bancaire.errors.required">
-                                             {{' N. compte bancaire required.' | translate}} 
+                                             {{' N. compte bancaire obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
@@ -385,7 +392,7 @@
                                      <input type="number" class="form-control input_shadow" name="tva" value="" formControlName="tva" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.tva.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.tva.errors.required">
-                                             {{' Tva required.' | translate}} 
+                                             {{' Tva obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
@@ -400,17 +407,18 @@
                                      <input type="text" class="form-control input_shadow" name="pays" value=""  formControlName="pays" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.pays.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.pays.errors.required">
-                                             {{' pays required.' | translate}} 
+                                             {{' pays obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
                                      <label class="form-label text-dark">{{'Téléphone*' | translate}}</label>
                                      <input type="text" class="form-control input_shadow" name="telephone" value="" formControlName="telephone" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.telephone.errors">
-                                         <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required">
-                                             {{' Telephone required.' | translate}} 
+                                         <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required || this.form.controls.telephone.status === 'INVALID'">
+                                             {{' Telephone obligatoire.non valide' | translate}} 
                                          </div>
-             
+                                         <!-- <span style="color: red;"  *ngIf="this.form.controls.telephone.status === 'INVALID'">
+                                            {{'telephone non valide' | translate}} </span> -->
                                      </div>
                                  </div>
                              </div>
@@ -421,7 +429,7 @@
                                      <input type="text" class="form-control input_shadow" name="ville" value="" formControlName="ville" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.ville.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.ville.errors.required">
-                                             {{' ville required.' | translate}} 
+                                             {{' ville obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
@@ -440,7 +448,7 @@
                                      <span style="color: red;">{{this.email_exist_in_data_base}}</span>
                                      <div class="err" *ngIf="submitted && this.form.controls.email.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
-                                             {{' email required.' | translate}} 
+                                             {{' email obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
@@ -449,7 +457,7 @@
                                     <input formControlName="password" type="password" class="form-control input_shadow ng-untouched ng-pristine ng-invalid"  i18n="password"  required />
                                     <div class="err" *ngIf="submitted && this.form.controls.password.errors">
                                         <div style="color: red;" *ngIf="this.form.controls.password.errors.required">
-                                            {{' password required.' | translate}} 
+                                            {{' password obligatoire.' | translate}} 
                                         </div>
             
                                     </div>
@@ -484,7 +492,7 @@
                                      <input type="text" class="form-control input_shadow" name="cin_responsable" value="" formControlName="cin_responsable" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.cin_responsable.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.cin_responsable.errors.required">
-                                             {{' Cin required.' | translate}} 
+                                             {{' Cin obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
@@ -497,7 +505,7 @@
                                      <input type="text" class="form-control input_shadow" name="nom_responsable" value="" formControlName="nom_responsable" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.nom_responsable.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.nom_responsable.errors.required">
-                                             {{' Nom responsable required.' | translate}} 
+                                             {{' Nom responsable obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
@@ -509,7 +517,7 @@
                                      <input type="text" class="form-control input_shadow" name="prenom_responsable" value="" formControlName="prenom_responsable" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.prenom_responsable.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.prenom_responsable.errors.required">
-                                             {{' Prenom responsable required.' | translate}} 
+                                             {{' Prenom responsable obligatoire.' | translate}} 
                                          </div>
              
                                      </div>
@@ -520,10 +528,12 @@
                                      <label class="form-label text-dark">{{'Tél de Résponsable*' | translate}}</label>
                                      <input type="text" class="form-control input_shadow" name="tel_responsable" value="" formControlName="tel_responsable" required>
                                      <div class="err" *ngIf="submitted && this.form.controls.tel_responsable.errors">
-                                         <div style="color: red;" *ngIf="this.form.controls.tel_responsable.errors.required">
-                                             {{' tel responsable required.' | translate}} 
+                                         <div style="color: red;" *ngIf="this.form.controls.tel_responsable.errors.required || this.form.controls.tel_responsable.status === 'INVALID'">
+                                             {{' tel responsable obligatoire. non valide' | translate}} 
                                          </div>
-             
+                                         <!-- <span style="color: red;" *ngIf="this.form.controls.tel_responsable.status === 'INVALID'">
+                                            {{'non valide' | translate}}
+                                        </span> -->
                                      </div>
                                  </div>
                              </div>
@@ -539,7 +549,7 @@
                                  </div>
                                  <div class="err" *ngIf="submitted && this.form.controls.image_cin.errors">
                                      <div style="color: red;" *ngIf="this.form.controls.image_cin.errors.required">
-                                         {{'field required ' | translate}}
+                                         {{'Champ obligatoire ' | translate}}
                                      </div>
                                      <span style="color: red;"  *ngIf="this.form.controls.image_cin.status === 'INVALID' && this.form.controls.image_cin.touched">{{' extension  .jpeg, .jpg, .png' | translate}} </span>
                                  </div>

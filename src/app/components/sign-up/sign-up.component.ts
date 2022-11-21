@@ -19,30 +19,30 @@ export class SignUpComponent implements OnInit {
   base64Img_image:any;
   base64Img_image_agrement:any;
   base64Img_image_cin:any;
+  loadSpinner:boolean = false;
   confirm_password:any = false;
   dateVal = new Date()
   form = new FormGroup({
     image: new FormControl('', [Validators.required,Validators.pattern('(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\\.(?:jpg|gif|png))(?:\\?([^#]*))?(?:#(.*))?')]),
-    nom_auto_ecole: new FormControl('', [Validators.required ,Validators.minLength(4)]),
+    nom_auto_ecole: new FormControl('', [Validators.required]),
     date_ouverture: new FormControl('', Validators.required),
     n_register_de_commerce: new FormControl('', Validators.required ),
     identification_fiscale: new FormControl('', Validators.required),
     date_autorisation: new FormControl('', Validators.required),
-    n_agrement: new FormControl('', [Validators.required ,Validators.minLength(1)]),
-    n_patente: new FormControl('', [Validators.required ,Validators.minLength(1)]),
+    n_agrement: new FormControl('', [Validators.required]),
+    n_patente: new FormControl('', [Validators.required]),
     image_rc: new FormControl('', [Validators.required,Validators.pattern('(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\\.(?:jpg|gif|png))(?:\\?([^#]*))?(?:#(.*))?')]),
     image_agrement: new FormControl('', [Validators.required,Validators.pattern('(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\\.(?:jpg|gif|png))(?:\\?([^#]*))?(?:#(.*))?')]),
     n_cnss: new FormControl('', Validators.required),
     ice: new FormControl('', Validators.required),
     n_compte_bancaire: new FormControl('', Validators.required),
     tva: new FormControl('', Validators.required),
-    // tva: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(\\.[0-9][0-9]?)?$/')]),
     pays: new FormControl('', Validators.required),
     telephone: new FormControl('', [Validators.required ,Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')]),
     ville: new FormControl('', Validators.required),
     fax: new FormControl(''),
     email:  new FormControl('', Validators.email),
-    password:  new FormControl('', [Validators.required ,Validators.minLength(8)]),
+    password:  new FormControl('', [Validators.required]),
     site_web: new FormControl(''),
     adresse: new FormControl(''),
     cin_responsable: new FormControl('', Validators.required),
@@ -62,7 +62,7 @@ export class SignUpComponent implements OnInit {
   }
 
   register(){
-    this.submitted = true;
+    this.submitted = true; 
     if(this.form.invalid){
       console.log(this.form);
       console.log('formulaire invalide');
@@ -100,8 +100,7 @@ export class SignUpComponent implements OnInit {
       adresse_responsable: this.form.value.adresse_responsable,
     })
     .subscribe( data => {
-      console.log('subscribe');
-      console.log(data);
+      this.loadSpinner = true;
       this.response = JSON.parse(data);
       console.log(this.response.token);
       localStorage.setItem('token', this.response.token);
