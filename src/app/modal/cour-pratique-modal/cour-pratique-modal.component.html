@@ -22,7 +22,7 @@
                          </div>
                          <div class="err" *ngIf="submitted && this.form.controls.date.errors">
                              <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
-                                   {{'Date required ' | translate}}  
+                                   {{'Date obligatoire * ' | translate}}  
                              </div>
 
                          </div>
@@ -37,7 +37,7 @@
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.date_debut.errors">
                      <div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
-                           {{'Hour required ' | translate}}  
+                           {{'Hour obligatoire * ' | translate}}  
                      </div>
 
                  </div>
@@ -50,7 +50,7 @@
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.date_fin.errors">
                      <div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
-                           {{'Hour required ' | translate}}  
+                           {{'Hour obligatoire * ' | translate}}  
                      </div>
 
                  </div>
@@ -72,7 +72,7 @@
                  </select>
                  <div class="err" *ngIf="submitted && this.form.controls.permis.errors">
                      <div style="color: red;" *ngIf="this.form.controls.permis.errors.required">
-                           {{'Permis required ' | translate}}  
+                           {{'Permis obligatoire * ' | translate}}  
                      </div>
 
                  </div>
@@ -88,7 +88,7 @@
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.type.errors">
                          <div style="color: red;" *ngIf="this.form.controls.type.errors.required">
-                               {{'Type required ' | translate}}  
+                               {{'Type obligatoire * ' | translate}}  
                          </div>
 
                      </div>
@@ -102,7 +102,7 @@
                      </select>
                      <div class="err" *ngIf="submitted && this.form.controls.moniteur_pratique_id.errors">
                          <div style="color: red;" *ngIf="this.form.controls.moniteur_pratique_id.errors.required">
-                               {{'Moniteur pratique required ' | translate}}  
+                               {{'Moniteur pratique obligatoire * ' | translate}}  
                          </div>
 
                      </div>
@@ -113,12 +113,12 @@
                      <label class="form-label">Véhicule</label>
                      <select dir="rtl" name="vehicule" class="form-control" style="height:30px"  formControlName="vehicule_id">
                          <option value="">Choisissez une Véhicule </option>
-                         <option *ngFor="let vehicule of vehicule_ecole" value="{{ vehicule?.id }}">{{ vehicule?.matricule }}</option>
+                         <option *ngFor="let vehicule of vehicule_ecole" value="{{vehicule?.id}}">{{ vehicule?.matricule }}</option>
                                                          
                      </select>
                      <div class="err" *ngIf="submitted && this.form.controls.vehicule_id.errors">
                          <div style="color: red;" *ngIf="this.form.controls.vehicule_id.errors.required">
-                               {{'Véhicule required ' | translate}}  
+                               {{'Véhicule obligatoire * ' | translate}}  
                          </div>
 
                      </div>
@@ -136,7 +136,7 @@
                      </select>
                      <div class="err" *ngIf="submitted && this.form.controls.candidat.errors">
                          <div style="color: red;" *ngIf="this.form.controls.candidat.errors.required">
-                               {{'Candidat required ' | translate}}  
+                               {{'Candidat obligatoire * ' | translate}}  
                          </div>
                      </div>
                  </div> 

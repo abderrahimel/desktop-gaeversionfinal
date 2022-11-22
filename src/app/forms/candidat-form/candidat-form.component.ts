@@ -104,7 +104,6 @@ export class CandidatFormComponent implements OnInit {
   // select vehicule 
   this.store.select(state=>state.vehicule.vehicule.vehicule).subscribe(v => this.vehicule_ecole = v);
 
-  this.setForm();
   this.idCandidat = Number(this.route.snapshot.paramMap.get('id'));                                     
     if(this.router.url === '/candidat/' + this.idCandidat){
       this.is_update = true;
@@ -159,40 +158,39 @@ export class CandidatFormComponent implements OnInit {
   setForm(){
     
     this.form = new FormGroup({
-      cin: new FormControl('', [Validators.required ,Validators.minLength(7)]),
+      cin: new FormControl('', [Validators.required]),
       date_inscription: new FormControl('', Validators.required),
       numero_contrat: new FormControl('', Validators.required),
-      ref_web: new FormControl(''),
+      ref_web: new FormControl('', Validators.required),
       nom_fr: new FormControl('', Validators.required),
       nom_ar: new FormControl('', Validators.required),
       prenom_fr: new FormControl('', Validators.required),
       prenom_ar: new FormControl('', Validators.required),
-      date_naissance: new FormControl(''),
+      date_naissance: new FormControl(''),  
       lieu_naissance:  new FormControl(''),
       adresse_fr: new FormControl('', Validators.required ),
       adresse_ar: new FormControl('', Validators.required),
-      telephone: new FormControl('', Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')),
+      telephone: new FormControl('',[Validators.required, Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')]),
       email: new FormControl(''),
       profession: new FormControl(''),
-      langue:new FormControl(''),
+      langue:new FormControl('', Validators.required),
       image: new FormControl(''),
-      commercial: new FormControl(''),
+      // commercial: new FormControl(''),
       date_fin_contrat: new FormControl('',Validators.required),
       type_formation: new FormControl('',Validators.required),
-      categorie_demandee: new FormControl(''),
+      categorie_demandee: new FormControl('', Validators.required),
       montant: new FormControl('', Validators.required),
       nbr_heur_pratique: new FormControl('', Validators.required),
       nbr_heur_theorique: new FormControl('', Validators.required),
       moniteur_theorique_id: new FormControl('', Validators.required),
       moniteur_pratique_id: new FormControl('', Validators.required),
       vehicule_id: new FormControl('', Validators.required),
-      observations: new FormControl(''),
+      observations: new FormControl(''),  
       possede_permis: new FormControl(''),
       pcn: new FormControl(''),
       date_obtention: new FormControl(''),
       lieu_obtention_fr: new FormControl(''),
       lieu_obtention_ar: new FormControl(''),
-      
     });
   }
 
@@ -273,7 +271,6 @@ export class CandidatFormComponent implements OnInit {
         profession: this.form.value.profession,
         possede_permis: this.form.value.possede_permis,
         langue: this.form.value.langue,
-        commercial: this.form.value.commercial,
         date_fin_contrat: this.form.value.date_fin_contrat,
         type_formation: this.form.value.type_formation,
         categorie_demandee: this.form.value.categorie_demandee,

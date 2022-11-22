@@ -32,10 +32,10 @@ export class EmployeeModalComponent implements OnInit {
     telephone: new FormControl('', Validators.required),
     date_embauche: new FormControl('', Validators.required),
     type: new FormControl('', Validators.required),
-    capn: new FormControl('', Validators.required),
-    conduire: new FormControl('', Validators.required),
+    capn: new FormControl(''),
+    conduire: new FormControl(''),
     adresse: new FormControl('', Validators.required),
-    observations: new FormControl('', Validators.required),
+    observations: new FormControl(''),
   })
   constructor(public activeModal: NgbActiveModal,
               private dataService: DataService,

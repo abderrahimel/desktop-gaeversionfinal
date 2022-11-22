@@ -60,6 +60,7 @@ export class CourPratiqueModalComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+      console.log(this.data);
          this.getCandidatsBasic() 
          this.getCandidatsSupplementaire()
    

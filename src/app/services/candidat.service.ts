@@ -10,24 +10,24 @@ export class CandidatService {
   constructor( private http: HttpClient,private _router:Router) { }
   
   getCandidat(id_auto_ecole:any){
-    return this.http.get<any[]>('http://127.0.0.1:8000/auto-ecole/'+id_auto_ecole+'/candidat');
+    return this.http.get<any[]>(this.api+'/auto-ecole/'+id_auto_ecole+'/candidat');
   }
   getCandidatById(id_candidat:any){
-    return this.http.get<any[]>('http://127.0.0.1:8000/candidat/'+ id_candidat);
+    return this.http.get<any[]>(this.api+'/candidat/'+ id_candidat);
   }
   getListCandidat(list_candidat:any){
-    return this.http.get<any[]>('http://127.0.0.1:8000/auto-ecole/listCandidat/'+list_candidat);
+    return this.http.get<any[]>(this.api+'/auto-ecole/listCandidat/'+list_candidat);
   }
   getCandidatHistorique(id_auto_ecole:any){
-    return this.http.get<any[]>('http://127.0.0.1:8000/auto-ecole/'+id_auto_ecole+'/historiquecandidat');
+    return this.http.get<any[]>(this.api+'/auto-ecole/'+id_auto_ecole+'/historiquecandidat');
   }
 
   getarchivecandidat(id_auto_ecole:any){
-    return this.http.get<any[]>('http://127.0.0.1:8000/auto-ecole/'+id_auto_ecole+'/archivecandidat');
+    return this.http.get<any[]>(this.api+'/auto-ecole/'+id_auto_ecole+'/archivecandidat');
   }
 
   insertCandidat(data:any, id:any){ 
-    return this.http.post('https://api.j2hb.com/add-candidat/'+id,data);
+    return this.http.post(this.api+'/add-candidat/'+id,data);
   }
   newcandidat(idautoecole:any, data:any){
     return this.http.post(this.api+'/add-candidat/'+idautoecole, data, { responseType: 'text'})

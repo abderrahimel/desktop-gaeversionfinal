@@ -22,7 +22,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./presence.component.css']
 })
 export class PresenceComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'heure', 'type', 'categorie', 'moniteur', 'candidats', 'actions'];    
+  displayedColumns: string[] = ['date', 'heure', 'type', 'categorie', 'moniteur', 'candidats', 'actions'];
   dataSource!: MatTableDataSource<any>;
   n:any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -52,8 +52,6 @@ export class PresenceComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    //  this.currentData();
-    //  this.getpresences();
      this.getData();
   }
   applyFilter(event:any){
@@ -62,9 +60,7 @@ export class PresenceComponent implements OnInit {
   }
   currentData(){
     this.idCandidat = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.idCandidat);
     let auto_ecole_id = localStorage.getItem('autoEcole_id');
-    console.log(this.router.url);
     this.getData();
     if(this.router.url === '/listes-presencesC'){
       this.paiment = true;
@@ -113,7 +109,6 @@ export class PresenceComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.presence)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.presence.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
   }
 

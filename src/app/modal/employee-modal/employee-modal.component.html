@@ -1,8 +1,8 @@
 <!-- <div class="modal-dialog modal-lg">
 
   </div> -->
-  <div class="modal-content" style="font-size: 16px;width: 700px;">
-    <div class="modal-header" style="width: 800px;">
+  <div class="modal-content bg-white" style="font-size: 16px;width: 700px;">
+    <div class="modal-header" style="width: 698px;">
         <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} employe</h5>
         <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">×</span>
@@ -24,7 +24,7 @@
                   </div>
                   <div class="err" *ngIf="submitted && this.form.controls.nom.errors">
                     <div style="color: red;" *ngIf="this.form.controls.nom.errors.required">
-                          {{'Nom required ' | translate}}  
+                          {{'Nom obligatoire. * ' | translate}}  
                     </div>
                 </div>
               </div>
@@ -36,7 +36,7 @@
                   </div>
                   <div class="err" *ngIf="submitted && this.form.controls.cin.errors">
                     <div style="color: red;" *ngIf="this.form.controls.cin.errors.required">
-                          {{'Cin required ' | translate}}  
+                          {{'Cin obligatoire. * ' | translate}}  
                     </div>
                 </div>
               </div>
@@ -48,7 +48,7 @@
                   </div>
                   <div class="err" *ngIf="submitted && this.form.controls.prenom.errors">
                     <div style="color: red;" *ngIf="this.form.controls.prenom.errors.required">
-                          {{'Prenom required ' | translate}}  
+                          {{'Prenom obligatoire. * ' | translate}}  
                     </div>
 
                 </div>
@@ -65,7 +65,7 @@
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.date_naissance.errors">
                             <div style="color: red;" *ngIf="this.form.controls.date_naissance.errors.required">
-                                  {{'Date de naissance required ' | translate}}  
+                                  {{'Date de naissance obligatoire. * ' | translate}}  
                             </div>
 
                         </div>
@@ -80,7 +80,7 @@
                   </div>
                   <div class="err" *ngIf="submitted && this.form.controls.lieu_naissance.errors">
                     <div style="color: red;" *ngIf="this.form.controls.lieu_naissance.errors.required">
-                          {{'Lieu de naissance required ' | translate}}  
+                          {{'Lieu de naissance obligatoire. * ' | translate}}  
                     </div>
                 </div>
               </div>
@@ -92,7 +92,7 @@
                   </div>
                   <div class="err" *ngIf="submitted && this.form.controls.email.errors">
                     <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
-                          {{'Email required ' | translate}}  
+                          {{'Email obligatoire. * ' | translate}}  
                     </div>
                 </div>
               </div>
@@ -104,7 +104,7 @@
                   </div>
                   <div class="err" *ngIf="submitted && this.form.controls.telephone.errors">
                     <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required">
-                          {{'Telephone required ' | translate}}  
+                          {{'Telephone obligatoire. * ' | translate}}  
                     </div>
                 </div>
               </div>
@@ -119,7 +119,7 @@
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.date_embauche.errors">
                         <div style="color: red;" *ngIf="this.form.controls.date_embauche.errors.required">
-                              {{'Date de embauche required ' | translate}}  
+                              {{'Date de embauche obligatoire. * ' | translate}}  
                         </div>
                     </div>
                   </div>
@@ -142,7 +142,7 @@
                   </div>
                   <div class="err" *ngIf="submitted && this.form.controls.type.errors">
                     <div style="color: red;" *ngIf="this.form.controls.type.errors.required">
-                          {{'Type required ' | translate}}  
+                          {{'Type obligatoire. * ' | translate}}  
                     </div>
 
                 </div>
@@ -153,11 +153,11 @@
                       <label class="form-label">C.A.P.N</label>
                       <input type="text" name="capn" class="form-control" id="capn2" formControlName="capn">
                   </div>
-                  <div class="err" *ngIf="submitted && this.form.controls.capn.errors">
+                  <!-- <div class="err" *ngIf="submitted && this.form.controls.capn.errors">
                     <div style="color: red;" *ngIf="this.form.controls.capn.errors.required">
-                          {{'C.A.P.N required ' | translate}}  
+                          {{'C.A.P.N obligatoire. * ' | translate}}  
                     </div>
-                </div>
+                </div> -->
               </div>
 
               <div class="col-md-4">
@@ -165,11 +165,11 @@
                       <label class="form-label">N p conduire</label>
                       <input type="text" name="n_p_conduire" class="form-control" id="n_p_conduire2" formControlName="conduire">
                   </div>
-                  <div class="err" *ngIf="submitted && this.form.controls.conduire.errors">
+                  <!-- <div class="err" *ngIf="submitted && this.form.controls.conduire.errors">
                     <div style="color: red;" *ngIf="this.form.controls.conduire.errors.required">
-                          {{'Conduire required ' | translate}}  
+                          {{'Conduire obligatoire. * ' | translate}}  
                     </div>
-                </div>
+                </div> -->
               </div>
                
               <div class="col-md-4">
@@ -182,7 +182,7 @@
                   </div>
                   <div class="err" *ngIf="submitted && this.form.controls.adresse.errors">
                     <div style="color: red;" *ngIf="this.form.controls.adresse.errors.required">
-                          {{'Adresse required ' | translate}}  
+                          {{'Adresse obligatoire. * ' | translate}}  
                     </div>
                 </div>
               </div>
@@ -192,11 +192,11 @@
                       <label class="form-label">Observations</label>
                       <textarea rows="5" class="form-control" name="observation" id="observation2" formControlName="observations"></textarea>
                   </div>
-                  <div class="err" *ngIf="submitted && this.form.controls.observations.errors">
+                  <!-- <div class="err" *ngIf="submitted && this.form.controls.observations.errors">
                     <div style="color: red;" *ngIf="this.form.controls.observations.errors.required">
-                          {{'Observations required ' | translate}}  
+                          {{'Observations obligatoire. ' | translate}}  
                     </div>
-                </div>
+                </div> -->
               </div>
           </div>
       </div>

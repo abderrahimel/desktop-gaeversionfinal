@@ -20,7 +20,7 @@
       <div class="wrap-table100" style="margin-bottom: 100px">
         <div class="mat-elevation-z8">
           <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
-            <div style="font-size: 16px;font-weight: 600;">ARCHIVE DES CANDIDATS
+            <div style="font-weight: 600;color: black;">ARCHIVE DES CANDIDATS
             </div>
             <button class="btn btn-primary add-btn" routerLink="/candidat" style="border-radius: 5px; width: 170px; color: white;background: #198754;box-shadow: none;">
               <i style="margin-right: 5px;" class="fa fa-users"></i>
@@ -45,38 +45,37 @@
                      
                         <ng-container matColumnDef="cin">    
                           <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by login"> 
-                            <span style="font-weight:900;font-size: 16px;">{{ "CIN" | translate }}</span>    
+                            <span style="font-weight:900;">{{ "CIN" | translate }}</span>    
                           </th>
                           <td mat-cell *matCellDef="let element"> {{element?.cin}} </td>
                         </ng-container>
                     
                         
                         <ng-container matColumnDef="numero_contrat">  					
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">{{ "DÉCLARATION" | translate }}</span>   </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "DÉCLARATION" | translate }}</span>   </th>
                           <td mat-cell *matCellDef="let element"> {{element?.numero_contrat}} </td>
                         </ng-container>
                     
                        
                         <ng-container matColumnDef="nom">   
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">{{ "NOM" | translate }}</span> </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "NOM" | translate }}</span> </th>
                           <td mat-cell *matCellDef="let element"> {{element?.nom_fr}}{{" "}}{{element?.prenom_fr}} </td>
                         </ng-container>
                     
-                       
                         <ng-container matColumnDef="date_inscription">  
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "DATE D'INSCRIPTION" | translate }}</span> </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "DATE D'INSCRIPTION" | translate }}</span> </th>
                           <td mat-cell *matCellDef="let element"> {{element?.date_inscription}} </td>
                         </ng-container>   
                 
                        
                         <ng-container matColumnDef="categorie"> 
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "CATÉGORIE" | translate }}</span> </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "CATÉGORIE" | translate }}</span> </th>
                           <td mat-cell *matCellDef="let element"> {{element?.categorie}} </td>
                         </ng-container>
                     
                     
                        <ng-container matColumnDef="actions">  
-                        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+                        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">{{ "ACTIONS" | translate }}</span>  </th>
                         <td mat-cell *matCellDef="let element"> 
                           <button  (click)="recuperer(element?.id, $event)"  class="btn" style=" background: #0ca930;width:100px;padding:7px; color: white;">
                             <span>Recuperer</span>
@@ -87,7 +86,6 @@
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                       </table>
                       <mat-paginator 
-                        [length]="n" 
                         [pageSize]="5"  
                         [pageSizeOptions]="[5, 10, 25, 100]">
                       </mat-paginator>
@@ -108,38 +106,38 @@
              
               <ng-container matColumnDef="cin">    
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by login"> 
-                  <span style="font-weight:900;font-size: 16px;">{{ "CIN" | translate }}</span>    
+                  <span style="font-weight:900;">{{ "CIN" | translate }}</span>    
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
               </ng-container>
           
               
               <ng-container matColumnDef="numero_contrat">  					
-                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">{{ "DÉCLARATION" | translate }}</span>   </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "DÉCLARATION" | translate }}</span>   </th>
                 <td mat-cell *matCellDef="let element"> {{element.numero_contrat}} </td>
               </ng-container>
           
              
               <ng-container matColumnDef="nom">   
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">{{ "NOM" | translate }}</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "NOM" | translate }}</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element?.nom_fr}}{{" "}}{{element?.prenom_fr}} </td>
               </ng-container>
           
              
               <ng-container matColumnDef="date_inscription">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "DATE D'INSCRIPTION" | translate }}</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "DATE D'INSCRIPTION" | translate }}</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.date_inscription}} </td>
               </ng-container>   
       
              
               <ng-container matColumnDef="categorie"> 
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;">{{ "CATÉGORIE" | translate }}</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "CATÉGORIE" | translate }}</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
               </ng-container>
           
           
              <ng-container matColumnDef="actions">  
-              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">{{ "ACTIONS" | translate }}</span>  </th>
               <td mat-cell *matCellDef="let element"> 
                 <a routerLink="/archive-candidat"  (click)="recuperer(element.id, $event)"  class="btn" style=" background: #0ca930;width:100px;padding:7px; color: white;">
                   <span>Recuperer</span>

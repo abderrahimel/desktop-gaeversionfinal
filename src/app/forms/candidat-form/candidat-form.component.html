@@ -19,7 +19,7 @@
    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e8eeea;;">
     <div style="display: flex;background: #e8eeea;;">
       
-        <div class="mat-elevation-z8" style="margin: 15px;width: 100%;">
+        <div class="mat-elevation-z8" style="margin: 15px;width: 100%;box-shadow: none;">
           <div class="card" style="width: 100%;">
             <div class="card-body" style="padding: 0px;">
                 <form  [formGroup]="form" (ngSubmit)="AddOrUpdateCandidat()" method="POST" action="" id="register" 
@@ -45,12 +45,8 @@
                                         <input type="text" name="cin" class="form-control"  formControlName="cin">
                                         <div class="err" *ngIf="submitted && this.form.controls.cin.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.cin.errors.required">
-                                                {{' cin required.' | translate}} 
+                                                {{' cin obligatoire *.' | translate}} 
                                             </div>
-                                            <div style="color: red;" *ngIf="this.form.controls.cin.errors.minlength">
-                                                {{' cin invalid.' | translate}} 
-                                            </div>
-                
                                         </div>
                                     </div>
                                 </div>
@@ -60,15 +56,13 @@
                                         <label class="form-label">Date inscription*</label>
                                         <div class="wd-200 mg-b-30">
                                             <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    
-                                                </div>
+                                               
                                                 <input class="form-control datepickerNoOfMonths hasDatepicker" formControlName="date_inscription" placeholder="DD/MM/YYYY"  type="date" name="date_inscription" id="dp1647436789292">
                                                
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.date_inscription.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.date_inscription.errors.required">
-                                                    {{' date inscription required.' | translate}} 
+                                                    {{' date inscription obligatoire *.' | translate}} 
                                                 </div>
                     
                                             </div>
@@ -82,7 +76,7 @@
                                         <input type="text" name="n_contrat" class="form-control" formControlName="numero_contrat" >
                                         <div class="err" *ngIf="submitted && this.form.controls.numero_contrat.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.numero_contrat.errors.required">
-                                                {{' Numéro contrat required.' | translate}} 
+                                                {{' Numéro contrat obligatoire *.' | translate}} 
                                             </div>
                 
                                         </div>
@@ -94,6 +88,11 @@
                                         <label class="form-label">Référence web</label>
                                         <input type="text" name="ref_web" class="form-control" formControlName="ref_web">
                                     </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.ref_web.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.ref_web.errors.required">
+                                            {{'Référence web obligatoire *.' | translate}} 
+                                        </div>
+                                    </div>
                                 </div>
                 
                                 <div class="col-md-6">
@@ -102,11 +101,9 @@
                                         <input type="text" name="nom_fr" class="form-control" formControlName="nom_fr">
                                         <div class="err" *ngIf="submitted && this.form.controls.nom_fr.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.nom_fr.errors.required">
-                                                {{' Nom Fr required.' | translate}} 
+                                                {{' Nom Fr obligatoire *.' | translate}} 
                                             </div>
-                                            <div style="color: red;" *ngIf="this.form.controls.nom_fr.errors.minlength">
-                                                {{' nom Fr invalid, Choose at least 4 overs' | translate}} 
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -117,11 +114,9 @@
                                         <input type="text" dir="rtl" name="nom_ar" class="form-control" formControlName="nom_ar">
                                         <div class="err" *ngIf="submitted && this.form.controls.nom_ar.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.nom_ar.errors.required">
-                                                {{' nom Ar required.' | translate}} 
+                                                {{' nom Ar obligatoire *.' | translate}} 
                                             </div>
-                                            <div style="color: red;" *ngIf="this.form.controls.nom_ar.errors.minlength">
-                                                {{' nom Ar invalid, Choose at least 4 overs' | translate}} 
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -132,11 +127,9 @@
                                         <input type="text" name="prenom_fr" class="form-control" formControlName="prenom_fr">
                                         <div class="err" *ngIf="submitted && this.form.controls.prenom_fr.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.prenom_fr.errors.required">
-                                                {{' prénom Fr required.' | translate}} 
+                                                {{' prénom Fr obligatoire *.' | translate}} 
                                             </div>
-                                            <div style="color: red;" *ngIf="this.form.controls.prenom_fr.errors.minlength">
-                                                {{' prenom Fr invalid, Choose at least 4 overs' | translate}} 
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -147,11 +140,9 @@
                                         <input type="text" dir="rtl" name="prenom_ar" class="form-control"  formControlName="prenom_ar">
                                         <div class="err" *ngIf="submitted && this.form.controls.prenom_ar.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.prenom_ar.errors.required">
-                                                {{' prénom Ar required.' | translate}} 
+                                                {{' prénom Ar obligatoire *.' | translate}} 
                                             </div>
-                                            <div style="color: red;" *ngIf="this.form.controls.prenom_ar.errors.minlength">
-                                                {{' prenom Ar invalid, Choose at least 4 overs' | translate}} 
-                                            </div>
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -161,10 +152,12 @@
                                         <label class="form-label">Date naissance</label>
                                         <div class="wd-200 mg-b-30">
                                             <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                 
-                                                </div>
                                                 <input class="form-control datepickerNoOfMonths dn hasDatepicker" placeholder="DD/MM/YYYY" type="date" name="date_naissance" id="dp1647436789293" formControlName="date_naissance">
+                                            </div>
+                                            <div class="err" *ngIf="submitted && this.form.controls.prenom_ar.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.prenom_ar.errors.required">
+                                                    {{'date naissance obligatoire *.' | translate}} 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -177,7 +170,7 @@
                                     </div>
                                     <div class="err" *ngIf="submitted && this.form.controls.adresse_fr.errors">
                                         <div style="color: red;" *ngIf="this.form.controls.adresse_fr.errors.required">
-                                            {{' lieu naissance required.' | translate}} 
+                                            {{' lieu naissance obligatoire *.' | translate}} 
                                         </div>
                                     </div>
                                 </div>
@@ -188,11 +181,9 @@
                                         <textarea rows="5" name="adresse_fr" class="form-control"  formControlName="adresse_fr"></textarea>
                                         <div class="err" *ngIf="submitted && this.form.controls.adresse_fr.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.adresse_fr.errors.required">
-                                                {{' adresse Fr required.' | translate}} 
+                                                {{' adresse Fr obligatoire *.' | translate}} 
                                             </div>
-                                            <div style="color: red;" *ngIf="this.form.controls.adresse_fr.errors.minlength">
-                                                {{' adresse Fr invalid, Choose at least 4 overs' | translate}} 
-                                            </div>
+                                         
                                         </div>
                                     </div>
                                 </div>
@@ -203,11 +194,9 @@
                                         <textarea dir="rtl" name="adresse_ar" rows="5" class="form-control" formControlName="adresse_ar"></textarea>
                                         <div class="err" *ngIf="submitted && this.form.controls.adresse_ar.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.adresse_ar.errors.required">
-                                                {{' adresse Ar required.' | translate}} 
+                                                {{' adresse Ar obligatoire *.' | translate}} 
                                             </div>
-                                            <div style="color: red;" *ngIf="this.form.controls.adresse_ar.errors.minlength">
-                                                {{' adresse Ar invalid, Choose at least 4 overs' | translate}} 
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -216,6 +205,11 @@
                                     <div class="form-group">
                                         <label class="form-label">Téléphone</label>
                                         <input type="text" name="telephone" class="form-control" formControlName="telephone">
+                                    </div>
+                                    <div class="err" *ngIf="submitted && this.form.controls.telephone.errors">
+                                        <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required || form.controls.telephone.status === 'INVALID'">
+                                            {{'Téléphone obligatoire *. non valide' | translate}} 
+                                        </div>
                                     </div>
                                 </div>
                 
@@ -241,6 +235,12 @@
                                             <option value="Arabe dialectale">Arabe dialectale</option>
                                             <option value="Francais">Francais</option>
                                         </select>
+                                        <div class="err" *ngIf="submitted && this.form.controls.langue.errors">
+                                            <div style="color: red;" *ngIf="this.form.controls.langue.errors.required">
+                                                {{' adresse Ar obligatoire *.' | translate}} 
+                                            </div>
+                                           
+                                        </div>
                                     </div>
                                 </div>
                 
@@ -256,14 +256,14 @@
                                       </div>
                                 </div>
                 
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Commercial</label>
                                         <select name="commercial" class="form-control" style="height:34px" formControlName="commercial">
                                             <option value="">Choisir  un  commercial</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -278,11 +278,9 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.date_fin_contrat.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.date_fin_contrat.errors.required">
-                                                    {{' date fin contrat required.' | translate}} 
+                                                    {{' date fin contrat obligatoire *.' | translate}} 
                                                 </div>
-                                                <div style="color: red;" *ngIf="this.form.controls.date_fin_contrat.errors.minlength">
-                                                    {{' date fin contrat invalid, Choose at least 4 overs' | translate}} 
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -312,7 +310,7 @@
                                         </select>
                                         <div class="err" *ngIf="submitted && this.form.controls.type_formation.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.type_formation.errors.required">
-                                                {{' field required.' | translate}} 
+                                                {{' field obligatoire *.' | translate}} 
                                             </div>
                                           
                                         </div>
@@ -337,6 +335,12 @@
                                             <option value="FP">FP</option>
                                             <option value="FP/FC">FP/FC</option>
                                         </select>
+                                        <div class="err" *ngIf="submitted && this.form.controls.categorie_demandee.errors">
+                                            <div style="color: red;" *ngIf="this.form.controls.categorie_demandee.errors.required">
+                                                {{' Montant obligatoire *.' | translate}} 
+                                            </div>
+                                         
+                                        </div>
                                     </div>
                                 </div>
                 
@@ -346,11 +350,9 @@
                                         <input type="text" name="montant" class="form-control" formControlName="montant">
                                         <div class="err" *ngIf="submitted && this.form.controls.montant.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
-                                                {{' Montant required.' | translate}} 
+                                                {{' Montant obligatoire *.' | translate}} 
                                             </div>
-                                            <div style="color: red;" *ngIf="this.form.controls.montant.errors.minlength">
-                                                {{' montant invalid, Choose at least 2 overs' | translate}} 
-                                            </div>
+                                         
                                         </div>
                                     </div>
                                 </div>
@@ -361,7 +363,7 @@
                                         <input type="text" name="nbr_heur_pratique" class="form-control" formControlName="nbr_heur_pratique">
                                         <div class="err" *ngIf="submitted && this.form.controls.nbr_heur_pratique.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.nbr_heur_pratique.errors.required">
-                                                {{' nombre d\'heures pratique required.' | translate}} 
+                                                {{' nombre d\'heures pratique obligatoire *.' | translate}} 
                                             </div>
                 
                                         </div>
@@ -374,7 +376,7 @@
                                         <input type="text" name="nbr_heur_theorique" class="form-control" formControlName="nbr_heur_theorique">
                                         <div class="err" *ngIf="submitted && this.form.controls.nbr_heur_theorique.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.nbr_heur_theorique.errors.required">
-                                                {{' nombre d\'heures théorique required.' | translate}} 
+                                                {{' nombre d\'heures théorique obligatoire *.' | translate}} 
                                             </div>
                 
                                         </div>
@@ -402,7 +404,7 @@
                                             </div>
                                             <div class="err" *ngIf="submitted && this.form.controls.date_obtention.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.date_obtention.errors.required">
-                                                    {{' Date d\'obtention required.' | translate}} 
+                                                    {{' Date d\'obtention obligatoire *.' | translate}} 
                                                 </div>
                     
                                             </div>
@@ -513,7 +515,7 @@
                                                 </select>
                                                 <div class="err" *ngIf="submitted && this.form.controls.moniteur_theorique_id.errors">
                                                     <div style="color: red;" *ngIf="this.form.controls.moniteur_theorique_id.errors.required">
-                                                        {{' M théorie required.' | translate}} 
+                                                        {{' M théorie obligatoire *.' | translate}} 
                                                     </div>
                         
                                                 </div>
@@ -529,7 +531,7 @@
                                             </select>
                                             <div class="err" *ngIf="submitted && this.form.controls.moniteur_pratique_id.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.moniteur_pratique_id.errors.required">
-                                                    {{' M pratique required.' | translate}} 
+                                                    {{' M pratique obligatoire *.' | translate}} 
                                                 </div>
                     
                                             </div>
@@ -547,7 +549,7 @@
                                            
                                             <div class="err" *ngIf="submitted && this.form.controls.vehicule_id.errors">
                                                 <div style="color: red;" *ngIf="this.form.controls.vehicule_id.errors.required">
-                                                    {{' véhicule required.' | translate}} 
+                                                    {{' véhicule obligatoire *.' | translate}} 
                                                 </div>
                     
                                             </div>
@@ -585,7 +587,6 @@
   </div>
   <!-- fin first container -->      
  </div>
-
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

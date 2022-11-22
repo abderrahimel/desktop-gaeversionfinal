@@ -17,7 +17,7 @@
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.matricule.errors">
                        <div style="color: red;" *ngIf="this.form.controls.matricule.errors.required">
-                             {{'matricule required ' | translate}}  
+                             {{'matricule obligatoire.* ' | translate}}  
                        </div>
 
                    </div>
@@ -37,7 +37,7 @@
                          </div>
                          <div class="err" *ngIf="submitted && this.form.controls.type.errors">
                            <div style="color: red;" *ngIf="this.form.controls.type.errors.required">
-                                 {{'type required ' | translate}}  
+                                 {{'type obligatoire.* ' | translate}}  
                            </div>
 
                        </div>
@@ -51,7 +51,7 @@
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.fourniseur.errors">
                        <div style="color: red;" *ngIf="this.form.controls.fourniseur.errors.required">
-                             {{'fourniseur required ' | translate}}  
+                             {{'fourniseur obligatoire.* ' | translate}}  
                        </div>
                    </div>
                  </div>
@@ -63,7 +63,7 @@
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.marque.errors">
                        <div style="color: red;" *ngIf="this.form.controls.marque.errors.required">
-                             {{'marque required ' | translate}}  
+                             {{'marque obligatoire.* ' | translate}}  
                        </div>
                    </div>
                  </div>
@@ -75,7 +75,7 @@
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.modele.errors">
                        <div style="color: red;" *ngIf="this.form.controls.modele.errors.required">
-                             {{'modele required ' | translate}}  
+                             {{'modele obligatoire.* ' | translate}}  
                        </div>
                    </div>
                  </div>
@@ -96,7 +96,7 @@
                      </select>
                      <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
                        <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
-                             {{'categorie required ' | translate}}  
+                             {{'categorie obligatoire.* ' | translate}}  
                        </div>
                    </div>
                  </div>
@@ -105,12 +105,12 @@
                          <label class="form-label">Date visite technique</label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
-                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_visite'>
+                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_visite'>
                              </div>
                          </div>
                          <div class="err" *ngIf="submitted && this.form.controls.date_visite.errors">
                            <div style="color: red;" *ngIf="this.form.controls.date_visite.errors.required">
-                                 {{'date visite required ' | translate}}  
+                                 {{'date visite obligatoire.* ' | translate}}  
                            </div>
                        </div>
                      </div>
@@ -120,12 +120,12 @@
                          <label class="form-label">Date prochain visite technique</label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
-                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_prochain_visite'>
+                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_prochain_visite'>
                              </div>
                          </div>
                          <div class="err" *ngIf="submitted && this.form.controls.date_prochain_visite.errors">
                            <div style="color: red;" *ngIf="this.form.controls.date_prochain_visite.errors.required">
-                                 {{'date visite required ' | translate}}  
+                                 {{'date visite obligatoire.* ' | translate}}  
                            </div>
                        </div>
                      </div>
@@ -136,12 +136,12 @@
                          <label class="form-label">Date vidange</label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
-                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_vidange' >
+                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_vidange' >
                              </div>
                          </div>
                          <div class="err" *ngIf="submitted && this.form.controls.date_vidange.errors">
                            <div style="color: red;" *ngIf="this.form.controls.date_vidange.errors.required">
-                                 {{'date vidange required ' | translate}}  
+                                 {{'date vidange obligatoire.* ' | translate}}  
                            </div>
                        </div>
                        
@@ -152,12 +152,12 @@
                          <label class="form-label">Date prochain vidange</label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
-                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_prochain_vidange' >
+                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_prochain_vidange' >
                              </div>
                          </div>
                          <div class="err" *ngIf="submitted && this.form.controls.date_prochain_vidange.errors">
                            <div style="color: red;" *ngIf="this.form.controls.date_prochain_vidange.errors.required">
-                                 {{'date prochain vidange required ' | translate}}  
+                                 {{'date prochain vidange obligatoire.* ' | translate}}  
                            </div>
 
                        </div>
@@ -168,12 +168,12 @@
                          <label class="form-label">Date assurance</label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
-                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_assurance'>
+                                 <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_assurance'>
                              </div>
                          </div>
                          <div class="err" *ngIf="submitted && this.form.controls.date_assurance.errors">
                            <div style="color: red;" *ngIf="this.form.controls.date_assurance.errors.required">
-                                 {{'date assurance required ' | translate}}  
+                                 {{'date assurance obligatoire.* ' | translate}}  
                            </div>
                        </div>
                      </div>
@@ -183,11 +183,11 @@
                          <label class="form-label">Date expiration assurance</label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
-                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 16px;text-transform: uppercase;"  type="date" formControlName='date_expiration_assurance'>
+                                 <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_expiration_assurance'>
                              </div>
                              <div class="err" *ngIf="submitted && this.form.controls.date_expiration_assurance.errors">
                                <div style="color: red;" *ngIf="this.form.controls.date_expiration_assurance.errors.required">
-                                     {{'date expiration assurance required ' | translate}}  
+                                     {{'date expiration assurance obligatoire.* ' | translate}}  
                                </div>
 
                            </div>
@@ -199,14 +199,14 @@
                  <div class="col-md-3">
                    <div class="form-group">
                        <label for="last-name-column">{{ "Carte grise" | translate }}:</label>
-                       <input type="file" id="appt" class="dropify" name="appt" style="font-size: 16px" class="form-control input" formControlName='carte_grise' 
+                       <input type="file" id="appt" class="dropify" name="appt" style="font-size: 13px" class="form-control input" formControlName='carte_grise' 
                        (change)="fileChangeEvent($event, 'cart')"
                        data-allowed-file-extensions="jpg png jpeg"
                       >
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.carte_grise.errors ">
                        <div style="color: red;" *ngIf="this.form.controls.carte_grise.errors.required">
-                             {{'carte grise required ' | translate}}  
+                             {{'carte grise obligatoire.* ' | translate}}  
                        </div>
 
                    </div>
@@ -215,13 +215,13 @@
                  <div class="col-md-3">
                    <div class="form-group"> 
                        <label for="last-name-column">{{ "assurance" | translate }}:</label>
-                       <input type="file" id="appt" name="appt" class="form-control input" style="font-size: 16px;" formControlName='assurance'
+                       <input type="file" id="appt" name="appt" class="form-control input" style="font-size: 13px;" formControlName='assurance'
                                  (change)="fileChangeEvent($event, 'assurance')"
                        >
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.assurance.errors">
                        <div style="color: red;" *ngIf="this.form.controls.assurance.errors.required">
-                             {{'assurance required ' | translate}}  
+                             {{'assurance obligatoire.* ' | translate}}  
                        </div>
 
                    </div>
@@ -230,13 +230,13 @@
                  <div class="col-md-3">
                    <div class="form-group"> 
                        <label for="last-name-column">{{ "visite technique" | translate }}:</label>
-                       <input type="file" id="appt" name="appt" class="form-control input" style="font-size: 16px;" formControlName='visite'
+                       <input type="file" id="appt" name="appt" class="form-control input" style="font-size: 13px;" formControlName='visite'
                               (change)="fileChangeEvent($event, 'visite')"
                        >
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.visite.errors">
                        <div style="color: red;" *ngIf="this.form.controls.visite.errors.required">
-                             {{'visite required ' | translate}}  
+                             {{'visite obligatoire.* ' | translate}}  
                        </div>
 
                    </div>
@@ -245,7 +245,7 @@
                  <div class="col-md-3">
                    <div class="form-group">
                        <label for="last-name-column">{{ "vignette" | translate }}:</label>
-                       <input type="file" id="appt" name="appt" style="font-size: 16px;"
+                       <input type="file" id="appt" name="appt" style="font-size: 13px;"
                               class="form-control input" 
                               formControlName='vignette'
                               (change)="fileChangeEvent($event, 'vignette')"
@@ -254,7 +254,7 @@
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.vignette.errors">
                        <div style="color: red;" *ngIf="this.form.controls.vignette.errors.required">
-                             {{'vignette required ' | translate}}  
+                             {{'vignette obligatoire.* ' | translate}}  
                        </div>
 
                    </div>

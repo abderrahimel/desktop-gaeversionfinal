@@ -3,12 +3,12 @@
 }
 
 *{
-    font-size: 16px;
+    font-size: 14px;
 }
 input[type=date]{
     text-transform:uppercase;
 }
 
 select, textarea, input, button{
-    font-size: 16px;
+    font-size: 13px;
 }

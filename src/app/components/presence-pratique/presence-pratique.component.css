@@ -14,9 +14,7 @@
     background: rgb(243, 241, 245);
     height: 100vh;
   }
-  *{
-    font-size: 16px;
-  }
+
   input[type=date]{
     text-transform: uppercase;
   }

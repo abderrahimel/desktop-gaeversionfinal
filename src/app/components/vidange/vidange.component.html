@@ -20,7 +20,7 @@
       <div class="wrap-table100 card" >
         <div class="table-header">
           <div class="row">
-            <div class="col-9" style="font-size: 14px;">
+            <div class="col-9" style="font-size: 14px;color: black;">
               GESTION DES RAPPELS
             </div>
           </div>
@@ -58,31 +58,31 @@
                            <table  mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
                             <ng-container matColumnDef="matricule">      
                               <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by matricule"> 
-                                <span style="font-weight:900;font-size: 16px;">MATRICULE</span>    
+                                <span style="font-weight:900;">MATRICULE</span>    
                               </th>
                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.matricule}} </td>
                             </ng-container>
                         
                             <ng-container matColumnDef="type">  
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">TYPE</span>   </th>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">TYPE</span>   </th>
                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.type }}</td>
                             </ng-container>
                         
                             <ng-container matColumnDef="marque">   
-                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MARQUE</span> </th>
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">MARQUE</span> </th>
                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.marque}} </td>
                             </ng-container>
            
                              <ng-container matColumnDef="date_visite">   
-                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE VISITE</span> </th>
+                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE VISITE</span> </th>
                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_visite}} </td>
                              </ng-container>
                              <ng-container matColumnDef="date_prochain_visite">   
-                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE PROCHAIN VISITE TECHNIQUE</span> </th>
+                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE PROCHAIN VISITE TECHNIQUE</span> </th>
                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_prochain_visite}} </td>
                              </ng-container>
                                <ng-container matColumnDef="etat">   
-                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ETAT</span> </th>
                                  <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
                                </ng-container>
                              
@@ -109,31 +109,31 @@
            <table mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
              <ng-container matColumnDef="matricule">      
                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by matricule"> 
-                 <span style="font-weight:900;font-size: 16px;">MATRICULE</span>    
+                 <span style="font-weight:900;">MATRICULE</span>    
                </th>
                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.matricule}} </td>
              </ng-container>
          
              <ng-container matColumnDef="type">  
-               <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">TYPE</span>   </th>
+               <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">TYPE</span>   </th>
                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.type }}</td>
              </ng-container>
          
              <ng-container matColumnDef="marque">   
-               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MARQUE</span> </th>
+               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">MARQUE</span> </th>
                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.marque}} </td>
              </ng-container>
 
               <ng-container matColumnDef="date_visite">   
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE VISITE</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE VISITE</span> </th>
                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.date_visite}} </td>
               </ng-container>
               <ng-container matColumnDef="date_prochain_visite">   
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE PROCHAIN VISITE TECHNIQUE</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE PROCHAIN VISITE TECHNIQUE</span> </th>
                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.date_prochain_visite}} </td>
               </ng-container>
                 <ng-container matColumnDef="etat">   
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ETAT</span> </th>
                   <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
                 </ng-container>
              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -167,36 +167,36 @@
                        
                           <ng-container matColumnDef="matricule">      
                             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by matricule"> 
-                              <span style="font-weight:900;font-size: 16px;">MATRICULE</span>    
+                              <span style="font-weight:900;">MATRICULE</span>    
                             </th>
                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.matricule}} </td>
                           </ng-container>
                       
                           <!-- type Column -->
                           <ng-container matColumnDef="type">  
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">TYPE</span>   </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">TYPE</span>   </th>
                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.type }}</td>
                           </ng-container>
                       
                           <!-- marque Column -->  
                           <ng-container matColumnDef="marque">   
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MARQUE</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">MARQUE</span> </th>
                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.marque}} </td>
                           </ng-container>
          
                            <!-- date_vidange Column -->  
                            <ng-container matColumnDef="date_vidange">   
-                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE VIDANGE</span> </th>
+                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE VIDANGE</span> </th>
                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_vidange}} </td>
                            </ng-container>
                            <!-- date_prochain_vidange COLUMN -->
                            <ng-container matColumnDef="date_prochain_vidange">    
-                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE PROCHAIN VIDANGE</span> </th>
+                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE PROCHAIN VIDANGE</span> </th>
                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_prochain_vidange}} </td>
                            </ng-container>
                              <!-- etat COLUMN -->
                              <ng-container matColumnDef="etat">   
-                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ETAT</span> </th>
                                <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
                              </ng-container>
 
@@ -235,36 +235,36 @@
                                            
                           <ng-container matColumnDef="matricule">      
                             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by matricule"> 
-                              <span style="font-weight:900;font-size: 16px;">MATRICULE</span>    
+                              <span style="font-weight:900;">MATRICULE</span>    
                             </th>
                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.matricule}} </td>
                           </ng-container>
                       
                           <!-- type Column -->
                           <ng-container matColumnDef="type">  
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">TYPE</span>   </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">TYPE</span>   </th>
                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.type }}</td>
                           </ng-container>
                       
                           <!-- marque Column -->  
                           <ng-container matColumnDef="marque">   
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">MARQUE</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">MARQUE</span> </th>
                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.marque}} </td>
                           </ng-container>
          
                            <!-- date_assurance Column -->  
                            <ng-container matColumnDef="date_assurance">  
-                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE ASSURANCE</span> </th>
+                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE ASSURANCE</span> </th>
                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_assurance}} </td>
                            </ng-container>
                            <!-- date_expiration_assurance COLUMN -->
                            <ng-container matColumnDef="date_expiration_assurance">   
-                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE  EXPIRATION ASSURANCE</span> </th>
+                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE  EXPIRATION ASSURANCE</span> </th>
                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_expiration_assurance}} </td>
                            </ng-container>
                              <!-- etat COLUMN -->
                              <ng-container matColumnDef="etat">   
-                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ETAT</span> </th>
                                <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
                              </ng-container>
                           <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>

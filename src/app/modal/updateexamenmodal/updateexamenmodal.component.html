@@ -1,6 +1,9 @@
 <div class="modal-content" style="width: 800px;position: absolute;margin-top: 150px;margin-right: 200px;">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} examen</h5>
+      <div style="display: flex;flex-direction:column">
+		<h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} examen</h5>
+	    <p style="color: red;">(*) Champs obligatoire</p>
+	  </div>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
@@ -17,7 +20,7 @@
 							</select>
 							<div class="err" *ngIf="submitted && this.form.controls.candidat_id.errors">
 								<div style="color: red;" *ngIf="this.form.controls.candidat_id.errors.required">
-									  {{'Candidat required ' | translate}}  
+									  {{'champs obligatoire *' | translate}}  
 								</div>
 							</div>
 						</div>
@@ -45,7 +48,7 @@
 							</select>
 							<div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
 								<div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
-									  {{'Catégorie required ' | translate}}  
+									{{'champs obligatoire *' | translate}}  
 								</div>
 							</div>
 						</div>
@@ -59,7 +62,7 @@
 								</div>
 								<div class="err" *ngIf="submitted && this.form.controls.date_depot.errors">
 									<div style="color: red;" *ngIf="this.form.controls.date_depot.errors.required">
-										  {{'Date de dépot required ' | translate}}  
+										{{'champs obligatoire *' | translate}}  
 									</div>
 	
 								</div>
@@ -76,7 +79,7 @@
 								</div>
 								<div class="err" *ngIf="submitted && this.form.controls.date_examen.errors">
 									<div style="color: red;" *ngIf="this.form.controls.date_examen.errors.required">
-										  {{'Date d\'examen required ' | translate}}  
+										{{'champs obligatoire *' | translate}}  
 									</div>
 	
 								</div>
@@ -92,7 +95,7 @@
 							</select>
 							<div class="err" *ngIf="submitted && this.form.controls.moniteur_pratique_id.errors">
 								<div style="color: red;" *ngIf="this.form.controls.moniteur_pratique_id.errors.required">
-									  {{'Moniteur required ' | translate}}  
+									{{'champs obligatoire *' | translate}}   
 								</div>
 							</div>
 						</div>

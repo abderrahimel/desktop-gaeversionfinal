@@ -20,7 +20,7 @@
       <div class="wrap-table100">
         <div class="mat-elevation-z8">
           <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
-            <div style="font-size: 16px;font-weight: 600;">LISTE DES PLANNINGS
+            <div style="font-weight: 600;color: black;">LISTE DES PLANNINGS
             </div>
             <button 
             class="btn"
@@ -32,7 +32,7 @@
            <div style="display: flex;align-items:center;justify-content:space-between;padding-left:5px;padding-right:5px">
             <div class="col-md-3">
               <div class="form-group">
-                <select class="form-control w-80 mr-2 hovC" style="font-size: 16px;height: 30px;" name="categorie" id="categorie">
+                <select class="form-control w-80 mr-2 hovC" style="height: 30px;font-size: 14px;" name="categorie" id="categorie">
                   <option value="">Choisissez catégorie</option>
                   <option value="A">A</option>
                   <option value="A1">A1</option>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <select class="form-control w-80 mr-2 hovC"  style="font-size: 16px;height: 30px;" name="moniteur" id="moniteur">
+                <select class="form-control w-80 mr-2 hovC"  style="height: 30px;font-size: 14px;" name="moniteur" id="moniteur">
                   <option value="">Choisissez moniteur</option>
                   <option *ngFor="let data of datamoniteurP" value="{{data?.id}}">{{data?.nom}}{{" "}}{{data?.prenom}} </option>
                 </select>
@@ -60,7 +60,7 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <select name="candidats" class="form-control"  style="font-size: 16px;height: 30px;" id="candidats">
+                <select name="candidats" class="form-control"  style="height: 30px;font-size: 14px;" id="candidats">
                   <option value="">Choisissez candidats</option>
                   <option *ngFor="let data of candidatsB" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
                   <option *ngFor="let data of candidatS" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
@@ -86,41 +86,41 @@
                        
                           <ng-container matColumnDef="date">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date"> 
-                              <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "DATE" | translate }}</span>    
+                              <span style="font-weight:900;margin-right: 5px;">{{ "DATE" | translate }}</span>    
                             </th>
                             <td mat-cell *matCellDef="let element"> {{element?.date}} </td>
                           </ng-container>       
                       
                           <ng-container matColumnDef="heure">  
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "SEANCE" | translate }}</span>   </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;margin-right: 5px;">{{ "SEANCE" | translate }}</span>   </th>
                             <td mat-cell *matCellDef="let element"> {{element?.date_debut}}{{"/"}}{{element?.date_fin}} </td>
                           </ng-container>
                       
                           <ng-container matColumnDef="type">   
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "TYPE" | translate }}</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;margin-right: 5px;">{{ "TYPE" | translate }}</span> </th>
                             <td mat-cell *matCellDef="let element"> {{element?.type}} </td>
                           </ng-container>
                       
                           <ng-container matColumnDef="permis">  
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "CATEGORIE" | translate }}</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">{{ "CATEGORIE" | translate }}</span> </th>
                             <td mat-cell *matCellDef="let element" style="text-align:center"> {{element?.permis}} </td>
                           </ng-container>   
                   
                           <ng-container matColumnDef="moniteurp"> 
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "MONITEUR" | translate }}</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">{{ "MONITEUR" | translate }}</span> </th>
                             <td mat-cell *matCellDef="let element"> {{element?.moniteurp?.nom}}{{" "}}{{element?.moniteurp?.prenom}} </td>
                           </ng-container>
                           <ng-container matColumnDef="candidats">  
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "CANDIDATS" | translate }}</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">{{ "CANDIDATS" | translate }}</span> </th>
                             <td mat-cell *matCellDef="let element"> {{element?.candidats}} </td>
                           </ng-container> 
                           <ng-container matColumnDef="vehicule">  
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "VEHICULES" | translate }}</span> </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">{{ "VEHICULES" | translate }}</span> </th>
                             <td mat-cell *matCellDef="let element"> {{element?.vehicule?.matricule}} </td>
                           </ng-container> 
                       
                          <ng-container matColumnDef="actions">  
-                          <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+                          <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">{{ "ACTIONS" | translate }}</span>  </th>
                           <td mat-cell *matCellDef="let element"> 
                             <button (click)="open1(element)" style="font-size: 12px;padding: 5px; color: white;width: 100px;background: #198754" class="btn">
                               {{ "Presence" | translate }}
@@ -159,41 +159,41 @@
           
               <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date"> 
-                  <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "DATE" | translate }}</span>    
+                  <span style="font-weight:900;margin-right: 5px;">{{ "DATE" | translate }}</span>    
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.date}} </td>
               </ng-container>       
           
               <ng-container matColumnDef="heure">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "SEANCE" | translate }}</span>   </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;margin-right: 5px;">{{ "SEANCE" | translate }}</span>   </th>
                 <td mat-cell *matCellDef="let element"> {{element?.date_debut}}{{"/"}}{{element?.date_fin}} </td>
               </ng-container>
           
               <ng-container matColumnDef="type">   
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "TYPE" | translate }}</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;margin-right: 5px;">{{ "TYPE" | translate }}</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.type}} </td>
               </ng-container>
           
               <ng-container matColumnDef="permis">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "CATEGORIE" | translate }}</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">{{ "CATEGORIE" | translate }}</span> </th>
                 <td mat-cell *matCellDef="let element" style="text-align:center"> {{element.permis}} </td>
               </ng-container>   
       
               <ng-container matColumnDef="moniteurp"> 
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "MONITEUR" | translate }}</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">{{ "MONITEUR" | translate }}</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element?.moniteurp?.nom}}{{" "}}{{element?.moniteurp?.prenom}} </td>
               </ng-container>
               <ng-container matColumnDef="candidats">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "CANDIDATS" | translate }}</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">{{ "CANDIDATS" | translate }}</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.candidats}} </td>
               </ng-container> 
               <ng-container matColumnDef="vehicule">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;font-size: 16px;margin-right: 5px;">{{ "VEHICULES" | translate }}</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">{{ "VEHICULES" | translate }}</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element?.vehicule?.matricule}} </td>
               </ng-container> 
           
              <ng-container matColumnDef="actions">  
-              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">{{ "ACTIONS" | translate }}</span>  </th>
+              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">{{ "ACTIONS" | translate }}</span>  </th>
               <td mat-cell *matCellDef="let element"> 
                 <button (click)="open1(element)" style="font-size: 12px;padding: 5px; color: white;width: 100px;background: #198754" class="btn" onclick="document.getElementById('presence').style.display='block';" >
                   {{ "Presence" | translate }}
