@@ -247,7 +247,6 @@ table {
   
   .mat-column-demo-name {
     padding-left: 16px;
-    font-size: 20px;
   }
   
   .mat-column-demo-weight {
@@ -273,9 +272,6 @@ input::placeholder { /* Recent browsers */
     text-transform:uppercase;
 }
 
-/* * {
-    overflow-y: hidden; 
-    overflow-x: hidden;
-  } */
-
-  
+*{
+    font-style: 15px;
+}

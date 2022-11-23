@@ -179,14 +179,22 @@ export class DashboardComponent implements OnInit {
     this.getVehicules();
     this.getCandidatInscription()
   }
+  // getExamenCandidat(){
+  //   this.dataService.getExamen(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+  //     this.examenCandidats = data
+  //     this.dataSource  = new MatTableDataSource(this.examenCandidats);
+  //     this.dataSource.sort = this.empTbSort;
+  //     this.dataSource.paginator = this.paginatorFirst;
+  //     // this.lengthExamen = this.examenCandidats.reduce((acc, o) => acc + Object.keys(o).length, 0)
+  //   })
+  // }
   getExamenCandidat(){
     this.dataService.getExamen(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      this.examenCandidats = data
-      this.dataSource  = new MatTableDataSource(this.examenCandidats);
-      this.dataSource.sort = this.empTbSort;
-      this.dataSource.paginator = this.paginatorFirst;
-      // this.lengthExamen = this.examenCandidats.reduce((acc, o) => acc + Object.keys(o).length, 0)
-    })
+      this.candidatAbsences = data;
+      this.dataSource  = new MatTableDataSource(this.candidatAbsences);
+      this.dataSource.sort = this.empTbSort1;
+      this.dataSource.paginator = this.paginatorSecond;
+   })
   }
   applyFilter(event:any){
     let value = event.target.value
@@ -194,7 +202,7 @@ export class DashboardComponent implements OnInit {
   }
   applyFilter1(event:any){
     let value = event.target.value
-    this.dataSource1.filter = value.trim().toLowerCase()
+    this.dataSource.filter = value.trim().toLowerCase()
   }
   applyFilter2(event:any){
     let value = event.target.value
@@ -475,12 +483,13 @@ onChange(e:any){
 onChange3(e:any){
   if(e.target.value === ''){
     this.dataSource3 = new MatTableDataSource(this.candidatsInscrit);
-    return;
-  }
+  }else{
+    
     let filterData = _.filter(this.candidatsInscrit, (item)=>{
       return item.categorie.toLowerCase() == e.target.value.toLowerCase()
     })
     this.dataSource3 = new MatTableDataSource(filterData);
+  }
     this.dataSource3.sort = this.empTbSort3;
     this.dataSource3.paginator = this.paginator3;
 }
@@ -507,14 +516,13 @@ onchangeInput(e:any){
 }
 onchangeInput3(e:any){
   if(e.target.value === ''){
-    this.dataSource3 = new MatTableDataSource(this.candidatsInscrit);
-    return;
+      this.dataSource3 = new MatTableDataSource(this.candidatsInscrit);
+  }else{
+      let filterData = _.filter(this.candidatsInscrit, (item)=>{
+        return item.date_inscription.toLowerCase() == e.target.value.toLowerCase()
+      })
+      this.dataSource3 = new MatTableDataSource(filterData);
   }
-  let filterData = _.filter(this.candidatsInscrit, (item)=>{
-    return item.date_inscription.toLowerCase() == e.target.value.toLowerCase()
-  })
-
-  this.dataSource3 = new MatTableDataSource(filterData);
   this.dataSource3.sort = this.empTbSort3;
   this.dataSource3.paginator = this.paginator3;
 }

@@ -39,15 +39,15 @@ export class HeaderComponent implements OnInit {
       this.hideParam = true;
       this.url = '/admin'
     }
-    console.log("this.hideParam");console.log(this.hideParam);
-    this.login = localStorage.getItem('login');
-    let token:any = localStorage.getItem('token');
-    this.decodedToken = this.helper.decodeToken(token);
-    // Other functions
-    let expirationDate = this.helper.getTokenExpirationDate(token);
-    let isExpired = this.helper.isTokenExpired(token);
-    console.log("expirationDate", expirationDate);
-    console.log("isExpired", isExpired);
+    // console.log("this.hideParam");console.log(this.hideParam);
+    // this.login = localStorage.getItem('login');
+    // let token:any = localStorage.getItem('token');
+    // this.decodedToken = this.helper.decodeToken(token);
+    // // Other functions
+    // let expirationDate = this.helper.getTokenExpirationDate(token);
+    // let isExpired = this.helper.isTokenExpired(token);
+    // console.log("expirationDate", expirationDate);
+    // console.log("isExpired", isExpired);
 
     this.getUser();
    if(this.auth.isValid()){

@@ -76,59 +76,62 @@
                     <!-- examen CANDIDAT  -->
                     <div class="row examen-vehicule" style="margin-left: 0;margin-right:0;background: rgb(217, 222, 224);">
                       <div class="d-flex my-1">
-                        <mat-card style="width: 50%;margin-right: 20px;padding-bottom: 30px;">
-                          
-                            <div class="card-header ">
-                                <h3 class="card-title">EXAMEN
-                                </h3>
-                            </div>
-            
-                            <!-- end table examen -->
-                            <div style="display: flex;align-items:center;justify-content:flex-end">
-                              <div style="margin-right: 6px">Rechercher:</div>
-                              <mat-form-field appearance="standard">
-                                 <mat-label></mat-label>
-                                 <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
-                              </mat-form-field>
+                        <mat-card style="width: 50%;" class="">
+                          <div class="card-header ">
+                              <h3 class="card-title ">EXAMEN</h3>
+                          </div>
+                          <div class="card-body">
+                             <div class="table-responsive border-top mb-0">
+                                    <!--ABSENCE candidats -->
+                                
+                                      <div style="display: flex;align-items:center;justify-content:flex-end">
+                                        <div style="margin-right: 6px" class="">Rechercher:</div>
+                                        <mat-form-field appearance="standard">
+                                           <mat-label></mat-label>
+                                           <input matInput (keyup)="applyFilter1($event)" placeholder="... " #input>
+                                        </mat-form-field>
+                                    </div>
+                                     <table  class="" mat-table  [dataSource]="dataSource"  matSort #empTbSort1="matSort">    
+                                     <!-- cin Column --> 
+                                        <ng-container matColumnDef="cin">     
+                                          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by candidat"> 
+                                            <span style="font-weight:900;" class="">CIN</span>    
+                                          </th>
+                                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.cin}} </td>
+                                        </ng-container>
+                                        <!-- candidat Column -->
+                                        <ng-container matColumnDef="candidat">  
+                                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="" style="font-weight:900;">CANDIDAT</span>   </th>
+                                          <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{ element?.candidat?.nom_fr }}{{" "}}{{ element?.candidat?.prenom_fr }} </td>
+                                        </ng-container>
+
+                                        <!-- date_examen Column -->  
+                                        <ng-container matColumnDef="date_examen">   
+                                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">DATE EXAMEN</span> </th>
+                                          <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.date_examen}} </td>
+                                        </ng-container>
+
+                                        <!-- etat Column -->  
+                                        <ng-container matColumnDef="etat">   
+                                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">ETAT</span> </th>
+                                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.etat}} </td>
+                                        </ng-container>
+
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                      
+                                     </table>
+                                     <mat-paginator 
+                                     class=" "
+                                         #paginatorSecond
+                                        [pageSize]="5"  
+                                        [pageSizeOptions]="[5, 10, 25, 100]">
+                                     </mat-paginator>
+                                    <!-- end ABSENCE candidats -->
                              </div>
-                             <table class=" " mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
-                             <!-- cin Column --> 
-                             <ng-container matColumnDef="cin">     
-                               <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by candidat"> 
-                                 <span style="font-weight:900;font-size: 16px;" class="">CIN</span>    
-                               </th>
-                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.cin}} </td>
-                             </ng-container>
-                         
-                             <!-- candidat Column -->
-                             <ng-container matColumnDef="candidat">  
-                               <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="" style="font-weight:900;font-size: 16px;">CANDIDAT</span>   </th>
-                               <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{ element?.candidat?.nom_fr }}{{" "}}{{ element?.candidat?.prenom_fr }} </td>
-                             </ng-container>
-                         
-                             <!-- date_examen Column -->  
-                             <ng-container matColumnDef="date_examen">   
-                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;" class="">DATE EXAMEN</span> </th>
-                               <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.date_examen}} </td>
-                             </ng-container>
-
-                              <!-- etat Column -->  
-                              <ng-container matColumnDef="etat">   
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;font-size: 16px;">ETAT</span> </th>
-                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.etat}} </td>
-                              </ng-container>
-
-                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                           </table>
-                           <mat-paginator 
-                             class=" "
-                             #paginatorFirst
-                             [pageSize]="5"  
-                             [pageSizeOptions]="[5, 10, 25, 100]">
-                           </mat-paginator>
-                       
-                        </mat-card>
+                          </div>
+                     
+                      </mat-card>
                         <mat-card style="width: 50%;" class="">
                          
                             <div class="card-header ">
@@ -149,13 +152,13 @@
                                      
                                          <!-- candidat Column -->
                                          <ng-container matColumnDef="candidat">  
-                                           <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"><span style="font-weight:900;font-size: 16px;" class="">CANDIDAT</span>   </th>
+                                           <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"><span style="font-weight:900;" class="">CANDIDAT</span>   </th>
                                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.candidat?.nom_fr }}{{" "}}{{ element?.candidat?.prenom_fr }} </td>
                                          </ng-container>
                                      
                                          <!-- absence Column -->  
                                          <ng-container matColumnDef="absence">   
-                                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;" class="">ABSENCE</span> </th>
+                                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">ABSENCE</span> </th>
                                            <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.absence}} </td>
                                          </ng-container>
       
@@ -198,25 +201,25 @@
                                          
                                            <!-- vehicule Column -->
                                            <ng-container matColumnDef="vehicule">  
-                                             <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="" style="font-weight:900;font-size: 16px;">VEHICULE</span>   </th>
+                                             <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="" style="font-weight:900;">VEHICULE</span>   </th>
                                              <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{ element?.matricule}} </td>
                                            </ng-container>
                                        
                                            <!-- date Column -->  
                                            <ng-container matColumnDef="date">   
-                                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;" class="">DATE</span> </th>
+                                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">DATE</span> </th>
                                              <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.date_visite}} </td>
                                            </ng-container>
         
                                             <!-- type Column -->  
                                             <ng-container matColumnDef="type">   
-                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;font-size: 16px;">TYPE</span> </th>
+                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">TYPE</span> </th>
                                               <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.type}} </td>
                                             </ng-container>
 
                                               <!-- etat Column -->  
                                               <ng-container matColumnDef="etat">   
-                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;font-size: 16px;">ETAT</span> </th>
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">ETAT</span> </th>
                                                 <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> - </td>
                                               </ng-container>
 
@@ -308,31 +311,31 @@
                                      
                                          <!-- nom Column -->
                                          <ng-container matColumnDef="nom">  
-                                           <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;" class="">NOM</span>   </th>
+                                           <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;" class="">NOM</span>   </th>
                                            <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{ element?.candidat?.nom_fr}}{{" "}}{{ element?.candidat?.prenom_fr}} </td>
                                          </ng-container>
                                      
                                          <!-- cin Column -->  
                                          <ng-container matColumnDef="cin">   
-                                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;" class="">CIN</span> </th>
+                                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">CIN</span> </th>
                                            <td mat-cell *matCellDef="let element" style="text-align: center; " class=""> {{element?.candidat?.cin}} </td>
                                          </ng-container>
       
                                           <!-- categorie Column -->  
                                           <ng-container matColumnDef="categorie">   
-                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;font-size: 16px;">CATEGORIE</span> </th>
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">CATEGORIE</span> </th>
                                             <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.categorie}} </td>
                                           </ng-container>
 
                                             <!-- date_examen Column -->  
                                             <ng-container matColumnDef="date_examen">   
-                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;font-size: 16px;">DATE EXAMEN</span> </th>
+                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">DATE EXAMEN</span> </th>
                                               <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.date_examen}} </td>
                                             </ng-container>
 
                                             <!-- date_depot Column -->  
                                             <ng-container matColumnDef="date_depot">   
-                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;font-size: 16px;">DATE DEPOT</span> </th>
+                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">DATE DEPOT</span> </th>
                                               <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.date_depot}} </td>
                                             </ng-container>
                                          <tr mat-header-row *matHeaderRowDef="displayedColumns5"></tr>
@@ -364,31 +367,31 @@
                                       
                                          <!-- nom Column -->
                                          <ng-container matColumnDef="nom">  
-                                           <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">NOM</span>   </th>
+                                           <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">NOM</span>   </th>
                                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.candidat?.nom_fr}}{{" "}}{{ element?.candidat?.prenom_fr}} </td>
                                          </ng-container>
                                      
                                          <!-- cin Column -->  
                                          <ng-container matColumnDef="cin">   
-                                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">CIN</span> </th>
+                                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CIN</span> </th>
                                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.cin}} </td>
                                          </ng-container>
       
                                           <!-- categorie Column -->  
                                           <ng-container matColumnDef="categorie">   
-                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">CATEGORIE</span> </th>
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CATEGORIE</span> </th>
                                             <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie}} </td>
                                           </ng-container>
 
                                             <!-- date_examen Column --> 
                                             <ng-container matColumnDef="date_examen">   
-                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE EXAMEN</span> </th>
+                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE EXAMEN</span> </th>
                                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_examen}} </td>
                                             </ng-container>
 
                                             <!-- date_depot Column -->  
                                             <ng-container matColumnDef="date_depot">   
-                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">DATE DEPOT</span> </th>
+                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE DEPOT</span> </th>
                                               <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_depot}} </td>
                                             </ng-container>
                                          <tr mat-header-row *matHeaderRowDef="displayedColumns6"></tr>
@@ -456,25 +459,25 @@
                                       
                                        <!-- cin Column -->
                                        <ng-container matColumnDef="cin">  
-                                         <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;" class="">CIN</span>   </th>
+                                         <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;" class="">CIN</span>   </th>
                                          <td mat-cell *matCellDef="let element" class=""> {{ element?.cin}} </td>
                                        </ng-container>
                                    
                                        <!-- nom Column -->  
                                        <ng-container matColumnDef="nom">   
-                                         <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;" class="">NOM</span> </th>
+                                         <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">NOM</span> </th>
                                          <td mat-cell *matCellDef="let element" class=""> {{element?.nom_fr}}{{" "}}{{element?.prenom_fr}} </td>
                                        </ng-container>
     
                                         <!-- date_inscription Column -->  
                                         <ng-container matColumnDef="date_inscription">   
-                                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;" class="">DATE INSCRIPTION</span> </th>
+                                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">DATE INSCRIPTION</span> </th>
                                           <td mat-cell *matCellDef="let element" class=""> {{element?.date_inscription}} </td>
                                         </ng-container>
 
                                           <!-- numero_contrat Column -->  
                                           <ng-container matColumnDef="numero_contrat">   
-                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;" class="">NUMERO CONTRAT</span> </th>
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">NUMERO CONTRAT</span> </th>
                                             <td mat-cell *matCellDef="let element" class=""> {{element?.numero_contrat}} </td>
                                           </ng-container>
 
@@ -518,13 +521,13 @@
                                   
                                    <!-- mois Column -->
                                    <ng-container matColumnDef="mois">  
-                                     <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;" class="">MOIS</span>   </th>
+                                     <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;" class="">MOIS</span>   </th>
                                      <td mat-cell *matCellDef="let element" class=""> {{ element?.mois}} </td>
                                    </ng-container>
                                
                                    <!-- montant Column -->  
                                    <ng-container matColumnDef="montant">   
-                                     <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;" class="">MONTANT</span> </th>
+                                     <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">MONTANT</span> </th>
                                      <td mat-cell *matCellDef="let element" class=""> {{element?.montant}} </td>
                                    </ng-container>
 

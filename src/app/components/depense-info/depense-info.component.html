@@ -1,119 +1,170 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style=" background:rgb(251, 251, 252);">
-	<app-headerlogged></app-headerlogged>
-  <app-menu-sb></app-menu-sb>
-    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
-      <div style=" display: flex;background:rgb(233, 236, 236);padding: 20px;">
-      
-        <div class="wrap-table100">
-          <div class="table-header">
-            <div class="row">
-              <div class="col-9" style="font-size: 15px;">
-                LISTE DES DÉPENSES À MOIS {{id}}
-              </div>
-            </div>
-          </div>
-        
-          <nav ngbNav #nav="ngbNav" class="nav-tabs" style="margin-left: 15px;">
-            <ng-container ngbNavItem>
-              <a ngbNavLink id="personnel"  style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);padding: 5px;"> D.Employés</a>
-              <ng-template ngbNavContent>
-                <div class="tableDiv">
-                  <table  class="table ">
-                   
-                    <thead>
-                      <tr style="color: black;" >
-                        <th scope="col">{{ "EMPLOYE" | translate }}</th>
-                        <th scope="col">{{ "CATEGORIE" | translate }}</th>
-                        <th scope="col">{{ "DATE" | translate }}</th>
-                        <th scope="col">{{ "MONTANT" | translate }}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let mydata of data1personnel; ">
-                        <td> {{mydata?.employe?.nom}}{{" "}}{{mydata?.employe?.prenom}}</td>
-                        <td> {{mydata?.categorie?.categorie}}</td>
-                        <td> {{mydata?.date}}</td>
-                        <td> {{mydata?.montant}}</td>
-                      </tr>
-                      </tbody>
-                  </table>
-                   
-                </div>
-              </ng-template>
-            </ng-container>
-            <ng-container ngbNavItem>
-              <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);padding: 5px;">D.Voitures</a>
-              <ng-template ngbNavContent>
-                <div class="tableDiv">
-                 
-                  <table class="table" >
-                    <thead >
-                      <tr style="color: black;" >
-                        <th scope="col">{{ "VOITURE" | translate }}</th>
-                        <th scope="col">{{ "CATEGORIE" | translate }}</th>
-                        <th scope="col">{{ "DATE" | translate }}</th>
-                        <th scope="col">{{ "MONTANT" | translate }}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let mydata of depenseVehicule;">
-                        <td> {{mydata?.vehicule?.matricule}}</td>
-                        <td> {{mydata?.categorie?.categorie}}</td>
-                        <td> {{mydata?.date}}</td>
-                        <td> {{mydata?.montant}}</td>
-                     
-                      </tr>
-                      </tbody>
-                  </table>
-                 
-                </div>
-              </ng-template>
-            </ng-container>
-            <ng-container ngbNavItem>
-              <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95); padding: 5px;">D.Local</a>
-              <ng-template ngbNavContent>
-                <div class="tableDiv" > 
-                  <table  class="table" >
-                    <thead>
-                      <tr style="color: black;" >
-                        <th scope="col">{{ "CATEGORIE" | translate }}</th>
-                        <th scope="col">{{ "DATE" | translate }}</th>
-                        <th scope="col">{{ "MONTANT" | translate }}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let mydata of depenseLocal;">
-                        <td> {{mydata?.categorie?.categorie}}</td>
-                        <td> {{mydata?.date}}</td>
-                        <td> {{mydata?.montant}}</td>
-                      </tr>
-                      </tbody>
-                  </table>
-                </div>
-              </ng-template>
-            </ng-container>
-           
-          </nav>
+<body style="font-size: 14px;">
+  <div class="h-55">
+    <app-headerlogged></app-headerlogged>
+  </div>
+   <app-menu-sb></app-menu-sb>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
+    <div style="display: flex;">
+       
+ <div class="wrap-table100">
+  <div class="table-header">
+    <div class="row">
+      <div class="col-9" style="font-size: 15px;color: black;">
+        LISTE DES DÉPENSES À <span style="color:red">MOIS {{id}}</span></div>
+    </div>
+  </div>
+
+  <nav ngbNav #nav="ngbNav" class="nav-tabs" style="margin-left: 15px;">
+    <ng-container ngbNavItem>
+      <a ngbNavLink id="personnel"  style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);padding: 5px;"> D.Employés</a>
+      <ng-template ngbNavContent>
+        <div class="tableDiv">
           
-          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+          <div style="display: flex;align-items:center;justify-content:flex-end">
+            <div style="margin-right: 6px" class="">Rechercher:</div>
+            <mat-form-field appearance="standard">
+               <mat-label></mat-label>
+               <input matInput (keyup)="applyFilter1($event)" placeholder="... " #input>
+            </mat-form-field>
         </div>
+        <table  mat-table   [dataSource]="dataSource" matSort>    
+          <ng-container matColumnDef="cin">    
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by login"> 
+              <span style="font-weight:900;">{{ "CIN" | translate }}</span>    
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element?.cin}} </td>
+          </ng-container>
+      
+          
+          <ng-container matColumnDef="numero_contrat">  					
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "DÉCLARATION" | translate }}</span>   </th>
+            <td mat-cell *matCellDef="let element"> {{element?.numero_contrat}} </td>
+          </ng-container>
+      
+         
+          <ng-container matColumnDef="nom">   
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "NOM" | translate }}</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element?.nom_fr}}{{" "}}{{element?.prenom_fr}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="date_inscription">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "DATE D'INSCRIPTION" | translate }}</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element?.date_inscription}} </td>
+          </ng-container>   
+  
+         
+          <ng-container matColumnDef="categorie"> 
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "CATÉGORIE" | translate }}</span> </th>
+            <td mat-cell *matCellDef="let element"> {{element?.categorie}} </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator 
+          [pageSize]="5"  
+          [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+          <table  class="table ">
+           
+            <thead>
+              <tr style="color: black;" >
+                <th scope="col">{{ "EMPLOYE" | translate }}</th>
+                <th scope="col">{{ "CATEGORIE" | translate }}</th>
+                <th scope="col">{{ "DATE" | translate }}</th>
+                <th scope="col">{{ "MONTANT" | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let mydata of data1personnel; ">
+                <td> {{mydata?.employe?.nom}}{{" "}}{{mydata?.employe?.prenom}}</td>
+                <td> {{mydata?.categorie?.categorie}}</td>
+                <td> {{mydata?.date}}</td> 
+                <td> {{mydata?.montant}}</td>
+              </tr>
+              </tbody>
+          </table>
+           
+        </div>
+      </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+      <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);padding: 5px;">D.Voitures</a>
+      <ng-template ngbNavContent>
+        <div class="tableDiv">
+         
+          <table class="table" >
+            <thead >
+              <tr style="color: black;" >
+                <th scope="col">{{ "VOITURE" | translate }}</th>
+                <th scope="col">{{ "CATEGORIE" | translate }}</th>
+                <th scope="col">{{ "DATE" | translate }}</th>
+                <th scope="col">{{ "MONTANT" | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let mydata of depenseVehicule;">
+                <td> {{mydata?.vehicule?.matricule}}</td>
+                <td> {{mydata?.categorie?.categorie}}</td>
+                <td> {{mydata?.date}}</td>
+                <td> {{mydata?.montant}}</td>
+             
+              </tr>
+              </tbody>
+          </table>
+         
+        </div>
+      </ng-template>
+    </ng-container>
+    <ng-container ngbNavItem>
+      <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95); padding: 5px;">D.Local</a>
+      <ng-template ngbNavContent>
+        <div class="tableDiv" > 
+          <table  class="table" >
+            <thead>
+              <tr style="color: black;" >
+                <th scope="col">{{ "CATEGORIE" | translate }}</th>
+                <th scope="col">{{ "DATE" | translate }}</th>
+                <th scope="col">{{ "MONTANT" | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let mydata of depenseLocal;">
+                <td> {{mydata?.categorie?.categorie}}</td>
+                <td> {{mydata?.date}}</td>
+                <td> {{mydata?.montant}}</td>
+              </tr>
+              </tbody>
+          </table>
+        </div>
+      </ng-template>
+    </ng-container>
+   
+  </nav>
+  
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
+  </div>
+  <!-- fin first container -->
+                  
 
+    
+             
+ </div>
 
-
-      </div>
-                   
-   </div>
-
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
@@ -21,7 +24,12 @@ import Swal from 'sweetalert2';
   templateUrl: './depense-info.component.html',
   styleUrls: ['./depense-info.component.css']
 })
-export class DepenseInfoComponent implements OnInit {
+export class DepenseInfoComponent implements OnInit { //
+  displayedColumns: string[] = ['cin', 'numero_contrat', 'nom', 'date_inscription', 'categorie','actions'];    
+  dataSource!: MatTableDataSource<any>;
+  n:any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   formModal: any;
   dateVal = new Date();
   dataLoad:any;
@@ -90,7 +98,10 @@ export class DepenseInfoComponent implements OnInit {
 
 }
 
-
+applyFilter1(event:any){
+  let value = event.target.value
+  this.dataSource.filter = value.trim().toLowerCase()
+}
  
  
    
