@@ -22,9 +22,9 @@ export class MinisteriellemodalComponent implements OnInit {
     category: new FormControl('', Validators.required),   
     titre: new FormControl('', Validators.required),
     lien: new FormControl('', Validators.required),
-    fichier: new FormControl('', [Validators.required]), 
+    fichier: new FormControl(''), 
   });
-  
+
   constructor(public activeModal: NgbActiveModal,
               private dataService: DataService,
               private store: Store<{ministerielle: MinisterielleState}>,
@@ -53,7 +53,6 @@ export class MinisteriellemodalComponent implements OnInit {
   gestionAutoEcole(){
       this.submitted = true;
       if(this.form.invalid ){
-        console.log("form invalid");
         return;
       }
       console.log({

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
@@ -15,7 +18,18 @@ import { ProduitCandidatState } from 'src/app/state/produitCandidat/produitCandi
   styleUrls: ['./recette-info.component.css']
 })
 export class RecetteInfoComponent implements OnInit {
-  dateVal = new Date();
+  displayedColumns: string[] = ['nom', 'categorie','date', 'montant' ];    
+  displayedColumns2: string[] = ['matricule', 'categorie','date', 'montant' ];    
+  displayedColumns3: string[] = ['categorie','date', 'montant' ];    
+  dataSource!: MatTableDataSource<any>;
+  dataSource2!: MatTableDataSource<any>;
+  dataSource3!: MatTableDataSource<any>;
+  @ViewChild('empTbSortfirst') empTbSortfirst = new MatSort();
+  @ViewChild('paginatorfirst') paginatorfirst!: MatPaginator;    
+  @ViewChild('empTbSortsecond') empTbSortsecond = new MatSort();
+  @ViewChild('paginatorSecond') paginatorSecond!: MatPaginator;    
+  @ViewChild('empTbSorthird') empTbSorthird = new MatSort();
+  @ViewChild('paginatorthird') paginatorthird!: MatPaginator;
   depenseLocal:any;
   dataGeneral:any;
   data_v:any;
@@ -54,21 +68,68 @@ export class RecetteInfoComponent implements OnInit {
       this.loadData = produitCandidat;
       if(this.loadData){
         this.loadData = this.loadData.filter((cousupp:any)=>Number(cousupp?.date?.split('-')[1]) === this.id);
+        this.dataSource = new MatTableDataSource(this.loadData)
+        this.dataSource.paginator = this.paginatorfirst;
+        this.dataSource.sort = this.empTbSortfirst;
       }
-      console.log("produit candidat*****************************");console.log(this.loadData);
     });
     this.store.select(state=>state.coursRecette.coursRecette).subscribe(coursRecette=>{
       this.supplementaire = coursRecette.coursSupplementaire;
       if(this.supplementaire){
         this.supplementaire = this.supplementaire.filter((cousupp:any)=>Number(cousupp?.date?.split('-')[1]) === this.id);
+        this.dataSource2 = new MatTableDataSource(this.supplementaire)
+        this.dataSource2.paginator = this.paginatorSecond;
+        this.dataSource2.sort = this.empTbSortsecond;
       }
-      console.log("cours supplementaire****************************");
-      console.log(this.supplementaire);
      
       this.permis = coursRecette.permis;
-      
+      this.dataSource3 = new MatTableDataSource(this.permis)
+      this.dataSource3.paginator = this.paginatorthird;
+      this.dataSource3.sort = this.empTbSorthird;
     });
 
   }
-
+  stylebtn(name:any){
+    if(name === '.dg'){
+      $('.dg').css('background', 'black');
+      $('.dp').css('background', 'white');
+      $('.dv').css('background', 'white');
+      $('.dg').css('color', 'white');
+      $('.dp').css('color', 'black');
+      $('.dv').css('color', 'black');
+    }else if(name === '.dp'){
+      $('.dg').css('background', 'white');
+      $('.dp').css('background', 'black');
+      $('.dv').css('background', 'white');
+      $('.dg').css('color', 'black');
+      $('.dp').css('color', 'white');
+      $('.dv').css('color', 'black');
+    }else{
+      $('.dg').css('background', 'white');
+      $('.dp').css('background', 'white');
+      $('.dv').css('background', 'black');
+      $('.dg').css('color', 'black');
+      $('.dp').css('color', 'black');
+      $('.dv').css('color', 'white');
+    }
+  }
+  
+  applyFilter(event:any){
+    let value = event.target.value
+    if(this.dataSource != null){
+      this.dataSource.filter = value.trim().toLowerCase()
+    }
+  }
+  applyFilter2(event:any){
+    let value = event.target.value
+    if(this.dataSource2 != null){
+      this.dataSource2.filter = value.trim().toLowerCase()
+    }
+  }
+  applyFilter3(event:any){
+    let value = event.target.value
+    if(this.dataSource3 != null){
+      this.dataSource3.filter = value.trim().toLowerCase()
+    }
+  }
 }

@@ -24,7 +24,6 @@ export class MessagerieAdminComponent implements OnInit {
     object: new FormControl('', Validators.required),
     id_autoEcole: new FormControl('', Validators.required),
     message: new FormControl('', Validators.required),
-    liste: new FormControl('', Validators.required),
     fichier: new FormControl('', Validators.required),
   })
   constructor(
@@ -73,20 +72,22 @@ export class MessagerieAdminComponent implements OnInit {
   }
   EnvoyereMail(){
     this.submitted = true;
-    if(this.form1.invalid){
+    console.log(this.form2.value);
+    if(this.form2.invalid){
+      console.log("form invalid");
       return ;
     }
     // send data to api
+    console.log({
+      ...this.form2.value,
+      fichier: this.url
+   });
     this.dataService.send({
-      fichier: this.url,
-      object: this.form2.value.object,
-      id_autoEcole: this.form2.value.id_auto_ecole,
-      message: this.form2.value.message,
-      liste: this.form2.value.liste,
-    }).subscribe(data=>{})
-
-
-
+       ...this.form2.value,
+       fichier: this.url
+    }).subscribe(data=>{
+      console.log(data);
+    })
   }
   EnvoyeretoAll(){
     this.submitted1 = true;
@@ -98,7 +99,7 @@ export class MessagerieAdminComponent implements OnInit {
       fichier: this.url,
       object: this.form1.value.object,
       message: this.form1.value.message,
-    }).subscribe(data=>{})
+    }).subscribe(data=>{console.log(data);})
   
   }
 }

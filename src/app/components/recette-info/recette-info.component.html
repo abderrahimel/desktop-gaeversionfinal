@@ -1,134 +1,179 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style=" background:rgb(251, 251, 252);">
-	<app-headerlogged></app-headerlogged>
-  <app-menu-sb></app-menu-sb>
-    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 60px;margin-bottom: 10px;">
-        <!-- first container -->
-      <div style=" display: flex;background:rgb(233, 236, 236);padding: 20px;">
-      
-        <div class="wrap-table100">
-          <div class="table-header">
-            <div class="row">
-              <div class="col-9" style="font-size: 15px;">
-                LIST DES RECETTES <span style="color: red;font-weight: 65;">À MOIS {{id}}</span> 
-              </div>
-            </div>
-          </div>
-      
-<nav ngbNav #nav="ngbNav" class="nav-tabs">
-  <ng-container ngbNavItem>
-    <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);">Permis</a>
-    <ng-template ngbNavContent>
-      <div class="tableDiv">
-        <table class="table">
-        
-          <thead>
-            <tr  style="color: black;">
-              <th  scope="col">{{ "CIN" | translate }}</th>
-              <th  scope="col">{{ "NOM" | translate }}</th>
-              <th  scope="col">{{ "DATE" | translate }}</th>
-              <th scope="col">{{ "TYPE" | translate }}</th>
-              <th scope="col">{{ "MONTANT" | translate }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let data of permis;">
-              <td> {{data.candidat.cin}}</td>
-              <td>{{data.candidat.nom_fr}}{{" "}}{{data.candidat.prenom_fr}}</td>
-              <td>{{data.date}}</td>
-              <td>{{data?.type_p}}</td>
-              <td>{{data.montant}}</td>
-            </tr>
-            </tbody>
-        </table>
-       
-      </div>
-    </ng-template>
-  </ng-container>
-  <ng-container ngbNavItem>
-    <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);">Cours Supplementaire</a>
-    <ng-template ngbNavContent>
-      <div class="tableDiv" >
-        
-        <table  class="table" >
-          <thead>
-            <tr  style="color: black;" >
-              <th  scope="col">{{ "COURS" | translate }}</th>
-              <th scope="col">{{ "NOMBRE HEURE PRATIQUE" | translate }}</th>
-              <th scope="col">{{ "CANDIDATS" | translate }}</th>
-              <th scope="col">{{ "CATEGORIE" | translate }}</th>
-              <th scope="col">{{ "DATE" | translate }}</th>
-              <th scope="col">{{ "MONTANT" | translate }}</th>
-            </tr>
-          </thead>
-          <tbody>  
-            <tr *ngFor="let data of supplementaire;">
-              <td>Pratique</td>
-              <td>{{data.candidat.nbr_heure_pratique}}</td>
-              <td>{{data.candidat.nom_fr}}{{" "}}{{data.candidat.prenom_fr}}</td>
-              <td> {{data.candidat.categorie}}</td>
-              <td>{{data.date}}</td>
-              <td>{{data.montant}}</td>
-              
-            </tr>
-            </tbody>
-        </table>
-       
-      </div>
-    </ng-template>
-  </ng-container>
-  <ng-container ngbNavItem>
-    <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);">Produit Candidat</a>
-    <ng-template ngbNavContent>
-      
-      <div class="tableDiv" >
-        <table  class="table" >
-            <thead>
-              <tr  style="color: black;" >
-                <th  scope="col">{{ "PRODUIT" | translate }}</th>
-                <th scope="col">{{ "QUANTITE" | translate }}</th>
-                <th scope="col">{{ "CANDIDAT" | translate }}</th>
-                <th scope="col">{{ "PRIX" | translate }}</th>
-                <th scope="col">{{ "DATE" | translate }}</th>
-              </tr>
-            </thead>
-            <tbody>  
-              <tr *ngFor="let data of supplementaire;">
-                <td>Pratique</td>
-                <td>{{data.candidat.nbr_heure_pratique}}</td>
-                <td>{{data.candidat.nom_fr}}{{" "}}{{data.candidat.prenom_fr}}</td>
-                <td>{{data.montant}}</td>
-                <td>{{data.date}}</td>
-              </tr>
-              </tbody>
-          </table>
-        
-       
-      </div>
-    </ng-template>
-  </ng-container>
-</nav>
+<body style="font-size: 14px;">
+  <div class="h-55">
+    <app-headerlogged></app-headerlogged>
+  </div>
+   <app-menu-sb></app-menu-sb>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
+    <div style="display: flex;">
+ <div class="wrap-table100">
+  <div class="table-header">
+    <div class="row">
+      <div class="col-9" style="font-size: 15px;color: black;">
+        LISTE DES RECETTES  À <span style="color:red">MOIS {{id}}</span></div>
+    </div>
+  </div>
+  <div class="text-dark d-flex align-items-center my-1">
+    <button (click)="stylebtn('.dg')" onclick="document.getElementById('tab1').style.display='block';document.getElementById('tab2').style.display='none';document.getElementById('tab3').style.display='none';" class="dg btn btn-button" style="background:black;color:white">Permis</button>
 
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
+    <button  (click)="stylebtn('.dp')" onclick="document.getElementById('tab1').style.display='none';document.getElementById('tab2').style.display='block';document.getElementById('tab3').style.display='none';" class="dp btn btn-button">Cours supplémentaire</button>
 
-
-        </div>
+    <button  (click)="stylebtn('.dv')" onclick="document.getElementById('tab1').style.display='none';document.getElementById('tab2').style.display='none';document.getElementById('tab3').style.display='block';" class="dv btn btn-button">Produit Candidat</button>
+  </div>
+  <div>
+    <!-- tableau 1 -->
+    <div class="text-dark" id="tab1">
+      <div style="display: flex;align-items:center;justify-content:flex-end">
+        <div style="margin-right: 6px">  Rechercher:</div>
+        <mat-form-field appearance="standard">
+           <mat-label></mat-label>
+           <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+        </mat-form-field>
+    </div>
+     <table mat-table  [dataSource]="dataSource"  matSort #empTbSortfirst="matSort">    
+   
+      <ng-container matColumnDef="nom">    
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
+          <span style="font-weight:900;">{{ "NOM" | translate }}</span>    
+        </th>
+        <td mat-cell *matCellDef="let element">{{element?.employe?.nom}}{{" "}}{{element?.employe?.prenom}}</td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="categorie">  					
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "CATEGORIE" | translate }}</span>   </th>
+        <td mat-cell *matCellDef="let element"> {{element?.categorie?.categorie}} </td>
+      </ng-container>
+  
+     
+      <ng-container matColumnDef="date">   
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "DATE" | translate }}</span> </th>
+        <td mat-cell *matCellDef="let element">{{element?.date}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="montant">  
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "MONTANT" | translate }}</span> </th>
+        <td mat-cell *matCellDef="let element">{{element?.montant}}</td>
+      </ng-container>   
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator 
+      #paginatorfirst
+      [pageSize]="5"  
+      [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+    </div>
+    <!-- end tableau 1 -->
+    <!-- tableau 2 -->
+    <div class="text-dark" id="tab2" style="display: none;">
+      <div class="text-dark" id="tab1">
+        <div style="display: flex;align-items:center;justify-content:flex-end">
+          <div style="margin-right: 6px">  Rechercher:</div>
+          <mat-form-field appearance="standard">
+             <mat-label></mat-label>
+             <input matInput (keyup)="applyFilter2($event)" placeholder="... " #input>
+          </mat-form-field>
       </div>
-                     
+       <table mat-table  [dataSource]="dataSource2"  matSort #empTbSortsecond="matSort">    
+     
+        <ng-container matColumnDef="matricule">    
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
+            <span style="font-weight:900;">{{ "VOITURE" | translate }}</span>    
+          </th>
+          <td mat-cell *matCellDef="let element">{{element?.vehicule?.matricule}}</td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="categorie">  					
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "CATEGORIE" | translate }}</span>   </th>
+          <td mat-cell *matCellDef="let element"> {{element?.categorie?.categorie}} </td>
+        </ng-container>
+    
+       
+        <ng-container matColumnDef="date">   
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "DATE" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.date}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="montant">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "MONTANT" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.montant}}</td>
+        </ng-container>   
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+      </table>
+      <mat-paginator 
+        #paginatorSecond
+        [pageSize]="5"  
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+      </div>
+    </div>
+    <!-- end tableau 2 -->
+    <!-- tableau 3 -->
+    <div class="text-dark" id="tab3" style="display: none;">
+      <div class="text-dark" id="tab1">
+        <div style="display: flex;align-items:center;justify-content:flex-end">
+          <div style="margin-right: 6px">  Rechercher:</div>
+          <mat-form-field appearance="standard">
+             <mat-label></mat-label>
+             <input matInput (keyup)="applyFilter3($event)" placeholder="... " #input>
+          </mat-form-field>
+      </div>
+       <table mat-table  [dataSource]="dataSource"  matSort #empTbSorthird="matSort">    
+        <ng-container matColumnDef="categorie">  					
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "CATEGORIE" | translate }}</span>   </th>
+          <td mat-cell *matCellDef="let element"> {{element?.categorie?.categorie}} </td>
+        </ng-container>
+    
+       
+        <ng-container matColumnDef="date">   
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "DATE" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.date}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="montant">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "MONTANT" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.montant}}</td>
+        </ng-container>   
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+      </table>
+      <mat-paginator 
+        #paginatorthird
+        [pageSize]="5"  
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+      </div>
+    </div>
+    <!-- end tableau 3 -->
+  </div>
+ 
+</div>
+  </div>
+  <!-- fin first container -->
                   
-   </div>
-      
-   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    
+             
+ </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+

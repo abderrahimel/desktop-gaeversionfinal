@@ -68,7 +68,6 @@ export class BlogmodalComponent implements OnInit {
  blog(){
   this.submitted = true;
      if(this.form.invalid){
-       console.log("form invalid");
        return;
      }
      console.log({
@@ -82,7 +81,6 @@ export class BlogmodalComponent implements OnInit {
           description: this.form.value.description,
           image: this.base64Img_image
          }).subscribe(data=>{
-           console.log(data);console.log("blog created");
          })
       }else{
         this.dataServece.updateblog(this.data.id, {
@@ -90,7 +88,6 @@ export class BlogmodalComponent implements OnInit {
           description: this.form.value.description,
           image: this.base64Img_image
          }).subscribe(data=>{
-           console.log(data);console.log("blog created");
          })
       }
       this.store.dispatch(loadblogadminaction());

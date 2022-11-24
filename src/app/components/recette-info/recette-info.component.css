@@ -787,3 +787,13 @@
   button{
     outline: none;
   }
+
+  
+  /* ************** */
+.btn-button{
+  font-size: 14px;
+  color: black;
+  background: white;
+  border: 1px solid rgb(204, 203, 203);
+  box-shadow: none;
+}
