@@ -107,7 +107,7 @@ export class CandidatFormComponent implements OnInit {
   this.idCandidat = Number(this.route.snapshot.paramMap.get('id'));                                     
     if(this.router.url === '/candidat/' + this.idCandidat){
       this.is_update = true;
-      this.modifierUpdate = "Modifier";
+      this.modifierUpdate = "Modifier"; 
       this.id_ecoleOrCandidat = this.idCandidat; 
      
     }else{

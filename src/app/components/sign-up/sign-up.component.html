@@ -176,6 +176,154 @@
         <div class="container">
             <div class="row">
                 <div style="margin-top: 170px;margin-bottom: 600px;margin-bottom: 0;" class="card">
+                      <div *ngIf="form.invalid" style="display: flex;align-items:center;justify-content:end;" id="btnalert">
+                        <button type="button" style="background: white;border: none;" onclick="document.getElementById('alertid').style.display='none';document.getElementById('btnalert').style.display='none'" >
+                            <span aria-hidden="true">×</span>
+                         </button>
+                       </div>
+                  <ul style="margin-top: 3px" id="alertid">
+                    <!-- error alert -->
+                      <li *ngIf="email_exist_in_data_base" class="bg-danger text-white"  role="alert">
+                        {{email_exist_in_data_base}}!
+                      </li>
+                      <!-- image -->
+                      <li *ngIf="submitted && this.form.controls.image.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.image.errors.required">
+                            {{'Logo  obligatoire ' | translate}}
+                        </div>
+                      </li>
+                      <!-- nom auto ecole -->
+                      <li *ngIf="submitted && this.form.controls.nom_auto_ecole.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.nom_auto_ecole.errors.required">
+                              {{'Nom auto ecole  obligatoire ' | translate}}  
+                        </div>
+                      </li>
+                      <li *ngIf="submitted && this.form.controls.date_ouverture.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.date_ouverture.errors.required">
+                              {{'date ouverture  obligatoire ' | translate}}  
+                        </div>
+
+                    </li>
+                    <li *ngIf="submitted && this.form.controls.n_register_de_commerce.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.n_register_de_commerce.errors.required">
+                              {{'Registre commerce obligatoire ' | translate}}  
+                        </div>
+                    </li>
+                    <div *ngIf="submitted && this.form.controls.identification_fiscale.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.identification_fiscale.errors.required">
+                              {{'ident fiscale obligatoire ' | translate}}  
+                        </div>
+                    </div>
+                    <div *ngIf="submitted && this.form.controls.n_agrement.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.n_agrement.errors.required">
+                              {{'N. Agrement obligatoire' | translate}}  
+                        </div>
+                    </div>
+                    <div *ngIf="submitted && this.form.controls.n_agrement.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.n_agrement.errors.required">
+                              {{'N. Agrement obligatoire' | translate}}  
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.n_patente.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.n_patente.errors.required">
+                              {{' N. patente obligatoire.' | translate}}  
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.image_rc.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.image_rc.errors.required">
+                            {{'image RC obligatoire ' | translate}}
+                        </div>
+                        <span style="color: white;"  *ngIf="this.form.controls.image_rc.status === 'INVALID' && this.form.controls.image_rc.touched">{{' extension  .jpeg, .jpg, .png' | translate}} </span>
+                    </div>
+                    <div *ngIf="submitted && this.form.controls.image_agrement.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.image_agrement.errors.required">
+                            {{'Image agrement obligatoire ' | translate}}
+                        </div>
+                   
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.n_cnss.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.n_cnss.errors.required">
+                            {{'N. Cnss obligatoire.' | translate}} 
+                        </div>
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.ice.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.ice.errors.required" >
+                            {{'Ice obligatoire.' | translate}} 
+                        </div>
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.n_compte_bancaire.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.n_compte_bancaire.errors.required">
+                            {{' N. compte bancaire obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.tva.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.tva.errors.required">
+                            {{' Tva obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.pays.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.pays.errors.required">
+                            {{' pays obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.telephone.errors" class="bg-danger text-white"  role="alert" >
+                        <div style="color: white;" *ngIf="this.form.controls.telephone.errors.required || this.form.controls.telephone.status === 'INVALID'">
+                            {{' Telephone obligatoire.' | translate}} 
+                        </div>
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.ville.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.ville.errors.required"  >
+                            {{' ville obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.email.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.email.errors.required">
+                            {{' email obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.password.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.password.errors.required">
+                            {{' password obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.cin_responsable.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.cin_responsable.errors.required">
+                            {{' Cin obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.nom_responsable.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.nom_responsable.errors.required">
+                            {{' Nom responsable obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.prenom_responsable.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.prenom_responsable.errors.required">
+                            {{' Prenom responsable obligatoire.' | translate}} 
+                        </div>
+
+                    </div>
+                    <div  *ngIf="submitted && this.form.controls.tel_responsable.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.tel_responsable.errors.required || this.form.controls.tel_responsable.status === 'INVALID'">
+                            {{' tel responsable obligatoire. ' | translate}} 
+                        </div>
+                    </div>
+                    <div *ngIf="submitted && this.form.controls.image_cin.errors" class="bg-danger text-white"  role="alert">
+                        <div style="color: white;" *ngIf="this.form.controls.image_cin.errors.required">
+                            {{'image cin obligatoire ' | translate}}
+                        </div>
+                    </div>
+                  </ul>
+                   
                     <form [formGroup]="form"  method="POST" action=""  
                     enctype="multipart/form-data" >
                      <!-- spinner -->
@@ -202,12 +350,20 @@
                                     <!-- <input type="file" class="dropify form-control"  name="image" data-height="180" accept=".jpg, .jpeg, .png" /> -->
 
                                  </div>
+
                                  <div class="err" *ngIf="submitted && this.form.controls.image.errors">
                                      <div style="color: red;" *ngIf="this.form.controls.image.errors.required">
                                          {{'Champ obligatoire ' | translate}}
                                      </div>
                                      <span style="color: red;"  *ngIf="this.form.controls.image.status === 'INVALID' && this.form.controls.image.touched">{{' extension  .jpeg, .jpg, .png' | translate}} </span>
                                  </div>
+
+                                 <div class="err" *ngIf="submitted && this.form.controls.date_autorisation.errors">
+                                    <div style="color: red;" *ngIf="this.form.controls.date_autorisation.errors.required">
+                                          {{'date autorisation obligatoire ' | translate}}  
+                                    </div>
+    
+                                </div>
                              </div>
                            
                              <div class="col-md-3"  style="background: white;">
@@ -234,7 +390,7 @@
                                          </div>
                                          <div class="err" *ngIf="submitted && this.form.controls.date_ouverture.errors">
                                              <div style="color: red;" *ngIf="this.form.controls.date_ouverture.errors.required">
-                                                   {{'date ouverture is obligatoire ' | translate}}  
+                                                   {{'date ouverture  obligatoire ' | translate}}  
                                              </div>
              
                                          </div>
@@ -271,8 +427,6 @@
                                                  placeholder="DD/MM/YYYY" 
                                                  type="date" id="date autorisation"
                                                  name="date_autorisation" value="" formControlName="date_autorisation" required>
-                                                
-                                               
                                          </div>
                                          <div class="err" *ngIf="submitted && this.form.controls.date_autorisation.errors">
                                              <div style="color: red;" *ngIf="this.form.controls.date_autorisation.errors.required">
@@ -444,7 +598,7 @@
                                  <div class="form-group">
             
                                      <label class="form-label text-dark">{{'email*' | translate}}</label>
-                                     <input formControlName="email" type="email" class="form-control input_shadow"  i18n="email"  required />
+                                     <input formControlName="email" type="email" class="form-control input_shadow" (change)="setError()"  required />
                                      <span style="color: red;">{{this.email_exist_in_data_base}}</span>
                                      <div class="err" *ngIf="submitted && this.form.controls.email.errors">
                                          <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
@@ -571,15 +725,18 @@
                          </div>
                      </div>
                      <div class="card-footer" style="background: white;">
-                         <div class="form-footer mt-2">               
-                             <button type="submit" onclick="document.getElementById('error_email_exist').style.display='none'"  class="btn" style="background: red;color: white;" (click)="register()">{{'Enregistrer' | translate}}</button> 
+                         <div class="form-footer mt-2">
+                             <button *ngIf="!(form.invalid || errors)" type="submit" class="btn" style="background: red;color: white;" (click)="register()">{{'Enregistrer' | translate}}
+                              <!-- <a *ngIf="form.invalid" href="/register#alertid">{{'Enregistrer' | translate}}</a> -->
+                            </button> 
+
+                              <a  href="/register#alertid" *ngIf="form.invalid || errors" type="submit" class="btn" style="background: red;color: white;" (click)="register()">{{'Enregistrer' | translate}}</a> 
                              <button type="reset" class="btn btn-dark">{{'Annuler' | translate}}</button> 
                          </div>
+                         <span style="color: red;">{{email_exist_in_data_base}}</span>
                      </div>
+                     
                  </form>
-                 <div style="margin-left:20px;padding-bottom: 7px;">
-                    <span style="color: red;" id="error_email_exist">{{this.email_exist_in_data_base}}</span>
-                 </div>
                  <div style="margin-left:20px;padding-bottom: 7px;">
                     vous avez déjà un compte gae <a href="/login" style="text-decoration:underline;color:black;font-weight:700">login</a>
                  </div>

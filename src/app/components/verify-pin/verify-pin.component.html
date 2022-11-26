@@ -160,6 +160,9 @@
                         </div>
                         <form [formGroup]="form" (ngSubmit)="verifyPin()" method="POST" action="" 
                         enctype="multipart/form-data" >
+                        <div class="bg-green text-white" style="width: 220px;">
+                            La demande a été envoyée avec succès, <span class="text-danger">Verifie votre email</span> 
+                        </div>
                         <div class="card-body">
                             <div class="form-group">
 
@@ -172,7 +175,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label text-dark" style="font-size: 15px;">{{'Votre Pin:Verifie votre email' | translate}}</label>
+                                <label class="form-label text-dark" style="font-size: 15px;">{{'Votre Pin' | translate}}</label>
                                 <input type="text" class="form-control" style="font-size: 15px;" name="pin" value="" formControlName="pin" required>
                                 <div class="err" *ngIf="submitted && this.form.controls.pin.errors">
                                     <div style="color: red;" *ngIf="this.form.controls.pin.errors.required">

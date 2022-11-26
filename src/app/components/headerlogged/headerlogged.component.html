@@ -23,11 +23,11 @@
             <button class="btn nav-home text-dark" (click)="navigation()" ><span *ngIf="!hide" style="font-size: 14px;">Dashboard</span><span style="font-size: 14px;" *ngIf="hide">Admin</span></button>
             <button class="btn nav-home text-dark " ><a routerLink="/boutique-j2hb"  class="link text-dark">Boutique j2hb</a></button>
             <button class="btn nav-home text-dark" ><a routerLink="/actualite"  class="link text-dark">Actualités</a></button>
-            <button class="btn nav-home text-dark" ><a routerLink="/monitors-job"  class="link text-dark">travail Moniteurs</a></button>
             <button class="btn nav-home text-dark" ><a routerLink="/vehicule-occasion"  class="link text-dark">Vehicule D'occasion</a></button>
-            <button mat-button [matMenuTriggerFor]="menu" style="font-size: 16px;" class="btn nav-home text-dark ">Menu</button>
+            <button mat-button [matMenuTriggerFor]="menu" style="font-size: 16px;" class="btn nav-home text-dark service">Service abonnés</button>
               <mat-menu #menu="matMenu" class="mat-menu-test text-dark">
                   <button class="bg-none" mat-menu-item> <a routerLink="/ecoles" class="link text-dark">Ecoles Adherents</a></button>
+                  <button class="btn nav-home text-dark" ><a routerLink="/monitors-job"  class="link text-dark">Recrutement des moniteurs</a></button>
                   <button class= "bg-none" mat-menu-item><a routerLink="/ecoles-vendre"  class="link text-dark">Ecoles Vendre</a></button>
               </mat-menu>
             <button class="btn nav-home text-dark" ><a routerLink="/ministre_notes"  class="link text-dark">Téléchargement</a></button>

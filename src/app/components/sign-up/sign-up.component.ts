@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-sign-up',
@@ -13,6 +13,7 @@ export class SignUpComponent implements OnInit {
   submitted:any;
   public error:any = [];
   files:any;
+  errors:boolean = false;
   response:any;
   email_exist_in_data_base:any = '';
   base64Img_image_rc:any;
@@ -66,6 +67,8 @@ export class SignUpComponent implements OnInit {
     if(this.form.invalid){
       console.log(this.form);
       console.log('formulaire invalide');
+      // alertid
+      this.router.navigateByUrl('/register#alertid')
       return ;
     }
 
@@ -116,14 +119,31 @@ export class SignUpComponent implements OnInit {
   }
 
   handleError(error:any){
+    // alertid
+    this.errors = true;
+    this.router.navigateByUrl('/register#alertid')
     console.log('there is an error')
     this.error = error.error?.errors;
+    console.log("ERROR INDISPOSABLE EMAIL");
     console.log(error)
+    console.log(error['error']);// {"success":false,"message":{"email":["Disposable email addresses are not allowed."],"telephone":["The telephone must be 10 digits."]}}
+    console.log(JSON.parse(error['error'])?.message?.email)
+    let message = JSON.parse(error['error'])?.message?.email;
+    if(message.includes('Disposable email addresses are not allowed.')){
+      this.email_exist_in_data_base = 'Les adresses électroniques jetables ne sont pas autorisées.'
+    }
+    if(message.includes('The email has already been taken.')){
+      this.email_exist_in_data_base = 'email a déjà été pris.';
+    }
+    
     if(error.status === 422){
-      this.email_exist_in_data_base = "The email has already been taken.";
+      // this.email_exist_in_data_base = "email a déjà été pris.";
     }
   }
-  
+  setError(){
+    console.log("value changed email");
+    this.email_exist_in_data_base = null;
+  }
   fileChangeEvent(fileInput: any, keyImage:any) {
 
     if (fileInput.target.files && fileInput.target.files[0]) {

@@ -40,8 +40,11 @@ export class ReinitialisePasswordComponent implements OnInit {
     this.langue=lang;
     this.translateService.selectLanguage(lang);
   }
-
+  setmessage(){
+    this.message = null;
+  }
   resetPass(){
+    this.error = null
     this.submitted =true;
     if(this.form.invalid){
       return;
@@ -52,7 +55,6 @@ export class ReinitialisePasswordComponent implements OnInit {
         this.message = JSON.parse(data).message;
          this.success=JSON.parse(data).success;
          if(this.success){
-          console.log(data);
           this.router.navigateByUrl('/verify/pin');
          }
         },
