@@ -17,6 +17,7 @@ export class MoniteurModalComponent implements OnInit {
   categorie_list:any = '';
   submitted:boolean = false;
   form:any;
+  title:any;
   dataMoniteur:any;
   constructor(public activeModal: NgbActiveModal,
               private store: Store<{ autoEcole: AutoEcoleState}>
@@ -25,6 +26,14 @@ export class MoniteurModalComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    if(this.type === 'T'){
+      this.title = ' moniteur theorique'
+    }
+
+    if(this.type === 'P'){
+      this.title = ' moniteur pratique'
+    }
+  
     if(this.btn === "Ajouter"){
       this.createFormNew();
     }else{

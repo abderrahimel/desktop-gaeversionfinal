@@ -10,43 +10,42 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;">
+<body style="font-size: 14px;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
    <app-menu-sb></app-menu-sb>
-   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
-    <div style="display: flex;">
-      <div class="wrap-table100">
-        <div class="mat-elevation-z8">
-          <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
-            <div style="font-weight: 600;">{{ "GESTION DES ABSENCES" | translate }}
-            </div>
-            <div class="col-3 add-btn-div">
-              <button 
-                type="button"
-                style="color: white; width: 150px;"
-               
-                class="btn add-btn" (click)="open1()" > 
-                {{ "Nouveau absence" | translate }}
-            </button>
-          </div>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e5ebef;">
+    <div style="background: white;margin: 15px;">
+      <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
+        <div style="font-weight: 600;">{{ "GESTION DES ABSENCES" | translate }}
         </div>
-        <hr>
-        <mat-card>
-          <div class="card" style="width: 100%;">
-            <div class="card-body">
-               <div class="table-responsive border-top mb-0">
-                      <!--ABSENCE candidats -->
+        <div class="col-3 add-btn-div">
+          <button 
+            type="button"
+            style="color: white; width: 150px;"
+           
+            class="btn add-btn" (click)="open1()" > 
+            {{ "Nouveau absence" | translate }}
+         </button>
+      </div>
+    </div>
+       <div class="bg-white" style="margin: 15px;background: white;">
+            <div class="d-flex align-items-center">
+              <button class="btn" id="btn1" onclick="document.getElementById('btn1').style.background='black';document.getElementById('btn1').style.color='white';document.getElementById('btn2').style.background='white';document.getElementById('btn2').style.color='black';document.getElementById('tab1').style.display='block';document.getElementById('tab2').style.display='none';" style="border: 1px solid black;font-size: 16px;height: 32px;background: black;color: white;">Absence Moniteur theorique</button>
+              <button class="btn" id="btn2" onclick="document.getElementById('btn2').style.background='black';document.getElementById('btn2').style.color='white';document.getElementById('btn1').style.background='white';document.getElementById('btn1').style.color='black';document.getElementById('tab2').style.display='block';document.getElementById('tab1').style.display='none';" style="border: 1px solid black;font-size: 16px;height: 32px;">Absence Moniteur pratique</button>
+            </div>
+            <div  id="tab1">
+              <!-- tab 1 -->
+                   <mat-card>
                         <div style="display: flex;align-items:center;justify-content:flex-end">
                           <div style="margin-right: 6px">  Rechercher:</div>
                           <mat-form-field appearance="standard">
-                             <mat-label></mat-label>
-                             <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                            <mat-label></mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
                           </mat-form-field>
                       </div>
-                       <table   mat-table [dataSource]="dataSource" matSort>    
-                     
+                      <table  mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
                         <ng-container matColumnDef="moniteur">
                           <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by moniteur"> 
                             <span style="font-weight:900;">{{ "NOM" | translate }}</span>    
@@ -54,7 +53,7 @@
                           <td mat-cell *matCellDef="let element"> {{element?.moniteur?.nom}}{{" "}}{{element?.moniteur?.prenom}} </td>
                         </ng-container>
                     
-                        <ng-container matColumnDef="type_absence">  
+                        <ng-container matColumnDef="type_absence">   
                           <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "TYPE ABSENCE" | translate }}</span>   </th>
                           <td mat-cell *matCellDef="let element"> {{element?.type_absence}} </td>
                         </ng-container>
@@ -82,22 +81,79 @@
                           </button>
                         </td>
                       </ng-container>
+
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                       </table>
                       <mat-paginator 
-                      [length]="n" 
-                      [pageSize]="5"  
-                      [pageSizeOptions]="[5, 10, 25, 100]">
+                        #paginatorFirst
+                        [pageSize]="5"  
+                        [pageSizeOptions]="[5, 10, 25, 100]">
                       </mat-paginator>
-                      <!-- end ABSENCE candidats -->
-               </div>
+                   </mat-card>
+              <!-- end tab1 -->
             </div>
-        </div>
-        </mat-card>
-          </div>
-     
-      </div>
+            <div id="tab2" style="display: none;">
+                  <!-- tab 2 -->
+                  <mat-card>
+                    <div style="display: flex;align-items:center;justify-content:flex-end">
+                      <div style="margin-right: 6px">  Rechercher:</div>
+                      <mat-form-field appearance="standard">
+                        <mat-label></mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                      </mat-form-field>
+                  </div>
+                  <table  mat-table  [dataSource]="dataSource1"  matSort #empTbSortsecond="matSort">    
+                    <ng-container matColumnDef="moniteur">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by moniteur"> 
+                        <span style="font-weight:900;">{{ "NOM" | translate }}</span>    
+                      </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.moniteur?.nom}}{{" "}}{{element?.moniteur?.prenom}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="type_absence">  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "TYPE ABSENCE" | translate }}</span>   </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.type_absence}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="date_debut">   
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "DATE DEBUT" | translate }}</span> </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.date_debut}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="date_fin">  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "DATE FIN" | translate }} </span> </th>
+                      <td mat-cell *matCellDef="let element"> {{element?.date_fin}} </td>
+                    </ng-container>   
+            
+                   <ng-container matColumnDef="actions">  
+                    <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">{{ "ACTIONS" | translate }}</span>  </th>
+                    <td mat-cell *matCellDef="let element"> 
+                      <button style="width: 120px;padding: 10px;" class="btn btn-danger"  (click)="deleteAbsence(element)">
+                        {{ "Suprimer" | translate }}
+                      </button>
+                      <button   
+                          (click)="open('Modifier', element)" 
+                          style="width: 120px;padding: 10px;color: white;text-decoration: none;" class="btn btn-primary">
+                           {{ "Modifier" | translate }}
+                      </button>
+                    </td>
+                  </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                  </table>
+                  <mat-paginator 
+                    #paginatorSecond
+                    [pageSize]="5"  
+                    [pageSizeOptions]="[5, 10, 25, 100]">
+                  </mat-paginator>
+               </mat-card>
+                  <!-- end tab2 -->
+            </div>
+       </div>       
+       
+    
   </div>
   <!-- fin first container -->
                   

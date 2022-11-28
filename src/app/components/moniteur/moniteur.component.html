@@ -10,223 +10,153 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;">
+<body style="font-size: 14px;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
    <app-menu-sb></app-menu-sb>
-   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
-    <div style="display: flex;">
-           
-      <div class="wrap-table100">
-        <div class="table-header">
-          <div class="row">
-            <div class="col-9">
-              <div class="title" style="font-size: 14px;">
-                 <span>GESTION DES MONITEURS
-                </span>
-              </div>
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e5ebef;">
+    <div style="background: white;margin: 15px;">
+       <div class="bg-white" style="margin: 15px;background: white;">
+            <div class="d-flex align-items-center">
+              <button class="btn" id="btn1" onclick="document.getElementById('btn1').style.background='black';document.getElementById('btn1').style.color='white';document.getElementById('btn2').style.background='white';document.getElementById('btn2').style.color='black';document.getElementById('tab1').style.display='block';document.getElementById('tab2').style.display='none';" style="border: 1px solid black;font-size: 16px;height: 32px;background: black;color: white;">Moniteur theorique</button>
+              <button class="btn" id="btn2" onclick="document.getElementById('btn2').style.background='black';document.getElementById('btn2').style.color='white';document.getElementById('btn1').style.background='white';document.getElementById('btn1').style.color='black';document.getElementById('tab2').style.display='block';document.getElementById('tab1').style.display='none';" style="border: 1px solid black;font-size: 16px;height: 32px;">Moniteur pratique</button>
             </div>
-            
-            <div class="col-3 btn btn-primary add-btn p-4">
-                 <a routerLink="/ajouter-moniteur" 
-                     style="color: white;text-decoration: none;margin-top: 20px;" > {{ "Nouvel moniteur" | translate }}</a>
-            </div>
-          </div>
-        </div>
-        <div class="tableDiv">
-          <mat-card>
-            <div class="card">
-              <div class="card-header" style="display: none;">
-                  <h3 class="card-title">
-                  </h3>
-              </div>
-              <mat-card>
-                <div class="card" style="width: 100%;">
-                  <div class="card-body">
-                     <div class="table-responsive border-top mb-0">
-                            <!--ABSENCE candidats -->
-                        
-                              <div style="display: flex;align-items:center;justify-content:flex-end">
-                                <div style="margin-right: 6px">  Rechercher:</div>
-                                <mat-form-field appearance="standard">
-                                   <mat-label></mat-label>
-                                   <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
-                                </mat-form-field>
-                            </div>
-                             <table  mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
-                           
-                              <ng-container matColumnDef="cin">      
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom"> 
-                                  <span style="font-weight:900;">CIN</span>    
-                                </th>
-                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.cin}} </td>
-                              </ng-container>
-                          
-                              <ng-container matColumnDef="nom">  
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">NOM</span>   </th>
-                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.nom}}{{" "}}{{element?.prenom}}</td>
-                              </ng-container>
-                          
-                              <ng-container matColumnDef="telephone">   
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TELEPHONE</span> </th>
-                                <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.telephone}} </td>
-                              </ng-container>
-             
-                               <ng-container matColumnDef="type">   
-                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TYPE</span> </th>
-                                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.type}} </td>
-                               </ng-container>
-                               <ng-container matColumnDef="newCategorie">   
-                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CATEGORIE</span> </th>
-                                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.newCategorie}} </td>
-                               </ng-container>
-                                 <ng-container matColumnDef="date_embauche">   
-                                   <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE EMBAUCHE</span> </th>
-                                   <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_embauche}}</td>
-                                 </ng-container>
-                                  <ng-container matColumnDef="actions">   
-                                   <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ACTIONS</span> </th>
-                                   <td mat-cell *matCellDef="let element" style="text-align: center;"> 
-                                     <button class="btn btn-danger button-class" style="padding: 10px;" (click)="deletMoniteurT(element?.id)">
-                                       Supprimer
-                                     </button>
-                                       <button 
-                                             type="button"
-                                             class="btn btn-primary button-class"
-                                             (click)="open('Modifier','T', element)"
-                                             style="color:white; text-decoration:none;padding:5px">Modifier
-                                       </button>
-                                   </td>
-                                 </ng-container>
-                              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            </table>
-                            <mat-paginator 
-                            #paginatorFirst
-                            [pageSize]="5"  
-                            [pageSizeOptions]="[5, 10, 25, 100]">
-                            </mat-paginator>
-                            <!-- end ABSENCE candidats -->
-                     </div>
-                  </div>
-              </div>
-              </mat-card>
-              <!-- <div style="display: flex;align-items:center;justify-content:flex-end">
-                <div style="margin-right: 6px">  Rechercher:</div>
-                <mat-form-field appearance="standard">
-                   <mat-label></mat-label>
-                   <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
-                </mat-form-field>
-            </div>
-             <table mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
-               <ng-container matColumnDef="cin">       ['cin',  'nom',  'telephone',  'type',  'newCategorie', 'date_embauche'];
-                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom"> 
-                   <span style="font-weight:900;">CIN</span>    
-                 </th>
-                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.cin}} </td>
-               </ng-container>
-           
-               <ng-container matColumnDef="nom">  
-                 <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">NOM</span>   </th>
-                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.nom}}{{" "}}{{element?.prenom}}</td>
-               </ng-container>
-           
-               <ng-container matColumnDef="telephone">   
-                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TELEPHONE</span> </th>
-                 <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.telephone}} </td>
-               </ng-container>
+            <div  id="tab1">
+              <!-- tab 1 -->
+                   <mat-card>
+                        <div style="display: flex;align-items:center;justify-content:flex-end">
+                          <div style="margin-right: 6px">  Rechercher:</div>
+                          <mat-form-field appearance="standard">
+                            <mat-label></mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                          </mat-form-field>
+                      </div>
+                      <table  mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
+                    
+                        <ng-container matColumnDef="cin">      
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom"> 
+                            <span style="font-weight:900;">CIN</span>    
+                          </th>
+                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.cin}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="nom">  
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">NOM</span>   </th>
+                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.nom}}{{" "}}{{element?.prenom}}</td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="telephone">   
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TELEPHONE</span> </th>
+                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.telephone}} </td>
+                        </ng-container>
 
-                <ng-container matColumnDef="type">   
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TYPE</span> </th>
-                  <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.type}} </td>
-                </ng-container>
-                <ng-container matColumnDef="newCategorie">   
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CATEGORIE</span> </th>
-                  <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.newCategorie}} </td>
-                </ng-container>
-                  <ng-container matColumnDef="date_embauche">   
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE EMBAUCHE</span> </th>
-                    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_embauche}}</td>
-                  </ng-container>
-                   <ng-container matColumnDef="actions">   
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ACTIONS</span> </th>
-                    <td mat-cell *matCellDef="let element" style="text-align: center;"> 
-                      <button class="btn btn-danger button-class" style="padding: 10px;" (click)="deletMoniteurT(element?.id)">
-                        Supprimer
-                      </button>
-                        <button 
-                              type="button"
-                              class="btn btn-primary button-class"
-                              (click)="open('Modifier','T', element)"
-                              style="color:white; text-decoration:none;padding:5px">Modifier
-                        </button>
-                    </td>
-                  </ng-container>
-               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-             </table>
-             <mat-paginator 
-               #paginatorFirst
-               [pageSize]="5"  
-               [pageSizeOptions]="[5, 10, 25, 100]">
-             </mat-paginator> -->
-          </div>
-          </mat-card>
-          <!-- <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">{{ "CIN" | translate }}</th>
-                <th scope="col">{{ "Nom" | translate }}</th>
-                <th scope="col">{{ "TELEPHONE" | translate }}</th>
-                <th scope="col">{{ "TYPE"| translate }}</th>
-                <th scope="col">{{ "DATE EMBAUCHE" | translate }}</th>
-                <th scope="col">{{ "CATEGORIE" | translate }}</th>
-                <th scope="col">{{ "ACTIONS" | translate }}</th>
-              </tr>
-            </thead>
-            <tbody >
-              <tr  *ngFor="let data of datamoniteurT">
-                <td>{{data?.cin}}</td> 
-                <td>{{data?.nom}}{{" "}}{{data?.prenom}}</td>
-                <td>{{data?.telephone}}</td>
-                <td>{{data?.type}}</td>
-                <td>{{data?.newCategorie}}</td>
-                <td>{{data?.date_embauche}}</td>
-                <td>
-                  <button class="btn btn-danger button-class" style="padding: 10px;" (click)="deletMoniteurT(data?.id)">
-                    Supprimer
-                  </button>
-                    <button 
-                          type="button"
-                          class="btn btn-primary button-class"
-                          (click)="open('Modifier','T', data)"
-                          style="color:white; text-decoration:none;padding:5px">Modifier
-                    </button>
-                </td>
-              </tr>
-              <tr *ngFor="let data of datamoniteurP">
-                <td>{{data?.cin}}</td>
-                <td>{{data?.nom}}{{" "}}{{data?.prenom}}</td>
-                <td>{{data?.telephone}}</td>
-                <td>{{data?.type}}</td>
-                <td>{{data?.newCategorie}}</td>
-                <td>{{data?.date_embauche}}</td>
-                <td>
-                  <button class="btn btn-danger button-class" style="padding: 10px;" (click)="deletMoniteurP(data?.id)">
-                    Supprimer
-                  </button>
-                  <button 
-                          type="button"
-                          class="btn btn-primary button-class"
-                          (click)="open('Modifier','P', data)"
-                          style="color:white; text-decoration:none;padding:5px">Modifier</button>
-                </td>
-              </tr>
-            </tbody>
-          </table> -->
-        </div>
-      </div>
+                        <ng-container matColumnDef="type">   
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TYPE</span> </th>
+                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.type}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="newCategorie">   
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CATEGORIE</span> </th>
+                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.newCategorie}} </td>
+                        </ng-container>
+                          <ng-container matColumnDef="date_embauche">   
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE EMBAUCHE</span> </th>
+                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_embauche}}</td>
+                          </ng-container>
+                            <ng-container matColumnDef="actions">   
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ACTIONS</span> </th>
+                            <td mat-cell *matCellDef="let element" style="text-align: center;"> 
+                              <button class="btn btn-danger button-class" style="padding: 10px;" (click)="deletMoniteurT(element?.id)">
+                                Supprimer
+                              </button>
+                                <button 
+                                      type="button"
+                                      class="btn btn-primary button-class"
+                                      (click)="open('Modifier','T', element)"
+                                      style="color:white; text-decoration:none;padding:5px">Modifier
+                                </button>
+                            </td>
+                          </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+                      <mat-paginator 
+                        #paginatorFirst
+                        [pageSize]="5"  
+                        [pageSizeOptions]="[5, 10, 25, 100]">
+                      </mat-paginator>
+                   </mat-card>
+              <!-- end tab1 -->
+            </div>
+            <div id="tab2" style="display: none;">
+                  <!-- tab 2 -->
+                  <mat-card>
+                    <div style="display: flex;align-items:center;justify-content:flex-end">
+                      <div style="margin-right: 6px">  Rechercher:</div>
+                      <mat-form-field appearance="standard">
+                        <mat-label></mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
+                      </mat-form-field>
+                  </div>
+                  <table  mat-table  [dataSource]="dataSource1"  matSort #empTbSortsecond="matSort">    
+                
+                    <ng-container matColumnDef="cin">      
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom"> 
+                        <span style="font-weight:900;">CIN</span>    
+                      </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.cin}} </td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="nom">  
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">NOM</span>   </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.nom}}{{" "}}{{element?.prenom}}</td>
+                    </ng-container>
+                
+                    <ng-container matColumnDef="telephone">   
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TELEPHONE</span> </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.telephone}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="type">   
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TYPE</span> </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.type}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="newCategorie">   
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CATEGORIE</span> </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.newCategorie}} </td>
+                    </ng-container>
+                      <ng-container matColumnDef="date_embauche">   
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE EMBAUCHE</span> </th>
+                        <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_embauche}}</td>
+                      </ng-container>
+                        <ng-container matColumnDef="actions">   
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ACTIONS</span> </th>
+                        <td mat-cell *matCellDef="let element" style="text-align: center;"> 
+                          <button class="btn btn-danger button-class"  (click)="deletMoniteurT(element?.id)">
+                            Supprimer
+                          </button>
+                            <button 
+                                  type="button"
+                                  class="btn btn-primary button-class"
+                                  (click)="open('Modifier','P', element)"
+                                  style="color:white; text-decoration:none;padding:5px">Modifier
+                            </button>
+                        </td>
+                      </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                  </table>
+                  <mat-paginator 
+                    #paginatorSecond
+                    [pageSize]="5"  
+                    [pageSizeOptions]="[5, 10, 25, 100]">
+                  </mat-paginator>
+               </mat-card>
+                  <!-- end tab2 -->
+            </div>
+       </div>       
+       
+    
   </div>
   <!-- fin first container -->
                   

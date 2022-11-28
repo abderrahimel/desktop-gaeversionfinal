@@ -9,8 +9,9 @@ import { AbsenceMoniteurModalComponent } from 'src/app/modal/absence-moniteur-mo
 import { AddAbsenceMoniteurComponent } from 'src/app/modal/add-absence-moniteur/add-absence-moniteur.component';
 import { UpdateMoniteurAbsenceModalComponent } from 'src/app/modal/update-moniteur-theorique-modal/update-moniteur-absence-modal.component';
 import { DataService } from 'src/app/services/data.service';
-import { deleteAbsenceById, loadAbsence, loadedAbsence } from 'src/app/state/absence/absence.actions';
+import { deleteAbsenceById, loadAbsence, loadAbsenceMoniteurPratique, loadedAbsence } from 'src/app/state/absence/absence.actions';
 import { AbsenceState } from 'src/app/state/absence/absence.state';
+import { AbsenceMoniteurPratiqueState } from 'src/app/state/absenceMoniteurPrarique/absenceMoniteurPratique.state';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,23 +20,25 @@ import Swal from 'sweetalert2';
   styleUrls: ['./absence-moniteur.component.css']
 })
 export class AbsenceMoniteurComponent implements OnInit { // 
-  displayedColumns: string[] = ['moniteur', 'type_absence', 'date_debut', 'date_fin', 'actions'];    
-  dataSource!: MatTableDataSource<any>;
-  posts:any;
-  n:any;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  displayedColumns: string[] = ['moniteur', 'type_absence', 'date_debut', 'date_fin', 'actions']; 
+  displayedColumns1: string[] = ['moniteur', 'type_absence', 'date_debut', 'date_fin', 'actions']; 
+  @ViewChild('empTbSort') empTbSort = new MatSort();
+  @ViewChild('empTbSortsecond') empTbSortsecond = new MatSort();
+  @ViewChild('paginatorFirst') paginatorFirst!: MatPaginator;
+  @ViewChild('paginatorSecond') paginatorSecond!: MatPaginator;
+  dataSource = new MatTableDataSource();    
+  dataSource1 = new MatTableDataSource();    
   dateVal = new Date();
   absencetheorique:any; 
   absencepratique:any ;
   constructor(private dataService:DataService,
-              private store:Store<{absence:AbsenceState}>,
+              private store:Store<{absence:AbsenceState, absenceMoniteurPratique: AbsenceMoniteurPratiqueState}>,
               private modalService: NgbModal,
     ) { }
 
   ngOnInit(): void {
-    // this.getAbsences();
     this.getData()
+    this.getAbsencesMoniteurPratique();
   }
   applyFilter(event:any){
     let value = event.target.value
@@ -49,25 +52,24 @@ export class AbsenceMoniteurComponent implements OnInit { //
       this.store.select(state=>state.absence.absence.absence).subscribe(absence=>{
         this.absencetheorique = absence
         this.dataSource = new MatTableDataSource(this.absencetheorique)
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        if(this.absencetheorique){
-          this.n = this.absencetheorique.reduce((acc, o) => acc + Object.keys(o).length, 0)
-        }
+        this.dataSource.paginator = this.paginatorFirst;
+        this.dataSource.sort = this.empTbSort;
        
       })
     })
   }
-  getAbsences(){
-    this.dataService.getAbsenceMoniteurTheorique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      this.absencetheorique = JSON.parse(data);
-      console.log(this.absencetheorique);
-      this.dataSource = new MatTableDataSource(this.absencetheorique)
-
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.n = this.absencetheorique.reduce((acc, o) => acc + Object.keys(o).length, 0)
-    }); 
+  getAbsencesMoniteurPratique(){ // loadAbsenceMoniteurPratique
+    this.store.pipe(take(1)).subscribe(store=>{
+      if(!store.absenceMoniteurPratique.absenceMoniteurPratique.loaded){
+        this.store.dispatch(loadAbsenceMoniteurPratique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+      }
+      this.store.select(state=>state.absenceMoniteurPratique.absenceMoniteurPratique.absenceMoniteurPratique).subscribe(absence=>{
+        this.absencepratique = absence;
+        this.dataSource1 = new MatTableDataSource(this.absencepratique);
+        this.dataSource1.paginator = this.paginatorSecond;
+        this.dataSource1.sort = this.empTbSortsecond;
+      })
+    })
   }
   loadAbsence(){
     //  load data of absence moniteur theorique

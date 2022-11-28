@@ -18,9 +18,13 @@ import { MatSort } from '@angular/material/sort';
 })
 export class MoniteurComponent implements OnInit {
   displayedColumns: string[] = ['cin',  'nom',  'telephone',  'type',  'newCategorie', 'date_embauche', 'actions']; 
+  displayedColumns1: string[] = ['cin',  'nom',  'telephone',  'type',  'newCategorie', 'date_embauche', 'actions']; 
   @ViewChild('empTbSort') empTbSort = new MatSort();
+  @ViewChild('empTbSortsecond') empTbSortsecond = new MatSort();
   @ViewChild('paginatorFirst') paginatorFirst!: MatPaginator;
+  @ViewChild('paginatorSecond') paginatorSecond!: MatPaginator;
   dataSource = new MatTableDataSource();    
+  dataSource1 = new MatTableDataSource();    
   data:any[]=[];
   dateVal = new Date();
   datamoniteurT:any;
@@ -47,19 +51,28 @@ export class MoniteurComponent implements OnInit {
  reloadData(){
   this.dataService.getMoniteurT(localStorage.getItem('autoEcole_id')).subscribe(data=>{
     this.datamoniteurT = data;
+    console.log(data);
     this.datamoniteurT.map(mt=>{
       let categories = mt?.categorie
       mt['newCategorie'] = categories.join('-');
-    })
+    });
+    this.dataSource = new MatTableDataSource(this.datamoniteurT)
+      this.dataSource.paginator = this.paginatorFirst;
+      this.dataSource.sort = this.empTbSort;
   })
   this.dataService.getMoniteurP(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.datamoniteurP = data;
       this.datamoniteurP.map(mp=>{
         let categories = mp?.categorie
         mp['newCategorie'] = categories.join('-');
-      })
+      });
+      this.dataSource1 = new MatTableDataSource(this.datamoniteurP)
+      this.dataSource1.paginator = this.paginatorSecond;
+      this.dataSource1.sort = this.empTbSortsecond;
   });
  }
+
+
   deletMoniteurT(id:any){
     Swal.fire({
       title: 'confirmation',
@@ -97,7 +110,7 @@ export class MoniteurComponent implements OnInit {
   })
     
   }
-  open(btn:any,type:any, data:any) {
+  open(btn:any,type:any, data:any) { // open('Modifier','P', element)
     const modalRef = this.modalService.open(MoniteurModalComponent);
     modalRef.componentInstance.btn = btn;
     modalRef.componentInstance.data = data;

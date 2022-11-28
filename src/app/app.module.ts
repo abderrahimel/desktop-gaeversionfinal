@@ -298,6 +298,8 @@ import { BodyDashboardComponent } from './components/body-dashboard/body-dashboa
 import { MatTabsModule } from '@angular/material/tabs'; 
 import {MatMenuModule} from '@angular/material/menu';
 import { ContratAutoEcoleComponent } from './modal/contrat-auto-ecole/contrat-auto-ecole.component';
+import { AbsenceMoniteurPratiqueEffects } from './state/absenceMoniteurPrarique/absenceMoniteurPratique.effect';
+import { absenceMoniteurPratiqueReducer } from './state/absenceMoniteurPrarique/absenceMoniteurPratique.reducer';
 export function httpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http,'../assets/i18n/','.json');
 };
@@ -563,7 +565,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       VehiculeOccasionEffects,
       MoniteurJobEffects,
       AutoEcoleWithAbonnementEffects,
-      AbsenceEmployeEffects
+      AbsenceEmployeEffects,
+      AbsenceMoniteurPratiqueEffects
     ]),
     StoreModule.forRoot({
       user: userReducer,
@@ -602,7 +605,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       boutique: boutiqueReducer,
       vehiculeOccasion: vehiculeOccasionReducer,
       moniteurJob: moniteurJobReducer,
-      autoEcoleWithAbonnement: autoecolewithabonnementReducer 
+      autoEcoleWithAbonnement: autoecolewithabonnementReducer,
+      absenceMoniteurPratique: absenceMoniteurPratiqueReducer
     }),
     StoreDevtoolsModule.instrument({
       name: 'NgRx Demo App',

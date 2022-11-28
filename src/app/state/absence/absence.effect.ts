@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { exhaustMap, map } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
-import { addAbsenceAction, deleteAbsenceById, loadAbsence, loadedAbsence, updateAbsenceAction } from './absence.actions';
+import { addAbsenceAction, deleteAbsenceById, loadAbsence, loadAbsenceMoniteurPratique, loadedAbsence, loadedAbsenceMoniteurPratique, updateAbsenceAction } from './absence.actions';
 import { AbsenceState } from './absence.state';
 
 @Injectable()
@@ -22,6 +22,20 @@ export class AbsenceEffects {
         .pipe( 
             map((data)=>{
                 return loadedAbsence({payload: JSON.parse(data)});
+            })
+        )
+     })
+    )
+  })
+
+  loadAbsenceMoniteurPratique$ = createEffect(()=>{
+    return this.actions$.pipe(ofType(loadAbsenceMoniteurPratique),
+     exhaustMap((action)=>{
+        return this.dataService.getAbsenceMoniteurPratique(action.idAutoEcole)
+        .pipe( 
+            map((data)=>{
+              console.log("absence moniteur pratique");console.log(JSON.parse(data));
+                return loadedAbsenceMoniteurPratique({payload: JSON.parse(data)});
             })
         )
      })

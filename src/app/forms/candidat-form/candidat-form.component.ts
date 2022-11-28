@@ -39,6 +39,7 @@ export class CandidatFormComponent implements OnInit {
   candidatData:any;
   idAutoEcole:any;
   data:any;
+  
   user:any;
   monitorP_E:any;
   monitorT_E:any;

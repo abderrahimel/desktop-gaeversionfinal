@@ -11,22 +11,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;background-color: #e9ecef;">
+<body style="font-size: 14px;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
    <app-menu-sb></app-menu-sb>
-   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e8eeea;;">
-    <div style="display: flex;background: #e8eeea;;">
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e5ebef;">
+    <div style="display: flex;background: #e5ebef;">
       
         <div class="mat-elevation-z8" style="margin: 15px;width: 100%;box-shadow: none;">
           <div class="card" style="width: 100%;">
             <div class="card-body" style="padding: 0px;">
                   <!-- spinner -->
-                  <div *ngIf="is_update && !candidatData" class="spinner-border text-danger" style="margin-left: 40%;margin-top: 60px;position: absolute;z-index: 6000;" role="status">
+                  <!-- <div *ngIf="is_update && !candidatData" class="spinner-border text-danger" style="margin-left: 40%;margin-top: 60px;position: absolute;z-index: 6000;" role="status">
                     <span class="visually-hidden">Loading...</span>
-                  </div>
-                <form *ngIf="candidatData"  [formGroup]="form" (ngSubmit)="AddOrUpdateCandidat()" method="POST" action="" id="register" 
+                  </div> -->
+                <form  [formGroup]="form" (ngSubmit)="AddOrUpdateCandidat()" method="POST" action="" id="register" 
                 enctype="multipart/form-data" style="margin-left: -7px;padding: 15px;" >
               
                    <div class="containercandidat" style="padding: 6px">
