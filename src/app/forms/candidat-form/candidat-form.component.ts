@@ -186,7 +186,7 @@ export class CandidatFormComponent implements OnInit {
       moniteur_theorique_id: new FormControl('', Validators.required),
       moniteur_pratique_id: new FormControl('', Validators.required),
       vehicule_id: new FormControl('', Validators.required),
-      observations: new FormControl(''),  
+      observations: new FormControl(''),
       possede_permis: new FormControl(''),
       pcn: new FormControl(''),
       date_obtention: new FormControl(''),
@@ -205,7 +205,7 @@ export class CandidatFormComponent implements OnInit {
         name:  resUser?.name,
         type:  resUser?.type
         };
-        this.store.dispatch(addUser({payload: user})); 
+        this.store.dispatch(addUser({payload: user}));
     } catch (error) {
     }
     

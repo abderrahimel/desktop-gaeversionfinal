@@ -3,7 +3,7 @@
   </div> -->
   <div class="modal-content"  style="padding: 10px;border: none;padding-top: 0;">
 	<div class="modal-header" >
-	  <h5 class="modal-title" id="exampleModalLabel">{{btn}} absence</h5>
+	  <h5 class="modal-title" id="exampleModalLabel">Modifier absence Moniteur {{type}}</h5>
 	  <button type="button" style="border: none;background: white;" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
 		<span aria-hidden="true">×</span>
 	  </button>
@@ -11,15 +11,11 @@
 	<form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
 		  <div class="card-body">
 			  <p style="color: red; font-weight: bold;font-size: 12px;">(*)Champs obligatoire</p>
-			  <div class="col-md-12">
-				  <div class="alert" id="EditMessage" style="display: none;">
-				  </div>
-			  </div>
 			  <div class="row">
 				  <div class="col-md-6">
 					  <div class="form-group">      
 						  <label class="form-label">Moniteur</label>
-						  <input name="moniteur" class="form-control" formControlName="moniteur" >
+						  <input name="moniteur" class="form-control" style="font-size: 14px;" formControlName="moniteur" >
 					  </div>
 				  </div>
 
@@ -27,7 +23,7 @@
 					  <div class="form-group">
 						  <label class="form-label">Type absence</label>
 						  <div class="input-group mb-3">
-							  <select id="type5" name="type_absence" class="form-control" formControlName="type_absence">
+							  <select id="type5" name="type_absence" style="font-size: 14px;" class="form-control" formControlName="type_absence">
 								  <option value="">Choisir un type</option>
 								  <option value="Congé">Congé</option>
 								  <option value="Maladie">Maladie</option>
@@ -35,7 +31,12 @@
 								  <option value="Préparation papier">Préparation papier</option>
 								  <option value="Problèmes familiaux">Problèmes familiaux</option>
 																																											  </select>
-						  </div>	
+						  </div>
+						  <div class="err" *ngIf="submitted && this.form.controls.type_absence.errors">
+							<div style="color: red;" *ngIf="this.form.controls.type_absence.errors.required">
+								  {{'champ obligatoire*' | translate}}  
+							</div>
+						</div>	
 					  </div>
 				  </div>
 
@@ -46,8 +47,13 @@
 							  <div class="input-group">
 								  <div class="input-group-prepend">
 								  </div>
-								  <input class="form-control" placeholder="DD/MM/YYYY" type="date" name="date_debut" formControlName="date_debut">
+								  <input class="form-control" style="font-size: 14px;" placeholder="DD/MM/YYYY" type="date" name="date_debut" formControlName="date_debut">
 							  </div>
+							  <div class="err" *ngIf="submitted && this.form.controls.date_debut.errors">
+								<div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
+									  {{'champ obligatoire*' | translate}}  
+								</div>
+							</div>	
 						  </div>
 					  </div>
 				  </div>
@@ -58,8 +64,13 @@
 						  <div class="wd-200 mg-b-30">
 							  <div class="input-group">
 								  <div class="input-group-prepend">
-								  </div><input class="form-control" placeholder="DD/MM/YYYY" type="date" name="date_fin" formControlName="date_fin">
+								  </div><input class="form-control" style="font-size: 14px;" placeholder="DD/MM/YYYY" type="date" name="date_fin" formControlName="date_fin">
 							  </div>
+							  <div class="err" *ngIf="submitted && this.form.controls.date_fin.errors">
+								<div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
+									  {{'champ obligatoire*' | translate}}  
+								</div>
+							</div>	
 						  </div>
 					  </div>
 				  </div>
@@ -67,14 +78,19 @@
 				  <div class="col-md-10">
 					  <div class="form-group">
 						  <label class="form-label">Remarques</label>
-						  <textarea rows="5" class="form-control" name="remarques" i formControlName="remarque"></textarea>
+						  <textarea rows="5" class="form-control" style="font-size: 14px;" name="remarques" i formControlName="remarque"></textarea>
 					  </div>
+					  <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
+						<div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
+							  {{'champ obligatoire*' | translate}}  
+						</div>
+					</div>	
 				  </div>
 			  </div>	
 		  </div>
 
 		  <div class="card-footer" style="margin-top: 7px;">
-					 <button type="submit" class="btn" style="background: #198754;color: white;" id="button_edit" (click)="updateAbsence()"><i class="fa fa-edit" aria-hidden="true"></i>  {{btn}}</button>
+					 <button type="submit" class="btn" style="background: #198754;color: white;" id="button_edit" (click)="updateAbsence()"><i class="fa fa-edit" aria-hidden="true"></i>{{btn}}</button>
 		<button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
 		  </div>
 	  </form>	

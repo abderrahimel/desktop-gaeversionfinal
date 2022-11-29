@@ -56,8 +56,10 @@ export class AbsenceMoniteurComponent implements OnInit { //
         this.dataSource.sort = this.empTbSort;
        
       })
-    })
+    })   
   }
+
+
   getAbsencesMoniteurPratique(){ // loadAbsenceMoniteurPratique
     this.store.pipe(take(1)).subscribe(store=>{
       if(!store.absenceMoniteurPratique.absenceMoniteurPratique.loaded){
@@ -118,7 +120,8 @@ export class AbsenceMoniteurComponent implements OnInit { //
     modalRef.componentInstance.btn = btn;
     modalRef.componentInstance.data = data;
   }
-  open1() {
+  open1(type:any) {
     const modalRef = this.modalService.open(AddAbsenceMoniteurComponent);
+    modalRef.componentInstance.type = type;
   }
 }

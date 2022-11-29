@@ -19,7 +19,7 @@ export class RecetteComponent implements OnInit {
   displayedColumns: string[] = ['date',  'candidat',  'type_formation',  'categorie',  'montant', 'nbr_heure_pratique'];
   @ViewChild('empTbSort') empTbSort = new MatSort();
   @ViewChild('paginatorFirst') paginatorFirst!: MatPaginator;   
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource([]);
   dateVal = new Date();
   depenseLocal:any;
   dataGeneral:any;
@@ -59,6 +59,10 @@ export class RecetteComponent implements OnInit {
       this.supplementaire = coursRecette.coursSupplementaire;
       
       this.permis = coursRecette.permis
+      // this.dataSource.data = this.loadData.concat(this.supplementaire)
+      // this.dataSource.data = this.dataSource.data.concat(this.supplementaire)
+      // this.dataSource.paginator = this.paginatorFirst;
+      // this.dataSource.sort = this.empTbSort;
     });
 
   }

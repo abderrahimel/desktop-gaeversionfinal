@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { deletAbsences, loadedAbsence } from "./absence.actions";
+import { deletAbsences, loadedAbsence, setloadedAbsenceMoniteurTheorique } from "./absence.actions";
 import { initialState } from "./absence.state";
 // absence moniteur theorique
 const _absenceReducer = createReducer(initialState,
@@ -20,7 +20,15 @@ on(deletAbsences, (state)=>{
         }
     };
 }),
-
+// 
+on(setloadedAbsenceMoniteurTheorique, (state)=>{
+    return {...state,
+        absence:{
+            absence: null,
+            loaded: false
+        }
+    };
+}),
 )
 
 export function absenceReducer(state, action){

@@ -3,7 +3,7 @@
   </div> -->
   <div class="modal-content"  style="padding: 10px;border: none;padding-top: 0;">
 	<div class="modal-header" >
-	  <h5 class="modal-title" id="exampleModalLabel">Ajouter absence moniteur</h5>
+	  <h5 class="modal-title" id="exampleModalLabel" style="font-size: 14px;">Ajouter absence moniteur {{title}}</h5>
 	  <button type="button" style="border: none;background: white;" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
 		<span aria-hidden="true">×</span>
 	  </button>
@@ -11,35 +11,13 @@
 	<form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
 		  <div class="card-body">
 			  <p style="color: red; font-weight: bold;font-size: 12px;">(*)Champs obligatoire</p>
-			  <div class="col-md-12">
-				  <div class="alert" id="EditMessage" style="display: none;">
-				  </div>
-			  </div>
-			  <div class="row">
-				     <div class="col-md-6">
-						<div class="form-group">
-							<div class="form-label">
-								Type Moniteur* 
-							</div>
-							<select name="type_moniteur" style="font-size:14px;" id="type_moniteur" class="form-control" formControlName="type_moniteur" (change)="loadMoniteur($event)">
-								<option value="">Choisir type moniteur</option>
-								<option value="moniteur theorique">Moniteur Theorique</option>
-								<option value="moniteur pratique">Moniteur Pratique</option>
-							</select>
-							<div class="err" *ngIf="submitted && this.form.controls.type_moniteur.errors">
-								<div style="color: red;" *ngIf="this.form.controls.type_moniteur.errors.required">
-									  {{'champ obligatoire ' | translate}}  
-								</div>
-							</div>
-						</div>
-					 </div>
-			  </div>
+			 
 			  <div class="row">
 				  <div class="col-md-6">
 					  <div class="form-group">      
 						  <label class="form-label">Moniteur*</label>
 						  <select name="employe" class="form-control" style="font-size:14px;" formControlName="moniteur_id">
-							  <option value="">Choisir un moniteur</option>  
+							  <option value="">Choisir un moniteur {{title}}</option>  
 							  <option *ngFor="let data of loadMoniteurs;" value="{{data?.id}}">
                                 {{data?.nom}}{{" "}}{{data?.prenom}}
                             </option>
@@ -115,7 +93,11 @@
 						  <label class="form-label">Remarques</label>
 						  <textarea rows="5" class="form-control" style="font-size:14px;" name="remarques"  formControlName="remarque"></textarea>
 					  </div>
-					  
+					  <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
+						<div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
+							  {{'champ obligatoire' | translate}}  
+						</div>
+					</div>
 				  </div>
 			  </div>	
 		  </div>

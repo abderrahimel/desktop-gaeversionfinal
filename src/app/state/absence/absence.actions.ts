@@ -10,4 +10,5 @@ export const updateAbsenceAction = createAction('[absence] update absence to sto
 export const redirectoRoutAbsence = createAction("[absence] rout absence");
 export const deleteAbsenceById = createAction('[absence] delete absence by id',props<{id:any}>());
 export const deletAbsences = createAction('[absence] delet absence from store');
+export const setloadedAbsenceMoniteurTheorique = createAction('[absence] set loaded to false absence moniteur theorique');
 

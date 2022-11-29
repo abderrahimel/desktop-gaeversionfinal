@@ -20,23 +20,25 @@
       <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
         <div style="font-weight: 600;">{{ "GESTION DES ABSENCES" | translate }}
         </div>
-        <div class="col-3 add-btn-div">
-          <button 
-            type="button"
-            style="color: white; width: 150px;"
-           
-            class="btn add-btn" (click)="open1()" > 
-            {{ "Nouveau absence" | translate }}
-         </button>
-      </div>
+       
     </div>
        <div class="bg-white" style="margin: 15px;background: white;">
             <div class="d-flex align-items-center">
               <button class="btn" id="btn1" onclick="document.getElementById('btn1').style.background='black';document.getElementById('btn1').style.color='white';document.getElementById('btn2').style.background='white';document.getElementById('btn2').style.color='black';document.getElementById('tab1').style.display='block';document.getElementById('tab2').style.display='none';" style="border: 1px solid black;font-size: 16px;height: 32px;background: black;color: white;">Absence Moniteur theorique</button>
+              
               <button class="btn" id="btn2" onclick="document.getElementById('btn2').style.background='black';document.getElementById('btn2').style.color='white';document.getElementById('btn1').style.background='white';document.getElementById('btn1').style.color='black';document.getElementById('tab2').style.display='block';document.getElementById('tab1').style.display='none';" style="border: 1px solid black;font-size: 16px;height: 32px;">Absence Moniteur pratique</button>
             </div>
             <div  id="tab1">
               <!-- tab 1 -->
+                    <div class="col-3 add-btn-div"  style="margin-left: 70%;">
+                      <button 
+                        type="button"
+                        style="color: white; width: 210px;"
+                      
+                        class="btn add-btn" (click)="open1('T')" > 
+                        {{ "Nouveau absence" | translate }}
+                    </button>
+                  </div>
                    <mat-card>
                         <div style="display: flex;align-items:center;justify-content:flex-end">
                           <div style="margin-right: 6px">  Rechercher:</div>
@@ -95,6 +97,15 @@
             </div>
             <div id="tab2" style="display: none;">
                   <!-- tab 2 -->
+                  <div class="col-3 add-btn-div" style="margin-left: 70%;">
+                      <button 
+                        type="button"
+                        style="color: white; width: 210px;"
+                      
+                        class="btn add-btn" (click)="open1('P')" > 
+                        {{ "Nouveau absence" | translate }}
+                    </button>
+                  </div>
                   <mat-card>
                     <div style="display: flex;align-items:center;justify-content:flex-end">
                       <div style="margin-right: 6px">  Rechercher:</div>
