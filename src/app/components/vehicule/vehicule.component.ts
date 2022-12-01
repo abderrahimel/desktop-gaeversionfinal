@@ -41,7 +41,6 @@ export class VehiculeComponent implements OnInit { // matricule  type  marque mo
               }
 
   ngOnInit(): void {
-  //  this.getVehicules();
    this.getData();
   }
   applyFilter(event:any){
@@ -98,7 +97,6 @@ export class VehiculeComponent implements OnInit { // matricule  type  marque mo
     modalRef.componentInstance.data = data;
   }
   open1(btn:any, data:any){
-    // 
     const modalRef = this.modalService.open(VehiculeModalComponent);
     modalRef.componentInstance.btn = btn;
     modalRef.componentInstance.data = data;

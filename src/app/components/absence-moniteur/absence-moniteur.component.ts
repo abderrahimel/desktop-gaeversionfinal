@@ -42,7 +42,15 @@ export class AbsenceMoniteurComponent implements OnInit { //
   }
   applyFilter(event:any){
     let value = event.target.value
-    this.dataSource.filter = value.trim().toLowerCase()
+    if(value){
+      this.dataSource.filter = value.trim().toLowerCase()
+    }
+  }
+  applyFilter1(event:any){
+    let value = event.target.value
+    if(value){
+      this.dataSource1.filter = value.trim().toLowerCase()
+    }
   }
   getData(){
     this.store.pipe(take(1)).subscribe(store=>{
@@ -51,10 +59,11 @@ export class AbsenceMoniteurComponent implements OnInit { //
       }
       this.store.select(state=>state.absence.absence.absence).subscribe(absence=>{
         this.absencetheorique = absence
-        this.dataSource = new MatTableDataSource(this.absencetheorique)
-        this.dataSource.paginator = this.paginatorFirst;
-        this.dataSource.sort = this.empTbSort;
-       
+        if(this.absencetheorique){
+          this.dataSource = new MatTableDataSource(this.absencetheorique)
+          this.dataSource.paginator = this.paginatorFirst;
+          this.dataSource.sort = this.empTbSort;
+        }
       })
     })   
   }
@@ -67,9 +76,12 @@ export class AbsenceMoniteurComponent implements OnInit { //
       }
       this.store.select(state=>state.absenceMoniteurPratique.absenceMoniteurPratique.absenceMoniteurPratique).subscribe(absence=>{
         this.absencepratique = absence;
-        this.dataSource1 = new MatTableDataSource(this.absencepratique);
-        this.dataSource1.paginator = this.paginatorSecond;
-        this.dataSource1.sort = this.empTbSortsecond;
+        if(this.absencepratique){
+          this.dataSource1 = new MatTableDataSource(this.absencepratique);
+          this.dataSource1.paginator = this.paginatorSecond;
+          this.dataSource1.sort = this.empTbSortsecond;
+        }
+        
       })
     })
   }
@@ -100,15 +112,15 @@ export class AbsenceMoniteurComponent implements OnInit { //
         if(data?.moniteur?.type === 'Moniteur Théorique'){
           // delet absence theorique
           this.dataService.deleteAbsenceTheorique(data?.id).subscribe(
-            data=>{console.log(data);},
-            error =>console.log(JSON.parse(error.error))
+            data=>{},
+            error =>{}
             )
         }else{
           // delet absence pratique
           
           this.dataService.deleteAbsencePratique(data?.id).subscribe(
-            data=>{console.log(data)},
-            error =>console.log(JSON.parse(error.error)))
+            data=>{},
+            error =>{})
         }
         this.store.dispatch(loadAbsence({idAutoEcole: localStorage.getItem('autoEcole_id')}));
       }

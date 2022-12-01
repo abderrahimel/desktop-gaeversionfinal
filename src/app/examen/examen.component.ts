@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import { DataService } from '../services/data.service';
-import { loadExamenAction } from '../state/examen/examen.actions';
+import { loadExamenAction, setloadingToFalse } from '../state/examen/examen.actions';
 import { ExamenState } from '../state/examen/examen.state';
 import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +16,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import * as _ from 'lodash';
 import { AuthService } from '../services/auth/auth.service';
+import { getexamens } from '../state/examen/examen.selector';
 
 @Component({
   selector: 'app-examen',
@@ -84,10 +85,40 @@ export class ExamenComponent implements OnInit {
       if(value){
         this.getExamens();
         this.getCandidats();
+        this.getNotes();
         this.reloadData();
       }
      })
   
+  }
+  getNotes(){
+    this.dataservice.getNotes(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+      this.notes = JSON.parse(data);
+      this.notes.map(data=>{
+          this.categorie_moyen[data.categorie] = data.moyen;
+      })
+    })
+  }
+  getExamens(){
+    this.dataservice.getExamen(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+      this.data_examen = data;
+      this.dataSource = new MatTableDataSource(this.data_examen)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      // this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    })
+    
+    // this.store.pipe(take(1)).subscribe(store=>{
+    //   if(!store.examen.examen.loaded){
+    //     this.store.dispatch(loadExamenAction({idAutoEcole:localStorage.getItem('autoEcole_id')}))
+    //   }
+    //   this.store.select(state=>state.examen.examen.examen).subscribe(examen=>{
+    //     this.data_examen = examen;
+    //     this.dataSource = new MatTableDataSource(this.data_examen);
+    //     this.dataSource.paginator = this.paginator;
+    //     this.dataSource.sort = this.sort;
+    //   })
+    // })
   }
   onChange(e:any){
     if(e.target.value === ''){
@@ -136,11 +167,8 @@ export class ExamenComponent implements OnInit {
         let filterData = _.filter(this.data_examen, (item)=>{
           return item.date_examen.toLowerCase() == e.target.value.toLowerCase()
         })
-       
         this.dataSource = new MatTableDataSource(filterData);
-       
     }
-  
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   
@@ -177,22 +205,7 @@ reloadData(){
       this.datamoniteurP = data;
   });
  }
-getExamens(){
-  this.dataservice.getExamen(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-    this.data_examen = data;
-    this.dataSource = new MatTableDataSource(this.data_examen)
 
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
-  })
-  this.dataservice.getNotes(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-    this.notes = JSON.parse(data);
-    this.notes.map(data=>{
-        this.categorie_moyen[data.categorie] = data.moyen;
-    })
-  })
-}
   valider(){
     this.submitted = true;
     if(this.form.invalid){

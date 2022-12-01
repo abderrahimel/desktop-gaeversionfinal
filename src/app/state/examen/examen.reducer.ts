@@ -6,6 +6,11 @@ import { initialState } from "./examen.state";
 
 const _examenReducer = createReducer(initialState,
     on(loadExamenToStore, (state, action)=>{
+        console.log("payload of examen");console.log(action.payload);
+        console.log({
+            loaded:true,
+            examen:action.payload
+        });
     return {...state,
         examen:{
             loaded:true,
@@ -22,10 +27,11 @@ on(removeExamenAction, (state)=>{
     };
 }),
 on(setloadingToFalse, (state)=>{
+    console.log("set loading to false");
     return {...state,
         examen:{
             loaded:false,
-            examen:state.examen.examen
+            examen:null
         }
     };
 }),

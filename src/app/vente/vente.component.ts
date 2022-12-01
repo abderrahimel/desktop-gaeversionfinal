@@ -32,7 +32,8 @@ export class VenteComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getVentes()
+    // this.getVentes()
+    this.getData()
   }
   applyFilter(event:any){
     let value = event.target.value
@@ -41,25 +42,23 @@ export class VenteComponent implements OnInit {
   getData(){
     this.store.pipe(take(1)).subscribe(store=>{
        if(!store.vente.vente.loaded){
-        console.log("load vente---------------");
           this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
        }
     })
     this.store.select(state=>state.vente.vente.vente).subscribe(ventes=>{
       this.ventes = ventes;
-      console.log("ventes list*********");
-      console.log(ventes);
+      this.dataSource = new MatTableDataSource(this.ventes)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
   }
    getVentes(){
     this.dataService.getVentes(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.ventes = JSON.parse(data);
-      console.log(JSON.parse(data));
       this.dataSource = new MatTableDataSource(this.ventes)
 
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.ventes.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
    }
   deletVente(id:any){

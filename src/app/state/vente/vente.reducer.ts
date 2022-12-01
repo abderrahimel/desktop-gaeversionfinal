@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadVenteToStore } from "./vente.actions";
+import { loadVenteToStore, setloadedVente } from "./vente.actions";
 import { initialState } from "./vente.state";
 
 const _venteReducer = createReducer(initialState,
@@ -11,8 +11,16 @@ const _venteReducer = createReducer(initialState,
             loaded: true
         }
     };
-})
-
+}),
+// 
+on(setloadedVente, (state, action)=>{
+return {...state,
+    vente: {
+        vente: state.vente.vente,
+        loaded: false
+    }
+};
+}),
 
 )
 

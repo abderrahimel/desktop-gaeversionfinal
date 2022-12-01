@@ -28,11 +28,9 @@ export class EmployeeComponent implements OnInit {
   constructor(private dataService: DataService,
               private store:Store<{employe: EmployeState}>,
               private modalService: NgbModal,
-
     ){}
 
   ngOnInit(): void {
-    // this.getEmployees();
     this.reloadData();
   }
   applyFilter(event:any){
@@ -43,7 +41,6 @@ export class EmployeeComponent implements OnInit {
     let ecole_id = localStorage.getItem('autoEcole_id');
     this.store.pipe(take(1)).subscribe(store=>{
       if(!store.employe.employe.loaded){
-        console.log("the state of the employe in the store is empty, load data to store");
         this.store.dispatch(loadEmploye({idAutoEcole: localStorage.getItem('autoEcole_id')}));
       }
       // select the employe from the store
@@ -52,9 +49,6 @@ export class EmployeeComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.dataemployee)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      if(this.dataemployee){
-        this.n = this.dataemployee.reduce((acc, o) => acc + Object.keys(o).length, 0);
-      }
     })
     })
     
@@ -64,10 +58,8 @@ export class EmployeeComponent implements OnInit {
     this.dataemployee = JSON.parse(data);
     console.log(this.dataemployee);
     this.dataSource = new MatTableDataSource(this.dataemployee)
-
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.n = this.dataemployee.reduce((acc, o) => acc + Object.keys(o).length, 0)
   })
  }
   deletEmploye(id:any){

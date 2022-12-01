@@ -9,6 +9,12 @@ import * as _ from 'lodash';
 import { NoteexamenModalComponent } from 'src/app/modal/noteexamen-modal/noteexamen-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetailExamenComponent } from 'src/app/modal/detail-examen/detail-examen.component';
+import { Store } from '@ngrx/store';
+import { take } from 'rxjs/operators';
+import { ExamenreussiState } from 'src/app/state/examenreussi/examenreussi.state';
+import { loadExamenReussiAction } from 'src/app/state/examenreussi/examenreussi.actions';
+import { ExamenNoreussiState } from 'src/app/state/examenNoreussi/examenNoreussi.state';
+import { loadExamenNoReussiAction } from 'src/app/state/examenNoreussi/examenNoreussi.actions';
 
 @Component({
   selector: 'app-results-candidats',
@@ -31,6 +37,7 @@ export class ResultsCandidatsComponent implements OnInit {
   candidats_table1:any = [];
   candidats_table2:any = [];
   examen:any;
+  moniteur:any = []
   ratrapage:boolean = false; 
   examenPratique:boolean = false; 
   ratrapageExamenPratique:boolean = false;
@@ -63,12 +70,11 @@ export class ResultsCandidatsComponent implements OnInit {
 
   constructor(private dataService: DataService,
               private modalService: NgbModal,
+              private store: Store<{examenreussi: ExamenreussiState, examenNoreussi: ExamenNoreussiState}>
     ) { }
 
   ngOnInit(): void {
-   this.getData()
-   this.getExamenReussi()
-   this.getExamenNoReussi()
+   this.getExamen()
   }
   ngAfterView(){
     this.dataSource.sort = this.empTbSort;
@@ -77,41 +83,61 @@ export class ResultsCandidatsComponent implements OnInit {
     this.dataSource1.paginator = this.paginatorSecond;
 
 }
-  applyFilter2(event:any){
-    let value = event.target.value
+applyFilter(event:any){
+  let value = event.target.value
+  if(value){
     this.dataSource.filter = value.trim().toLowerCase()
   }
-  getExamenReussi(){
-    this.dataService.getExamenReussi(this.idAutoEcole).subscribe(data=>{
-      this.resultatCandidatReussi= JSON.parse(data)
-      this.dataSource = new MatTableDataSource(this.resultatCandidatReussi)
-      this.dataSource.sort = this.empTbSort;
-      this.dataSource.paginator = this.paginatorFirst;
-    });
+}
+  applyFilter2(event:any){
+    let value = event.target.value
+    if(value){
+      this.dataSource1.filter = value.trim().toLowerCase()
+    }
   }
-  getExamenNoReussi(){
-    this.dataService.getExamenNoReussi(this.idAutoEcole).subscribe(data=>{
-      this.resultatCandidatNoReussi = JSON.parse(data)
-      this.dataSource1 = new MatTableDataSource(this.resultatCandidatNoReussi); 
-      this.dataSource1.sort = this.empTbSort1;
-      this.dataSource1.paginator = this.paginatorSecond;
-    });
+  getExamen(){
+    // loadExamenReussiAction
+    this.store.pipe(take(1)).subscribe(store=>{
+      // load examen reussi
+      if(!store.examenreussi.examenreussi.loaded){
+        this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+      }
+      // load examen no reussi
+      if(!store.examenNoreussi.examenNoreussi.loaded){
+        this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+      }
+      // select examen reussi
+      this.store.select(state=>state.examenreussi.examenreussi.examenreussi).subscribe(examenreussi=>{
+          this.resultatCandidatReussi = examenreussi;
+          
+          this.dataSource = new MatTableDataSource(this.resultatCandidatReussi);
+          this.dataSource.sort = this.empTbSort;
+          this.dataSource.paginator = this.paginatorFirst;
+      });
+      // select examen no reussi
+      this.store.select(state=> state.examenNoreussi.examenNoreussi.examenNoreussi).subscribe(examenNoreussi=>{
+          this.resultatCandidatNoReussi = examenNoreussi;
+          this.dataSource1 = new MatTableDataSource(this.resultatCandidatNoReussi); 
+          this.dataSource1.sort = this.empTbSort1;
+          this.dataSource1.paginator = this.paginatorSecond;
+      })
+    })
+    
   }
+  // getExamenNoReussi(){
+  //   this.dataService.getExamenNoReussi(this.idAutoEcole).subscribe(data=>{
+  //     this.resultatCandidatNoReussi = JSON.parse(data)
+  //     this.dataSource1 = new MatTableDataSource(this.resultatCandidatNoReussi); 
+  //     this.dataSource1.sort = this.empTbSort1;
+  //     this.dataSource1.paginator = this.paginatorSecond;
+  //   });
+  // }
   
   getData(){
     this.idAutoEcole = localStorage.getItem('autoEcole_id');
     this.dataService.getMoniteurP(this.idAutoEcole).subscribe(data=>{
       this.moniteurP = data;
     });
-    this.dataService.getExamen(this.idAutoEcole).subscribe(data =>{
-      this.examen = data;
-      this.resultatCandidatReussi = this.examen.filter(exam=> exam.resultat === 1);
-      this.data_candidat = this.resultatCandidatReussi;
-      this.resultatCandidatNoReussi = this.examen.filter(exam=> exam.resultat === 0);
-    });
-    this.dataService.getCandidat(this.idAutoEcole).subscribe(data=>{
-          this.candidats = JSON.parse(data); 
-    })
   }
   deleteVidange(){
 
@@ -128,43 +154,6 @@ export class ResultsCandidatsComponent implements OnInit {
   }
 
   detail(element:any){
-    // this.showing = true;
-    // this.dataService.getExamenById(id).subscribe(data=>{
-    //   console.log(data);
-    //   this.candidat = data; 
-    //   this.form.patchValue({
-    //     examenTheorique : "examenTheorique",
-    //     examenPratique: "examenPratique1", 
-    //     detail_id: this.candidat.id,
-    //     detail_date_examen: this.candidat.date_examen,
-    //     note1: this.candidat.note1,
-    //     date_note1: this.candidat.date_note1,
-    //     note2: this.candidat.note2,
-    //     date_note2: this.candidat.date_note2,
-    //     etat_1: this.candidat.etat_1,
-    //     date_etat1: this.candidat.date_etat1,
-    //     etat_2: this.candidat.etat_2,
-    //     date_etat2: this.candidat.date_etat2,
-    //   });
-
-    // console.log(this.candidat?.note2);
-    // if(this.candidat.note2 === '-1'){
-    //   console.log("this.form.value.note2 === '-1'");
-    //   this.ratrapage = false;
-    // }else{
-    //   this.ratrapage = true;
-    // }
-    // if(this.candidat.etat_2 === 'en_attente'){
-    //   this.ratrapageExamenPratique = false;
-    // }else{
-    //   this.ratrapageExamenPratique = true;
-    // }
-    // if(this.candidat.etat_1 === 'en_attente'){
-    //   this.examenPratique = false;
-    // }else{
-    //   this.examenPratique = true;
-    // }
-    // })
     const modalRef = this.modalService.open(DetailExamenComponent);
     modalRef.componentInstance.data = element;
     modalRef.componentInstance.idexamen = element?.id;
@@ -184,29 +173,14 @@ export class ResultsCandidatsComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.dataService.deleteExamen(id).subscribe(data=>{
-          this.getData();
+          this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+          this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         })
       }
     })
    
   }
-  hidden(){
-      this.showing = false;
-      this.form.patchValue({
-        examenTheorique : "examenTheorique",
-        examenPratique: "examenPratique1", 
-        detail_id: null,
-        detail_date_examen: null,
-        note1: null,
-        date_note1: null,
-        note2: null,
-        date_note2: null,
-        etat_1: null,
-        date_etat1: null,
-        etat_2: null,
-        date_etat2: null,
-      });
-  }
+  
   onChange(e:any){
     if(e.target.value === ''){
       this.dataSource = new MatTableDataSource(this.resultatCandidatReussi);  

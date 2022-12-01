@@ -18,9 +18,9 @@ import { ProduitCandidatState } from 'src/app/state/produitCandidat/produitCandi
   styleUrls: ['./recette-info.component.css']
 })
 export class RecetteInfoComponent implements OnInit {
-  displayedColumns: string[] = ['nom', 'categorie','date', 'montant' ];    
-  displayedColumns2: string[] = ['matricule', 'categorie','date', 'montant' ];    
-  displayedColumns3: string[] = ['categorie','date', 'montant' ];    
+  displayedColumns: string[] = ['cin', 'nom','date','type_p' ,'montant' ];    
+  displayedColumns2: string[] = ['cours','nombreHeurePratique', 'candidats', 'categorie', 'date', 'montant' ]  
+  displayedColumns3: string[] = ['produit','quantite', 'candidat', 'prix', 'date' ];  
   dataSource!: MatTableDataSource<any>;
   dataSource2!: MatTableDataSource<any>;
   dataSource3!: MatTableDataSource<any>;
@@ -68,24 +68,29 @@ export class RecetteInfoComponent implements OnInit {
       this.loadData = produitCandidat;
       if(this.loadData){
         this.loadData = this.loadData.filter((cousupp:any)=>Number(cousupp?.date?.split('-')[1]) === this.id);
-        this.dataSource = new MatTableDataSource(this.loadData)
-        this.dataSource.paginator = this.paginatorfirst;
-        this.dataSource.sort = this.empTbSortfirst;
+        console.log("produit candidat");console.log(this.loadData);  
+        this.dataSource3 = new MatTableDataSource(this.loadData);
+        this.dataSource3.paginator = this.paginatorthird;
+        this.dataSource3.sort = this.empTbSorthird;
       }
     });
     this.store.select(state=>state.coursRecette.coursRecette).subscribe(coursRecette=>{
       this.supplementaire = coursRecette.coursSupplementaire;
       if(this.supplementaire){
+        console.log("all cours supplementaire");console.log(this.supplementaire);
         this.supplementaire = this.supplementaire.filter((cousupp:any)=>Number(cousupp?.date?.split('-')[1]) === this.id);
-        this.dataSource2 = new MatTableDataSource(this.supplementaire)
+        console.log("cours supplementaire");console.log(this.supplementaire);
+        this.dataSource2 = new MatTableDataSource(this.supplementaire);
         this.dataSource2.paginator = this.paginatorSecond;
         this.dataSource2.sort = this.empTbSortsecond;
       }
      
       this.permis = coursRecette.permis;
-      this.dataSource3 = new MatTableDataSource(this.permis)
-      this.dataSource3.paginator = this.paginatorthird;
-      this.dataSource3.sort = this.empTbSorthird;
+      console.log("permis");console.log(this.permis);
+      this.dataSource = new MatTableDataSource(this.permis)
+      this.dataSource.paginator = this.paginatorfirst;
+      this.dataSource.sort = this.empTbSortfirst;
+      
     });
 
   }

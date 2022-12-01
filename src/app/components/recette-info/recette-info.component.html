@@ -10,12 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;">
+<body style="font-size: 14px;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
    <app-menu-sb></app-menu-sb>
-   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;color:white">
+   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e5ebef;">
     <div style="display: flex;">
  <div class="wrap-table100">
   <div class="table-header">
@@ -43,17 +43,17 @@
     </div>
      <table mat-table  [dataSource]="dataSource"  matSort #empTbSortfirst="matSort">    
    
-      <ng-container matColumnDef="nom">    
+      <ng-container matColumnDef="cin">    
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
-          <span style="font-weight:900;">{{ "NOM" | translate }}</span>    
+          <span style="font-weight:900;">{{ "CIN" | translate }}</span>    
         </th>
-        <td mat-cell *matCellDef="let element">{{element?.employe?.nom}}{{" "}}{{element?.employe?.prenom}}</td>
+        <td mat-cell *matCellDef="let element">{{element?.candidat?.cin}}</td>
       </ng-container>
-  
+     <!-- 'cin', 'nom','date','type' ,'montant' -->
       
-      <ng-container matColumnDef="categorie">  					
-        <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "CATEGORIE" | translate }}</span>   </th>
-        <td mat-cell *matCellDef="let element"> {{element?.categorie?.categorie}} </td>
+      <ng-container matColumnDef="nom">  					
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "NOM" | translate }}</span>   </th>
+        <td mat-cell *matCellDef="let element"> {{element?.candidat?.nom_fr}}{{" "}}{{element?.candidat?.prenom_fr}} </td>
       </ng-container>
   
      
@@ -62,11 +62,15 @@
         <td mat-cell *matCellDef="let element">{{element?.date}}</td>
       </ng-container>
   
+      <ng-container matColumnDef="type_p">  
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "TYPE" | translate }}</span> </th>
+        <td mat-cell *matCellDef="let element">{{element?.type_p}}</td>
+      </ng-container>   
+    
       <ng-container matColumnDef="montant">  
         <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "MONTANT" | translate }}</span> </th>
         <td mat-cell *matCellDef="let element">{{element?.montant}}</td>
       </ng-container>   
-    
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
@@ -89,25 +93,32 @@
       </div>
        <table mat-table  [dataSource]="dataSource2"  matSort #empTbSortsecond="matSort">    
      
-        <ng-container matColumnDef="matricule">    
-          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
-            <span style="font-weight:900;">{{ "VOITURE" | translate }}</span>    
-          </th>
-          <td mat-cell *matCellDef="let element">{{element?.vehicule?.matricule}}</td>
+        <ng-container matColumnDef="cours">  		 
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "COURS" | translate }}</span>   </th>
+          <td mat-cell *matCellDef="let element">Pratique</td>
         </ng-container>
-    
+      
         
-        <ng-container matColumnDef="categorie">  					
-          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "CATEGORIE" | translate }}</span>   </th>
-          <td mat-cell *matCellDef="let element"> {{element?.categorie?.categorie}} </td>
+        <ng-container matColumnDef="nombreHeurePratique">   
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "NOMBRE D'HEURE PRATIQUE" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.candidat?.nbr_heure_pratique}}</td>
         </ng-container>
-    
-       
-        <ng-container matColumnDef="date">   
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "DATE" | translate }}</span> </th>
+      
+        <ng-container matColumnDef="candidats">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "CANDIDATS" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.candidat?.nom_fr}}{{" "}}{{element?.candidat?.prenom_fr}}</td>
+        </ng-container>   
+      
+        <ng-container matColumnDef="categorie">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "CATÉGORIE" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.candidat?.categorie_demandee}}</td>
+        </ng-container>   
+      
+        <ng-container matColumnDef="date">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "DATE" | translate }}</span> </th>
           <td mat-cell *matCellDef="let element">{{element?.date}}</td>
-        </ng-container>
-    
+        </ng-container>   
+      
         <ng-container matColumnDef="montant">  
           <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "MONTANT" | translate }}</span> </th>
           <td mat-cell *matCellDef="let element">{{element?.montant}}</td>
@@ -134,23 +145,33 @@
              <input matInput (keyup)="applyFilter3($event)" placeholder="... " #input>
           </mat-form-field>
       </div>
-       <table mat-table  [dataSource]="dataSource"  matSort #empTbSorthird="matSort">    
-        <ng-container matColumnDef="categorie">  					
-          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "CATEGORIE" | translate }}</span>   </th>
-          <td mat-cell *matCellDef="let element"> {{element?.categorie?.categorie}} </td>
+       <table mat-table  [dataSource]="dataSource3"  matSort #empTbSorthird="matSort">    
+        <ng-container matColumnDef="produit">  		 
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "PRODUIT" | translate }}</span>   </th>
+          <td mat-cell *matCellDef="let element">{{element?.produit?.libelle}} </td>
         </ng-container>
     
        
-        <ng-container matColumnDef="date">   
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "DATE" | translate }}</span> </th>
-          <td mat-cell *matCellDef="let element">{{element?.date}}</td>
+        <ng-container matColumnDef="quantite">   
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "QUANTITÉ" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.produit?.quantite}}</td>
         </ng-container>
     
-        <ng-container matColumnDef="montant">  
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "MONTANT" | translate }}</span> </th>
-          <td mat-cell *matCellDef="let element">{{element?.montant}}</td>
+        <ng-container matColumnDef="candidat">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "CANDIDAT" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.candidat?.nom_fr}}{{" "}}{{element?.candidat?.prenom_fr}}</td>
         </ng-container>   
       
+        <ng-container matColumnDef="prix">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "PRIX" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.prixTotale}}</td>
+        </ng-container>   
+
+        <ng-container matColumnDef="date">  
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "DATE" | translate }}</span> </th>
+          <td mat-cell *matCellDef="let element">{{element?.date}}</td>
+        </ng-container>   
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
       </table>

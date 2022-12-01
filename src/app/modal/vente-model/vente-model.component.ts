@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
-import { loadVente } from 'src/app/state/vente/vente.actions';
+import { loadVente, setloadedVente } from 'src/app/state/vente/vente.actions';
 import { VenteState } from 'src/app/state/vente/vente.state';
 @Component({
   selector: 'app-vente-model',
@@ -40,16 +40,7 @@ export class VenteModelComponent implements OnInit {
     this.dataService.getProduit(localStorage.getItem('autoEcole_id')).subscribe(data=>{
         this.produits  = JSON.parse(data)
     })
-    console.log("info of vente");
-    console.log({
-      candidat_id: this.data?.candidat_id,
-      produit_id:  this.data?.produit_id,
-      prixUnitaire:  this.data?.prixUnitaire,
-      prixTotale:  this.data?.prixTotale,
-      quantiteDisponible:  this.data?.quantiteDisponible,
-      quantite:  this.data?.quantite,
-      date:  this.data?.date,
-  });
+    
     this.form.patchValue({
       candidat_id: this.data?.candidat_id,
       produit_id:  this.data?.produit_id,
@@ -64,24 +55,21 @@ export class VenteModelComponent implements OnInit {
     this.dataService.getCandidatsSupplementaire(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.candidatSupplementaire = JSON.parse(data)   
     },
-    error=>console.log(error.error)
+    error=>{}
     )
   }  
   getCandidatsBasic(){ 
     this.dataService.getCandidatsBasic(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.candidatBasic = JSON.parse(data)  
     },
-    error=>console.log(error.error)
+    error=>{}
     )
   }   
   addVente(){
     this.submitted = true;
     if(this.form.invalid){
-      console.log("form invalid ");
       return;
     }
-    console.log('form is valid');
-    console.log(this.form.value); // updateVente(id:any, data:any) addVente(id:any, data:any)
     if(this.btn === 'Ajouter'){
       this.dataService.addVente(localStorage.getItem('autoEcole_id'), { 
         candidat_id: this.form.value.candidat_id,
@@ -92,8 +80,7 @@ export class VenteModelComponent implements OnInit {
         quantite: this.form.value.quantite,
         date: this.form.value.date,
       }).subscribe(data =>{
-        console.log("added vente to database");
-        console.log(data);
+        this.store.dispatch(setloadedVente());
         this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
         this.router.navigateByUrl('/vente');
       })
@@ -107,8 +94,8 @@ export class VenteModelComponent implements OnInit {
         quantite: this.form.value.quantite,
         date: this.form.value.date,
         }).subscribe(data =>{
-          console.log("added vente to database");
-          console.log(data);
+          this.store.dispatch(setloadedVente());
+          this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
           this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
         })
     }

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
-import { deleteMoniteurP, deleteMoniteurT, loadMoniteurP, loadMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
 import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
 import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,6 +10,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { take } from 'rxjs/operators';
+import { deleteMoniteurT, loadMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
+import { deleteMoniteurP, loadMoniteurP } from 'src/app/state/moniteurPratique/moniteurPratique.actions';
+import { MoniteurPratiqueState } from 'src/app/state/moniteurPratique/moniteurPratique.state';
 @Component({
   selector: 'app-moniteur',
   templateUrl: './moniteur.component.html',
@@ -29,7 +32,7 @@ export class MoniteurComponent implements OnInit {
   dateVal = new Date();
   datamoniteurT:any;
   datamoniteurP:any;
-  constructor(private store: Store<{moniteur: MoniteurState}>,
+  constructor(private store: Store<{moniteur: MoniteurState, moniteurPratique: MoniteurPratiqueState}>,
               private router: Router,
               private route: ActivatedRoute,
               private dataService: DataService,
@@ -40,18 +43,62 @@ export class MoniteurComponent implements OnInit {
   ngOnInit(): void {
     this.auth.authStatus.subscribe(value=>{
       if(value){
-        this.reloadData();
+        this.getData();
       }
     })
   }
   applyFilter(event:any){
     let value = event.target.value
-    this.dataSource.filter = value.trim().toLowerCase()
+    if(value){
+      this.dataSource.filter = value.trim().toLowerCase()
+    }
+  }
+  applyFilter1(event:any){
+    let value = event.target.value
+    if(value){
+      this.dataSource1.filter = value.trim().toLowerCase()
+    }
+  }
+  getData(){
+    // load moniteurs theorique
+    this.store.pipe(take(1)).subscribe(store=>{
+      if(!store.moniteur.moniteur.moniteurTheorique.loaded){
+        this.store.dispatch(loadMoniteurT({idAutoEcole:localStorage.getItem('autoEcole_id')}));
+      }
+      this.store.select(state=>state.moniteur.moniteur.moniteurTheorique.moniteurTheorique).subscribe(moniteurs=>{
+        this.datamoniteurT = moniteurs;
+        if(this.datamoniteurT){
+          this.datamoniteurT.map(mt=>{
+            let categories = mt?.categorie
+            // mt['categorie'] = categories.join('-');
+          });
+          this.dataSource = new MatTableDataSource(this.datamoniteurT)
+            this.dataSource.paginator = this.paginatorFirst;
+            this.dataSource.sort = this.empTbSort;
+        }
+        
+      });
+      //load moniteurs pratique
+      if(!store.moniteurPratique.moniteurPratique.loaded){
+        this.store.dispatch(loadMoniteurP({idAutoEcole:localStorage.getItem('autoEcole_id')}));
+      }
+      this.store.select(state=>state.moniteurPratique.moniteurPratique.moniteurPratique).subscribe(moniteurs=>{
+          this.datamoniteurP = moniteurs;
+           if(this.datamoniteurP){
+            this.datamoniteurP.map(mp=>{
+              let categories = mp?.categorie
+              // mp['categorie'] = categories.join('-');
+            });
+            this.dataSource1 = new MatTableDataSource(this.datamoniteurP)
+            this.dataSource1.paginator = this.paginatorSecond;
+            this.dataSource1.sort = this.empTbSortsecond;
+           }
+      })
+    })
   }
  reloadData(){
   this.dataService.getMoniteurT(localStorage.getItem('autoEcole_id')).subscribe(data=>{
     this.datamoniteurT = data;
-    console.log(data);
     this.datamoniteurT.map(mt=>{
       let categories = mt?.categorie
       mt['newCategorie'] = categories.join('-');
@@ -86,7 +133,7 @@ export class MoniteurComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.store.dispatch(deleteMoniteurT({id: id}));
-        this.reloadData();
+        this.store.dispatch(loadMoniteurT({idAutoEcole:localStorage.getItem('autoEcole_id')}));
       }
     })
    
@@ -105,12 +152,12 @@ export class MoniteurComponent implements OnInit {
   }).then((result) => {
     if (result.isConfirmed) {
       this.store.dispatch(deleteMoniteurP({id: id}));
-      this.reloadData();
+      this.store.dispatch(loadMoniteurP({idAutoEcole:localStorage.getItem('autoEcole_id')}));
     }
   })
     
   }
-  open(btn:any,type:any, data:any) { // open('Modifier','P', element)
+  open(btn:any,type:any, data:any) { 
     const modalRef = this.modalService.open(MoniteurModalComponent);
     modalRef.componentInstance.btn = btn;
     modalRef.componentInstance.data = data;

@@ -64,8 +64,15 @@ export class VidangeComponent implements OnInit {
           // assurance
           this.assurances = JSON.parse(vehicules);
           this.assurances = this.assurances.filter(item => (new Date(item.date_expiration_assurance).getTime()) >= currentDate );
+          this.dataSource2 = new MatTableDataSource(this.assurances)
+          this.dataSource2.paginator = this.paginator2;
+          this.dataSource2.sort = this.empTbSort2;
+          console.log("assurance");
+          console.log(this.assurances);
           this.assuranceUrgent = JSON.parse(vehicules).filter(item => (new Date(item.date_expiration_assurance).getTime()) >= yesterdayTimeStamp );
+          console.log(this.assuranceUrgent);
           this.assuranceUrgent = this.assuranceUrgent.filter(item => (new Date(item.date_expiration_assurance).getTime()) <= tomorrowTime );
+          console.log(this.assuranceUrgent);
           // vidanges
           this.vidanges =  JSON.parse(vehicules).filter(item => (new Date(item.date_prochain_vidange).getTime()) >= currentDate );
           this.vidangesUrgent = JSON.parse(vehicules).filter(item => (new Date(item.	date_prochain_vidange).getTime()) >= yesterdayTimeStamp );

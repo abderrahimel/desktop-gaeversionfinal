@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
 import { AutoEcoleState } from 'src/app/state/autoEcole/autoEcole.state';
-import { addMoniteurP, addMoniteurT, updateMoniteurP, updateMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
+import { addMoniteurT,} from 'src/app/state/moniteur/moniteur.actions';
+import { addMoniteurP } from 'src/app/state/moniteurPratique/moniteurPratique.actions';
 @Component({
   selector: 'app-moniteur-form',
   templateUrl: './moniteur-form.component.html',
@@ -77,18 +78,17 @@ export class MoniteurFormComponent implements OnInit {
     };
       if(this.form.value.type_moniteur === 'Moniteur Théorique'){
           this.store.dispatch(addMoniteurT({idAuto: localStorage.getItem('autoEcole_id'), payload: dataMoniteur}));
+          this.router.navigateByUrl("/listes-moniteurs")
       }else{
           this.store.dispatch(addMoniteurP({idAuto: localStorage.getItem('autoEcole_id'), payload: dataMoniteur}));
+          this.router.navigateByUrl("/listes-moniteurs")
         }
  
   }
   addCategorie(e:any){
-    console.log(e.target.value);
-    console.log(!this.categorie_list.includes(e.target.value));
     if(!this.categorie_list.includes(e.target.value)){
       this.categorie_list += e.target.value + ',';
     }
-    console.log(this.categorie_list);
   }
 
   fileChangeEvent(event: any) {

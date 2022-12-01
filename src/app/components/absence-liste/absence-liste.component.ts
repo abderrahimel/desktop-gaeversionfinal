@@ -33,7 +33,6 @@ export class AbsenceListeComponent implements OnInit { //
     ) { }
 
   ngOnInit(): void {
-    // this.getAbsenceEmpl();
     this.loadAbsence();
   }
 
@@ -47,9 +46,6 @@ export class AbsenceListeComponent implements OnInit { //
         this.dataSource = new MatTableDataSource(this.absenceData)
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        if(this.absenceData){
-          this.n = this.absenceData.reduce((acc, o) => acc + Object.keys(o).length, 0)
-        }
       })
     })
     
@@ -58,10 +54,8 @@ export class AbsenceListeComponent implements OnInit { //
     this.dataService.getAbsence(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.absenceData = JSON.parse(data);
       this.dataSource = new MatTableDataSource(this.absenceData)
-
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.absenceData.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
   }
   applyFilter(event:any){

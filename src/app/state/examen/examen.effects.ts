@@ -22,6 +22,7 @@ export class ExamenEffects {
         return this.dataService.getExamen(action.idAutoEcole)
         .pipe( 
             map((data)=>{
+              console.log("examen from effect");console.log(data);
                 return loadExamenToStore({payload: data});
             })
         )

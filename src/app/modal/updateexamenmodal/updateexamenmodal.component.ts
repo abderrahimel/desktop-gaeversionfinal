@@ -4,7 +4,8 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
 import { CandidatState } from 'src/app/state/candidat/candidat.state';
-import { loadExamenAction, setloadingToFalse } from 'src/app/state/examen/examen.actions';
+import { loadExamenAction, setloadingToFalse} from 'src/app/state/examen/examen.actions';
+import { ExamenState } from 'src/app/state/examen/examen.state';
 import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
 
 @Component({
@@ -28,7 +29,7 @@ export class UpdateexamenmodalComponent implements OnInit {
   })
 
   constructor(public activeModal: NgbActiveModal,
-              private store:Store<{candidat: CandidatState, moniteur: MoniteurState}>,
+              private store:Store<{candidat: CandidatState, moniteur: MoniteurState, examen: ExamenState}>,
               private dataService:DataService,
     ) { }
 
@@ -63,10 +64,16 @@ export class UpdateexamenmodalComponent implements OnInit {
     };
     if(this.btn === 'Modifier'){
       this.dataService.updateExamen(this.data?.id ,data).subscribe();
+      // this.store.dispatch(setloadingToFalse())
+      // this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
+      this.activeModal.dismiss('Cross click');
     }else{
       this.dataService.addExamen(localStorage.getItem('autoEcole_id'), data).subscribe(data=>{})
+      // this.store.dispatch(setloadingToFalse())
+      // this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
+      this.activeModal.dismiss('Cross click');
     }
-    this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
-     this.activeModal.dismiss('Cross click');
+    
+     
   }
 }

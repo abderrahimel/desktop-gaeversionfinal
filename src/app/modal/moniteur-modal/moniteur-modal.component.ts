@@ -4,6 +4,9 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { AutoEcoleState } from 'src/app/state/autoEcole/autoEcole.state';
 import { addMoniteurP, addMoniteurT, updateMoniteurP, updateMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
+import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
+import { loadMoniteurP } from 'src/app/state/moniteurPratique/moniteurPratique.actions';
+import { MoniteurPratiqueState } from 'src/app/state/moniteurPratique/moniteurPratique.state';
 @Component({
   selector: 'app-moniteur-modal',
   templateUrl: './moniteur-modal.component.html',
@@ -20,10 +23,8 @@ export class MoniteurModalComponent implements OnInit {
   title:any;
   dataMoniteur:any;
   constructor(public activeModal: NgbActiveModal,
-              private store: Store<{ autoEcole: AutoEcoleState}>
-    ) {
-
-     }
+              private store: Store<{ autoEcole: AutoEcoleState, moniteur: MoniteurState, moniteurPratique: MoniteurPratiqueState}>,
+    ) {}
 
   ngOnInit(): void {
     if(this.type === 'T'){
@@ -39,7 +40,6 @@ export class MoniteurModalComponent implements OnInit {
     }else{
       this.createFormUpdate();
     }
-    console.log(this.data);
     this.dataMoniteur = this.data;
     this.form.patchValue({
       nom: this.dataMoniteur?.nom,
@@ -61,7 +61,6 @@ export class MoniteurModalComponent implements OnInit {
     let categorie =  this.dataMoniteur?.categorie;
       this.categorie_list = categorie.join(',')
       this.categorie_list += ','
-     console.log(this.categorie_list);
   }
   createFormNew(){
     this.form = new FormGroup({
@@ -106,13 +105,10 @@ export class MoniteurModalComponent implements OnInit {
   moniteur(){
     this.submitted = true;
     if(this.form.invalid){
-      console.log("form invalid");
         return;
     }
     const string = this.categorie_list.split(',')
     string.pop();
-    console.log(string.join(','));
- 
     let dataMoniteur =  {
       nom: this.form.value.nom,
       prenom: this.form.value.prenom,
@@ -130,13 +126,13 @@ export class MoniteurModalComponent implements OnInit {
       observations:  this.form.value.observations,
       carteMoniteur:this.base64Img_image
     };
-    console.log(dataMoniteur);
     if(this.btn === 'Ajouter'){
     
       if(this.type === 'T'){
         this.store.dispatch(addMoniteurT({idAuto: localStorage.getItem('autoEcole_id'), payload: dataMoniteur}));
       }else{
         this.store.dispatch(addMoniteurP({idAuto: localStorage.getItem('autoEcole_id'), payload: dataMoniteur}));
+        this.store.dispatch(loadMoniteurP({idAutoEcole:localStorage.getItem('autoEcole_id')}));
       }
     }else{
         if(this.type === 'T'){
@@ -168,6 +164,5 @@ addCategorie(e:any){
   if(!this.categorie_list.includes(e.target.value)){
     this.categorie_list += e.target.value + ',';
   }
-  console.log(this.categorie_list);
 }
 }

@@ -7,4 +7,4 @@ export const setloadingToFalse = createAction("[examen] set loading to false");
 export const updateExamen = createAction("[examen] update examen ", props<{id:any, data:any}>()); 
 export const addExamen = createAction("[examen] update examen ", props<{idAutoEcole:any, data:any}>()); 
 export const loadedExamenToStore = createAction("[examen] loaded examen to store"); 
-export const removeExamenAction = createAction('[vehicule] remove vehicule');
+export const removeExamenAction = createAction('[examen] remove examen from store');

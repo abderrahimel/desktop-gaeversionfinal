@@ -300,6 +300,13 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ContratAutoEcoleComponent } from './modal/contrat-auto-ecole/contrat-auto-ecole.component';
 import { AbsenceMoniteurPratiqueEffects } from './state/absenceMoniteurPrarique/absenceMoniteurPratique.effect';
 import { absenceMoniteurPratiqueReducer } from './state/absenceMoniteurPrarique/absenceMoniteurPratique.reducer';
+import { moniteurPratiqueReducer } from './state/moniteurPratique/moniteurPratique.reducer';
+import { MoniteurPratiqueEffects } from './state/moniteurPratique/moniteurPratique.effect';
+import { ExamenNoReussiEffects } from './state/examenNoreussi/examenNoreussi.effects';
+import { ExamenReussiEffects } from './state/examenreussi/examenreussi.effects';
+import { examenreussiReducer } from './state/examenreussi/examenreussi.reducer';
+import { examenNoreussiReducer } from './state/examenNoreussi/examenNoreussi.reducer';
+
 export function httpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http,'../assets/i18n/','.json');
 };
@@ -566,7 +573,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       MoniteurJobEffects,
       AutoEcoleWithAbonnementEffects,
       AbsenceEmployeEffects,
-      AbsenceMoniteurPratiqueEffects
+      AbsenceMoniteurPratiqueEffects,
+      MoniteurPratiqueEffects,
+      ExamenNoReussiEffects,
+      ExamenReussiEffects
     ]),
     StoreModule.forRoot({
       user: userReducer,
@@ -606,7 +616,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       vehiculeOccasion: vehiculeOccasionReducer,
       moniteurJob: moniteurJobReducer,
       autoEcoleWithAbonnement: autoecolewithabonnementReducer,
-      absenceMoniteurPratique: absenceMoniteurPratiqueReducer
+      absenceMoniteurPratique: absenceMoniteurPratiqueReducer,
+      moniteurPratique:moniteurPratiqueReducer,
+      examenreussi: examenreussiReducer,
+      examenNoreussi:examenNoreussiReducer 
     }),
     StoreDevtoolsModule.instrument({
       name: 'NgRx Demo App',

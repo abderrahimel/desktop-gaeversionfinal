@@ -32,7 +32,7 @@ export class ProduitComponent implements OnInit { //
     ){}
 
   ngOnInit(): void {
-    this.getProduit();
+    this.getData()
   }
   applyFilter(event:any){
     let value = event.target.value
@@ -42,10 +42,8 @@ export class ProduitComponent implements OnInit { //
     this.dataService.getProduit(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.dataProduit = JSON.parse(data);
       this.dataSource = new MatTableDataSource(this.dataProduit)
-
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.dataProduit.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
   }
   getData(){
@@ -56,6 +54,9 @@ export class ProduitComponent implements OnInit { //
         })
         this.store.select(state=>state.produitA.produit.produit).subscribe(produits=>{
           this.dataProduit = produits;
+          this.dataSource = new MatTableDataSource(this.dataProduit)
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
         })
   }
 
@@ -72,7 +73,7 @@ export class ProduitComponent implements OnInit { //
     }).then((result) => {
       if (result.isConfirmed) {
         this.store.dispatch(deletProduit({id: id}));
-        this.getProduit();
+        this.getData()
       }
     })
    
