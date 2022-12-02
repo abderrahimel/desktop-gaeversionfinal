@@ -60,7 +60,7 @@ export class AdminMoniteurComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.auth.authStatus.subscribe(value=>{
       if(value){
-        this.getMoniteurs();
+        this.loadData();
       }
     })
   }
@@ -72,19 +72,21 @@ export class AdminMoniteurComponent implements OnInit, AfterViewInit {
   }
   loadData(){
     this.store.pipe(take(1)).subscribe(store=>{
-            if(!store.moniteuradmin.moniteuradmin.moniteuradmin.loaded){
-              this.store.dispatch(loadMoniteurAdminAction());
-            }  
+      if(!store.moniteuradmin.moniteuradmin.moniteuradmin.loaded){
+        this.store.dispatch(loadMoniteurAdminAction());
+      }  
     })
      this.store.select(state=>state.moniteuradmin.moniteuradmin.moniteuradmin.moniteuradmin).subscribe(moniteuradmin=>{
       this.moniteursJob = moniteuradmin;
+      this.dataSource = new MatTableDataSource(this.moniteursJob)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
      })
   }
   getMoniteurs(){
     this.dataService.getMoniteurJob().subscribe(data=>{
       this.moniteursJob = JSON.parse(data);
       this.dataSource = new MatTableDataSource(this.moniteursJob)
-
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       // this.n = this.moniteursJob.reduce((acc, o) => acc + Object.keys(o).length, 0)
@@ -132,7 +134,6 @@ export class AdminMoniteurComponent implements OnInit, AfterViewInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.dataService.deleteMoniteurJob(id).subscribe(data=>{
-          this.getMoniteurs();
           this.store.dispatch(loadMoniteurAdminAction());
         })
       }

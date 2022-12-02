@@ -10,7 +10,7 @@ import { BlogmodalComponent } from 'src/app/modal/blogmodal/blogmodal.component'
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { BlogState } from 'src/app/state/blog/blog.state';
-import { loadblogadminaction } from 'src/app/state/blog/bnlog.actions';
+import { loadblogadminaction } from 'src/app/state/blog/blog.actions';
 import Swal from 'sweetalert2';
 declare var $;
 @Component({
@@ -41,7 +41,7 @@ export class BlogAdminComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.auth.authStatus.subscribe(value=>{
       if(value){
-        this.getBlogs();
+        this.getAllBlogs();
       }
     })
   }
@@ -88,7 +88,6 @@ deletBlog(id:any){
     if (result.isConfirmed) {
       this.dataServece.deletBlog(id).subscribe(data=>{
         this.store.dispatch(loadblogadminaction())
-        this.getBlogs()
       })
     }
   })
@@ -98,5 +97,6 @@ open(data:any, btn:any){
   const modalRef = this.modalService.open(BlogmodalComponent);
   modalRef.componentInstance.btn = btn;
   modalRef.componentInstance.data = data;
+  this.store.dispatch(loadblogadminaction())
   }
 }

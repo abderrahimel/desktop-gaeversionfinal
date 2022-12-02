@@ -4,7 +4,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
 import { BlogState } from 'src/app/state/blog/blog.state';
-import { loadblogadminaction } from 'src/app/state/blog/bnlog.actions';
+import { loadblogadminaction, setloadblog } from 'src/app/state/blog/blog.actions';
 
 @Component({
   selector: 'app-blogmodal',
@@ -70,11 +70,7 @@ export class BlogmodalComponent implements OnInit {
      if(this.form.invalid){
        return;
      }
-     console.log({
-      titre:this.form.value.titre,
-      description: this.form.value.description,
-      image: this.base64Img_image
-     });
+   
       if(this.btn === 'Ajouter'){
         this.dataServece.addblog({
           titre:this.form.value.titre,
@@ -90,8 +86,8 @@ export class BlogmodalComponent implements OnInit {
          }).subscribe(data=>{
          })
       }
+      this.store.dispatch(setloadblog());
       this.store.dispatch(loadblogadminaction());
       this.activeModal.dismiss('Cross click');
-    
 }
 }

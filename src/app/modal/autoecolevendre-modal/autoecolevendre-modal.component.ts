@@ -66,7 +66,6 @@ export class AutoecolevendreModalComponent implements OnInit {
   gestionAutoEcole(){
       this.submitted = true;
       if(this.form.invalid ){
-        console.log("form invalid");
         return;
       }
       if(this.btn === 'Modifier'){
@@ -77,7 +76,7 @@ export class AutoecolevendreModalComponent implements OnInit {
           prix: this.form.value.prix,   
           date: this.form.value.date,   
         }).subscribe(data=>{
-          console.log("update moniteur to database", data);
+            this.store.dispatch(loadautoecolevendreaction());
         });
       }else{
         this.dataservice.addAutoecoleVendre({
@@ -87,10 +86,9 @@ export class AutoecolevendreModalComponent implements OnInit {
           prix: this.form.value.prix,   
           date: this.form.value.date,   
         }).subscribe(data=>{
-          console.log("added moniteur to database", data)
+          this.store.dispatch(loadautoecolevendreaction());
         });
       }
-      this.store.dispatch(loadautoecolevendreaction());
       this.activeModal.dismiss('Cross click');
   }
 }

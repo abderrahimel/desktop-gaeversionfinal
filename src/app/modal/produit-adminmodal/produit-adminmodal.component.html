@@ -26,12 +26,12 @@
                       <div class="form-group">
                           <label class="form-label">Catégorie</label>
                           <select id="list_categorie" style="height: 32px;" class="form-control" name="categorie" formControlName="categorie" (ngModelChange)="boolShow($event)">
-                              <option value="">Choisir</option>
-                              <option value="materiel informatique">Materiel informatique</option>
-                              <option value="vehicule occasion">Vehicule occasion</option>
-                              <option value="equipement véhicule">Equipement véhicule</option>
-                              <option value="bureau immobilier">Bureau immobilier</option>
-                              <option value="simulateur de conduite">Simulateur de conduite</option>
+                              <option value="">Choisir un categorie</option>
+                              <option value="Materiel informatique">Materiel informatique</option>
+                              <option value="Vehicule occasion">Vehicule occasion</option>
+                              <option value="Equipement véhicule">Equipement véhicule</option>
+                              <option value="Bureau immobilier">Bureau immobilier</option>
+                              <option value="Simulateur de conduite">Simulateur de conduite</option>
                               <option value="ouvrage">ouvrage</option>
                           </select>
                           <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">

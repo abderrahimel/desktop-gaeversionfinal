@@ -73,13 +73,24 @@ export class AutoEcoleVendreComponent implements OnInit, AfterViewInit  {
     this.dataSource.filter = value.trim().toLowerCase()
   }
   getData(){
-    this.dataService.getAutoecoleVendre().subscribe(data=>{
-      this.dataLoad = JSON.parse(data);
-      this.dataSource = new MatTableDataSource(this.dataLoad)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      // this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    this.store.pipe(take(1)).subscribe(store=>{
+      if(!store.autoecolevendre.autoecolevendre.autoecolevendre.loaded){
+        this.store.dispatch(loadautoecolevendreaction());
+      }
+      this.store.select(state=>state.autoecolevendre.autoecolevendre.autoecolevendre.autoecolevendre).subscribe(autoecolevendre=>{
+        this.dataLoad = autoecolevendre;
+        this.dataSource = new MatTableDataSource(this.dataLoad)
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
     })
+    // this.dataService.getAutoecoleVendre().subscribe(data=>{
+    //   this.dataLoad = JSON.parse(data);
+    //   this.dataSource = new MatTableDataSource(this.dataLoad)
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    //   // this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    // })
        
   }
   newProduit(){
@@ -107,7 +118,6 @@ export class AutoEcoleVendreComponent implements OnInit, AfterViewInit  {
     }).then((result) => {
       if (result.isConfirmed) {
         this.dataService.deleteAutoecoleVendre(id).subscribe(data=>{
-          this.getData();
           this.store.dispatch(loadautoecolevendreaction());
         })
       }
@@ -195,5 +205,6 @@ export class AutoEcoleVendreComponent implements OnInit, AfterViewInit  {
     const modalRef = this.modalService.open(AutoecolevendreModalComponent);
     modalRef.componentInstance.btn = btn;
     modalRef.componentInstance.data = data;
+    
   }
 }

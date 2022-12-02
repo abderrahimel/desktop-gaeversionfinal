@@ -21,13 +21,13 @@ export class ProduitAdminmodalComponent implements OnInit {
   base64Img_image:any;
   form = new FormGroup({          
     titre: new FormControl('', Validators.required),
-    categorie: new FormControl(''),
+    categorie: new FormControl('', Validators.required),
     prix: new FormControl('', Validators.required),
-    marque: new FormControl('', Validators.required),
-    prixPromotion: new FormControl('', Validators.required),
-    model: new FormControl('', Validators.required),
-    carburant: new FormControl('', Validators.required),
-    kilometrage: new FormControl('', Validators.required),
+    marque: new FormControl(''),
+    prixPromotion: new FormControl(''),
+    model: new FormControl(''),
+    carburant: new FormControl(''),
+    kilometrage: new FormControl(''),
     image: new FormControl(''),
     description: new FormControl(''),
   });
@@ -37,6 +37,7 @@ export class ProduitAdminmodalComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    console.log(this.data);
     if(this.data?.nomCategorie === 'vehicule occasion'){
       this.hidd = true;
     }
@@ -76,7 +77,6 @@ export class ProduitAdminmodalComponent implements OnInit {
     this.submitted = true;
        if(this.form.invalid){
          return;
-        
        }
        this.dataServece.newProduit({
         titre: this.form.value.titre,
@@ -90,9 +90,10 @@ export class ProduitAdminmodalComponent implements OnInit {
         description: this.form.value.description,
         image:this.base64Img_image,
        }).subscribe(data=>{
+          this.store.dispatch(loadProduitSuperAdmin());
        })
-       this.store.dispatch(loadProduitSuperAdmin());
        this.activeModal.dismiss('Cross click');
+       
   }
   fileChangeEvent(event: any) {
    if (event.target.files && event.target.files[0]) {

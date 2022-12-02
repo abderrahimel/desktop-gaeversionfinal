@@ -17,7 +17,7 @@ import { loadautoecolevendreaction } from 'src/app/state/autoecolevendre/autoeco
 import { AutoEcoleWithAbonnementState } from 'src/app/state/autoEcoleWithAbonnement/autoEcoleWithAbonnement.state';
 import { loadautoEcoleWithAbonnement } from 'src/app/state/autoEcoleWithAbonnement/autoEcoleWithAbonnement.actions';
 import { BlogState } from 'src/app/state/blog/blog.state';
-import { loadblogadminaction } from 'src/app/state/blog/bnlog.actions';
+import { loadblogadminaction } from 'src/app/state/blog/blog.actions';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({

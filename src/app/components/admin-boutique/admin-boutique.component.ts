@@ -57,7 +57,7 @@ export class AdminBoutiqueComponent implements OnInit,AfterViewInit {
     ) { }
     
   ngOnInit(): void {
-    this.getProduits();
+    this.getAllProduits();
   }
   ngAfterViewInit() {
    }
@@ -73,19 +73,21 @@ export class AdminBoutiqueComponent implements OnInit,AfterViewInit {
   })
   this.store.select(state=>state.produitSuperAdmin.produitSuperAdmin.produitSuperAdmin).subscribe(produitSuperAdmin=>{
     this.dataLoad = produitSuperAdmin;
-  })
-
- }
- getProduits(){
-  this.dataService.getAllProduit().subscribe(data=>{
-    this.dataLoad = JSON.parse(data);
     this.dataSource = new MatTableDataSource(this.dataLoad)
-
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    // this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
   })
+
  }
+//  getProduits(){
+//   this.dataService.getAllProduit().subscribe(data=>{
+//     this.dataLoad = JSON.parse(data);
+//     this.dataSource = new MatTableDataSource(this.dataLoad)
+//     this.dataSource.paginator = this.paginator;
+//     this.dataSource.sort = this.sort;
+//     // this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
+//   })
+//  }
  boolShow(event:any){
    if(event === 'vehicule occasion'){
      this.hidd = true;
@@ -167,7 +169,6 @@ deleteProduitAdmin(id:any){
   }).then((result) => {
     if (result.isConfirmed) {
       this.dataService.deleteProduitAdmin(id).subscribe(data=>{
-        this.getProduits();
         this.store.dispatch(loadProduitSuperAdmin());
       })
     }
@@ -177,6 +178,7 @@ open(btn:any, data:any) {
   const modalRef = this.modalService.open(ProduitAdminmodalComponent);
   modalRef.componentInstance.btn = btn;
   modalRef.componentInstance.data = data;
+  // this.store.dispatch(loadProduitSuperAdmin());
 }
 opentail(data:any) {
   const modalRef = this.modalService.open(DetailboutiquemodalComponent);

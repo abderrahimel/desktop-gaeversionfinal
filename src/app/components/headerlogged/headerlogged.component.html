@@ -35,14 +35,21 @@
             
           </ul>
          
-            <button mat-button [matMenuTriggerFor]="menu2"  class="btn profileAvatar" >
-              <img src="{{logo}}" width="30" height="30" style="object-fit: cover;border:1px solid rgb(252, 249, 249);width: 30px;height:30px;border-radius: 50%;" alt="" >
+            <button mat-button [matMenuTriggerFor]="menu2"  class="btn profileAvatar">
+              <img src="{{logo}}" width="30" height="30" style="object-fit: cover;border:1px solid rgb(252, 249, 249);width: 35px;height:35px;border-radius: 50%;border: 1px solid rgb(224, 217, 217);" alt="" >
             </button>
           <mat-menu #menu2="matMenu"  style="background-color: white;color:black;margin-left: 5px;">
-              <button class= "bg-none" mat-menu-item><a routerLink="/parametres"  class="link text-dark">Parametres du compte</a></button>
-              <button class= "bg-none" (click)="logoutUser($event)" mat-menu-item>Se deconnecter</button>
+               <a href="/auto-ecole" class="link text-dark" style="text-decoration: none;color:black;margin-left: 14px;">
+                <i class="fa-solid fa-car"></i>
+                auto-ecole</a>
+              <button class= "bg-none" mat-menu-item><a routerLink="/parametres"  class="link text-dark">
+                <i class="fa-solid fa-gear"></i>
+                Parametres du compte</a></button>
+              <button class= "bg-none" (click)="logoutUser($event)" mat-menu-item>
+                <i class="fa-solid fa-power-off"></i>
+                Se deconnecter</button>
           </mat-menu>
-          <!-- <span style="margin-left: 5px;">{{login}}</span> -->
+          <span style="margin-left: 5px;">{{login}}</span>
       </nav>
       
     </div>

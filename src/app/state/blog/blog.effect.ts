@@ -4,7 +4,7 @@ import { exhaustMap, map } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 import { CandidatService } from 'src/app/services/candidat.service';
 import { Router } from '@angular/router';
-import { loadblogadminaction, loadblogadmintostoreaction } from './bnlog.actions';
+import { loadblogadminaction, loadblogadmintostoreaction } from './blog.actions';
 import { BlogState } from './blog.state';
 import { Store } from '@ngrx/store';
 

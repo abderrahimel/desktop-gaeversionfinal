@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
-import { loadministerielleaction } from 'src/app/state/ministerielle/ministerielle.actions';
+import { loadministerielleaction, setload } from 'src/app/state/ministerielle/ministerielle.actions';
 import { MinisterielleState } from 'src/app/state/ministerielle/ministerielle.sate';
 
 @Component({
@@ -55,12 +55,7 @@ export class MinisteriellemodalComponent implements OnInit {
       if(this.form.invalid ){
         return;
       }
-      console.log({
-        titre: this.form.value.titre,   
-        category: this.form.value.category,   
-        lien: this.form.value.lien,   
-        fichier: this.url, 
-      });
+    
       if(this.data !== null){
         this.dataService.updateNoteMinisterielle(this.data.id, {
           titre: this.form.value.titre,   
@@ -68,6 +63,8 @@ export class MinisteriellemodalComponent implements OnInit {
           lien: this.form.value.lien,   
           fichier: this.url, 
         }).subscribe(data=>{
+           this.store.dispatch(setload())
+           this.store.dispatch(loadministerielleaction())
            this.activeModal.dismiss('Cross click');
         });
       }else{   
@@ -77,6 +74,7 @@ export class MinisteriellemodalComponent implements OnInit {
           lien: this.form.value.lien,   
           fichier: this.url, 
         }).subscribe(data=>{
+          this.store.dispatch(setload())
           this.store.dispatch(loadministerielleaction())
           this.activeModal.dismiss('Cross click');
         });

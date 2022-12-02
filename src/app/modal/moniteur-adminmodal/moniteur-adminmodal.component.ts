@@ -77,6 +77,9 @@ gestionMoniteurJob(){
       salaire: this.form.value.salaire,   
       date: this.form.value.date,   
     }).subscribe(data=>{
+      this.store.dispatch(loadMoniteurAdminAction());
+      this.activeModal.dismiss('Cross click');
+
     });
   }else{
     this.dataService.addMoniteurJob({
@@ -86,10 +89,11 @@ gestionMoniteurJob(){
       salaire: this.form.value.salaire,   
       date: this.form.value.date,   
     }).subscribe(data=>{
+      this.store.dispatch(loadMoniteurAdminAction());
+      this.activeModal.dismiss('Cross click');
+
     });
   }
-  this.store.dispatch(loadMoniteurAdminAction());
-  this.activeModal.dismiss('Cross click');
 }
 
 }

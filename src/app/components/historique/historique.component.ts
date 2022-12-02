@@ -31,8 +31,7 @@ export class HistoriqueComponent implements OnInit { // cin numero_contrat  nom_
                       private store:Store<{historiquecandidat: historiquecandidatState}>
     ) { }
   ngOnInit(): void {
-    // this.currentData();
-    this.getHistoriqueCandidat();
+    this.currentData();
   }
   currentData(){
     let id_autoEcole = localStorage.getItem('autoEcole_id');
@@ -43,6 +42,9 @@ export class HistoriqueComponent implements OnInit { // cin numero_contrat  nom_
     });
     this.store.select(state=>state.historiquecandidat.historiquecandidat.historiquecandidat).subscribe(hc=>{
       this.candidat_data_historique = hc;
+      this.dataSource = new MatTableDataSource(this.candidat_data_historique)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
   }
   handlerror(error:any){
@@ -58,7 +60,6 @@ export class HistoriqueComponent implements OnInit { // cin numero_contrat  nom_
       this.dataSource = new MatTableDataSource(this.dataLoad)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.dataLoad.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })   
   }
   activerCandidat(id:any, e:any){
@@ -77,7 +78,7 @@ export class HistoriqueComponent implements OnInit { // cin numero_contrat  nom_
         this.store.dispatch(activehistoriquecandidat({id: id}));
         this.store.dispatch(candidatStart({idAutoEcole: localStorage.getItem('autoEcole_id')}));
       }
-      this.getHistoriqueCandidat();
+      this.currentData();
     })
   }
   deleteCandidat(id:any, e:any){
@@ -95,7 +96,7 @@ export class HistoriqueComponent implements OnInit { // cin numero_contrat  nom_
       if (result.isConfirmed) {
         this.store.dispatch(removehistoriquecandidatById({id: id}));
       }
-      this.getHistoriqueCandidat();
+      this.currentData();
     })
     
   }

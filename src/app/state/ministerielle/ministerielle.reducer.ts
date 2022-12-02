@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadministerielleactionStore } from "./ministerielle.actions";
+import { loadministerielleactionStore, setload } from "./ministerielle.actions";
 import { initialState } from "./ministerielle.sate";
 
 const _ministerielleReducer = createReducer(initialState,
@@ -13,8 +13,17 @@ const _ministerielleReducer = createReducer(initialState,
         }
     };
 }), 
-
-
+// setload 
+on(setload, (state)=>{
+    return {...state,
+        ministerielle:{
+            ministerielle:{
+                ministerielle: null,
+                loaded: false,
+            }
+        }
+    };
+}), 
 )
 
 export function ministerielleReducer(state, action){

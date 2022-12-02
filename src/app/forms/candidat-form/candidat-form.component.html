@@ -338,9 +338,11 @@
                                         </select>
                                         <div class="err" *ngIf="submitted && this.form.controls.categorie_demandee.errors">
                                             <div style="color: red;" *ngIf="this.form.controls.categorie_demandee.errors.required">
-                                                {{' Montant obligatoire *.' | translate}} 
+                                                {{' categorie demandee obligatoire *.' | translate}} 
                                             </div>
-                                         
+                                            <div style="color: red;" *ngIf="this.form.controls.nbr_heur_theorique.status === 'INVALID'">
+                                                {{' il faut mettre un chiffre obligatoire *.' | translate}} 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -353,7 +355,9 @@
                                             <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
                                                 {{' Montant obligatoire *.' | translate}} 
                                             </div>
-                                         
+                                            <div style="color: red;" *ngIf="this.form.controls.montant.status === 'INVALID'">
+                                                {{' il faut mettre un Montant obligatoire *.' | translate}} 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -366,7 +370,9 @@
                                             <div style="color: red;" *ngIf="this.form.controls.nbr_heur_pratique.errors.required">
                                                 {{' nombre d\'heures pratique obligatoire *.' | translate}} 
                                             </div>
-                
+                                            <div style="color: red;" *ngIf="this.form.controls.nbr_heur_pratique.status === 'INVALID'">
+                                                {{' il faut mettre nombre d\'heures pratique obligatoire *.' | translate}} 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -379,7 +385,9 @@
                                             <div style="color: red;" *ngIf="this.form.controls.nbr_heur_theorique.errors.required">
                                                 {{' nombre d\'heures théorique obligatoire *.' | translate}} 
                                             </div>
-                
+                                            <div style="color: red;" *ngIf="this.form.controls.nbr_heur_theorique.status === 'INVALID'">
+                                                {{' il faut mettre nombre d\'heures théorique obligatoire *.' | translate}} 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

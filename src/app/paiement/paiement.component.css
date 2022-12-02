@@ -13,9 +13,7 @@
   background: rgb(243, 241, 245);
   height: 100vh;
 }
-*{
-  font-size: 16px;
-}
+
 .container1{
   background: white;
   padding: 10px;
@@ -695,5 +693,5 @@ html{
 }
 
 button{
-  font-size: 16px;
+  font-size: 14px;
 }

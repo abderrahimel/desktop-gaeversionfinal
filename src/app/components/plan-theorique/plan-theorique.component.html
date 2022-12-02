@@ -94,7 +94,7 @@
                           </ng-container>       
                       
                           <ng-container matColumnDef="heure">  
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;;margin-right: 5px;">{{ "HEURE" | translate }}</span>   </th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;;margin-right: 5px;padding: 7px;">{{ "HEURE" | translate }}</span>   </th>
                             <td mat-cell *matCellDef="let element"> {{element?.date_debut}}{{'/'}}{{element?.date_fin}} </td>
                           </ng-container>
                       
@@ -119,8 +119,8 @@
                       
                          <ng-container matColumnDef="actions">  
                           <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;;">{{ "ACTIONS" | translate }}</span>  </th>
-                          <td mat-cell *matCellDef="let element"> 
-                                <button
+                          <td mat-cell *matCellDef="let element" class="d-flex align-items-center my-4"> 
+                            <button
                                    class="btn btn-white "
                                    (click)="open1(element)"
                                    style="background: #198754;padding:4px;font-size: 12px;padding: 7px;" class="btn text-white">

@@ -34,8 +34,7 @@ export class ArchiveComponent implements OnInit {
   ngOnInit(): void {
     this.auth.authStatus.subscribe(value=>{
       if(value){
-        // this.currentData();
-        this.getArchiveCandidat();
+        this.currentData();
       }
      })
 
@@ -49,12 +48,17 @@ export class ArchiveComponent implements OnInit {
      });
      this.store.select(state=>state.archivecandidat.archivecandidat.archivecandidat).subscribe(archiveCandidat=>{
           this.candidat_data_archive = archiveCandidat;
+          this.dataSource = new MatTableDataSource(this.candidat_data_archive)
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
      });
    
   }
   applyFilter(event:any){
     let value = event.target.value
-    this.dataSource.filter = value.trim().toLowerCase()
+    if(value){
+      this.dataSource.filter = value.trim().toLowerCase()
+    }
   }
   getArchiveCandidat(){
     this.candidatData.getarchivecandidat(localStorage.getItem('autoEcole_id')).subscribe(data=>{
@@ -62,7 +66,6 @@ export class ArchiveComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.candidat_data_archive)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.n = this.candidat_data_archive.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })   
   }
   recuperer(id:any, e:any){
@@ -80,7 +83,7 @@ export class ArchiveComponent implements OnInit {
           this.store.dispatch(recuperarchivecandidat({id: id}));
           this.store.dispatch(candidatStart({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         }
-        this.getArchiveCandidat();
+        this.currentData();
       })
   }
 }

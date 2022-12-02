@@ -60,7 +60,7 @@ export class NoteMinisterielleComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.auth.authStatus.subscribe(value=>{
       if(value){
-        this.getdatas()
+        this.getData();
       }
     })
   }
@@ -75,6 +75,9 @@ export class NoteMinisterielleComponent implements OnInit, AfterViewInit {
      })
      this.store.select(state=>state.ministerielle.ministerielle.ministerielle.ministerielle).subscribe(ministerielle=>{
       this.noteMinisterielle = ministerielle
+      this.dataSource = new MatTableDataSource(this.noteMinisterielle)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
      })
 
 
@@ -87,7 +90,6 @@ export class NoteMinisterielleComponent implements OnInit, AfterViewInit {
     this.dataService.getNoteMinisterielle().subscribe(data=>{
       this.noteMinisterielle = JSON.parse(data)
       this.dataSource = new MatTableDataSource(this.noteMinisterielle)
-  
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     })
@@ -154,7 +156,7 @@ fileSelected = async (e) => {
     }).then((result) => {
       if (result.isConfirmed) {
         this.dataService.deleteNoteMinisterielle(id).subscribe(data=>{
-          this.getdatas();
+          this.store.dispatch(loadministerielleaction());
         })
       }
     })
@@ -178,7 +180,7 @@ fileSelected = async (e) => {
           // fichier: this.form.value.fichier, 
         }).subscribe(data=>{
           this.showing = false;
-          this.getData();
+          this.store.dispatch(loadministerielleaction())
         });
       }else{   
         // add moniteur
@@ -189,7 +191,7 @@ fileSelected = async (e) => {
           // fichier: this.form.value.fichier, 
         }).subscribe(data=>{
           this.showing = false;
-          this.getData();
+          this.store.dispatch(loadministerielleaction());
         });
       }
 
@@ -237,5 +239,6 @@ fileSelected = async (e) => {
     const modalRef = this.modalService.open(MinisteriellemodalComponent);
     modalRef.componentInstance.btn = btn;
     modalRef.componentInstance.data = data;
+    // this.store.dispatch(loadministerielleaction());
   }
 }

@@ -35,7 +35,7 @@ export class UsersAdminComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {
      this.auth.authStatus.subscribe(value=>{
       if(value){
-        this.getusers();
+        this.loadUsers();
       }
      })
   }
@@ -80,7 +80,7 @@ export class UsersAdminComponent implements OnInit,AfterViewInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.dataService.deleteUser(id).subscribe(data =>{
-          this.getusers();
+          this.store.dispatch(loadusersaction());
         }) 
       }
     })
