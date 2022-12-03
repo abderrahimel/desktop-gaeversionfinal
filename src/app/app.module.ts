@@ -306,6 +306,12 @@ import { ExamenNoReussiEffects } from './state/examenNoreussi/examenNoreussi.eff
 import { ExamenReussiEffects } from './state/examenreussi/examenreussi.effects';
 import { examenreussiReducer } from './state/examenreussi/examenreussi.reducer';
 import { examenNoreussiReducer } from './state/examenNoreussi/examenNoreussi.reducer';
+import { visiteTechniqueReducer } from './state/visiteTechnique/visiteTechnique.reducer';
+import { VisiteTechniqueEffects } from './state/visiteTechnique/visiteTechnique.effects';
+import { vidangeReducer } from './state/vidange/vidange.reducer';
+import { VidangeEffects } from './state/vidange/vidange.effects';
+import { assuranceReducer } from './state/assurance/assurance.reducer';
+import { AssuranceEffects } from './state/assurance/assurance.effects';
 
 export function httpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http,'../assets/i18n/','.json');
@@ -576,7 +582,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       AbsenceMoniteurPratiqueEffects,
       MoniteurPratiqueEffects,
       ExamenNoReussiEffects,
-      ExamenReussiEffects
+      ExamenReussiEffects,
+      VisiteTechniqueEffects,
+      VidangeEffects,
+      AssuranceEffects
     ]),
     StoreModule.forRoot({
       user: userReducer,
@@ -619,7 +628,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       absenceMoniteurPratique: absenceMoniteurPratiqueReducer,
       moniteurPratique:moniteurPratiqueReducer,
       examenreussi: examenreussiReducer,
-      examenNoreussi:examenNoreussiReducer 
+      examenNoreussi:examenNoreussiReducer,
+      visiteTechnique: visiteTechniqueReducer,
+      vidange:vidangeReducer,
+      assurance:assuranceReducer
     }),
     StoreDevtoolsModule.instrument({
       name: 'NgRx Demo App',

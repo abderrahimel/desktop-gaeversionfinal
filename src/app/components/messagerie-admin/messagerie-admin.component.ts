@@ -72,21 +72,14 @@ export class MessagerieAdminComponent implements OnInit {
   }
   EnvoyereMail(){
     this.submitted = true;
-    console.log(this.form2.value);
     if(this.form2.invalid){
-      console.log("form invalid");
       return ;
     }
-    // send data to api
-    console.log({
-      ...this.form2.value,
-      fichier: this.url
-   });
+
     this.dataService.send({
        ...this.form2.value,
        fichier: this.url
     }).subscribe(data=>{
-      console.log(data);
     })
   }
   EnvoyeretoAll(){

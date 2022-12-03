@@ -46,7 +46,16 @@ export class DataService {
   getVehicules(ecole_id:any){   
     return this.httpclient.get(this.api + '/auto-ecole/'+ecole_id+'/vehicule', { responseType: 'text'});
   }    
-
+  getVisiteTechnique(id:any){
+    return this.httpclient.get(this.api + '/auto-ecole/'+id+'/visite-technique', { responseType: 'text'});
+  }
+  getVidange(id:any){
+    return this.httpclient.get(this.api + '/auto-ecole/'+id+'/vidange', { responseType: 'text'});
+  }
+  // assurance
+  getAssurance(id:any){
+    return this.httpclient.get(this.api + '/auto-ecole/'+id+'/assurance', { responseType: 'text'});
+  }
   getPresenceCourPratique(ecole_id:any){
     return this.httpclient.get(this.api+'/auto-ecole/'+ ecole_id +'/get-presence-cour-pratique');
   } 

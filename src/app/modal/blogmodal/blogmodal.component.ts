@@ -23,7 +23,6 @@ export class BlogmodalComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
     if(this.btn === 'Ajouter'){
       this.createFormadd();
     }else{

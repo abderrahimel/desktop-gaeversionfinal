@@ -1,12 +1,20 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
+import { loadassurance } from 'src/app/state/assurance/assurance.actions';
+import { AssuranceState } from 'src/app/state/assurance/assurance.state';
 import { getVehicules } from 'src/app/state/vehicule/vehicule.selector';
 import { VehiculeState } from 'src/app/state/vehicule/vehicule.state';
+import { loadvidange } from 'src/app/state/vidange/vidange.actions';
+import { VidangeState } from 'src/app/state/vidange/vidange.state';
+import { loadvisiteTechnique } from 'src/app/state/visiteTechnique/visiteTechnique.actions';
+import { VisiteTechniqueState } from 'src/app/state/visiteTechnique/visiteTechnique.state';
 
 @Component({
   selector: 'app-vidange',
@@ -29,6 +37,7 @@ export class VidangeComponent implements OnInit {
   current_candidat:any;
   dataLoad:any;
   id_candidat:any;
+  day:any;
   vidanges:any;
   assuranceUrgent:any;
   vidangesUrgent:any;
@@ -39,12 +48,76 @@ export class VidangeComponent implements OnInit {
   dataSource1 = new MatTableDataSource();
   dataSource2 = new MatTableDataSource();
   constructor(private dataService:DataService,
-               private store:Store<{vehicule: VehiculeState}>,
+              private store: Store<{visiteTechnique:VisiteTechniqueState, vidange:VidangeState, assurance:AssuranceState}>
     ) {
      }
 
   ngOnInit(): void {
-    this.getVidanges();
+    var today = new Date();
+    var dd = String(today. getDate()). padStart(2, '0');
+    var mm = String(today. getMonth() + 1). padStart(2, '0'); 
+    var yyyy = today. getFullYear();
+    this.day = yyyy + '-' + mm + '-' + dd ;
+    this.getVisiteTechnique();
+    this.getVidange();
+    this.getAssurance();
+  }
+  getVisiteTechnique(){
+  this.store.pipe(take(1)).subscribe(store=>{
+    if(!store.visiteTechnique.visiteTechnique.loaded){
+      this.store.dispatch(loadvisiteTechnique({idAuto: localStorage.getItem('autoEcole_id')}));
+    }
+    this.store.select(state=>state.visiteTechnique.visiteTechnique.visiteTechnique).subscribe(visitetechnique=>{
+      this.visiteTechniques = visitetechnique;
+      this.dataSource= new MatTableDataSource(this.visiteTechniques)
+      this.dataSource.paginator = this.paginatorFirst;
+      this.dataSource.sort = this.empTbSort;
+    })
+  })
+    // this.dataService.getVisiteTechnique(localStorage.getItem('autoEcole_id')).subscribe(vt=>{
+    //       this.visiteTechniques = JSON.parse(vt);
+    //       this.dataSource= new MatTableDataSource(this.visiteTechniques)
+    //       this.dataSource.paginator = this.paginatorFirst;
+    //       this.dataSource.sort = this.empTbSort;
+    // })
+  }
+  getVidange(){
+    this.store.pipe(take(1)).subscribe(store=>{
+      if(!store.vidange.vidange.loaded){
+        this.store.dispatch(loadvidange({idAuto: localStorage.getItem('autoEcole_id')}));
+      }
+      this.store.select(state=>state.vidange.vidange.vidange).subscribe(vidange=>{
+        this.vidanges = vidange;
+        this.dataSource1= new MatTableDataSource(this.vidanges)
+        this.dataSource1.paginator = this.paginatorSecond;
+        this.dataSource1.sort = this.empTbSort1;
+      })
+    })
+//     this.dataService.getVidange(localStorage.getItem('autoEcole_id')).subscribe(v=>{
+//       this.vidanges = JSON.parse(v);
+//       this.dataSource1= new MatTableDataSource(this.vidanges)
+//       this.dataSource1.paginator = this.paginatorSecond;
+//       this.dataSource1.sort = this.empTbSort1;
+// })
+  }
+  getAssurance(){
+    this.store.pipe(take(1)).subscribe(store=>{
+      if(!store.assurance.assurance.loaded){
+        this.store.dispatch(loadassurance({idAuto: localStorage.getItem('autoEcole_id')}));
+      }
+      this.store.select(state=>state.assurance.assurance.assurance).subscribe(assurance=>{
+        this.assurances = assurance;
+        this.dataSource2= new MatTableDataSource(this.assurances)
+        this.dataSource2.paginator = this.paginator2;
+        this.dataSource2.sort = this.empTbSort2;
+      })
+    })
+//     this.dataService.getAssurance(localStorage.getItem('autoEcole_id')).subscribe(assurance=>{
+//       this.assurances = JSON.parse(assurance);
+//       this.dataSource2= new MatTableDataSource(this.assurances)
+//       this.dataSource2.paginator = this.paginator2;
+//       this.dataSource2.sort = this.empTbSort2;
+// })
   }
   applyFilter(event:any){
     let value = event.target.value
@@ -54,34 +127,9 @@ export class VidangeComponent implements OnInit {
     let value = event.target.value
     this.dataSource1.filter = value.trim().toLowerCase()
   }
-  deleteVidange(){
+  applyFilter2(event:any){
+    let value = event.target.value
+    this.dataSource2.filter = value.trim().toLowerCase()
   }
-  getVidanges(){
-    let currentDate = new Date().getTime();
-    const yesterdayTimeStamp = currentDate - 24*60*60*1000;
-    const tomorrowTime = currentDate + 24*60*60*1000;
-     this.dataService.getVehicules(localStorage.getItem('autoEcole_id')).subscribe(vehicules=>{
-          // assurance
-          this.assurances = JSON.parse(vehicules);
-          this.assurances = this.assurances.filter(item => (new Date(item.date_expiration_assurance).getTime()) >= currentDate );
-          this.dataSource2 = new MatTableDataSource(this.assurances)
-          this.dataSource2.paginator = this.paginator2;
-          this.dataSource2.sort = this.empTbSort2;
-          console.log("assurance");
-          console.log(this.assurances);
-          this.assuranceUrgent = JSON.parse(vehicules).filter(item => (new Date(item.date_expiration_assurance).getTime()) >= yesterdayTimeStamp );
-          console.log(this.assuranceUrgent);
-          this.assuranceUrgent = this.assuranceUrgent.filter(item => (new Date(item.date_expiration_assurance).getTime()) <= tomorrowTime );
-          console.log(this.assuranceUrgent);
-          // vidanges
-          this.vidanges =  JSON.parse(vehicules).filter(item => (new Date(item.date_prochain_vidange).getTime()) >= currentDate );
-          this.vidangesUrgent = JSON.parse(vehicules).filter(item => (new Date(item.	date_prochain_vidange).getTime()) >= yesterdayTimeStamp );
-          this.vidangesUrgent = this.vidangesUrgent.filter(item => (new Date(item.	date_prochain_vidange).getTime()) <= tomorrowTime );
-          // visite technique 
-          this.visiteTechniques =  JSON.parse(vehicules).filter(item => (new Date(item.date_prochain_visite).getTime()) >= currentDate );
-          this.visiteTechniquesUrgent = JSON.parse(vehicules).filter(item => (new Date(item.date_prochain_visite).getTime()) >= yesterdayTimeStamp );
-          this.visiteTechniquesUrgent = this.visiteTechniquesUrgent.filter(item => (new Date(item.date_prochain_visite).getTime()) <= tomorrowTime );
 
-     })
-  }
 }

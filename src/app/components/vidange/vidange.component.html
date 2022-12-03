@@ -83,16 +83,19 @@
                              </ng-container>
                                <ng-container matColumnDef="etat">   
                                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ETAT</span> </th>
-                                 <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
+                                 <td mat-cell *matCellDef="let element" style="text-align: center;"> 
+                                  <span *ngIf="element?.date_visite === day || element?.date_prochain_visite === day" style="color:rgb(228, 221, 221);background:rgb(236, 5, 43);height: 3px;">Urgent</span>
+                                  <span *ngIf="element?.date_visite !== day && element?.date_prochain_visite !== day" style="color:rgb(228, 221, 221);background:rgb(5, 132, 236);height: 3px;">Pas encore</span>
+                                </td>
                                </ng-container>
                              
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                           </table>
                           <mat-paginator 
-                          #paginatorFirst
-                          [pageSize]="5"  
-                          [pageSizeOptions]="[5, 10, 25, 100]">
+                            #paginatorFirst
+                            [pageSize]="5"  
+                            [pageSizeOptions]="[5, 10, 25, 100]">
                           </mat-paginator>
                           <!-- end ABSENCE candidats -->
                    </div>
@@ -197,7 +200,10 @@
                              <!-- etat COLUMN -->
                              <ng-container matColumnDef="etat">   
                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ETAT</span> </th>
-                               <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
+                               <td mat-cell *matCellDef="let element" style="text-align: center;"> 
+                                <span *ngIf="element?.date_vidange === day || element?.date_prochain_vidange === day" style="color:rgb(228, 221, 221);background:rgb(236, 5, 43);height: 3px;">Urgent</span>
+                                <span *ngIf="element?.date_vidange !== day && element?.date_prochain_vidange !== day" style="color:rgb(228, 221, 221);background:rgb(5, 132, 236);height: 3px;">Pas encore</span>
+                              </td>
                              </ng-container>
 
                            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
@@ -228,7 +234,7 @@
                             <div style="margin-right: 6px">  Rechercher:</div>
                             <mat-form-field appearance="standard">
                                <mat-label></mat-label>
-                               <input matInput (keyup)="applyFilter1($event)" placeholder="... " #input>
+                               <input matInput (keyup)="applyFilter2($event)" placeholder="... " #input>
                             </mat-form-field>
                         </div>
                         <table mat-table  [dataSource]="dataSource2"  matSort #empTbSort2="matSort">    
@@ -265,7 +271,10 @@
                              <!-- etat COLUMN -->
                              <ng-container matColumnDef="etat">   
                                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ETAT</span> </th>
-                               <td mat-cell *matCellDef="let element" style="text-align: center;"> <span style="color:rgb(228, 221, 221);background:rgb(5, 190, 236);height: 3px;">Pas encore</span></td>
+                               <td mat-cell *matCellDef="let element" style="text-align: center;"> 
+                                <span *ngIf="element?.date_assurance === day || element?.date_expiration_assurance === day" style="color:rgb(228, 221, 221);background:rgb(236, 5, 43);height: 3px;">Urgent</span>
+                                <span *ngIf="element?.date_assurance !== day && element?.date_expiration_assurance !== day" style="color:rgb(228, 221, 221);background:rgb(5, 132, 236);height: 3px;">Pas encore</span>
+                              </td>
                              </ng-container>
                           <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
                           <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
