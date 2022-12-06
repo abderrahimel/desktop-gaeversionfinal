@@ -157,7 +157,6 @@ export class CandidatComponent implements OnInit  {
   }
   
   desactiverCandidat(id:any, e:any){
-
     Swal.fire({
       title: 'confirmation',
       text: "Vous voulez vraiment confirmer la désactivation!",
@@ -196,4 +195,3 @@ export class CandidatComponent implements OnInit  {
     modalRef.componentInstance.user = this.user;
   }
 }
-

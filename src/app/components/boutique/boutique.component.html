@@ -21,10 +21,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet"> 
     <!-- Title -->
     <title>Gestion Auto-écoles - J2HB Plus Editeur de la securité routiére au maroc.</title>
-    <!-- Réalisation Yancom Création <a href="www.yancom-creation.com" target="_blank">Yancom Création</a> -->
-    
-    <link href="https://gestionautoecole.com/fi/css/flag-icons.min.css" rel="stylesheet" />
-
     <!-- Bootstrap Css -->
     <link href="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -32,43 +28,9 @@
     <!-- Dashboard Css -->
     <link href="/assets/css/gestion.css" rel="stylesheet" />
 
-    
-    <!-- Font-awesome  Css -->
-    <link href="https://gestionautoecole.com/css/icons.css" rel="stylesheet"/>
-    <link href="https://gestionautoecole.com/fonts/fonts/font-awesome.min.css" rel="stylesheet"/>
-
     <!--Horizontal Menu-->
     <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/animation/fade-down.css" rel="stylesheet" />
     <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/horizontal.css" rel="stylesheet" />
-
-    <!--Select2 Plugin -->
-    <link href="https://gestionautoecole.com/plugins/select2/select2.min.css" rel="stylesheet" />
-
-    <!-- Time picker Plugin -->
-    <!-- <link href="https://gestionautoecole.com/plugins/time-picker/jquery.timepicker.css" rel="stylesheet" /> -->
-
-    <!-- Date Picker Plugin -->
-    <link href="https://gestionautoecole.com/plugins/date-picker/spectrum.css" rel="stylesheet" />
-    
-    <!-- file Uploads -->
-    <link href="https://gestionautoecole.com/plugins/fileuploads/css/dropify.css" rel="stylesheet" type="text/css" />
-
-    <!-- jquery ui RangeSlider -->
-
-    <link href="https://gestionautoecole.com/plugins/jquery-uislider/jquery-ui.css" rel="stylesheet">
-
-    <!-- Owl Theme css-->
-    <link href="https://gestionautoecole.com/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" />
-
-    <!-- Custom scroll bar css-->
-    <link href="https://gestionautoecole.com/plugins/scroll-bar/jquery.mCustomScrollbar.css" rel="stylesheet" />
-
-    <!-- Accordion Css -->
-    <link href="https://gestionautoecole.com/plugins/accordion/accordion.css" rel="stylesheet" />
-   
-    <!-- Custom Css -->
-   <link href="https://gestionautoecole.com/css/custom.css" rel="stylesheet" />
-
 
 </head>
 <body>
@@ -78,22 +40,23 @@
     <style>.avatar{background: #e5e5e5 no-repeat center/cover !important;background-size: cover !important}</style>
 <!--Sliders Section-->
 <div> 
-    <div class="bannerimg cover-image bg-background3 bg-danger" data-image-src="https://gestionautoecole.com/images/banners/banner1.jpg" style="background: url(&quot;../assets/images/banners/banner2.jpg&quot;) center center;"> 
+    <div class="bannerimg cover-image bg-background3 bg-danger" > 
         <div class="header-text mb-0"> 
             <div class="container"> 
                 <div class="text-center text-white "> 
-                    <h1 class="">Notre Boutique </h1> 
-                    <ol class="breadcrumb text-center"> 
-                        <li class="breadcrumb-item"><a routerLink="/"> Accueil </a></li> 
-                        <li class="breadcrumb-item active text-white" aria-current="page"> Boutique j2hb</li> 
-                    </ol> 
+                    <h1>Notre Boutique </h1> 
                 </div> 
             </div> 
         </div> 
     </div> 
 </div>
 <!--Job listing-->
-<section style="margin-top: 20px;" class="sptb">
+<div  *ngIf="!boutique" style="margin-left: 50%;margin-bottom: 20%;margin-top: 12px;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+</div>
+<section *ngIf="boutique" style="margin-top: 20px;" class="sptb">
 	<div class="container">
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-12">
@@ -104,12 +67,8 @@
 							<div class=" mb-0">
 								<div class="">
                                     <div>
-                                        <!-- <div style="margin-left: 50%;margin-top: 10px;" *ngIf="!(vendres | async)">
-                                            <div class="spinner-border text-primary" role="status">
-                                                <span class="sr-only">Loading...</span>
-                                              </div>
-                                        </div> -->
-                                        <div style="display: flex;align-items:center">
+                                     
+                                        <!-- <div style="display: flex;align-items:center">
                                             <div style="display: flex;">
                                                 <mat-card class="example-card"  style="margin:10px;width: 250px;margin-bottom: 20px;" *ngFor="let card of vendres | async">
                                                     <mat-card-content> 
@@ -128,7 +87,29 @@
                                                   </mat-card>
                                                   <mat-paginator  style="position:absolute;bottom: 0;right: 0;margin-right: -100px;z-index: 100;margin-bottom: 10px;" [hidden]="!(vendres | async)" [pageSizeOptions]="[2]"></mat-paginator>
                                             </div>
-                                        </div>
+                                        </div> -->
+                                        <div class="container">
+                                            <section>
+                                              <ngx-slick-carousel class="carousel" 
+                                              #slickModal="slick-carousel" 
+                                              [config]="slideConfig" 
+                                              (init)="slickInit($event)"
+                                              (breakpoint)="breakpoint($event)"
+                                              (afterChange)="afterChange($event)"
+                                              (beforeChange)="beforeChange($event)">
+                                              <mat-card class="example-card" ngxSlickItem *ngFor="let data of boutique; trackBy: trackById" class="slide" style="margin-right: 7px;height: 500px;">
+                                                    <img mat-card-image src="{{data?.image}}" style="height: 260px;width: 260px;" alt="">
+                                                    <mat-card-content style="width: 260px;">
+                                                    <p>{{data?.description}}</p>
+                                                    </mat-card-content>
+                                                    <mat-card-footer style="position: absolute;bottom:0;margin-bottom:15px">
+                                                        <button mat-button><a routerLink="/detail-produit/{{data?.id}}" class="btn" style="background: red;color:white">Voir détail</a></button>
+                                                        <button mat-button><a class="btn btn-outline-dark" routerLink="https://api.whatsapp.com/send?phone=212661072777"><i class="fa fa-whatsapp"></i></a></button>
+                                                    </mat-card-footer>
+                                              </mat-card>
+                                              </ngx-slick-carousel>
+                                            </section>
+                                          </div>
                                     </div>
 								</div>
 							</div>
@@ -142,7 +123,7 @@
             </div>
 
             <!--Right Side Content-->
-            <div class="col-xl-3 col-lg-4 col-md-12">
+            <!-- <div class="col-xl-3 col-lg-4 col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="input-group" style="display: flex;align-items:center">
@@ -155,14 +136,13 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>  -->
             <!-- Right Side Content -->
         </div>
 
 	</div>
 </section>
 <!-- /Job Listings-->
-<script src="https://gestionautoecole.com/js/Filter/notes_category.js"></script>
         <!-- <section class="main-footer" style="background-color: white;">
 	<footer class="bg-footer text-white " >
 		<div class="text-white-50 border-top p-0">
@@ -233,86 +213,7 @@
 		
 	</footer>
 </section> -->
-<script src="https://gestionautoecole.com/js/Abonner/abonner.js"></script>
-<!--Footer Section-->    
-        
-        <!-- Back to top -->
-        <a routerLink="#top" id="back-to-top" ><i class="fa fa-arrow-up"></i></a>
-
-        <!-- Bootstrap js -->
-        
         <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/popper.min.js"></script>
         <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-        
-        <!-- Tags Input -->
-        <script src="https://gestionautoecole.com/js/bootstrap-tagsinput.js"></script>
-
-        <!-- Sweet alert Plugin -->
-        <script src="https://gestionautoecole.com/plugins/sweet-alert/sweetalert.min.js"></script>
-        <script src="https://gestionautoecole.com/js/sweet-alert.js"></script>
-
-        <!---Accordion Js-->
-        <script src="https://gestionautoecole.com/plugins/accordion/accordion.min.js"></script>
-        <script src="https://gestionautoecole.com/js/accor.js"></script>
-
-        <!--JQuery Sparkline Js-->
-        <script src="https://gestionautoecole.com/js/vendors/jquery.sparkline.min.js"></script>
-
-        <!-- Circle Progress Js-->
-        <script src="https://gestionautoecole.com/js/vendors/circle-progress.min.js"></script>
-
-        <!-- Star Rating Js-->
-        <script src="https://gestionautoecole.com/plugins/rating/jquery.rating-stars.js"></script>
-
-        <!--Counters -->
-        <script src="https://gestionautoecole.com/plugins/counters/counterup.min.js"></script>
-        <script src="https://gestionautoecole.com/plugins/counters/waypoints.min.js"></script>
-        <script src="https://gestionautoecole.com/plugins/counters/numeric-counter.js"></script>
-
-        <!--Owl Carousel js -->
-        <script src="https://gestionautoecole.com/plugins/owl-carousel/owl.carousel.js"></script>
-
-        <!--Horizontal Menu-->
-        <script src="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/horizontal.js"></script>
-
-        <!--JQuery TouchSwipe js-->
-        <script src="https://gestionautoecole.com/js/jquery.touchSwipe.min.js"></script>
-
-        <!--Select2 js -->
-        <script src="https://gestionautoecole.com/plugins/select2/select2.full.min.js"></script>
-        <script src="https://gestionautoecole.com/js/select2.js"></script>
-
-        <!-- Datepicker js -->
-        <script src="https://gestionautoecole.com/plugins/date-picker/spectrum.js"></script>
-        <script src="https://gestionautoecole.com/plugins/date-picker/jquery-ui.js"></script>
-        <!-- <script src="https://gestionautoecole.com/plugins/input-mask/jquery.maskedinput.js"></script> -->
-
-        <!-- Inline js -->
-        <script src="https://gestionautoecole.com/js/formelements.js"></script>
-
-        <!-- file uploads js -->
-        <script src="https://gestionautoecole.com/plugins/fileuploads/js/dropify.js"></script>
-
-        <!-- sticky Js-->
-        <script src="https://gestionautoecole.com/js/sticky.js"></script>
-
-        <!-- Ion.RangeSlider -->
-        <script src="https://gestionautoecole.com/plugins/jquery-uislider/jquery-ui.js"></script>
-
-        <!--Showmore Js-->
-        <script src="https://gestionautoecole.com/js/jquery.showmore.js"></script>
-        <script src="https://gestionautoecole.com/js/showmore.js"></script>
-
-        <!-- Custom scroll bar Js-->
-        <script src="https://gestionautoecole.com/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
-
-        <!-- Swipe Js-->
-        <script src="https://gestionautoecole.com/js/swipe.js"></script>
-
-        <!-- Scripts Js-->
-        <script src="https://gestionautoecole.com/js/scripts2.js"></script>
-
-        <!-- Custom Js-->
-        <script src="https://gestionautoecole.com/js/custom.js"></script>
 </body>
 </html>

@@ -36,7 +36,7 @@
         <div class="header-text mb-0"> 
             <div class="container"> 
                 <div class="text-center text-white "> 
-                    <h1 >Liste des ecoles </h1> 
+                    <h1 >Liste des auto-écoles adhérents avec GAE</h1> 
                 </div> 
             </div> 
         </div> 
@@ -48,17 +48,17 @@
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-12">
                 <!--Job lists-->
-				<div class=" mb-lg-0">
+				<!-- <div class=" mb-lg-0">
 					<div class="">
 						<div class="item2-gl">
 							<div class=" mb-0">
 								<div class="">
                                     <div>
-                                        <!-- <div style="margin-left: 50%;margin-top: 10px;" *ngIf="!(blogs | async)">
+                                      <div style="margin-left: 50%;margin-top: 10px;" *ngIf="!(blogs | async)">
                                             <div class="spinner-border text-primary" role="status">
                                                 <span class="sr-only">Loading...</span>
                                               </div>
-                                        </div> -->
+                                        </div> 
                                         <div style="display: flex;align-items:center">
                                             <div style="display: flex;">
                                                 <mat-card class="example-card"  style="margin:10px;height: 500px;" *ngFor="let card of blogs | async">
@@ -99,14 +99,61 @@
 							
 						
 						</div>
-						<!-- here -->
+						
 					</div>
-				</div>
+				</div> -->
+                <div style="margin-left: 50%;margin-top: 10px;" *ngIf="!nautoEcoleAbonnee">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                </div> 
+                
+                <div *ngIf="nautoEcoleAbonnee" style="background:white">
+                    <div class="container">
+                        <section>
+                          <ngx-slick-carousel class="carousel" 
+                          #slickModal="slick-carousel" 
+                          [config]="slideConfig" 
+                          (init)="slickInit($event)"
+                          (breakpoint)="breakpoint($event)"
+                          (afterChange)="afterChange($event)"
+                          (beforeChange)="beforeChange($event)">
+                          <mat-card class="example-card" ngxSlickItem *ngFor="let data of autoEcoleAbonnee; trackBy: trackByIdAutoEcoleAbonnee" class="slide" style="margin-right: 7px;height: 350px;width: 300px;">
+                            <img mat-card-image src="{{ data?.autoEcole?.image }}" style="height: 80px;width: 80px;border-radius: 50%;margin-left: 30%;" alt="">
+                            <mat-card-title style="margin-left:30%;font-size: small;" class="font-weight-bold">{{data?.autoEcole?.nom_auto_ecole}}</mat-card-title>
+                            <mat-card-content>
+                                <a routerLink="#" style="color: black;text-decoration: none;" class="icons"><mat-icon style="font-size:small;color: black;"> location_on</mat-icon>
+                                   <span>{{data?.autoEcole?.ville}} / {{data?.autoEcole?.pays}}</span> 
+                                </a>
+                            </mat-card-content>
+                            <mat-card-content>
+                                <a routerLink="javascript:void(0)" style="color: black;text-decoration: none;" class="icons"><mat-icon style="font-size:small;margin-right: 7px;">supervised_user_circle</mat-icon>
+                                    <span>{{data?.autoEcole?.nom_responsable}}{{" "}}{{data?.autoEcole?.prenom_responsable}}</span></a>
+                            </mat-card-content>
+                            <mat-card-content>
+                                <mat-icon style="font-size:small;margin-right: 7px;">calendar_today</mat-icon>
+                                <span>{{data?.autoEcole?.date_ouverture}}</span>
+                                <span></span>
+                            </mat-card-content>
+                            <mat-card-footer style="position: absolute;bottom:0;margin-bottom:15px">
+                                <button  mat-button><a routerLink="/detail-ecole/{{data?.autoEcole?.id}}" class="btn" style="border: 1px solid black;border-radius:5px;padding:5px">
+                                    <i class="fa fa-eye"></i>
+                                    <span>Détails</span></a></button>
+                                <button mat-button><a class="btn" style="background: green;color:white" routerLink="https://api.whatsapp.com/send?phone=212661072777">
+                                    <i class="fa fa-whatsapp" ></i><span style="margin-left: 5px;color: white">Appeler</span></a></button>
+                            </mat-card-footer>
+                          </mat-card>
+                          </ngx-slick-carousel>
+                        </section>
+                      </div>
+                    
+                    
+                </div>
 				<!--/Job lists-->
             </div>
 
             <!--Right Side Content-->
-            <div class="col-xl-3 col-lg-4 col-md-12">
+            <!-- <div class="col-xl-3 col-lg-4 col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="input-group" style="display: flex;align-items:center">
@@ -119,51 +166,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Rechercher par villes </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12 d-block mx-auto">
-                                <div class="search-background bg-transparent">
-                                    <div class="form row no-gutters ">
-                                        <div class="form-group col-md-12 select2-lg  mb-0 bg-white">
-                                            <select class="form-control select2-show-search  border-bottom-0" style="margin-bottom: 4px" id="ville">
-                                                <optgroup label="Villes">
-                                                    <option value="">Toutes villes</option>
-                                                    <option value="0">0</option>
-                                                    <option value="22">22</option>
-                                                    <option value="Casa">Casa</option>
-                                                    <option value="CASABLANCA">CASABLANCA</option>
-                                                    <option value="Chichaoua">Chichaoua</option>
-                                                                                                            <option value="EL JADIDA">EL JADIDA</option>
-                                                                                                            <option value="f">f</option>
-                                                                                                            <option value="fes">fes</option>
-                                                                                                            <option value="KENITRA">KENITRA</option>
-                                                                                                            <option value="khemisset">khemisset</option>
-                                                                                                            <option value="meknes">meknes</option>
-                                                                                                            <option value="OULAD TEIMA">OULAD TEIMA</option>
-                                                                                                            <option value="taza">taza</option>
-                                                                                                            <option value="tetouan">tetouan</option>
-                                                                                                            <option value="أكادير">أكادير</option>
-                                                                                                            <option value="الدار البيضاء">الدار البيضاء</option>
-                                                                                                            <option value="بني ملال">بني ملال</option>
-                                                                                                            <option value="تنجداد">تنجداد</option>
-                                                                                                            <option value="سلا">سلا</option>
-                                                                                                            <option value="فاس">فاس</option>
-                                                                                                            <option value="وجدة">وجدة</option>                                                        
-                                                </optgroup>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <!-- Right Side Content -->
+            
+            </div>  -->
         </div>
 
 	</div>

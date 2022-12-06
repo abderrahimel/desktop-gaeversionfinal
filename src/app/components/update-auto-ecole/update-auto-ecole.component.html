@@ -16,7 +16,8 @@
     <app-headerlogged></app-headerlogged>
   </div>
    <app-menu-sb></app-menu-sb>
-   <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e5ebef;">
+  
+   <div  class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e5ebef;">
     <div style="display: flex;background: #e5ebef;">
       
         <div class="mat-elevation-z8" style="margin: 15px;width: 100%;box-shadow: none;">
@@ -26,9 +27,15 @@
                   <!-- <div *ngIf="is_update && !candidatData" class="spinner-border text-danger" style="margin-left: 40%;margin-top: 60px;position: absolute;z-index: 6000;" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div> -->
-                  <form  [formGroup]="form" (ngSubmit)="setautoecole()" method="POST" action="" id="register" 
+                  <div  *ngIf="!autoecoleData" style="margin-left: 50%;margin-bottom: 20%;margin-top: 12px;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                </div>
+                  <form *ngIf="autoecoleData" [formGroup]="form" (ngSubmit)="setautoecole()" method="POST" action="" id="register" 
 enctype="multipart/form-data" >
-                         
+                            
+                           
  <div class="card-body">
      <p style="color: red; font-weight: bold;font-size: 12px;">
          {{'(*) Champs obligatoire' | translate}} </p>
@@ -241,7 +248,7 @@ enctype="multipart/form-data" >
                  >
 
                  </textarea>
-                 <label class="form-label text-dark ">{{'Site Web styletext' | translate}}</label>
+                 <label class="form-label">{{'Site Web' | translate}}</label>
                  <input formControlName="site_web" name="site_web" type="text" class="form-control "  i18n="site_web"/>
              </div>
          </div>

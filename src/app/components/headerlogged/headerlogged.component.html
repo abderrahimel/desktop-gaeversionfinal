@@ -11,32 +11,37 @@
 </head>
 <body>
   <mat-card  class="d-flex align-items-center  fix-menu h-30 header-fix"  >
-   
-    <div class="containertop" >
-      
+    <div class="containertop">
         <nav class="horizontalMenu clearfix d-md-flex" style="display:flex;align-items: center;">
           <div class="leftheaderlogged" style="margin-right:160px">
             <img  src="/assets/img/gae_plus.png" style="height: 40px;margin-left:15px;z-index: 1000;" alt="">
           </div>
           <ul class="horizontalMenu-list d-flex"  style="display: flex;align-items: center;margin-top: 10px;flex: 1;">
             
-            <button class="btn nav-home text-dark" (click)="navigation()" ><span *ngIf="!hide" style="font-size: 14px;">Dashboard</span><span style="font-size: 14px;" *ngIf="hide">Admin</span></button>
-            <button class="btn nav-home text-dark " ><a routerLink="/boutique-j2hb"  class="link text-dark">Boutique j2hb</a></button>
-            <button class="btn nav-home text-dark" ><a routerLink="/actualite"  class="link text-dark">Actualités</a></button>
-            <button class="btn nav-home text-dark" ><a routerLink="/vehicule-occasion"  class="link text-dark">Vehicule D'occasion</a></button>
-            <button mat-button [matMenuTriggerFor]="menu" style="font-size: 16px;" class="btn nav-home text-dark service">Service abonnés</button>
+            <button class="btn nav-home text-dark btnhover" (click)="navigation()">
+              <span *ngIf="!hide" style="font-size: 13px;">Dashboard</span><span style="font-size: 14px;" *ngIf="hide">Admin</span>
+            </button>
+            <button class="btn nav-home text-dark btnhover">
+              <a routerLink="/boutique-j2hb"  class="link btnhover" style="color: black;">Boutique j2hb</a></button>
+            <button class="btn nav-home text-dark btnhover">
+              <a routerLink="/actualite"  class="link text-dark">Actualités</a></button>
+            <button class="btn nav-home text-dark btnhover">
+              <a routerLink="/vehicule-occasion"  class="link text-dark">Vehicule D'occasion</a></button>
+            <button mat-button [matMenuTriggerFor]="menu" style="font-size: 13px;" class="btn nav-home text-dark service ">Service abonnés</button>
               <mat-menu #menu="matMenu" class="mat-menu-test text-dark">
-                  <button class="bg-none" mat-menu-item> <a routerLink="/ecoles" class="link text-dark">Ecoles Adherents</a></button>
+                  <button class="bg-none" mat-menu-item><a routerLink="/ecoles" class="link text-dark">Ecoles Adherents</a></button>
                   <button class="btn nav-home text-dark" ><a routerLink="/monitors-job"  class="link text-dark">Recrutement des moniteurs</a></button>
                   <button class= "bg-none" mat-menu-item><a routerLink="/ecoles-vendre"  class="link text-dark">Ecoles Vendre</a></button>
               </mat-menu>
-            <button class="btn nav-home text-dark" ><a routerLink="/ministre_notes"  class="link text-dark">Téléchargement</a></button>
-            <button *ngIf="!hide" class="btn nav-home text-dark" ><a routerLink="/contact"  class="link text-dark">Contact</a></button>
+            <button class="btn nav-home text-dark btnhover" ><a routerLink="/ministre_notes"  class="link text-dark">Téléchargement</a></button>
+            <button *ngIf="!hide" class="btn nav-home text-dark btnhover" ><a routerLink="/contact"  class="link text-dark">Contact</a></button>
             
           </ul>
          
-            <button mat-button [matMenuTriggerFor]="menu2"  class="btn profileAvatar">
+            <button mat-button [matMenuTriggerFor]="menu2"  class="btn profileAvatar" style="display: flex;align-items:center;outline: none;">
               <img src="{{logo}}" width="30" height="30" style="object-fit: cover;border:1px solid rgb(252, 249, 249);width: 35px;height:35px;border-radius: 50%;border: 1px solid rgb(224, 217, 217);" alt="" >
+              <span style="margin-left: 5px;font-size: 13px;">{{login}}</span>
+              <i class="fa-solid fa-caret-down"></i>
             </button>
           <mat-menu #menu2="matMenu"  style="background-color: white;color:black;margin-left: 5px;">
                <a href="/auto-ecole" class="link text-dark" style="text-decoration: none;color:black;margin-left: 14px;">
@@ -49,7 +54,7 @@
                 <i class="fa-solid fa-power-off"></i>
                 Se deconnecter</button>
           </mat-menu>
-          <span style="margin-left: 5px;">{{login}}</span>
+         
       </nav>
       
     </div>

@@ -70,24 +70,23 @@
               <i class="fa fa-edit"></i>
             </button>
             <button (click)="deleteAbonnementAutoEcole(element?.id)"  title="Supprimer" class="btn" style="background: black; color: white;padding: 10px;">
-                <i class="fa fa-trash"></i>
+                <i class="fa-regular fa-trash-can"></i>
             </button>
           </td>
         </ng-container>
-  
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-      
         <mat-paginator 
-        [length]="n" 
-        [pageSize]="5"  
-        [pageSizeOptions]="[5, 10, 25, 100]">
+          #paginator
+          [pageSize]="5"  
+          [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
       </div>
   </div>
 </div>
       </div>
    </div>
+   <script src="https://kit.fontawesome.com/6e04ed48df.js" crossorigin="anonymous"></script>
 </body>
 </html>

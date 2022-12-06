@@ -13,6 +13,7 @@ import { loadProduitSuperAdmin } from 'src/app/state/produitSuperAdmin/produitSu
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-admin-boutique',
   templateUrl: './admin-boutique.component.html',
@@ -53,11 +54,16 @@ export class AdminBoutiqueComponent implements OnInit,AfterViewInit {
   });
   constructor(private   dataService: DataService,
               private   modalService: NgbModal,
+              private auth:AuthService,
               private store: Store<{produitSuperAdmin: ProduitSuperAdminState}>
     ) { }
     
   ngOnInit(): void {
-    this.getAllProduits();
+    this.auth.authStatus.subscribe(value=>{
+      if(value){
+        this.getAllProduits();
+      }
+    })
   }
   ngAfterViewInit() {
    }

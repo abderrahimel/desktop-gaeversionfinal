@@ -1,0 +1,31 @@
+<div style="padding: 10px;">
+    <form class="form" [formGroup]="form"  method="POST" action="" id="ajoute_cours" enctype="multipart/form-data">
+        <div class="card-body">
+          <p style="color: red; font-weight: bold;font-size: 12px;">(*)Champs obligatoire</p>
+          <div class="col-md-12">
+              <div class="alert" id="AddMessage">
+              </div>
+          </div>
+          <div class="row justify-content-md-center">
+              <div class="col-md-9">
+                  <div class="form-group">
+                      <label class="form-label">Catégorie</label>
+                      <input type="text" name="categorie" style="height: 30px;font-size: 15px;" class="form-control" formControlName="categorie">
+                      <span>exemple:salaire, avance salaire</span>
+                  </div>
+                  
+                  <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
+                    <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
+                          {{'champs obligatoire * ' | translate}}  
+                    </div>
+                  </div>
+              </div>
+          
+          </div>
+      </div>
+      <div class="card-footer" style="margin-top: 7px;">
+        <button type="submit" class="btn" style="background:#198754 ;color: white;font-size: 16px;" (click)="addcategorie()">Ajouter</button>
+          <button type="button" class="btn btn-danger" style="font-size: 16px;" data-dismiss="modal" (click)="next()">Suivant</button>
+      </div>
+    </form>	
+</div>

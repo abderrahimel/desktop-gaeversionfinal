@@ -88,7 +88,12 @@
     </div> 
 </div>
 <!--Job listing-->
-<section class="sptb">
+<div  *ngIf="!vehiculeOccasion" style="margin-left: 50%;margin-bottom: 20%;margin-top: 12px;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+</div>
+<section *ngIf="vehiculeOccasion" class="sptb">
 	<div class="container">
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-12">
@@ -129,6 +134,7 @@
 					
 					</div>
 				</div> -->
+
                 <section>
                     <ngx-slick-carousel class="carousel" 
                     #slickModal="slick-carousel" 

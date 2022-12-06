@@ -26,28 +26,30 @@
     <app-headerlogged></app-headerlogged>
 <div style="margin-top: -480px"></div>
 <!--Sliders Section-->
-<div style="margin-top: 15px;"> 
+<div *ngIf="!dbTelecharhement" style="margin-left: 50%;margin-top: 40px;">
+	<div class="spinner-border text-primary" role="status">
+		<span class="sr-only">Loading...</span>
+	  </div>
+   </div>
+<div *ngIf="dbTelecharhement" style="margin-top: 15px;"> 
     <div class="bannerimg cover-image bg-background3 bg-danger"  > 
         <div class="header-text mb-0"> 
             <div class="container"> 
                 <div class="text-center text-white "> 
                     <h1 class="">{{title}}</h1> 
-                    <ol class="breadcrumb text-center"> 
-                        <li class="breadcrumb-item"><a routerLink="/ministre_notes"> Téléchargement </a></li> 
-                        <li class="breadcrumb-item active text-white" aria-current="page">{{title}}</li> 
-                    </ol> 
+                   
                 </div> 
             </div> 
         </div> 
     </div> 
 </div>
 <!--/Sliders Section <i class="fal fa-hand-point-down"></i> -->
-<section class="sptb">
+<section *ngIf="dbTelecharhement" class="sptb">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
 				<div class="card">
-					<div class="card-header">
+					<!-- <div class="card-header">
                         <div class="container">
                             <div class="row"> 
                                 <div class="col-8">                         
@@ -65,16 +67,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 					<div class="card-body">
 						<div class="text-wrap">
                             <div class="row" id="ListNotes" data-id="3">
                                <!-- spinner -->
-                               <div *ngIf="!dbTelecharhement" style="margin-left: 50%;margin-top: 40px;">
-                                <div class="spinner-border text-primary" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                  </div>
-                               </div>
+                              
                                 <div class="col-md-6 col-lg-4 features" *ngFor="let data of dbTelecharhement"> 
                                     <div class="card bg-light"> 
                                         <div class="card-body text-center"> 
