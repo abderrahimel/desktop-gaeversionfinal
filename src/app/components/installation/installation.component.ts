@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
 import { loadViheculeAction } from 'src/app/state/vehicule/vehicule.actions';
 import { VehiculeState } from 'src/app/state/vehicule/vehicule.state';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-installation',
   templateUrl: './installation.component.html',
@@ -16,6 +16,7 @@ export class InstallationComponent implements OnInit {
   base64Img_image_assurance:any;
   base64Img_visite:any; 
   base64Img_vignette:any;
+  disabled:boolean = true;
   subbmitedVehucule:boolean = false;
   formVehicule:any;
   errorVehicule:any = null;
@@ -49,10 +50,9 @@ export class InstallationComponent implements OnInit {
     });
   }
   AddVehicule(){
-    console.log("add vehicule");
+    this.errorVehicule = null
       this.subbmitedVehucule = true;
       if(this.formVehicule.invalid){
-        console.log("form invalid");
         return;
       }
       this.dataservice.advehicule(localStorage.getItem('autoEcole_id'), {
@@ -64,6 +64,8 @@ export class InstallationComponent implements OnInit {
        }).subscribe(data => {
         this.store.dispatch(loadViheculeAction({id: localStorage.getItem('autoEcole_id')}));
         console.log(JSON.parse(data));
+        this.disabled = false
+        this.addOther()
       },
          error => console.log(error)
       ) 
@@ -99,9 +101,27 @@ export class InstallationComponent implements OnInit {
       console.log("count of vehicule",count);
       if(Number(count) === 0){
         this.errorVehicule = "Vous devez ajouter d'abord une vehicule";
+        return;
       }else{
         this.router.navigateByUrl('/installation_moniteurs');
       }
      })
+  }
+  addOther(){
+    Swal.fire({
+      title: 'confirmation',
+      text: "Vous voulez ajouter une autre un véhicule ?",
+      icon: 'error',
+      showCancelButton: true,
+      cancelButtonText: 'annuler',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'oui'
+    }).then((result) => {
+      if (!result.isConfirmed) {
+        this.router.navigateByUrl('/installation_moniteurs');
+      }
+      return;
+    })
   }
 }

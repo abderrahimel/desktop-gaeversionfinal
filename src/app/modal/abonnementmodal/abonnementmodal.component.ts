@@ -44,10 +44,8 @@ export class AbonnementmodalComponent implements OnInit {
   abonnement(){
     this.submitted = true;
        if(this.form.invalid){
-         console.log("form invalid");
          return;
        }
-        console.log("update abonnement");
        this.dataServece.updateabonnement(this.data.id, {
         prix: this.form.value.prix,
         date_debut: this.form.value.date_debut,

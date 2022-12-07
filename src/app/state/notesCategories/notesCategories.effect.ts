@@ -59,7 +59,6 @@ addNote$ = createEffect(()=>{
       return this.dataService.addNote(action.idAutoEcole, action.data)
       .pipe(
           map((data)=>{
-              this.router.navigateByUrl('/listes-notes');
               return loadnoteCategorie({idAutoEcole: localStorage.getItem('autoEcole_id')});
           })
       )

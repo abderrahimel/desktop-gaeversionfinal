@@ -13,6 +13,7 @@ export class SignUpComponent implements OnInit {
   submitted:any;
   public error:any = [];
   files:any;
+  disabled:boolean = false;
   errors:boolean = false;
   response:any;
   email_exist_in_data_base:any = '';
@@ -103,6 +104,7 @@ export class SignUpComponent implements OnInit {
       adresse_responsable: this.form.value.adresse_responsable,
     })
     .subscribe( data => {
+      this.disabled = true;
       this.loadSpinner = true;
       this.response = JSON.parse(data);
       console.log(this.response.token);

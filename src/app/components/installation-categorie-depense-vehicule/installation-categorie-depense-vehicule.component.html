@@ -1,19 +1,19 @@
-<div style="padding: 10px;margin-top: 60px;display: flex;align-items:center;justify-content: center;background: green;">
-    <form class="form" [formGroup]="form"  method="POST" action="" style="width: 100%;" id="ajoute_cours" enctype="multipart/form-data">
+<div style="padding: 10px;margin-top: 60px;display: flex;align-items:center;background:green">
+    <form class="form" [formGroup]="form"  method="POST" action="" id="ajoute_cours" style="width: 100%;" enctype="multipart/form-data">
         <div class="card-body">
           <p style="color: red; font-weight: bold;font-size: 12px;">(*)Champs obligatoire</p>
-          <li *ngIf="errorcategorieDepensePersonnel" style="color: white;background:red">
-              {{errorcategorieDepensePersonnel}}
+          <li *ngIf="errorcategorieDepenseVehicule" style="color: white;background:red">
+              {{errorcategorieDepenseVehicule}}
           </li>
           <div class="row justify-content-md-center">
               <div class="col-md-9">
                   <div class="form-groupe">
-                    <span style="text-transform: uppercase;padding: 5px;font-style: 13px;font-weight: 600;">Ajouter Categorie depense personnel</span>
+                    <span style="text-transform: uppercase;padding: 5px;font-style: 13px;font-weight: 600;">Ajouter Categorie depense vehicule</span>
                   </div>
                   <div class="form-group">
-                      <label class="form-label" style="font-size: 13px;font-weight: 100;">Catégorie*</label>
+                      <label class="form-label" style="font-size: 13px;font-weight: 100;">Catégorie</label>
                       <input type="text" name="categorie" style="height: 30px;font-size: 15px;" class="form-control" formControlName="categorie">
-                      <span>exemple:salaire, avance salaire</span>
+                      <span>Exemple: visite technique,assurance, ...</span>
                       <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
                         <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
                               {{'champs obligatoire * ' | translate}}  
@@ -27,7 +27,7 @@
       </div>
       <div class="card-footer" style="margin-top: 7px;">
         <button type="submit" class="btn" style="background:#198754 ;color: white;font-size: 16px;" (click)="addcategorie()">Ajouter</button>
-          <button type="button" class="btn btn-danger" style="font-size: 16px;" [disabled]="disabled" (click)="next()">Suivant</button>
+          <button type="button" class="btn btn-danger" style="font-size: 16px;" data-dismiss="modal" (click)="next()">Suivant</button>
       </div>
     </form>	
 </div>

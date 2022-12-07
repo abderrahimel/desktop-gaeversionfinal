@@ -12,9 +12,9 @@
 </head>
 <body style="font-size: 14px;background: #e5ebef;">
   <div class="h-55">
-    <app-headerlogged></app-headerlogged>
+    <!-- <app-headerlogged></app-headerlogged> -->app-headerlogged
   </div>
-   <app-menu-sb></app-menu-sb>
+   <!-- <app-menu-sb></app-menu-sb> -->
    <div class="container-dashboard-body" style="max-width: 100%;margin-top: 112px;margin-bottom: 10px;margin-left: 225px;border-top-left-radius: 7px;background: #e5ebef;">
     <div style="display: flex;background: #e5ebef;">
       <div class="wrap-table100">
@@ -98,7 +98,7 @@
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                       </table>
                       <mat-paginator 
-                        [length]="n" 
+                        #paginator
                         [pageSize]="5"  
                         [pageSizeOptions]="[5, 10, 25, 100]">
                     </mat-paginator>
@@ -107,84 +107,11 @@
             </div>
         </div>
         </mat-card>
-           <!-- <div style="display: flex;align-items:center;justify-content:flex-end">
-               <div style="margin-right: 6px">  Rechercher:</div>
-               <mat-form-field appearance="standard">
-                  <mat-label></mat-label>
-                  <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
-               </mat-form-field>
-           </div>
-            <table mat-table [dataSource]="dataSource" matSort>    
-              
-              
-              <ng-container matColumnDef="produit">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by produit"> 
-                  <span style="font-weight:900;margin-right: 10px;">LIBELLE</span>    
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element?.produit?.libelle}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="quantite">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;margin-right: 10px;">QUANTITE</span>   </th>
-                <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="candidat">       
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CANDIDAT</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.candidat.nom_fr}}{{" "}}{{element.candidat.prenom_fr}}</td>
-              </ng-container>
-             
-              <ng-container matColumnDef="prixUnitaire">           
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 10px;">PRIX.U</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element?.prixUnitaire}} </td>
-              </ng-container>   
-      
-              <ng-container matColumnDef="prixTotale"> 
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 10px;"> PRIX.T</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.prixTotale}} </td>
-              </ng-container>
-  
-              <ng-container matColumnDef="date">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">DATE</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-              </ng-container> 
-               
-              <ng-container matColumnDef="description">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">DESCRIPTION</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element?.produit?.description}} </td>
-              </ng-container> 
-             <ng-container matColumnDef="actions">  
-              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">ACTIONS</span>  </th>
-              <td mat-cell *matCellDef="let element"> 
-                <button (click)="open('Modifier', element)"
-                class="btn" style="background: #0d6efd;color:white;padding:5px;width: 88px;">
-                    Modifier
-                </button>
-                  <button class="btn" (click)="deletVente(element?.id)" style="background: red;color: white; padding: 5px;">
-                    Supprimer
-                  </button>
-              </td>
-            </ng-container>
-      
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <mat-paginator 
-              [length]="n" 
-              [pageSize]="5"  
-              [pageSizeOptions]="[5, 10, 25, 100]">
-            </mat-paginator> -->
         </div>
-    
       </div>
   </div>
-  <!-- fin first container -->
-                  
-
-    
              
  </div>
-
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -5,15 +5,15 @@ import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-installationcategorie-depense-personnel',
-  templateUrl: './installationcategorie-depense-personnel.component.html',
-  styleUrls: ['./installationcategorie-depense-personnel.component.css']
+  selector: 'app-installation-categorie-depense-local',
+  templateUrl: './installation-categorie-depense-local.component.html',
+  styleUrls: ['./installation-categorie-depense-local.component.css']
 })
-export class InstallationcategorieDepensePersonnelComponent implements OnInit {
+export class InstallationCategorieDepenseLocalComponent implements OnInit {
   submitted:boolean = false;
-  errorcategorieDepensePersonnel:any = null;
+  errorcategorieDepenselocal:any = null;
   disabled:boolean = true;
-  type = 'personnel';
+  type = 'local';
   form = new FormGroup({
     categorie: new FormControl('', Validators.required),
   })
@@ -33,26 +33,29 @@ export class InstallationcategorieDepensePersonnelComponent implements OnInit {
         categorie: this.form.value.categorie,
         type: this.type
       }
+      console.log(data);
       this.dataservice.addCategorie(localStorage.getItem('autoEcole_id'), data).subscribe(data=>{
-        console.log(data);this.disabled = false;this.next()
+        console.log(data);this.disabled = false;this.addOther()
       })
   
   }
 
   next(){
+  // countCategorieDepense
   this.dataservice.countCategorieDepense(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-    if(Number(JSON.parse(data)['countPersonnel']) === 0){
-      this.errorcategorieDepensePersonnel = "Vous devez ajouter d'abord une categorie personnel";
+    console.log("count of categorie",JSON.parse(data));
+    if(Number(JSON.parse(data)['countLocal']) === 0){
+      this.errorcategorieDepenselocal = "Vous devez ajouter d'abord une categorie local";
     }else{
        console.log(JSON.parse(data));
-       this.addOther()
+       this.router.navigateByUrl('/installation_note_categorie');
     }
    })
   }
   addOther(){
     Swal.fire({
       title: 'confirmation',
-      text: "Vous voulez ajouter une autre depense personnel?",
+      text: "Vous voulez ajouter une autre categorie local?",
       icon: 'error',
       showCancelButton: true,
       cancelButtonText: 'annuler',
@@ -61,7 +64,7 @@ export class InstallationcategorieDepensePersonnelComponent implements OnInit {
       confirmButtonText: 'oui'
     }).then((result) => {
       if(!result.isConfirmed) {
-        this.router.navigateByUrl('/installation_categorie_depenceVehicule');
+        this.router.navigateByUrl('/installation_note_categorie');
       }
     })
   }

@@ -187,6 +187,9 @@ export class DataService {
   addCategorie(id_autoEcole:any, data:any){
     return this.httpclient.post(this.api +'/add-categorie-depence/' + id_autoEcole, data, { responseType: 'text'});
   }
+  countCategorieDepense(ecole_id:any){
+    return this.httpclient.get(this.api + '/auto-ecole/'+ecole_id+'/count-categorie-personnel', { responseType: 'text'});
+  }
   getCategories(id_auto_ecole:any){ 
       return this.httpclient.get(this.api + '/auto-ecole/' + id_auto_ecole + '/categorie-depence');
   }
@@ -464,13 +467,15 @@ getCandidats(auto_id:any){
   addNote(idautoEcole:any, data:any){
     return this.httpclient.post( this.api + '/add-notes/' + idautoEcole, data, { responseType: 'text'});
   }
-  
+  countNote(id_autoEcole:any){
+    return this.httpclient.get(this.api + '/auto-ecole/'+id_autoEcole +'/count-note', { responseType: 'text'});
+  }
   updateNote(id:any, data:any){
     return this.httpclient.put(this.api + '/update-note/'+ id, data, { responseType: 'text'})
   }
 
   getNotes(auto_ecole_id:any){ 
-    return this.httpclient.get(this.api + '/auto-ecole/'+auto_ecole_id +'/get-notes/', { responseType: 'text'});
+    return this.httpclient.get(this.api + '/auto-ecole/'+auto_ecole_id +'/get-notes', { responseType: 'text'});
   }
 
   getFactures(auto_ecole_id:any){ 
@@ -590,6 +595,12 @@ updateMoniteurP(id:any, data:any){
   }
   getDataSuper(){
     return this.httpclient.get(this.api + '/superadmin/data', {responseType: 'text'});
+  }
+  numberOfVehicule(ecole_id:any){
+    return this.httpclient.get(this.api + '/auto-ecole/'+ecole_id+ '/number-of-row', {responseType: 'text'});
+  }
+  countTheoriquePratique(ecole_id:any){
+    return this.httpclient.get(this.api + '/auto-ecole/'+ecole_id+ '/count-moniteur-theorique-pratique', {responseType: 'text'});
   }
   getAutoEcolesEnAttente(){
     return this.httpclient.get(this.api + '/superadmin/auto-ecoles-en-attente', {responseType: 'text'});

@@ -38,8 +38,6 @@ export class LoginComponent implements OnInit {
                   password:  new FormControl('', Validators.required),
                 }); 
   } 
-
-
   ngOnInit(): void {
     this.translateService.applyLanguage();
      
@@ -82,7 +80,8 @@ export class LoginComponent implements OnInit {
                 if(localStorage.getItem('type') === 'superAdmin'){
                   this.router.navigateByUrl('/admin');
                 }else{
-                  this.router.navigateByUrl('/dashboard')
+                  // this.router.navigateByUrl('/dashboard');
+                  this.router.navigateByUrl('/installation_vehicule');
                 }
               }
 
@@ -104,7 +103,6 @@ export class LoginComponent implements OnInit {
   handleError(error:any){
     if(error.status === 401){
       this.error = 'This information does not match our records.'
-      
     }
     if(JSON.parse(error.error)?.message === 'invalid login credentials'){
       this.abonnement = 'Ces informations ne correspondent pas à nos enregistrements.'

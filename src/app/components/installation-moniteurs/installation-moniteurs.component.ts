@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
 import { addMoniteurP, addMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
 import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-installation-moniteurs',
@@ -12,6 +13,7 @@ import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
   styleUrls: ['./installation-moniteurs.component.css']
 })
 export class InstallationMoniteursComponent implements OnInit {
+  disabled:boolean = true
   form = new FormGroup({
     nom: new FormControl('', Validators.required),
     prenom: new FormControl('', Validators.required),
@@ -25,9 +27,9 @@ export class InstallationMoniteursComponent implements OnInit {
     capn: new FormControl('', Validators.required),
     conduire: new FormControl('', Validators.required),
     adresse: new FormControl('', Validators.required),
-    categorie: new FormControl(''),
+    categorie: new FormControl('', Validators.required),
     observations: new FormControl(''),
-    carteMoniteur: new FormControl('', Validators.required),
+    carteMoniteur: new FormControl(''),
   })
   submitted:boolean = false;
   base64Img_image:any;
@@ -49,37 +51,40 @@ export class InstallationMoniteursComponent implements OnInit {
   ngOnInit(): void {
   }
   addMoniteur(){
+    this.errorMoniteurTheorique = null;
+    this.errorMoniteurPratique = null;
     this.submitted = true;
     if(this.form.invalid){
         return;
       }
-      
     const string = this.categorie_list.split(',')
     string.pop();
-    let dataMoniteur =  {
-      nom: this.form.value.nom,
-      prenom: this.form.value.prenom,
-      cin: this.form.value.cin,
-      date_naissance: this.form.value.date_naissance,
-      lieu_naissance: this.form.value.lieu_naissance,
-      email: this.form.value.email,
-      telephone: this.form.value.telephone,
-      date_embauche: this.form.value.date_embauche,
-      capn: this.form.value.capn,
-      conduire: this.form.value.conduire,
-      adresse: this.form.value.adresse,
-      categorie: string.join(','),
-      type: this.form.value.type_moniteur,
-      observations:  this.form.value.observations,
-      carteMoniteur:this.base64Img_image
-    };
+      let dataMoniteur =  {
+        nom: this.form.value.nom,
+        prenom: this.form.value.prenom,
+        cin: this.form.value.cin,
+        date_naissance: this.form.value.date_naissance,
+        lieu_naissance: this.form.value.lieu_naissance,
+        email: this.form.value.email,
+        telephone: this.form.value.telephone,
+        date_embauche: this.form.value.date_embauche,
+        capn: this.form.value.capn,
+        conduire: this.form.value.conduire,
+        adresse: this.form.value.adresse,
+        categorie: string.join(','),
+        type: this.form.value.type_moniteur,
+        observations:  this.form.value.observations,
+        carteMoniteur:this.base64Img_image
+      };
       if(this.form.value.type_moniteur === 'Moniteur Théorique'){
         this.dataservice.addMoniteurT(localStorage.getItem('autoEcole_id'), dataMoniteur).subscribe(data=>{
           console.log(data);
+          this.next()
         })
       }else{  // addMoniteurP
           this.dataservice.addMoniteurP(localStorage.getItem('autoEcole_id'), dataMoniteur).subscribe(data=>{
             console.log(data);
+            this.next()
           })
         }
  
@@ -91,16 +96,35 @@ export class InstallationMoniteursComponent implements OnInit {
   }
   next(){
     this.dataservice.countTheoriquePratique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-     console.log("count of vehicule",JSON.parse(data));
+     console.log(JSON.parse(data));
      if(Number(JSON.parse(data)['countT']) === 0){
        this.errorMoniteurTheorique = "Vous devez ajouter d'abord un moniteur theorique";
+       return;
      }else if(Number(JSON.parse(data)['countP']) === 0){
       this.errorMoniteurPratique = "Vous devez ajouter d'abord un moniteur pratique";
+      return;
      }else{
       this.router.navigateByUrl('/installation_categorie_depencePersonnel');
-     }
+     }  
     })
  }
+ addOther(){
+  this.disabled = false;
+  Swal.fire({
+    title: 'confirmation',
+    text: "Vous voulez ajouter une autre un moniteur ?",
+    icon: 'error',
+    showCancelButton: true,
+    cancelButtonText: 'annuler',
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'oui'
+  }).then((result) => {
+    if (!result.isConfirmed) {
+      this.router.navigateByUrl('/installation_categorie_depencePersonnel');
+    }
+  })
+}
   fileChangeEvent(event: any) {
 
     if (event.target.files && event.target.files[0]) {

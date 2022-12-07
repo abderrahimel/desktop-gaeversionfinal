@@ -18,9 +18,7 @@ import { CandidatFormComponent } from './forms/candidat-form/candidat-form.compo
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { CoursTheoriqueFormComponent } from './forms/cours-theorique-form/cours-theorique-form.component';
 import { CoursPratiqueComponent } from './cours-pratique/cours-pratique.component';
-import { CoursPratiqueFormComponent } from './forms/cours-pratique-form/cours-pratique-form.component';
 import { ExamenComponent } from './examen/examen.component';
-import { ExamenFormComponent } from './forms/examen-form/examen-form.component';
 import { DepenceComponent } from './depence/depence.component';
 import { DepenceFormComponent } from './forms/depence-form/depence-form.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -28,34 +26,27 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AutoEcoleComponent } from './components/auto-ecole/auto-ecole.component';
 import { AutoEcoleFormComponent } from './forms/auto-ecole-form/auto-ecole-form.component';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
-import { VehiculeFormComponent } from './forms/vehicule-form/vehicule-form.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ButtonsCoursesComponent } from './components/buttons-courses/buttons-courses.component';
 import { AuthInterceptor } from './models/auth/auth-interceptor';
 import { ProduitComponent } from './produit/produit.component';
 import { ProduitFormComponent } from './produit-form/produit-form.component';
 import { DossierComponent } from './dossier/dossier.component';
-import { DossierFormComponent } from './forms/dossier-form/dossier-form.component';
 import { FactureComponent } from './caisse/facture/facture.component';
 import { RecetteComponent } from './caisse/recette/recette.component';
 import { PaiementComponent } from './paiement/paiement.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
-import { ControlComponent } from './control/control.component';
-import { VenteComponent } from './vente/vente.component';
 import { CategorieDepenseComponent } from './config/categorie-depense/categorie-depense.component';
 import { CategoriePermisComponent } from './config/categorie-permis/categorie-permis.component';
 import { LangueComponent } from './config/langue/langue.component';
 import { SalaireComponent } from './salaire/salaire.component';
 import { AbsenceComponent } from './absence/absence.component';
-import { EmployeFormComponent } from './forms/employe-form/employe-form.component';
 import { CandidatTrsfComponent } from './transition/candidat-trsf/candidat-trsf.component';
 import { CaisseTrsfComponent } from './transition/caisse-trsf/caisse-trsf.component';
 import { VehiculeTrsfComponent } from './transition/vehicule-trsf/vehicule-trsf.component';
 import { ProduitTrsfComponent } from './transition/produit-trsf/produit-trsf.component';
 import { ConfigTrsfComponent } from './transition/config-trsf/config-trsf.component';
-import { RecetteformComponent } from './forms/recette/recette.component';
 import { AbsenceformComponent } from './forms/absence/absence.component';
-import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HeadertopComponent } from './components/headertop/headertop.component';
@@ -87,7 +78,6 @@ import { VidangeFormComponent } from './forms/vidange-form/vidange-form.componen
 import { MoniteurFormComponent } from './forms/moniteur-form/moniteur-form.component';
 import { FacturationFormComponent } from './forms/facturation-form/facturation-form.component';
 import { DevisFormComponent } from './forms/devis-form/devis-form.component';
-import { NoteFormComponent } from './forms/note-form/note-form.component';
 import { UtilisateurFormComponent } from './forms/utilisateur-form/utilisateur-form.component';
 import { PaimentCandidatFormComponent } from './forms/paiment-candidat-form/paiment-candidat-form.component';
 import { PresenceComponent } from './components/presence/presence.component';
@@ -95,7 +85,6 @@ import { ResultsCandidatsComponent } from './components/results-candidats/result
 import { PresenceFormComponent } from './forms/presence-form/presence-form.component';
 import { PresencePratiqueFormComponent } from './forms/presence-pratique-form/presence-pratique-form.component';
 import { PresencePratiqueComponent } from './components/presence-pratique/presence-pratique.component';
-import { FormVenteComponent } from './forms/form-vente/form-vente.component';
 import { AdminComponent } from './admin/admin.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { ArchiveAutoEcoleComponent } from './components/archive-auto-ecole/archive-auto-ecole.component';
@@ -312,6 +301,13 @@ import { vidangeReducer } from './state/vidange/vidange.reducer';
 import { VidangeEffects } from './state/vidange/vidange.effects';
 import { assuranceReducer } from './state/assurance/assurance.reducer';
 import { AssuranceEffects } from './state/assurance/assurance.effects';
+import { VenteComponent } from './vente/vente.component';
+import { InstallationComponent } from './components/installation/installation.component';
+import { InstallationMoniteursComponent } from './components/installation-moniteurs/installation-moniteurs.component';
+import { InstallationcategorieDepensePersonnelComponent } from './components/installationcategorie-depense-personnel/installationcategorie-depense-personnel.component';
+import { InstallationCategorieDepenseVehiculeComponent } from './components/installation-categorie-depense-vehicule/installation-categorie-depense-vehicule.component';
+import { InstallationCategorieDepenseLocalComponent } from './components/installation-categorie-depense-local/installation-categorie-depense-local.component';
+import { InstallationNoteCategorieComponent } from './components/installation-note-categorie/installation-note-categorie.component';
 
 export function httpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http,'../assets/i18n/','.json');
@@ -332,42 +328,33 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CandidatFormComponent,
     CoursTheoriqueFormComponent,
     CoursPratiqueComponent,
-    CoursPratiqueFormComponent,
     ExamenComponent,
-    ExamenFormComponent,
     PresenceComponent,
     DepenceComponent,
     DepenceFormComponent,
     AutoEcoleComponent,
     AutoEcoleFormComponent,
     VehiculeComponent,
-    VehiculeFormComponent,
     EmployeeComponent,
     ButtonsCoursesComponent,
     ProduitComponent,
     ProduitFormComponent,
     DossierComponent,
-    DossierFormComponent,
     FactureComponent,
     RecetteComponent,
     PaiementComponent,
     FournisseurComponent,
-    ControlComponent,
-    VenteComponent,
     CategorieDepenseComponent,
     CategoriePermisComponent,
     LangueComponent,
     SalaireComponent,
     AbsenceComponent,
-    EmployeFormComponent,
     CandidatTrsfComponent,
     CaisseTrsfComponent,
     VehiculeTrsfComponent,
     ProduitTrsfComponent,
     ConfigTrsfComponent,
-    RecetteformComponent,
     AbsenceformComponent,
-    HomeComponent,
     HeaderComponent,
     SignUpComponent,
     HeadertopComponent,
@@ -397,15 +384,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MoniteurFormComponent,
     FacturationFormComponent,
     DevisFormComponent,
-    NoteFormComponent,
     UtilisateurFormComponent,
     PaimentCandidatFormComponent,
     ResultsCandidatsComponent,
     PresenceFormComponent,
     PresencePratiqueFormComponent,
     PresencePratiqueComponent,
-    FormVenteComponent,
     AdminComponent,
+    VenteComponent,
     MenuAdminComponent,
     ArchiveAutoEcoleComponent,
     AbonnementAutoEcoleComponent,
@@ -500,6 +486,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CarteCandidatModalComponent,
     BodyDashboardComponent,
     ContratAutoEcoleComponent,
+    InstallationComponent,
+    InstallationMoniteursComponent,
+    InstallationcategorieDepensePersonnelComponent,
+    InstallationCategorieDepenseVehiculeComponent,
+    InstallationCategorieDepenseLocalComponent,
+    InstallationNoteCategorieComponent,
   ],
   imports: [
     MatMenuModule,

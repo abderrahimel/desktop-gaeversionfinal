@@ -1,9 +1,12 @@
 
  <!-- add vehicule -->
-<div>
+<div style="background: green;">
     <form class="form" [formGroup]="formVehicule"  method="POST" enctype="multipart/form-data" style="padding: 20px;">
         <div class="card-body">
-             <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire </p>
+             <p style="color: red; font-weight: bold;font-size: 13px;">(*) Champs obligatoire </p>
+               <div class="form-group" style="font-weight:700">
+                  Ajouter Vehicule
+               </div>
                <li *ngIf="errorVehicule" style="color: white;background: red;">
                     {{errorVehicule}}
                </li>
@@ -11,21 +14,21 @@
                  <div class="col-md-6">
                    <div class="form-group">
                        <label for="first-name-column">{{ "matricule" | translate }} :</label>
-                       <input type="text" id="appt" name="appt" style="font-size: 16px;height: 30px;" class="form-control input" formControlName='matricule'>
-                   </div>
-                   <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.matricule.errors">
-                       <div style="color: red;" *ngIf="this.formVehicule.controls.matricule.errors.required">
-                             {{'matricule obligatoire.* ' | translate}}  
-                       </div>
-
-                   </div>
+                       <input type="text" id="appt" name="appt" style="font-size: 13px;height: 30px;" class="form-control input" formControlName='matricule'>
+                       <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.matricule.errors">
+                        <div style="color: red;" *ngIf="this.formVehicule.controls.matricule.errors.required">
+                              {{'matricule obligatoire.* ' | translate}}  
+                        </div>
+                    </div>
+                    </div>
+                   
                  </div>
 
                  <div class="col-md-6">
                      <div class="form-group">
                          <label class="form-label">Type</label>
                          <div class="input-group mb-3">
-                             <select name="type" class="form-control"  style="font-size: 16px;height: 30px;"  id="add_type" formControlName='type'>
+                             <select name="type" class="form-control"  style="font-size: 13px;height: 30px;"  id="add_type" formControlName='type'>
                                  <option value="">Choisir un type</option>
                                  <option value="Motocycle">Motorcycle</option>
                                  <option value="Autocar">Autocar</option>
@@ -45,41 +48,44 @@
                  <div class="col-md-6">
                      <div class="form-group">
                          <label class="form-label">Fournisseur*</label>
-                         <input type="text" name="fournisseur"  style="font-size: 16px"  class="form-control" formControlName='fourniseur'>
+                         <input type="text" name="fournisseur"  style="font-size: 13px;"  class="form-control" formControlName='fourniseur'>
+                         <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.fourniseur.errors">
+                            <div style="color: red;" *ngIf="this.formVehicule.controls.fourniseur.errors.required">
+                                  {{'fourniseur obligatoire.* ' | translate}}  
+                            </div>
+                        </div>
                      </div>
-                     <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.fourniseur.errors">
-                       <div style="color: red;" *ngIf="this.formVehicule.controls.fourniseur.errors.required">
-                             {{'fourniseur obligatoire.* ' | translate}}  
-                       </div>
-                   </div>
+                   
                  </div>
 
                  <div class="col-md-6">
                      <div class="form-group">
                          <label class="form-label">Marque*</label>
-                         <input type="text" name="marque"  style="font-size: 16px"  class="form-control" formControlName='marque'>
+                         <input type="text" name="marque"  style="font-size: 13px;"  class="form-control" formControlName='marque'>
+                         <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.marque.errors">
+                            <div style="color: red;" *ngIf="this.formVehicule.controls.marque.errors.required">
+                                  {{'marque obligatoire.* ' | translate}}  
+                            </div>
+                        </div>
                      </div>
-                     <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.marque.errors">
-                       <div style="color: red;" *ngIf="this.formVehicule.controls.marque.errors.required">
-                             {{'marque obligatoire.* ' | translate}}  
-                       </div>
-                   </div>
+                    
                  </div>
 
                  <div class="col-md-6">
                      <div class="form-group">
                          <label class="form-label">Modéle*</label>
-                         <input type="text" name="modele"  style="font-size: 16px"  class="form-control" formControlName='modele'>
+                         <input type="text" name="modele"  style="font-size: 13px;"  class="form-control" formControlName='modele'>
+                         <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.modele.errors">
+                            <div style="color: red;" *ngIf="this.formVehicule.controls.modele.errors.required">
+                                  {{'modele obligatoire.* ' | translate}}  
+                            </div>
+                        </div>
                      </div>
-                     <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.modele.errors">
-                       <div style="color: red;" *ngIf="this.formVehicule.controls.modele.errors.required">
-                             {{'modele obligatoire.* ' | translate}}  
-                       </div>
-                   </div>
+                   
                  </div>
                  <div class="col-md-6">
                      <label class="form-label">Catégorie</label>
-                     <select name="categorie" class="form-control "  style="font-size: 16px;height: 30px;"  formControlName='categorie'>
+                     <select name="categorie" class="form-control "  style="font-size: 13px;height: 30px;"  formControlName='categorie'>
                          <option value="">Choisissez catégorie</option>
                          <option value="A">A</option>
                          <option value="AM">AM</option>
@@ -104,13 +110,14 @@
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_visite'>
-                             </div>
+                                </div>
+                                <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_visite.errors">
+                                    <div style="color: red;" *ngIf="this.formVehicule.controls.date_visite.errors.required">
+                                          {{'date visite obligatoire.* ' | translate}}  
+                                    </div>
+                                </div>   
                          </div>
-                         <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_visite.errors">
-                           <div style="color: red;" *ngIf="this.formVehicule.controls.date_visite.errors.required">
-                                 {{'date visite obligatoire.* ' | translate}}  
-                           </div>
-                       </div>
+                       
                      </div>
                  </div>
                  <div class="col-md-6">
@@ -119,13 +126,14 @@
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_prochain_visite'>
-                             </div>
+                                </div>
+                                <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_prochain_visite.errors">
+                                    <div style="color: red;" *ngIf="this.formVehicule.controls.date_prochain_visite.errors.required">
+                                          {{'date visite obligatoire.* ' | translate}}  
+                                    </div>
+                                </div>
                          </div>
-                         <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_prochain_visite.errors">
-                           <div style="color: red;" *ngIf="this.formVehicule.controls.date_prochain_visite.errors.required">
-                                 {{'date visite obligatoire.* ' | translate}}  
-                           </div>
-                       </div>
+                         
                      </div>
                  </div>
 
@@ -135,13 +143,14 @@
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_vidange' >
-                             </div>
+                                </div>
+                                <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_vidange.errors">
+                                    <div style="color: red;" *ngIf="this.formVehicule.controls.date_vidange.errors.required">
+                                          {{'date vidange obligatoire.* ' | translate}}  
+                                    </div>
+                                </div>
                          </div>
-                         <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_vidange.errors">
-                           <div style="color: red;" *ngIf="this.formVehicule.controls.date_vidange.errors.required">
-                                 {{'date vidange obligatoire.* ' | translate}}  
-                           </div>
-                       </div>
+                        
                        
                      </div>
                  </div>
@@ -151,14 +160,14 @@
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_prochain_vidange' >
-                             </div>
+                                </div>
+                                <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_prochain_vidange.errors">
+                                    <div style="color: red;" *ngIf="this.formVehicule.controls.date_prochain_vidange.errors.required">
+                                          {{'date prochain vidange obligatoire.* ' | translate}}  
+                                    </div>
+                                 </div>
                          </div>
-                         <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_prochain_vidange.errors">
-                           <div style="color: red;" *ngIf="this.formVehicule.controls.date_prochain_vidange.errors.required">
-                                 {{'date prochain vidange obligatoire.* ' | translate}}  
-                           </div>
-
-                       </div>
+                         
                      </div>
                  </div>
                  <div class="col-md-6">
@@ -167,13 +176,14 @@
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_assurance'>
-                             </div>
+                                </div>
+                                <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_assurance.errors">
+                                    <div style="color: red;" *ngIf="this.formVehicule.controls.date_assurance.errors.required">
+                                          {{'date assurance obligatoire.* ' | translate}}  
+                                    </div>
+                                </div>
                          </div>
-                         <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_assurance.errors">
-                           <div style="color: red;" *ngIf="this.formVehicule.controls.date_assurance.errors.required">
-                                 {{'date assurance obligatoire.* ' | translate}}  
-                           </div>
-                       </div>
+                        
                      </div>
                  </div>
                  <div class="col-md-6">
@@ -182,13 +192,13 @@
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_expiration_assurance'>
-                             </div>
-                             <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_expiration_assurance.errors">
-                               <div style="color: red;" *ngIf="this.formVehicule.controls.date_expiration_assurance.errors.required">
-                                     {{'date expiration assurance obligatoire.* ' | translate}}  
-                               </div>
-
-                           </div>
+                                </div>
+                                <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.date_expiration_assurance.errors">
+                                    <div style="color: red;" *ngIf="this.formVehicule.controls.date_expiration_assurance.errors.required">
+                                          {{'date expiration assurance obligatoire.* ' | translate}}  
+                                    </div>
+                                </div>
+                            
                          </div>
 
                      </div>
@@ -199,45 +209,42 @@
                        <label for="last-name-column">{{ "Carte grise" | translate }}:</label>
                        <input type="file" id="appt" class="dropify" name="appt" style="font-size: 13px" class="form-control input" formControlName='carte_grise' 
                        (change)="fileChangeEvent($event, 'cart')"
-                       data-allowed-file-extensions="jpg png jpeg"
-                      >
+                       data-allowed-file-extensions="jpg png jpeg">
+                       <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.carte_grise.errors ">
+                        <div style="color: red;" *ngIf="this.formVehicule.controls.carte_grise.errors.required">
+                              {{'carte grise obligatoire.* ' | translate}}  
+                        </div>
+                    </div>
                    </div>
-                   <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.carte_grise.errors ">
-                       <div style="color: red;" *ngIf="this.formVehicule.controls.carte_grise.errors.required">
-                             {{'carte grise obligatoire.* ' | translate}}  
-                       </div>
-
-                   </div>
+                   
                  </div>
  
                  <div class="col-md-3">
                    <div class="form-group"> 
                        <label for="last-name-column">{{ "assurance" | translate }}:</label>
                        <input type="file" id="appt" name="appt" class="form-control input" style="font-size: 13px;" formControlName='assurance'
-                                 (change)="fileChangeEvent($event, 'assurance')"
-                       >
+                                 (change)="fileChangeEvent($event, 'assurance')">
+                        <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.assurance.errors">
+                        <div style="color: red;" *ngIf="this.formVehicule.controls.assurance.errors.required">
+                                {{'assurance obligatoire.* ' | translate}}  
+                        </div>
+                    </div>           
                    </div>
-                   <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.assurance.errors">
-                       <div style="color: red;" *ngIf="this.formVehicule.controls.assurance.errors.required">
-                             {{'assurance obligatoire.* ' | translate}}  
-                       </div>
-
-                   </div>
+                   
                  </div>
  
                  <div class="col-md-3">
                    <div class="form-group"> 
                        <label for="last-name-column">{{ "visite technique" | translate }}:</label>
                        <input type="file" id="appt" name="appt" class="form-control input" style="font-size: 13px;" formControlName='visite'
-                              (change)="fileChangeEvent($event, 'visite')"
-                       >
-                   </div>
-                   <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.visite.errors">
-                       <div style="color: red;" *ngIf="this.formVehicule.controls.visite.errors.required">
-                             {{'visite obligatoire.* ' | translate}}  
+                              (change)="fileChangeEvent($event, 'visite')">
+                        <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.visite.errors">
+                            <div style="color: red;" *ngIf="this.formVehicule.controls.visite.errors.required">
+                                    {{'visite obligatoire.* ' | translate}}  
+                            </div>
                        </div>
-
                    </div>
+                   
                  </div>
  
                  <div class="col-md-3">
@@ -247,22 +254,21 @@
                               class="form-control input" 
                               formControlName='vignette'
                               (change)="fileChangeEvent($event, 'vignette')"
-                              data-allowed-file-extensions="jpg png jpeg"
-                              >
-                   </div>
-                   <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.vignette.errors">
-                       <div style="color: red;" *ngIf="this.formVehicule.controls.vignette.errors.required">
-                             {{'vignette obligatoire.* ' | translate}}  
+                              data-allowed-file-extensions="jpg png jpeg">
+                        <div class="err" *ngIf="subbmitedVehucule && this.formVehicule.controls.vignette.errors">
+                            <div style="color: red;" *ngIf="this.formVehicule.controls.vignette.errors.required">
+                                    {{'vignette obligatoire.* ' | translate}}  
+                            </div>
                        </div>
-
                    </div>
+                  
                  </div>
 
              </div>	
          </div>
          <div class="card-footer" style="margin-top: 7px;">
-           <button type="submit" class="btn" style="background:#198754 ;color: white;font-size: 16px;" (click)="AddVehicule()">Ajouter</button>
-             <button type="button" class="btn btn-danger" style="font-size: 16px;" data-dismiss="modal" (click)="nextVehicule()">Suivant</button>
+           <button type="submit" class="btn" style="background:#198754 ;color: white;font-size: 13px;" (click)="AddVehicule()">Ajouter</button>
+             <button type="button" class="btn btn-danger" style="font-size: 13px;" [disabled]="disabled" (click)="nextVehicule()">Suivant</button>
          </div>
      </form>	
 </div>

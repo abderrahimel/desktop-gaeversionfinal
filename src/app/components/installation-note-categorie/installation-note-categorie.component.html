@@ -1,0 +1,68 @@
+<div style="padding: 15px;display:flex;align-items: center;justify-content: center;margin-top: 60px;margin-bottom: 0;background: green;">
+    <form class="form" [formGroup]="form"  method="POST" action="" enctype="multipart/form-data">
+        <div class="card-body" style="width: 300px;">
+            <p style="color: red; font-weight: bold;font-size: 12px;">(*)Champs obligatoire</p>  
+            <div class="form-group" style="text-transform:uppercase;font-size:13px;margin-left: 15px;font-weight: 400;">
+                ajouter note categorie
+            </div>
+               <li *ngIf="errorNoteCategorie" style="color: white;background:red">
+                  {{errorNoteCategorie}}
+               </li>
+                <div class="col-md-16" style="margin-left: 20px;">
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 13px">Catégorie</label>
+                        <select name="categorie" class="form-control" style="font-size: 13px;height: 30px;" formControlName="categorie">
+                            <option value="">Choisir note categorie</option>
+                            <option value="A">A</option>
+                            <option value="A1">A1</option>
+                            <option value="AM">AM</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="EB">EB</option>
+                            <option value="EC">EC</option>
+                            <option value="ED">ED</option>
+                            <option value="F">F</option>
+                            <option value="FC">FC</option>
+                            <option value="FP">FP</option>
+                            <option value="FP/FC">FP/FC</option>
+                        </select>
+                    </div>
+                    <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
+                      <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
+                            {{'champs obligatoire * ' | translate}}  
+                      </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-16"  style="margin-left: 20px;">
+                  <div class="form-group">
+                      <label class="form-label" style="font-size: 13px">Moyen</label>    
+                      <input type="text" name="moyen" class="form-control" style="font-size: 13px;height: 30px;" formControlName="moyen">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.moyen.errors">
+                      <div style="color: red;" *ngIf="this.form.controls.moyen.errors.required">
+                            {{'champs obligatoire * ' | translate}}  
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-16"  style="margin-left: 20px;">
+                  <div class="form-group">
+                      <label class="form-label" style="font-size: 13px">Nombre des questions</label>
+                      <input type="text" name="nombre_question" style="font-size: 13px;height: 30px;" class="form-control" formControlName="note_generale">
+                  </div>
+                  <div class="err" *ngIf="submitted && this.form.controls.note_generale.errors">
+                      <div style="color: red;" *ngIf="this.form.controls.note_generale.errors.required">
+                            {{'champs obligatoire * ' | translate}}  
+                      </div>
+                  </div>
+              </div>
+         
+        </div>
+    
+        <div class="card-footer" style="margin-top: 7px;">
+            <button type="submit" class="btn" style="background:#198754 ;color: white;font-size: 13px;" (click)="add()">Ajouter</button>
+              <button type="button" class="btn btn-danger" style="font-size: 13px;" [disabled]="disabled" (click)="next()">Suivant</button>
+          </div>
+    </form>	
+</div>

@@ -729,8 +729,9 @@
                              <button *ngIf="!(form.invalid || errors)" type="submit" class="btn" style="background: red;color: white;" (click)="register()">{{'Enregistrer' | translate}}
                               <!-- <a *ngIf="form.invalid" href="/register#alertid">{{'Enregistrer' | translate}}</a> -->
                             </button> 
-
-                              <a  href="/register#alertid" *ngIf="form.invalid || errors" type="submit" class="btn" style="background: red;color: white;" (click)="register()">{{'Enregistrer' | translate}}</a> 
+                              <button [disabled]="disabled" style="border: none;background: white;">
+                                 <a  href="/register#alertid" *ngIf="form.invalid || errors" type="submit" class="btn" style="background: red;color: white;"  (click)="register()">{{'Enregistrer' | translate}}</a> 
+                              </button>
                              <button type="reset" class="btn btn-dark">{{'Annuler' | translate}}</button> 
                          </div>
                          <span style="color: red;">{{email_exist_in_data_base}}</span>
