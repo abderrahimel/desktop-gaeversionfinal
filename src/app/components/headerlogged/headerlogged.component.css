@@ -5,13 +5,12 @@
     color: white;
 }
 .nav-home:hover{
-  background-color: #dc3545!important;
-  border: 1px solid #dc3545;
-  color: white;
+  /* background-color: #dc3545!important; */
+  /* border: 1px solid #dc3545; */
+  outline: none;
+  border: 1px solid rgb(233, 230, 230);
 }
-.nav-home:hover>{
-  color: white;
-}
+
 .icon{
     color: red;font-size: 13px;margin-right: 5px;
 }
@@ -32,9 +31,6 @@
   left: 0;
 }
 
-.link:hover{
-  color: white;
-}
 .nav-home-user{
   border: 1px solid rgb(243, 240, 240);
   border-radius: 50%;
@@ -69,21 +65,3 @@ button:active{
 .profileAvatar:hover{
   border: 1px solid rgb(238, 241, 241);
 }
-
-.btnhover>span:hover{
-  color: white;
-}
-.btnhover>a:hover{
-  color: white;
-}
-button:hover .btnhover>a{
-  color: white;
-}
-.btnhover:hover{
-  color: white;
-}
-
-a:hover{
-  color: white;
-}
-

@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class InstallationCategorieDepenseVehiculeComponent implements OnInit {
   submitted:boolean = false;
   errorcategorieDepenseVehicule:any = null;
+  disabled:boolean = true;
   type = 'vehicule';
   form = new FormGroup({
     categorie: new FormControl('', Validators.required),
@@ -22,7 +23,18 @@ export class InstallationCategorieDepenseVehiculeComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.initialiseNext();
   }
+  initialiseNext(){
+    this.dataservice.countCategorieDepense(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+      if(Number(JSON.parse(data)['countVehicule']) === 0){
+        this.disabled = true;
+      }else{
+        this.disabled = false;
+      }
+    })
+  }
+   
   addcategorie(){
       this.submitted = true;
       if(this.form.invalid){
@@ -32,23 +44,33 @@ export class InstallationCategorieDepenseVehiculeComponent implements OnInit {
         categorie: this.form.value.categorie,
         type: this.type
       }
-      console.log(data);
       this.dataservice.addCategorie(localStorage.getItem('autoEcole_id'), data).subscribe(data=>{
-        console.log(data);this.next();
+        this.alertMessage("Categorie vehicule bien enregistré!");
+        this.disabled = false;
       })
-  
   }
 
+  alertMessage(message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: message
+    })
+  }
   next(){
-  this.dataservice.countCategorieDepense(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-    console.log("count of categorie",JSON.parse(data));
-    if(Number(JSON.parse(data)['countVehicule']) === 0){
-      this.errorcategorieDepenseVehicule = "Vous devez ajouter d'abord une categorie vehicule";
-    }else{
-       console.log(JSON.parse(data));
-      this.addOther()
-    }
-   })
+    this.addOther();
+   
   }
   addOther(){
     Swal.fire({

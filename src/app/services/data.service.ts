@@ -602,6 +602,9 @@ updateMoniteurP(id:any, data:any){
   countTheoriquePratique(ecole_id:any){
     return this.httpclient.get(this.api + '/auto-ecole/'+ecole_id+ '/count-moniteur-theorique-pratique', {responseType: 'text'});
   }
+  configuration(ecole_id:any){
+    return this.httpclient.get(this.api + '/auto-ecole/'+ecole_id+ '/configuration', {responseType: 'text'});
+  }
   getAutoEcolesEnAttente(){
     return this.httpclient.get(this.api + '/superadmin/auto-ecoles-en-attente', {responseType: 'text'});
   }

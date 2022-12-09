@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,6 +24,16 @@ export class InstallationCategorieDepenseLocalComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.initialiseNext();
+  }
+  initialiseNext(){
+    this.dataservice.countCategorieDepense(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+    if(Number(JSON.parse(data)['countLocal']) === 0){
+      this.disabled = true;
+    }else{
+      this.disabled = false; 
+    }
+   })
   }
   addcategorie(){
       this.submitted = true;
@@ -33,24 +44,32 @@ export class InstallationCategorieDepenseLocalComponent implements OnInit {
         categorie: this.form.value.categorie,
         type: this.type
       }
-      console.log(data);
       this.dataservice.addCategorie(localStorage.getItem('autoEcole_id'), data).subscribe(data=>{
-        console.log(data);this.disabled = false;this.addOther()
+        this.disabled = false;this.alertMessage("Categorie Local bien enregistré!")
       })
   
   }
-
+  alertMessage(message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: message
+    })
+  }
   next(){
-  // countCategorieDepense
-  this.dataservice.countCategorieDepense(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-    console.log("count of categorie",JSON.parse(data));
-    if(Number(JSON.parse(data)['countLocal']) === 0){
-      this.errorcategorieDepenselocal = "Vous devez ajouter d'abord une categorie local";
-    }else{
-       console.log(JSON.parse(data));
-       this.router.navigateByUrl('/installation_note_categorie');
-    }
-   })
+     this.addOther()
+  
   }
   addOther(){
     Swal.fire({

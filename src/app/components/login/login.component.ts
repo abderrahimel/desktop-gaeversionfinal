@@ -124,4 +124,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
   }
+  is_requireConfiguration(){
+     this.dataService.configuration(localStorage.getItem('autoEcole_id')).subscribe(data=>console.log(data))
+  }
 }

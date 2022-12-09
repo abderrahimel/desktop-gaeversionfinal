@@ -41,6 +41,7 @@ export class DetailProduitComponent implements OnInit {
      id: 7
    }
    ];
+   
    currentTabIndex = 4;
    currentTab = {tabName: 'Vehicule D\'occasion',id: 5};
    constructor(private route: ActivatedRoute,
@@ -56,6 +57,7 @@ export class DetailProduitComponent implements OnInit {
    getProduitAdminById(){
      this.dataService.getProduitAdminById(this.id).subscribe(data=>{
        this.produit = data;
+
        this.produit.created_at = this.produit?.created_at.split('T')[0]
      })
    }

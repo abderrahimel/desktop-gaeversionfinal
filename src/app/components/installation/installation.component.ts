@@ -26,9 +26,17 @@ export class InstallationComponent implements OnInit {
 
   ngOnInit(): void {
     this.initialVehicule()
-
+    this.initialiseNext()
   }
-  
+  initialiseNext(){
+    this.dataservice.numberOfVehicule(localStorage.getItem('autoEcole_id')).subscribe(count=>{
+    if(Number(count) === 0){
+      this.disabled  = true;
+    }else{
+      this.disabled  = false;
+    }
+  })
+  }
   initialVehicule(){
     this.formVehicule = new FormGroup({
       matricule:new FormControl('', Validators.required),
@@ -63,12 +71,29 @@ export class InstallationComponent implements OnInit {
         carte_grise: this.base64Img_cart
        }).subscribe(data => {
         this.store.dispatch(loadViheculeAction({id: localStorage.getItem('autoEcole_id')}));
-        console.log(JSON.parse(data));
+        this.alertMessage("Vehicule bien enregistré!");
         this.disabled = false
-        this.addOther()
       },
          error => console.log(error)
       ) 
+  }
+  alertMessage(message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: message
+    })
   }
   fileChangeEvent(fileInput: any, keyImage:any) {
   
@@ -97,15 +122,7 @@ export class InstallationComponent implements OnInit {
   }
 
   nextVehicule(){
-     this.dataservice.numberOfVehicule(localStorage.getItem('autoEcole_id')).subscribe(count=>{
-      console.log("count of vehicule",count);
-      if(Number(count) === 0){
-        this.errorVehicule = "Vous devez ajouter d'abord une vehicule";
-        return;
-      }else{
-        this.router.navigateByUrl('/installation_moniteurs');
-      }
-     })
+    this.addOther();
   }
   addOther(){
     Swal.fire({

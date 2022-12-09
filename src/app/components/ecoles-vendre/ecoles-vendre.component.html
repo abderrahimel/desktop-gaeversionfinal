@@ -15,16 +15,22 @@
     <meta name="csrf-token" content="mI1WuJX2LYbSg925WVPdlMeViHNA0mCSlg28y1PH">
     <link rel="icon" href="/assets/img/logo_gae.png" type="image/x-icon"/>
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo_gae.png" />
-    <link href="/assets/css/gestion.css" rel="stylesheet" />
 <!-- font style -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet"> 
     <!-- Title -->
     <title>Gestion Auto-écoles - J2HB Plus Editeur de la securité routiére au maroc.</title>
+    <!-- Bootstrap Css -->
     <link href="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
 
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- Dashboard Css -->
+    <link href="/assets/css/gestion.css" rel="stylesheet" />
 
+    <!--Horizontal Menu-->
+    <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/animation/fade-down.css" rel="stylesheet" />
+    <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/horizontal.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -33,99 +39,95 @@
     <div style="margin-top: -480px"></div>
     <style>.avatar{background: #e5e5e5 no-repeat center/cover !important;background-size: cover !important}</style>
 <!--Sliders Section-->
-<div style="margin-top: 15px;"> 
-    <div class="bannerimg cover-image bg-background3 bg-danger" > 
-        <div class="header-text mb-0"> 
-            <div class="container"> 
-                <div class="text-center text-white "> 
-                    <h1>listes des écoles</h1> 
+<div> 
+    <div class="bannerimg cover-image bg-background3 bg-white" style="background: white">
+        <div class="header-text mb-0">
+            <div class="container">
+                <div class="text-center text-dark">
+                    <h1>listes des écoles</h1>
                 </div> 
             </div> 
         </div> 
     </div> 
 </div>
 <!--Job listing-->
-<section class="sptb">
+<div  *ngIf="!autoEcoleVendre" style="margin-left: 50%;margin-bottom: 20%;margin-top: 12px;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+</div>
+<section *ngIf="autoEcoleVendre" style="margin-top: 20px;" class="sptb">
+   
 	<div class="container">
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-12">
                 <!--Job lists-->
-				<!-- <div class=" mb-lg-0">
+				<div class=" mb-lg-0">
 					<div class="">
 						<div class="item2-gl">
 							<div class=" mb-0">
 								<div class="">
                                     <div>
-
-                                        <div style="display: flex;align-items:center">
+                                     
+                                        <!-- <div style="display: flex;align-items:center">
                                             <div style="display: flex;">
-                                                <mat-card class="example-card"  style="margin:10px;width: 250px;" *ngFor="let card of vendres | async">
-                                                    <mat-card-header>
-                                                      <div mat-card-avatar class="example-header-image"></div>
-                                                      <mat-card-title>{{card.title}}</mat-card-title>
-                                                    </mat-card-header>
+                                                <mat-card class="example-card"  style="margin:10px;width: 250px;margin-bottom: 20px;" *ngFor="let card of vendres | async">
                                                     <mat-card-content> 
-                                                        <a routerLink="/detail-ecole-vendre/{{card?.id}}">
-                                                            <img src="{{card.image}}" style="height: 200px;width:200px" alt="">
+                                                        <a routerLink="/detail-produit/{{card?.id}}">
+                                                            <img src="{{card?.image}}" style="height: 200px;width:200px" alt="">
                                                         </a>
                                                     </mat-card-content>
-                                                    <mat-card-title style="margin-left:30%;font-size: small;font-weight: 500;" class="font-weight-bold">{{card?.nom_auto_ecole}}</mat-card-title>
-                                                    <mat-card-content>{{card?.titre}}</mat-card-content>
+                                                    <mat-card-title style="margin-left:30%;font-size: small;font-weight: 500;" class="font-weight-bold">{{card?.titre}}</mat-card-title>
                                                     <mat-card-content style="display: flex;align-items:center">{{card?.description}}</mat-card-content>
-                                                    <mat-card-content style="margin-bottom: 15px">
-                                                        <strong>PRIX: </strong>
-                                                        <span>{{card?.prix}}</span>
-                                                        <span>DH</span>
-                                                    </mat-card-content> 
+                                                    <mat-card-content style="margin-top: 5px;margin-bottom:5px"><hr></mat-card-content>
+                                                    <mat-card-footer class="nohoverfooter" style="position: absolute;bottom:0;margin-top: 20px;display: flex;">
+                                                        <button mat-button><a routerLink="/detail-produit/{{card?.id}}" class="btn" style="background: red;color:white;margin-top: 20px;margin-left: 20px;margin-bottom: 20px;">Voir détail</a></button>
+                                                        <button mat-button><a class="btn" style="background: green;color:white;margin-left: -16px;" routerLink="https://api.whatsapp.com/send?phone=212661072777">
+                                                            <i class="fa fa-whatsapp" ></i><span style="margin-left: 5px;color: white">Appeler</span></a></button>
+                                                    </mat-card-footer>
                                                   </mat-card>
-                                                  <mat-paginator style="position:absolute;bottom: 0;right: 0;margin-right: -100px;z-index: 100;margin-bottom: 10px;" [hidden]="!(vendres | async)" [pageSizeOptions]="[2]"></mat-paginator>
+                                                  <mat-paginator  style="position:absolute;bottom: 0;right: 0;margin-right: -100px;z-index: 100;margin-bottom: 10px;" [hidden]="!(vendres | async)" [pageSizeOptions]="[2]"></mat-paginator>
                                             </div>
-                                        </div>
+                                        </div> -->
+                                        <div class="container">
+                                            <section>
+                                              <ngx-slick-carousel class="carousel" 
+                                              #slickModal="slick-carousel" 
+                                              [config]="slideConfig" 
+                                              (init)="slickInit($event)"
+                                              (breakpoint)="breakpoint($event)"
+                                              (afterChange)="afterChange($event)"
+                                              (beforeChange)="beforeChange($event)">
+                                              <mat-card class="example-card" ngxSlickItem *ngFor="let data of autoEcoleVendre; trackBy: trackById" class="slide" style="margin-right: 7px;height: 500px;">
+                                                <a routerLink="/detail-ecole-vendre/{{data?.id}}">
+                                                    <img mat-card-image src="{{ data?.image }}" style="height: 260px;width: 260px;" alt="">
+                                                </a>    
+                                                    <mat-card-content style="width: 260px;">
+                                                    <p>{{data?.description}}</p>
+                                                    </mat-card-content>
+                                                    <mat-card-footer style="position: absolute;bottom:0;margin-bottom:15px">
+                                                        <button mat-button><a routerLink="/detail-ecole-vendre/{{data?.id}}" class="btn" style="background: red;color:white">Voir détail</a></button>
+                                                        <button mat-button><a class="btn btn-outline-dark" routerLink="https://api.whatsapp.com/send?phone=212661072777"><i class="fa fa-whatsapp"></i></a></button>
+                                                    </mat-card-footer>
+                                              </mat-card>
+                                              </ngx-slick-carousel>
+                                            </section>
+                                          </div>
                                     </div>
 								</div>
 							</div>
 							
 						
 						</div>
-				
+						<!-- here -->
 					</div>
-				</div> -->
-                
-                <div  *ngIf="!nautoEcoleVendre" style="margin-left: 50%;margin-bottom: 20%;">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="sr-only">Loading...</span>
-                      </div>
-                </div>
-                <div class="container">
-                    <section>
-                      <ngx-slick-carousel class="carousel" 
-                      #slickModal="slick-carousel" 
-                      [config]="slideConfig" 
-                      (init)="slickInit($event)"
-                      (breakpoint)="breakpoint($event)"
-                      (afterChange)="afterChange($event)"
-                      (beforeChange)="beforeChange($event)">
-                      <mat-card class="example-card" ngxSlickItem *ngFor="let data of autoEcoleVendre; trackBy: trackById" class="slide" style="margin-right: 7px;height: 500px;">
-                        <a routerLink="/detail-ecole-vendre/{{data?.id}}">
-                            <img mat-card-image src="{{ data?.image }}" style="height: 260px;width: 260px;" alt="">
-                        </a>    
-                            <mat-card-content style="width: 260px;">
-                            <p>{{data?.description}}</p>
-                            </mat-card-content>
-                            <mat-card-footer style="position: absolute;bottom:0;margin-bottom:15px">
-                                <button mat-button><a routerLink="/detail-ecole-vendre/{{data?.id}}" class="btn" style="background: red;color:white">Voir détail</a></button>
-                                <button mat-button><a class="btn btn-outline-dark" routerLink="https://api.whatsapp.com/send?phone=212661072777"><i class="fa fa-whatsapp"></i></a></button>
-                            </mat-card-footer>
-                      </mat-card>
-                      </ngx-slick-carousel>
-                    </section>
-                  </div>
+				</div>
 				<!--/Job lists-->
             </div>
 
             <!--Right Side Content-->
-            <div class="col-xl-3 col-lg-4 col-md-12">
-                <!-- <div class="card">
+            <!-- <div class="col-xl-3 col-lg-4 col-md-12">
+                <div class="card">
                     <div class="card-body">
                         <div class="input-group" style="display: flex;align-items:center">
                             <input type="text" class="form-control br-tl-3 br-bl-3" placeholder="Recherche" id="chercher">
@@ -136,52 +138,23 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <!-- <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Rechercher par villes </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12 d-block mx-auto">
-                                <div class="search-background bg-transparent">
-                                    <div class="form row no-gutters ">
-                                        <div class="form-group col-md-12 select2-lg  mb-0 bg-white">
-                                            <select class="form-control select2-show-search  border-bottom-0" style="margin-bottom: 4px" id="ville">
-                                                <optgroup label="Villes">
-                                                    <option value="">Toutes villes</option>
-                                                    <option value="0">0</option>
-                                                    <option value="22">22</option>
-                                                    <option value="Casa">Casa</option>
-                                                    <option value="CASABLANCA">CASABLANCA</option>
-                                                    <option value="Chichaoua">Chichaoua</option>
-                                                                                                            <option value="EL JADIDA">EL JADIDA</option>
-                                                                                                            <option value="f">f</option>
-                                                                                                                                                   
-                                                </optgroup>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-            </div> 
+                </div>
+            </div>  -->
             <!-- Right Side Content -->
         </div>
 
 	</div>
 </section>
+
+
 <!-- /Job Listings-->
-<script src="https://gestionautoecole.com/js/Filter/notes_category.js"></script>
         <!-- <section class="main-footer" style="background-color: white;">
 	<footer class="bg-footer text-white " >
 		<div class="text-white-50 border-top p-0">
 			<div class="container pb-4">
 				<div class="row d-flex">
 					<div class="text-center col-md-3 col-12">
-						<a class="header-brand" routerLink="/">
+						<a routerLink="javascript:void(0)" class="header-brand" >
 							<img src="/assets/img/logo_gae.png"  class="header-brand-img" alt="Jobslist logo" style="height: 4.5rem !important;">
 						</a>
 					</div>
@@ -245,27 +218,7 @@
 		
 	</footer>
 </section> -->
-<script src="https://gestionautoecole.com/js/Abonner/abonner.js"></script>
+        <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/popper.min.js"></script>
+        <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
-
-<!-- **************** -->
-
-
-
-
-
-<!-- ****************** -->
-
-
-
-
-<!-- ****************** -->
-
-
-
-<!-- ********************* -->
-
-

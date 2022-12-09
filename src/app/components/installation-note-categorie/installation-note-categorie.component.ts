@@ -28,6 +28,17 @@ export class InstallationNoteCategorieComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.initialiseNext();
+  }
+
+  initialiseNext(){
+     this.dataservice.countNote(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+      if(Number(JSON.parse(data)['count']) === 0){
+        this.disabled = true;
+      }else{
+        this.disabled = false;
+      }
+     })
   }
   add(){
     this.submitted = true;
@@ -36,20 +47,30 @@ export class InstallationNoteCategorieComponent implements OnInit {
     }
     let data = { categorie: this.form.value.categorie, moyen: this.form.value.moyen, note_generale: this.form.value.note_generale};
     this.store.dispatch(addNote({idAutoEcole: localStorage.getItem('autoEcole_id'), data: data}));
-    this.addOther();
+    this.disabled = false;
+    this.alertMessage("Note Categorie  bien enregistré!")
+  }
+  alertMessage(message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: message
+    })
   }
   next(){
-    // countCategorieDepense
-    this.dataservice.countNote(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      console.log("count note",JSON.parse(data));
-      if(Number(JSON.parse(data)['count']) !== 0){
-        console.log(JSON.parse(data));
-        this.router.navigateByUrl('/dashboard');
-      }else{
-        this.errorNoteCategorie = "Vous devez ajouter d'abord note categories";
-        return;
-      }
-     })
+    this.addOther()
+   
     }
     addOther(){
       this.disabled = false;

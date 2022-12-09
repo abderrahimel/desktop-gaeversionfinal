@@ -23,6 +23,16 @@ export class InstallationcategorieDepensePersonnelComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.initialiseNext();
+  }
+  initialiseNext(){
+     this.dataservice.countCategorieDepense(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+    if(Number(JSON.parse(data)['countPersonnel']) === 0){
+      this.disabled = true;
+    }else{
+      this.disabled = false;
+    }
+   })
   }
   addcategorie(){
       this.submitted = true;
@@ -34,21 +44,40 @@ export class InstallationcategorieDepensePersonnelComponent implements OnInit {
         type: this.type
       }
       this.dataservice.addCategorie(localStorage.getItem('autoEcole_id'), data).subscribe(data=>{
-        console.log(data);this.disabled = false;this.next()
+        this.alertMessage("Categorie personnel bien enregistré!")
+        this.disabled = false;
       })
-  
   }
 
-  next(){
-  this.dataservice.countCategorieDepense(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-    if(Number(JSON.parse(data)['countPersonnel']) === 0){
-      this.errorcategorieDepensePersonnel = "Vous devez ajouter d'abord une categorie personnel";
-    }else{
-       console.log(JSON.parse(data));
-       this.addOther()
-    }
-   })
+  alertMessage(message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: message
+    })
   }
+  next(){
+    this.addOther();
+ 
+  }
+  errorAlert(error:any){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error,
+    })
+   }
   addOther(){
     Swal.fire({
       title: 'confirmation',

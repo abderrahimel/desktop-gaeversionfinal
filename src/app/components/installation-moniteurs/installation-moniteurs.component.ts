@@ -49,6 +49,16 @@ export class InstallationMoniteursComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+     this.initialiseNext();
+  }
+  initialiseNext(){
+    this.dataservice.countTheoriquePratique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+      if(Number(JSON.parse(data)['countT']) * Number(JSON.parse(data)['countP']) === 0){
+            this.disabled = true;
+      }else{
+            this.disabled = false;
+      }  
+     })
   }
   addMoniteur(){
     this.errorMoniteurTheorique = null;
@@ -78,38 +88,65 @@ export class InstallationMoniteursComponent implements OnInit {
       };
       if(this.form.value.type_moniteur === 'Moniteur Théorique'){
         this.dataservice.addMoniteurT(localStorage.getItem('autoEcole_id'), dataMoniteur).subscribe(data=>{
-          console.log(data);
-          this.next()
+          this.alertMessage("Moniteur Théorique bien enregistré!")
+          this.disabled = false;
         })
       }else{  // addMoniteurP
           this.dataservice.addMoniteurP(localStorage.getItem('autoEcole_id'), dataMoniteur).subscribe(data=>{
-            console.log(data);
-            this.next()
+            this.alertMessage("Moniteur Pratique bien enregistré!")
+            this.disabled = false;
           })
         }
- 
   }
+
   addCategorie(e:any){
     if(!this.categorie_list.includes(e.target.value)){
       this.categorie_list += e.target.value + ',';
     }
   }
+  alertMessage(message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: message
+    })
+  }
   next(){
     this.dataservice.countTheoriquePratique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
      console.log(JSON.parse(data));
      if(Number(JSON.parse(data)['countT']) === 0){
-       this.errorMoniteurTheorique = "Vous devez ajouter d'abord un moniteur theorique";
+      //  this.errorMoniteurTheorique = "Vous devez ajouter d'abord un moniteur theorique";
+       this.errorAlert("Vous devez ajouter d'abord un moniteur theorique");
        return;
      }else if(Number(JSON.parse(data)['countP']) === 0){
-      this.errorMoniteurPratique = "Vous devez ajouter d'abord un moniteur pratique";
+      // this.errorMoniteurPratique = "Vous devez ajouter d'abord un moniteur pratique";
+      this.errorAlert("Vous devez ajouter d'abord un moniteur pratique");
       return;
      }else{
-      this.router.navigateByUrl('/installation_categorie_depencePersonnel');
+      this.addOther();
      }  
     })
  }
+ errorAlert(error:any){
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: error,
+  })
+ }
  addOther(){
-  this.disabled = false;
+  
   Swal.fire({
     title: 'confirmation',
     text: "Vous voulez ajouter une autre un moniteur ?",

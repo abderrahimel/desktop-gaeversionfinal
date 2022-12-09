@@ -12,67 +12,50 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta property="og:image" content="/assets/img/logo_gae.png">
-    <meta name="csrf-token" content="l2vGHGGkLfgABEqzYiMOwbuolN7SWzURXuPGWLe5">
+    <meta name="csrf-token" content="mI1WuJX2LYbSg925WVPdlMeViHNA0mCSlg28y1PH">
     <link rel="icon" href="/assets/img/logo_gae.png" type="image/x-icon"/>
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo_gae.png" />
-    <link rel="stylesheet" href="/assets/css/gestion.css">
+<!-- font style -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet"> 
     <!-- Title -->
     <title>Gestion Auto-écoles - J2HB Plus Editeur de la securité routiére au maroc.</title>
     <!-- Bootstrap Css -->
     <link href="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- Dashboard Css -->
+    <link href="/assets/css/gestion.css" rel="stylesheet" />
+    <!--Horizontal Menu-->
+    <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/animation/fade-down.css" rel="stylesheet" />
+    <link href="https://gestionautoecole.com/plugins/horizontal/horizontal-menu/horizontal.css" rel="stylesheet" />
 </head>
-<body >
- 
+<body>
+    <!-- <app-header></app-header> -->
     <app-headerlogged></app-headerlogged>
-<div style="margin-top: -480px"></div>
+    <div style="margin-top: -480px"></div>
+    <style>.avatar{background: #e5e5e5 no-repeat center/cover !important;background-size: cover !important}</style>
 <!--Sliders Section-->
-<div *ngIf="!dbTelecharhement" style="margin-left: 50%;margin-top: 40px;">
-	<div class="spinner-border text-primary" role="status">
-		<span class="sr-only">Loading...</span>
-	  </div>
-   </div>
-<div *ngIf="dbTelecharhement" style="margin-top: 15px;"> 
-    <div class="bannerimg cover-image bg-background3 bg-danger"  > 
-        <div class="header-text mb-0"> 
-            <div class="container"> 
-                <div class="text-center text-white "> 
-                    <h1 class="">{{title}}</h1> 
-                   
+<div> 
+    <div class="bannerimg cover-image bg-background3 bg-white" style="background: white">
+        <div class="header-text mb-0">
+            <div class="container">
+                <div class="text-center text-dark">
+                    <h1>{{title}} </h1>
                 </div> 
             </div> 
         </div> 
     </div> 
 </div>
-<!--/Sliders Section <i class="fal fa-hand-point-down"></i> -->
 <section *ngIf="dbTelecharhement" class="sptb">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
 				<div class="card">
-					<!-- <div class="card-header">
-                        <div class="container">
-                            <div class="row"> 
-                                <div class="col-8">                         
-                                    <h1 style="font-size: medium" ><b>{{title}}</b></h1>
-                                </div>
-                                <div class="col-4">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control br-tl-3 br-bl-3" placeholder="Recherche" id="notes_chercher">
-                                        <div class="input-group-append ">
-                                            <button type="button" class="btn btn-primary br-tr-3 br-br-3" id="btn_notes_chercher">
-                                                Rechercher
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
 					<div class="card-body">
 						<div class="text-wrap">
                             <div class="row" id="ListNotes" data-id="3">
-                               <!-- spinner -->
-                              
                                 <div class="col-md-6 col-lg-4 features" *ngFor="let data of dbTelecharhement"> 
                                     <div class="card bg-light"> 
                                         <div class="card-body text-center"> 
@@ -93,76 +76,7 @@
 		</div>
 	</div>
 </section>
-        <!-- <section class="main-footer" style="background-color: white;">
-	<footer class="bg-footer text-white " >
-		<div class="text-white-50 border-top p-0">
-			<div class="container pb-4">
-				<div class="row d-flex">
-					<div class="text-center col-md-3 col-12">
-						<a class="header-brand" routerLink="/">
-							<img src="/assets/img/logo_gae.png"  class="header-brand-img" alt="Jobslist logo" style="height: 4.5rem !important;">
-						</a>
-					</div>
-					<div class="col-md-3 col-12">
-						<ul>
-							<li><a routerLink="/" class="btn copy-footer"><b> Accueil</b></a></li>
-							<li><a routerLink="/apropos" class="btn copy-footer"><b> Logiciel GAE PLUS</b></a></li>
-							<li><a routerLink="/boutique-j2hb" class="btn copy-footer"><b> Boutique j2hb</b></a></li>
-							
-						</ul>
-					</div>
-					<div class="col-md-3 col-12">
-						<ul><li><a routerLink="/contact" class="btn copy-footer"><b> Contact</b></a></li>
-							<li><a routerLink="/ministre_notes" class="btn copy-footer"><b>Téléchargement</b></a></li>
-							<li><a routerLink="/ecoles" class="btn copy-footer"><b> Auto-écoles</b></a></li>
-						</ul>
-					</div>
-					
-					<div class=" d-flex flex-column justify-content-center col-md-3 col-12">
-						<form method="post" id="AddAbonner" >
-							<input type="hidden" name="_token" value="l2vGHGGkLfgABEqzYiMOwbuolN7SWzURXuPGWLe5">							<div id="AddMessageFR" class="alert"></div>
-							<div class="input-group ">
-								<input name="email" type="text" class="form-control" placeholder="Entrer vôtre email" aria-label="Entrer vôtre email" aria-describedby="basic-addon2" style="border: 2px solid #c6c6c6 !important;">
-								<div class="input-group-append">
-									<button type="submit" id="basic-addon2" class="input-group-text btn btn-primary btn-block" style="border: 2px solid red !important;background-color: white;color: red;margin-inline-start: -1px;position: relative;height: 39px;">Abonner</button> 
-								</div>
-							</div>
-						</form>
-						
-						<ul class="social-f text-center mb-0" style="margin-top: 2rem">
-								<li>
-									<a class="social-icon hov-footer" routerLink="https://www.facebook.com/jalal.elamrani.756" style="font-size: 20px !important"><i class="fa fa-facebook" ></i></a>
-								</li>
-								<li>
-									<a class="social-icon hov-footer" routerLink="https://api.whatsapp.com/send?phone=212661072777" style="font-size: 20px !important"><i class="fa fa-phone" ></i></a>
-								</li>
-								<li>
-									<a class="social-icon hov-footer" routerLink="https://www.youtube.com/channel/UCd97nMww3vq2ts3pr86QN3Q/videos" style="font-size: 20px !important"><i class="fab fa-youtube"></i></a>
-								</li>
-								<li>
-									<a class="social-icon hov-footer" routerLink="mailto:jhb.plus@yahoo.com" style="font-size: 20px !important"><i class="fa fa-envelope" ></i></a>
-								</li>
-							</ul>
-						
-					</div>
-					
-				</div>
-			</div>
-			<div class="containner-fluid">
-				<div class="row">
-					<div class="col-12 cp-ft">
-						<div class="copy-footer text-center">
-							<hr style="border-top: 3px solid #e6e6e6 !important;margin-top:auto;margin-bottom:auto">
-							<br>
-							<b>	Copyright © 2022 GAE.</b>
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
-	
-	</footer>
-</section> -->
-<!--Footer Section-->    
+        <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/popper.min.js"></script>
+        <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

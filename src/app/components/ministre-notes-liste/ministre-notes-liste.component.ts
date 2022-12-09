@@ -28,25 +28,21 @@ export class MinistreNotesListeComponent implements OnInit {
     this.dataService.getNoteMinisterielle().subscribe(data=>{
       this.dbTelecharhement = JSON.parse(data);
       if(Number(this.route.snapshot.paramMap.get('id')) == 1){
-        // filter from the data just 
+        // filter from the data just
         this.title = 'المذكرات الوزارية';
         this.dbTelecharhement =  this.dbTelecharhement.filter((data:any)=>data.category == this.title);
-       
       }else if(Number(this.route.snapshot.paramMap.get('id')) == 2){
         // filter from the data just 
         this.title = 'بلاغ صحفي';
         this.dbTelecharhement =  this.dbTelecharhement.filter((data:any)=>data.category == this.title);
-       
       }else if(Number(this.route.snapshot.paramMap.get('id')) == 3){
         // filter from the data just  دفتر تحملات المتعلق بفتح واستغلال مؤسسات تعليم السياقة
          this.title = 'دفتر تحملات المتعلق بفتح واستغلال مؤسسات تعليم السياقة';
         this.dbTelecharhement =  this.dbTelecharhement.filter((data:any)=>data.category == this.title);
-       
       }else{
          //  else  قرارات ومراسيم خاصة بمدونة السير 52.05
         this.title = 'قرارات ومراسيم خاصة بمدونة السير 52.05';
          this.dbTelecharhement =  this.dbTelecharhement.filter((data:any)=>data.category == this.title);
-        
         }
     })
      
