@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;background: #e5ebef;">
+<body style="font-size: 13px;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
@@ -20,7 +20,7 @@
       <div class="wrap-table100 card">
         <div class="table-header">
           <div class="row">
-            <div class="col-9" style="font-size: 15px;color: black;">
+            <div class="col-9" style="font-size: 13px;color: black;">
               GESTION DES RECETTES
             </div>
           </div>
@@ -28,22 +28,22 @@
     
         <nav ngbNav #nav="ngbNav" class="nav-tabs">
         <ng-container ngbNavItem>
-          <a ngbNavLink style="border:1px solid rgb(204, 198, 198); border-radius: 0;margin-right: 4px;color: white;font-weight: 700;font-size: 15px;background: black;" class="rg" (click)="changestyle('.rg')">Recette general</a>
+          <a ngbNavLink style="border:1px solid rgb(204, 198, 198); border-radius: 0;margin-right: 4px;color: white;font-weight: 400;font-size: 13px;background: black;" class="rg" (click)="changestyle('.rg')">Recette general</a>
           <ng-template ngbNavContent>
             <div class="tableDiv">
-              <div style="display: flex; align-items:flex-end; justify-content:flex-end;margin: 5px;">
+              <!-- <div style="display: flex; align-items:flex-end; justify-content:flex-end;margin: 5px;">
                 <button class="btn btn-sm" style="background: red; color: white;box-shadow: none;outline: none;margin-bottom: 7px;">
                   <i class="fa fa-print"></i>
                   Imprimer
                 </button>
-              </div>
+              </div> -->
               <mat-card>
                 <div class="card" style="width: 100%;background: white;">      
                   <div style="display: flex;align-items:center;justify-content:flex-end">
                     <div style="margin-right: 6px;">  Rechercher:</div>
                     <mat-form-field appearance="standard">
                       <mat-label></mat-label>
-                      <input matInput (keyup)="applyFilter($event)" style="font-size: 16px" placeholder="... " #input>
+                      <input matInput (keyup)="applyFilter($event)" style="font-size: 13px" placeholder="... " #input>
                     </mat-form-field>
                 </div> 
                 <table mat-table  [dataSource]="dataSource"  matSort #empTbSort="matSort">    
@@ -91,7 +91,7 @@
         </ng-container>
 
         <ng-container ngbNavItem>
-          <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);font-weight: 700;font-size: 15px;" class="rp" (click)="changestyle('.rp')">Permis</a>
+          <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);font-weight: 400;font-size: 13px;" class="rp" (click)="changestyle('.rp')">Permis</a>
           <ng-template ngbNavContent>
             <div class="tableDiv">
               <div style="display: flex; align-items:flex-end; justify-content:flex-end;margin: 5px;">
@@ -105,7 +105,7 @@
           </ng-template>
         </ng-container>
         <ng-container ngbNavItem>
-          <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);font-weight: 700;font-size: 15px;" class="rcs"  (click)="changestyle('.rcs')">Cours Supplementaire</a>
+          <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);font-weight: 400;font-size: 13px;" class="rcs"  (click)="changestyle('.rcs')">Cours Supplementaire</a>
           <ng-template ngbNavContent>
             <div class="tableDiv" >
               <div style="display: flex; align-items:flex-end; justify-content:flex-end;margin: 5px;">
@@ -119,7 +119,7 @@
           </ng-template>
         </ng-container>
         <ng-container ngbNavItem>
-          <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);font-weight: 700;font-size: 15px;" class="rpc"  (click)="changestyle('.rpc')">Produit Candidat</a>
+          <a ngbNavLink style="border:1px solid rgb(189, 186, 186); border-radius: 0;margin-right: 4px;color: rgb(104, 95, 95);font-weight: 400;font-size: 13px;" class="rpc"  (click)="changestyle('.rpc')">Produit Candidat</a>
           <ng-template ngbNavContent>
             
             <div class="tableDiv" >
@@ -131,7 +131,7 @@
         </ng-container>
         </nav>
 
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
 
       </div>

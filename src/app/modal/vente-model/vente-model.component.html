@@ -1,6 +1,6 @@
 <div class="modal-content" >
     <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 14px;">Modifier vente</h5>
+    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 14px;">{{'Modifier vente'| translate}}</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
     </button>
@@ -8,14 +8,15 @@
     <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data" style="padding: 20px;">
        <div class="card-body">
           <div class="card-body">
-              <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire</p>
+              <p style="color: red; font-weight: bold;font-size: 12px;">(*) {{'Champs obligatoire'| translate}}</p>
               
               <div class="row">
                     <div class="col-md-5">
                         <div class="form-group">     
-                            <label class="form-label">Candidat</label>  
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Candidat'| translate}}<span style="color:red">*</span>
+                            </label>  
                             <select class="form-control selectf" name="candidat" style="font-size: 13px;height:34px" formControlName="candidat_id" >
-                                <option value="">Choisissez un candidat</option>
+                                <option value="" style="font-size: 13px;font-weight: 400;">{{'Choisissez un candidat'| translate}}</option>
                                  <option *ngFor="let data of candidatBasic" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
                                  <option *ngFor="let data of candidatSupplementaire" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
                             </select>
@@ -29,9 +30,10 @@
 
                     <div class="col-md-5">
                         <div class="form-group">
-                            <label class="form-label">Libelle</label>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Libelle'| translate}}<span style="color:red">*</span>
+                            </label>
                             <select class="form-control" style="font-size: 13px;height:34px" name="produit" formControlName="produit_id" >
-                                <option value="">Choisissez un produit</option>
+                                <option value="" style="font-size: 13px;font-weight: 400;">{{'Choisissez un produit'| translate}}</option>
                                <option *ngFor="let data of produits" value="{{data.id}}">{{data.libelle}}</option>
                             </select>
                             <div class="err" *ngIf="submitted && this.form.controls.produit_id.errors">
@@ -43,7 +45,8 @@
                     </div>
                     <div class="col-md-5">
                         <div class="form-group"> 
-                            <label class="form-label">Quantité disponible</label>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Quantité disponible'| translate}}<span style="color:red">*</span>
+                            </label>
                             <input type="text" name="quantite_dispo" style="font-size: 13px;" formControlName="quantiteDisponible"  class="form-control" >
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.quantiteDisponible.errors">
@@ -54,7 +57,8 @@
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
-                            <label class="form-label">Prix unitaire</label>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prix unitaire'| translate}}<span style="color:red">*</span>
+                            </label>
                             <input type="text" name="prix_u"  style="font-size: 13px;" class="form-control" formControlName="prixUnitaire" >
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.prixUnitaire.errors">
@@ -65,7 +69,8 @@
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
-                            <label class="form-label">Quantité</label> 
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Quantité'| translate}}<span style="color:red">*</span>
+                            </label> 
                             <input type="text" name="quantite"  style="font-size: 13px;" class="form-control" formControlName="quantite">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.quantite.errors">
@@ -76,7 +81,8 @@
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">         
-                            <label class="form-label">Prix totale</label>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prix totale'| translate}}<span style="color:red">*</span>
+                            </label>
                             <input type="text" name="prix_t"  style="font-size: 13px;" class="form-control" formControlName="prixTotale">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.prixTotale.errors">
@@ -87,7 +93,8 @@
                     </div>
                     <div class="col-md-5" style="margin-bottom: 10px ;">
                         <div class="form-group">
-                            <label class="form-label">Date</label>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date'| translate}}<span style="color:red">*</span>
+                            </label>
                             <input type="Date" name="date" style="font-size: 13px;" id="date_edit" class="form-control" formControlName="date">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.date.errors">
@@ -102,8 +109,8 @@
       </div>
 
       <div class="card-footer">
-          <button type="submit" class="btn" style="background:#198754 ;color: white;padding: 08px;" id="button_edit" (click)="addVente()"><i class="fa fa-edit" aria-hidden="true"></i>  {{btn}}</button>
-          <button type="button" class="btn btn-danger" style="padding: 08px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+          <button type="submit" class="btn" style="background:#198754 ;color: white;padding: 08px;" id="button_edit" (click)="addVente()"><i class="fa fa-edit" aria-hidden="true"></i>{{btn| translate}}</button>
+          <button type="button" class="btn btn-danger" style="padding: 08px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">{{'Annuler'| translate}}</button>
       </div>
   </form>	
 </div>

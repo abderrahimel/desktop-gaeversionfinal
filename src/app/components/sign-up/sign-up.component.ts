@@ -132,7 +132,7 @@ export class SignUpComponent implements OnInit {
     console.log(JSON.parse(error['error'])?.message?.email)
     let message = JSON.parse(error['error'])?.message?.email;
     if(message.includes('Disposable email addresses are not allowed.')){
-      this.email_exist_in_data_base = 'Les adresses électroniques jetables ne sont pas autorisées.'
+      this.email_exist_in_data_base = 'utiliser une address email valide'
     }
     if(message.includes('The email has already been taken.')){
       this.email_exist_in_data_base = 'email a déjà été pris.';

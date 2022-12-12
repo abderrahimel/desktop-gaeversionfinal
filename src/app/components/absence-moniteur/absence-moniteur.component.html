@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;background: #e5ebef;">
+<body style="font-size: 13px;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
@@ -24,18 +24,17 @@
     </div>
        <div class="bg-white" style="margin: 15px;background: white;">
             <div class="d-flex align-items-center">
-              <button class="btn" id="btn1" onclick="document.getElementById('btn1').style.background='black';document.getElementById('btn1').style.color='white';document.getElementById('btn2').style.background='white';document.getElementById('btn2').style.color='black';document.getElementById('tab1').style.display='block';document.getElementById('tab2').style.display='none';" style="border: 1px solid black;font-size: 16px;height: 32px;background: black;color: white;">Absence Moniteur theorique</button>
+              <button class="btn" id="btn1" onclick="document.getElementById('btn1').style.background='black';document.getElementById('btn1').style.color='white';document.getElementById('btn2').style.background='white';document.getElementById('btn2').style.color='black';document.getElementById('tab1').style.display='block';document.getElementById('tab2').style.display='none';" style="border: 1px solid black;font-size: 13px;height: 32px;background: black;color: white;">Absence Moniteur theorique</button>
               
-              <button class="btn" id="btn2" onclick="document.getElementById('btn2').style.background='black';document.getElementById('btn2').style.color='white';document.getElementById('btn1').style.background='white';document.getElementById('btn1').style.color='black';document.getElementById('tab2').style.display='block';document.getElementById('tab1').style.display='none';" style="border: 1px solid black;font-size: 16px;height: 32px;">Absence Moniteur pratique</button>
+              <button class="btn" id="btn2" onclick="document.getElementById('btn2').style.background='black';document.getElementById('btn2').style.color='white';document.getElementById('btn1').style.background='white';document.getElementById('btn1').style.color='black';document.getElementById('tab2').style.display='block';document.getElementById('tab1').style.display='none';" style="border: 1px solid black;font-size: 13px;height: 32px;">Absence Moniteur pratique</button>
             </div>
             <div  id="tab1">
               <!-- tab 1 -->
                     <div class="col-3 add-btn-div"  style="margin-left: 70%;">
                       <button 
                         type="button"
-                        style="color: white; width: 210px;"
-                      
-                        class="btn add-btn" (click)="open1('T')" > 
+                        style="color: white; width: 210px;font-size: 13px;font-weight: 400;"
+                        class="btn add-btn"  (click)="open1('T')" > 
                         {{ "Nouveau absence" | translate }}
                     </button>
                   </div>

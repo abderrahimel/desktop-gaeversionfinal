@@ -9,6 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 import { loadAutoEcolesEnAttente } from 'src/app/state/autoecolesEnAttente/autoecolesEnAttente.actions';
 import { AutoecolesEnAttenteState } from 'src/app/state/autoecolesEnAttente/autoecolesEnAttente.state';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-auto-ecole-en-attente',
   templateUrl: './auto-ecole-en-attente.component.html',
@@ -40,11 +41,17 @@ export class AutoEcoleEnAttenteComponent implements OnInit {
 
   }
   loadData(){
-    this.dataService.getAutoEcolesEnAttente().subscribe(data=>{
-      this.dataLoad = JSON.parse(data);
-      this.dataSource = new MatTableDataSource(this.dataLoad)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    this.store.pipe(take(1)).subscribe(store=>{
+      if(!store.autoecolesEnAttente.autoecolesEnAttente.loaded){
+          this.store.dispatch(loadAutoEcolesEnAttente());
+      }
+      this.store.select(state=>state.autoecolesEnAttente.autoecolesEnAttente.autoecolesEnAttente).subscribe(autoecoleenattent=>{
+        this.dataLoad = autoecoleenattent;
+        this.dataSource = new MatTableDataSource(this.dataLoad)
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        console.log(this.dataLoad);
+      })
     })
    }
   getAutoEcoleEnAttente(){

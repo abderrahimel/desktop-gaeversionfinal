@@ -259,11 +259,11 @@ table {
 
 
 *{
-  font-size: 16px;
+  font-size: 13px;
 }
 
 input,select{
-  font-size: 16px;
+  font-size: 13px;
   height: 30px;
 }
 input[type=date]{
@@ -272,4 +272,9 @@ input[type=date]{
 
 textarea{
   font-size: 16px;
+}
+
+form-label{
+  font-size: 13px;
+  font-weight: 100;
 }

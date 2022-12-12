@@ -33,7 +33,7 @@ export class InstallationNoteCategorieComponent implements OnInit {
 
   initialiseNext(){
      this.dataservice.countNote(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      if(Number(JSON.parse(data)['count']) === 0){
+      if(Number(JSON.parse(data)) === 0){
         this.disabled = true;
       }else{
         this.disabled = false;

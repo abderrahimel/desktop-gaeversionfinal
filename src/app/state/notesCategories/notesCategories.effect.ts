@@ -23,7 +23,6 @@ export class NoteCategorieEffects {
     return this.actions$.pipe(ofType(loadnoteCategorie),
     
      exhaustMap((action)=>{
-        console.log(action.idAutoEcole);
         return this.dataService.getNotes(action.idAutoEcole)
         .pipe(
             map((data)=>{
@@ -39,7 +38,6 @@ deletnoteCategorie$ = createEffect(()=>{
   return this.actions$.pipe(ofType(deletnoteCategorie),
   
    exhaustMap((action)=>{
-      console.log(action.id);
       return this.dataService.deleteNote(action.id)
       .pipe(
           map((data)=>{
@@ -55,7 +53,6 @@ addNote$ = createEffect(()=>{
   return this.actions$.pipe(ofType(addNote),
   
    exhaustMap((action)=>{
-      console.log(action.idAutoEcole);
       return this.dataService.addNote(action.idAutoEcole, action.data)
       .pipe(
           map((data)=>{
@@ -71,7 +68,6 @@ updateNote$ = createEffect(()=>{
   return this.actions$.pipe(ofType(updateNote),
   
    exhaustMap((action)=>{
-      console.log(action.id);
       return this.dataService.updateNote(action.id, action.data)
       .pipe(
           map((data)=>{

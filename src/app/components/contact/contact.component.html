@@ -51,98 +51,95 @@
     </div> 
 </div>
 
-<section  style="margin: 20px;" class="sptb">
-   
-	<div class="container">
-        <div class="row">
-            <div class="col-xl-9 col-lg-8 col-md-12">
-                <!--Job lists-->
-				<div class=" mb-lg-0">
-					<div class="">
-						<div class="item2-gl">
-							<div class=" mb-0">
-								<div class="">
-                                    <div>
-                                        <div class="sptb bg-white my-3">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="single-page">
-                                                        <div class="col-lg-8 col-xl-12 col-md-12 d-block mx-auto">
-                                                            <div class="wrapper wrapper2">
-                                                                
-                                                                <form  [formGroup]="form" (ngSubmit)="sendEmail()"  enctype="multipart/form-data" >
-                                                                <div class="card-body">
-                                                                    <div class="row">
-                                                                        <div class="col-6">
-                                                                            <div class="alert" id="EmailMessage" style="display:none;">
-                                                                            </div>
-                                                                            <ul class="list-group mb-4">
-                                                                                <li class="list-group-item py-3" style="color: black"><i class="far fa-phone-alt"></i> +212661-072777</li>
-                                                                                <li class="list-group-item py-3" style="color: black"><i class="far fa-map-marker"></i>  45 AVENUE HASSAN 2 IMMEUBLE WATANIYA 8ÈME ETAGE NUMÉRO 802 - FÈS</li>
-                                                                            </ul>
-                                                                            <div class="form-group">
-                                                                                <label class="form-label">Nom </label>
-                                                                                <input name="nom" class="form-control" formControlName="nom" placeholder="votre nom" >
-                                                                            </div>
-                                                                            <div class="err" style="margin-top: -20px" *ngIf="submitted && this.form.controls.nom.errors">
-                                                                                <div style="color: red;" *ngIf="this.form.controls.nom.errors.required">
-                                                                                      {{'champs obligatoire *' | translate}}  
-                                                                                </div>
-                                                   
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label class="form-label">Email </label>
-                                                                                <input name="email" class="form-control" formControlName="email" placeholder="votre email">
-                                                                            </div>
-                                                                            <div class="err" style="margin-top: -20px" *ngIf="submitted && this.form.controls.email.errors">
-                                                                                <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
-                                                                                      {{'champs obligatoire *' | translate}}  
-                                                                                </div>
-                                                                                <div style="color: red;" *ngIf="this.form.controls.email.errors.email">
-                                                                                    {{'email invalid *' | translate}}  
-                                                                              </div>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                            <label class="form-label">Message </label>
-                                                                            <textarea class="form-control" name="message" formControlName="message" rows="6" placeholder="votre message"></textarea>
-                                                                            <div class="err" *ngIf="submitted && this.form.controls.message.errors">
-                                                                                <div style="color: red;" *ngIf="this.form.controls.message.errors.required">
-                                                                                      {{'champs obligatoire *' | translate}}
-                                                                                </div>
-                                                   
-                                                                            </div>
-                                                                            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <!--Job lists-->
+            <div class=" mb-lg-0">
+                <div class="">
+                    <div class="item2-gl">
+                        <div class=" mb-0">
+                            <div class="">
+                                <div>
+                                    <div class="sptb bg-white my-3" style="box-shadow: none;">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="single-page">
+                                                    <div class="col-lg-8 col-xl-12 col-md-12 d-block mx-auto">
+                                                        <div class="wrapper wrapper2">
+                                                            
+                                                            <form  [formGroup]="form" (ngSubmit)="sendEmail()"  enctype="multipart/form-data" >
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <div class="alert" id="EmailMessage" style="display:none;">
                                                                         </div>
-                                                                        <div class="col-6">
-                                                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.062375877423!2d-5.000435985362007!3d34.04227102570417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8b40cf952467%3A0x15db367b095e9bf6!2sJ2HB!5e0!3m2!1sen!2sma!4v1656579146116!5m2!1sen!2sma" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                                                        <ul class="list-group mb-4">
+                                                                            <li class="list-group-item py-3" style="color: black"><i class="far fa-phone-alt"></i> +212661-072777</li>
+                                                                            <li class="list-group-item py-3" style="color: black"><i class="far fa-map-marker"></i>  45 AVENUE HASSAN 2 IMMEUBLE WATANIYA 8ÈME ETAGE NUMÉRO 802 - FÈS</li>
+                                                                        </ul>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label">Nom </label>
+                                                                            <input name="nom" class="form-control" formControlName="nom" placeholder="votre nom" >
+                                                                        </div>
+                                                                        <div class="err" style="margin-top: -20px" *ngIf="submitted && this.form.controls.nom.errors">
+                                                                            <div style="color: red;" *ngIf="this.form.controls.nom.errors.required">
+                                                                                  {{'champs obligatoire *' | translate}}  
+                                                                            </div>
+                                               
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label">Email </label>
+                                                                            <input name="email" class="form-control" formControlName="email" placeholder="votre email">
+                                                                        </div>
+                                                                        <div class="err" style="margin-top: -20px" *ngIf="submitted && this.form.controls.email.errors">
+                                                                            <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
+                                                                                  {{'champs obligatoire *' | translate}}  
+                                                                            </div>
+                                                                            <div style="color: red;" *ngIf="this.form.controls.email.errors.email">
+                                                                                {{'email invalid *' | translate}}  
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                        <label class="form-label">Message </label>
+                                                                        <textarea class="form-control" name="message" formControlName="message" rows="6" placeholder="votre message"></textarea>
+                                                                        <div class="err" *ngIf="submitted && this.form.controls.message.errors">
+                                                                            <div style="color: red;" *ngIf="this.form.controls.message.errors.required">
+                                                                                  {{'champs obligatoire *' | translate}}
+                                                                            </div>
+                                               
+                                                                        </div>
                                                                         </div>
                                                                     </div>
-                                                                    
+                                                                    <div class="col-6">
+                                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.062375877423!2d-5.000435985362007!3d34.04227102570417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8b40cf952467%3A0x15db367b095e9bf6!2sJ2HB!5e0!3m2!1sen!2sma!4v1656579146116!5m2!1sen!2sma" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="card-footer">
-                                                                    <div class="submit">
-                                                                        <button class="btn btn-primary btn-sm pull-left" type="submit"> Envoyer </button>
-                                                                    </div>
-                                                                </div>	
-                                                                </form>
+                                                                
                                                             </div>
+                                                            <div class="card-footer">
+                                                                <div class="submit">
+                                                                    <button class="btn btn-primary btn-sm pull-left my-3" type="submit"> Envoyer </button>
+                                                                </div>
+                                                            </div>	
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-								</div>
-							</div>
-							
-						
-						</div>
-					</div>
-				</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    
+                    </div>
+                </div>
             </div>
         </div>
-	</div>
-</section>
+    </div>
+</div>
         <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/popper.min.js"></script>
         <script src="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 </body>

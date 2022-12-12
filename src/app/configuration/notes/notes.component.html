@@ -23,9 +23,9 @@
         <div class="mat-elevation-z8">
    
           <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
-            <div style="font-size: 16px;font-weight: 600;color: black;"> {{ "GESTION DES NOTES" | translate }}
+            <div style="font-weight: 600;color: black;"> {{ "GESTION DES NOTES" | translate }}
             </div> 
-            <button  (click)="open('Ajouter', null)" class="btn" style="background: #198754; padding: 5px;color: white;font-size: 16px" >
+            <button  (click)="open('Ajouter', null)" class="btn" style="background: #198754; padding: 5px;color: white;" >
               <span >Nouvelle note</span> 
           </button> 
         </div>
@@ -37,7 +37,7 @@
                       <!--ABSENCE candidats -->
                   
                         <div style="display: flex;align-items:center;justify-content:flex-end">
-                          <div style="margin-right: 6px;font-size: 16px">  Rechercher:</div>
+                          <div style="margin-right: 6px;">  Rechercher:</div>
                           <mat-form-field appearance="standard">
                              <mat-label></mat-label>
                              <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
@@ -47,30 +47,30 @@
           
                         <ng-container matColumnDef="categorie">     
                           <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
-                            <span style="font-weight:900;font-size: 16px;">CATEGORIE</span>    
+                            <span style="font-weight:900;;">CATEGORIE</span>    
                           </th>
                           <td mat-cell *matCellDef="let element"> {{element?.categorie}} </td>
                         </ng-container>
                     
                         <ng-container matColumnDef="moyen">  
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">MOYEN</span>   </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;;">MOYEN</span>   </th>
                           <td mat-cell *matCellDef="let element"> {{element?.moyen}} </td>
                         </ng-container>
                     
                         <ng-container matColumnDef="note_generale">   
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">Nombre des questions</span> </th>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;;">Nombre des questions</span> </th>
                           <td mat-cell *matCellDef="let element"> {{element?.note_generale}} </td>
                         </ng-container>
                     
                        <ng-container matColumnDef="actions">  
-                        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">ACTIONS</span>  </th>
+                        <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;;">ACTIONS</span>  </th>
                         <td mat-cell *matCellDef="let element"> 
                              <button 
                                  (click)="open('Modifier', element)"
-                                 style="width: 70px; box-shadow: none;padding: 5px;width: 110px;font-size: 16px;" class="btn btn-danger ">
+                                 style="width: 70px; box-shadow: none;padding: 5px;width: 110px;;" class="btn btn-danger ">
                                  Modifier
                             </button>
-                            <button class="btn" style="margin-left: 5px;box-shadow: none;background: black;color: white;padding: 5px;width: 110px;font-size: 16px" (click)="deletNote(element?.id)">
+                            <button class="btn" style="margin-left: 5px;box-shadow: none;background: black;color: white;padding: 5px;width: 110px;" (click)="deletNote(element?.id)">
                               Supprimer
                             </button>
                         </td>
@@ -100,23 +100,23 @@
           
               <ng-container matColumnDef="categorie">     
                 <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categorie"> 
-                  <span style="font-weight:900;font-size: 16px;">CATEGORIE</span>    
+                  <span style="font-weight:900;;">CATEGORIE</span>    
                 </th>
                 <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
               </ng-container>
           
               <ng-container matColumnDef="moyen">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;font-size: 16px;">MOYEN</span>   </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;;">MOYEN</span>   </th>
                 <td mat-cell *matCellDef="let element"> {{element.moyen}} </td>
               </ng-container>
           
               <ng-container matColumnDef="note_generale">   
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;font-size: 16px;">Nombre des questions</span> </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;;">Nombre des questions</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.note_generale}} </td>
               </ng-container>
           
              <ng-container matColumnDef="actions">  
-              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;font-size: 16px;">ACTIONS</span>  </th>
+              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;;">ACTIONS</span>  </th>
               <td mat-cell *matCellDef="let element"> 
                    <button 
                        (click)="open('Modifier', element)"

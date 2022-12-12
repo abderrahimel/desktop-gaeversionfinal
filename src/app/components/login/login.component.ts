@@ -80,8 +80,14 @@ export class LoginComponent implements OnInit {
                 if(localStorage.getItem('type') === 'superAdmin'){
                   this.router.navigateByUrl('/admin');
                 }else{
-                  // this.router.navigateByUrl('/dashboard');
-                  this.router.navigateByUrl('/installation_vehicule');
+                  this.dataService.configuration(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+                    if(JSON.parse(data)['c']){
+                      this.router.navigateByUrl('/dashboard');
+                    }else{
+                      this.router.navigateByUrl('/installation_vehicule');
+                    }
+                  })
+                 
                 }
               }
 
@@ -124,7 +130,5 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
   }
-  is_requireConfiguration(){
-     this.dataService.configuration(localStorage.getItem('autoEcole_id')).subscribe(data=>console.log(data))
-  }
+
 }

@@ -1,21 +1,20 @@
-<!-- <div class="modal-dialog modal-lg">
-   
-  </div> -->
+
   <div class="modal-content" style="padding: 10px;" >
     <div class="modal-header" >
-        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 14px;">Ajouter produit</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 14px;">{{'Ajouter produit'| translate}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">×</span>
         </button>
     </div>
     <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
        <div class="card-body">
-          <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire</p>
+          <p style="color: red; font-weight: bold;font-size: 12px;">(*) {{'Champs obligatoire'| translate}}</p>
          
           <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">    
-                        <label class="form-label">Fournisseur</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Fournisseur'| translate}}<span style="color:red">*</span>
+                        </label>
                         <input type="text" name="fournisseur" class="form-control" formControlName="fournisseur">
                     </div>
                     <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.fournisseur.errors">
@@ -26,7 +25,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">Téléphone</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Téléphone'| translate}}<span style="color:red">*</span>
+                        </label>
                         <input type="text" name="tel_fournisseur" class="form-control" formControlName="telephone">
                     </div>
                     <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.telephone.errors">
@@ -37,7 +37,8 @@
                 </div>
                 <div class="col-md-4">    
                     <div class="form-group">
-                        <label class="form-label">Libelle</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Libelle'| translate}}<span style="color:red">*</span>
+                        </label>
                         <input type="text" name="Libelle" class="form-control" formControlName="libelle">
                     </div>
                     <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.libelle.errors">
@@ -49,7 +50,8 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Prix</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prix'| translate}}<span style="color:red">*</span>
+                        </label>
                         <input type="text" name="Prix" class="form-control" formControlName="prix">
                     </div>
                     <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.prix.errors">
@@ -61,7 +63,8 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Quantité</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Quantité'| translate}}<span style="color:red">*</span>
+                        </label>
                         <input type="text" name="Quantite" class="form-control" formControlName="quantite">
                     </div>
                     <div class="err" style="margin-top: -4px" *ngIf="submitted && this.form.controls.quantite.errors">
@@ -72,7 +75,7 @@
                 </div>
                 <div class="card m-b-20"  style="margin-top: 5px;">
                     <div class="card-header" style="background: white;">
-                        <h3 class="card-title" style="font-size: 15px">Description</h3>
+                        <h3 class="card-title" style="font-size: 15px" style="font-size: 13px;font-weight: 400;">{{'Description'| translate}}</h3>
                     </div>
                   
                     <div class="card-body">
@@ -95,8 +98,8 @@
       </div>
 
       <div class="card-footer" style="margin-top: 7px;">
-          <button type="submit" class="btn" style="background: #198754;color: white;padding: 08px;" (click)="addProduit()"><i class="fa fa-plus-circle" aria-hidden="true"></i>{{btn}}</button>
-          <button type="button" class="btn btn-danger" style="padding: 08px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+          <button type="submit" class="btn" style="background: #198754;color: white;padding: 08px;" (click)="addProduit()"><i class="fa fa-plus-circle" aria-hidden="true"></i>{{btn| translate}}</button>
+          <button type="button" class="btn btn-danger" style="padding: 08px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">{{'Annuler'| translate}}</button>
       </div>
   </form>	
 </div>

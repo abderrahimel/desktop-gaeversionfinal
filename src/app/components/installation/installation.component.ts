@@ -57,6 +57,27 @@ export class InstallationComponent implements OnInit {
       visite:new FormControl('', Validators.required),
     });
   }
+  reset(){
+    this.formVehicule.patchValue({
+      matricule:'',
+      type:'',
+      marque :'',
+      fourniseur:'',
+      modele:'',
+      categorie:'',
+      date_visite:'',
+      date_prochain_visite:'',
+      date_vidange:'',
+      date_prochain_vidange:'',
+      date_assurance:'',
+      date_expiration_assurance:'',
+      carte_grise:'',
+      vignette:'',
+      assurance:'',
+      visite: '',
+    })
+
+  }
   AddVehicule(){
     this.errorVehicule = null
       this.subbmitedVehucule = true;
@@ -127,7 +148,7 @@ export class InstallationComponent implements OnInit {
   addOther(){
     Swal.fire({
       title: 'confirmation',
-      text: "Vous voulez ajouter une autre un véhicule ?",
+      text: "Vous voulez ajouter une autre  véhicule ?",
       icon: 'error',
       showCancelButton: true,
       cancelButtonText: 'annuler',

@@ -34,6 +34,7 @@ export class InstallationMoniteursComponent implements OnInit {
   submitted:boolean = false;
   base64Img_image:any;
   data:any;
+  moniteursdata:any;
   categorie_list:any = '';
   categories_array:any = [];
   id:any;
@@ -53,6 +54,7 @@ export class InstallationMoniteursComponent implements OnInit {
   }
   initialiseNext(){
     this.dataservice.countTheoriquePratique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+      this.moniteursdata = JSON.parse(data);
       if(Number(JSON.parse(data)['countT']) * Number(JSON.parse(data)['countP']) === 0){
             this.disabled = true;
       }else{
@@ -60,6 +62,7 @@ export class InstallationMoniteursComponent implements OnInit {
       }  
      })
   }
+
   addMoniteur(){
     this.errorMoniteurTheorique = null;
     this.errorMoniteurPratique = null;
@@ -124,7 +127,6 @@ export class InstallationMoniteursComponent implements OnInit {
   }
   next(){
     this.dataservice.countTheoriquePratique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-     console.log(JSON.parse(data));
      if(Number(JSON.parse(data)['countT']) === 0){
       //  this.errorMoniteurTheorique = "Vous devez ajouter d'abord un moniteur theorique";
        this.errorAlert("Vous devez ajouter d'abord un moniteur theorique");
@@ -149,7 +151,7 @@ export class InstallationMoniteursComponent implements OnInit {
   
   Swal.fire({
     title: 'confirmation',
-    text: "Vous voulez ajouter une autre un moniteur ?",
+    text: "Vous voulez ajouter un autre moniteur ?",
     icon: 'error',
     showCancelButton: true,
     cancelButtonText: 'annuler',

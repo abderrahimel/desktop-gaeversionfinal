@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import {ToastrService} from 'ngx-toastr'
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-verify-account',
@@ -22,7 +23,7 @@ export class VerifyAccountComponent implements OnInit {
   }
   resendEmail(){
     this.dataService.resendEmail().subscribe(data=>{
-      this.showSuccess();
+      this.alertMessage("veuillez vérifier votre email")
     })
   }
 
@@ -30,9 +31,23 @@ export class VerifyAccountComponent implements OnInit {
     localStorage.clear()
     this.router.navigateByUrl('/login');
   }
-  showSuccess(){
-    this.toastr.success('veuillez vérifier votre email', '', {
-   timeOut: 3000,
- });
-   }
+
+   alertMessage(message:any){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: message
+    })
+  }
 }

@@ -18,9 +18,9 @@
 			  <div class="row">
 				  <div class="col-md-6">
 					  <div class="form-group">      
-						  <label class="form-label">Employé</label>
+						  <label class="form-label" style="font-size: 13px;font-weight: 400;">Employé<span style="color:red">*</span></label>
 						  <select name="employe" class="form-control" style="height: 32px;" formControlName="employe_id">
-							  <option value="">Choisir un employe</option>
+							  <option value="" style="font-size: 13px;font-weight: 400;">Choisir un employe</option>
 							  <option *ngFor="let data of dataemployee" value="{{data.id}}"  >{{data.nom}}{{" "}}{{data.prenom}}</option>
 						  </select>
 					  </div>
@@ -28,15 +28,15 @@
 
 				  <div class="col-md-6">
 					  <div class="form-group">
-						  <label class="form-label">Type absence</label>
+						  <label class="form-label" style="font-size: 13px;font-weight: 400;">Type absence<span style="color:red">*</span></label>
 						  <div class="input-group mb-3">
 							  <select id="type5" name="type_absence"  style="height: 32px;" class="form-control" formControlName="type_absence">
-								  <option value="">Choisir un type</option>
-								  <option value="Congé">Congé</option>
-								  <option value="Maladie">Maladie</option>
-								  <option value="Non justifié">Non justifié</option>
-								  <option value="Préparation papier">Préparation papier</option>
-								  <option value="Problèmes familiaux">Problèmes familiaux</option>
+								  <option value="" style="font-size: 13px;font-weight: 400;">Choisir un type</option>
+								  <option value="Congé" style="font-size: 13px;font-weight: 400;">Congé</option>
+								  <option value="Maladie" style="font-size: 13px;font-weight: 400;">Maladie</option>
+								  <option value="Non justifié" style="font-size: 13px;font-weight: 400;"> Non justifié</option>
+								  <option value="Préparation papier" style="font-size: 13px;font-weight: 400;">Préparation papier</option>
+								  <option value="Problèmes familiaux" style="font-size: 13px;font-weight: 400;">Problèmes familiaux</option>
 																																											  </select>
 						  </div>	
 					  </div>
@@ -44,7 +44,7 @@
 
 				  <div class="col-md-6">
 					  <div class="form-group">    
-						  <label class="form-label">Date début</label>
+						  <label class="form-label" style="font-size: 13px;font-weight: 400;">Date début<span style="color:red">*</span></label>
 						  <div class="wd-200 mg-b-30">
 							  <div class="input-group">
 								  <div class="input-group-prepend">
@@ -57,7 +57,7 @@
 
 				  <div class="col-md-6">
 					  <div class="form-group">
-						  <label class="form-label">Date fin</label>
+						  <label class="form-label" style="font-size: 13px;font-weight: 400;">Date fin<span style="color:red">*</span></label>
 						  <div class="wd-200 mg-b-30">
 							  <div class="input-group">
 								  <div class="input-group-prepend">
@@ -69,7 +69,7 @@
 
 				  <div class="col-md-10">
 					  <div class="form-group">
-						  <label class="form-label">Remarques</label>
+						  <label class="form-label" style="font-size: 13px;font-weight: 400;">Remarques</label>
 						  <textarea rows="5" class="form-control" name="remarques" i formControlName="remarque"></textarea>
 					  </div>
 				  </div>

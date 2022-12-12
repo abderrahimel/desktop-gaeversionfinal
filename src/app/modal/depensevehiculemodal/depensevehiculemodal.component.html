@@ -1,26 +1,23 @@
 <!-- <div class="modal-dialog modal-lg">
 
   </div> -->
-  <div class="modal-content" style="font-size: 16px;">
+  <div class="modal-content" style="font-size: 13px;">
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} depense</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 13px">{{btn | translate}}{{'depense'| translate}}</h5>
         <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">×</span>
         </button>
     </div>
+    <span style="color: red;padding: 5px;">(*) {{'Champs obligatoire'| translate}} </span>
     <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
         <div class="modal-body">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div id="AddMessage" class="alert">
-                        </div>
-                    </div>
                     <div class="col-md-6">      
                         <div class="form-group">
-                            <label class="form-label" >Catégorie*</label>
-                            <select name="categorie" style="font-size: 16px;height: 30px;" class="form-control" id="categorie" formControlName="id_categorie">
-                                <option value="">Choisissez catégorie</option>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Catégorie'| translate}}<span style="color:red">*</span></label>
+                            <select name="categorie" style="font-size: 13px;height: 30px;" class="form-control" id="categorie" formControlName="id_categorie">
+                                <option value="" style="font-size: 13px;font-weight: 400;">{{'Choisissez catégorie'| translate}}</option>
                                 <option *ngFor="let data of categories" value="{{data?.id}}">{{data?.categorie}}</option>
                             </select>
                             <div class="err" *ngIf="submitted && this.form.controls.id_categorie.errors">
@@ -32,9 +29,9 @@
                     </div>
                     <div class="col-md-6" id="voitures_items">
                         <div class="form-group">
-                            <label class="form-label">Véhicule*</label>
-                            <select name="voiture" style="font-size: 16px;height: 30px;" class="form-control" formControlName="id_vehicule">
-                              <option value="">Choisissez un vehicule</option>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Véhicule'| translate}}<span style="color:red">*</span></label>
+                            <select name="voiture" style="font-size: 13px;height: 30px;" class="form-control" formControlName="id_vehicule">
+                              <option value="" style="font-size: 13px;font-weight: 400;">{{'Choisissez un vehicule'| translate}}</option>
                               <option *ngFor="let data of vehicules" value="{{data.id}}">{{data.matricule}}</option>
                             </select>
                             <div class="err" *ngIf="submitted && this.form.controls.id_vehicule.errors">
@@ -46,10 +43,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label">Date*</label>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date'| translate}}<span style="color:red">*</span></label>
                             <div class="wd-200 mg-b-30">     
                                 <div class="input-group">
-                                    <input class="form-control" style="text-transform:uppercase;font-size: 16px;" placeholder="DD/MM/YYYY" type="date" formControlName="date">
+                                    <input class="form-control" style="text-transform:uppercase;font-size: 13px" placeholder="DD/MM/YYYY" type="date" formControlName="date">
                                 </div>
                                 <div class="err" *ngIf="submitted && this.form.controls.date.errors">
                                   <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
@@ -61,8 +58,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label">Montant*</label>
-                            <input type="text" class="form-control" style="font-size: 16px;" name="montant" formControlName="montant">
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Montant'| translate}}<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" style="font-size: 13px" name="montant" formControlName="montant">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.montant.errors">
                           <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
@@ -72,8 +69,8 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="form-label">Remarques</label>
-                            <textarea rows="5" class="form-control" style="font-size: 16px;" placeholder="Votre Remarques!" name="remarques" formControlName="remarque"></textarea>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Remarques'| translate}}<span style="color:red">*</span></label>
+                            <textarea rows="5" class="form-control" style="font-size: 13px" placeholder="Votre Remarques!" name="remarques" formControlName="remarque"></textarea>
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
                           <div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
@@ -85,8 +82,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button *ngIf="show" type="submit" class="btn" style="background: #198754;color: white;font-size: 16px;"  id="button_addv" (click)="Depensevehicule()" > {{btn}}</button>
-            <button type="button" class="btn btn-danger" style="font-size: 16px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+            <button *ngIf="show" type="submit" class="btn" style="background: #198754;color: white;font-size: 13px"  id="button_addv" (click)="Depensevehicule()" >{{btn| translate}}</button>
+            <button type="button" class="btn btn-danger" style="font-size: 13px" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')"> {{'Fermer'| translate}}</button>
         </div>
     </form>
 </div>

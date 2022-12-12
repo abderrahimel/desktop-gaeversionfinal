@@ -6,6 +6,7 @@
             <span aria-hidden="true">×</span>
         </button>
     </div>
+    <span style="color: red;padding: 5px;">(*) Champs obligatoire </span>
     <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
         <div class="modal-body">
             <div class="card-body">
@@ -16,7 +17,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group"> 
-                            <label class="form-label">Catégorie*</label> 
+                            <label class="form-label" style="font-size: 13px;font-weight:400">{{'Catégorie'| translate}}<span style="color:red">*</span></label> 
                             <select name="categorie" class="form-control" style="font-size: 16px;height: 30px;" id="categorie" formControlName="id_categorie" >
                                 <option value="">Choisissez catégorie</option>
                                 <option *ngFor="let data of categories" value="{{data?.id}}">{{data?.categorie}}</option>
@@ -30,7 +31,7 @@
                     </div>
                     <div class="col-md-6" id="employes_items">
                         <div class="form-group">
-                            <label class="form-label">Employé*</label>
+                            <label class="form-label" style="font-size: 13px;font-weight:400">{{'Employé'| translate}}<span style="color:red">*</span></label>
                             <select name="employe" class="form-control" style="font-size: 16px;height: 30px;" formControlName="id_employe">
                                 <option value="">Choisir un employe</option>
                                 <option *ngFor="let data of employees" value="{{data?.id}}">{{data?.nom}}{{' '}}{{data?.prenom}}</option> 
@@ -44,7 +45,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label">Date*</label>      
+                            <label class="form-label" style="font-size: 13px;font-weight:400">{{'Date'| translate}}<span style="color:red">*</span></label>      
                             <div class="wd-200 mg-b-30">
                                 <div class="input-group">
                                     <input class="form-control" style="text-transform: uppercase;font-size: 16px;" placeholder="DD/MM/YYYY" type="date" formControlName="date">
@@ -59,7 +60,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label">Montant*</label>
+                            <label class="form-label" style="font-size: 13px;font-weight:400">{{'Montant'| translate}}<span style="color:red">*</span></label>
                             <input type="text" class="form-control" style="font-size: 16px;height: 30px;" name="montant" formControlName="montant">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.montant.errors">
@@ -70,7 +71,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="form-label">Remarques</label>
+                            <label class="form-label" style="font-size: 13px;font-weight:400">{{'Remarques'| translate}}<span style="color:red">*</span></label>
                             <textarea rows="5" class="form-control" placeholder="Votre Remarques!" style="font-size: 16px;" name="remarques" formControlName="remarque"></textarea>
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
@@ -83,8 +84,8 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button *ngIf="show" type="submit" class="btn" style="background: #198754;color: white;font-size: 16px;" id="button_addv"  (click)="depensepersonnel()" > {{btn}}</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')" style="font-size: 16px;">Fermer</button>
+          <button *ngIf="show" type="submit" class="btn" style="background: #198754;color: white;font-size: 16px;" id="button_addv"  (click)="depensepersonnel()" >{{btn| translate}}</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')" style="font-size: 16px;">{{'Fermer'| translate}}</button>
         </div>
     </form>
 </div>
