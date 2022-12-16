@@ -18,6 +18,8 @@ import { PresenceTheoriquemodalComponent } from 'src/app/modal/presence-theoriqu
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { presencecourState } from 'src/app/state/presencecours/presencecours.state';
+import { loadPresencecourTheorique } from 'src/app/state/presencecours/presencecours.actions';
 @Component({
   selector: 'app-plan-theorique',
   templateUrl: './plan-theorique.component.html',
@@ -61,7 +63,7 @@ export class PlanTheoriqueComponent implements OnInit {
   constructor(private dataservice:DataService,
               private candidatData: CandidatService,
               private router: Router,
-              private store: Store<{cour: CourState, moniteur:MoniteurState, candidat: CandidatState}>,
+              private store: Store<{cour: CourState, moniteur:MoniteurState, candidat: CandidatState, presencecour:presencecourState}>,
               private modalService: NgbModal,
               private dataService:DataService
     ) { }
@@ -149,7 +151,8 @@ getCoursTheorique(){
       if (result.isConfirmed) {
         this.store.dispatch(deleteCourTheoriqueById({id: id}));
         this.cours_theorique = [];
-        this.store.dispatch(loadCourTheorique({idAutoEcole: this.id_auto_ecole}))
+        this.store.dispatch(loadCourTheorique({idAutoEcole: this.id_auto_ecole}));
+        this.store.dispatch(loadPresencecourTheorique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
       }
     })
       

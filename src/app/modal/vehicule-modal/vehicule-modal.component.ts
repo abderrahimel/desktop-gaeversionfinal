@@ -125,24 +125,6 @@ export class VehiculeModalComponent implements OnInit {
       if(this.form.invalid){
         return;
       }
-      console.log({
-        matricule: this.form.value.matricule,
-        type: this.form.value.type,
-        marque: this.form.value.marque,
-        fourniseur: this.form.value.fourniseur,
-        modele: this.form.value.modele,
-        categorie: this.form.value.categorie,
-        date_visite: this.form.value.date_visite,
-        date_prochain_visite: this.form.value.date_prochain_visite,
-        date_vidange: this.form.value.date_vidange,
-        date_prochain_vidange: this.form.value.date_prochain_vidange,
-        date_assurance: this.form.value.date_assurance,
-        date_expiration_assurance: this.form.value.date_expiration_assurance,
-        vignette:this.base64Img_vignette, 
-        visite:this.base64Img_visite,
-        assurance: this.base64Img_image_assurance,
-        carte_grise: this.base64Img_cart
-       });
      if(this.btn === 'Ajouter'){
       this.dataservice.advehicule(localStorage.getItem('autoEcole_id'), {
         matricule: this.form.value.matricule,

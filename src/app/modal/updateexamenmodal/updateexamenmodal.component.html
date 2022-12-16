@@ -1,8 +1,8 @@
 <div class="modal-content" style="width: 800px;position: absolute;margin-top: 150px;margin-right: 200px;">
     <div class="modal-header">
       <div style="display: flex;flex-direction:column">
-		<h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} examen</h5>
-	    <p style="color: red;">(*) Champs obligatoire</p>
+		<h5 class="modal-title" id="exampleModalLabel" style="font-size: 13px;">{{btn|translate}} {{'examen'|translate}}</h5>
+	    <span style="color: red;padding-left: 10px;">(*){{'Champs obligatoire'| translate}}</span>
 	  </div>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
@@ -14,7 +14,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label class="form-label">Candidat</label>
+							<label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Candidat'| translate}}<span style="color: red;">*</span></label>
 							<select class="form-control" style="height: 30px;" formControlName="candidat_id">
 								<option *ngFor="let data of this.candidats;" value="{{data?.id}}">{{data?.nom_fr}}{{ " " }}{{data?.prenom_fr}}</option>
 							</select>
@@ -29,9 +29,10 @@
 					<br>
 					<div class="col-md-6">   
 						<div class="form-group">
-							<label class="form-label" >Catégorie</label>
+							<label class="form-label" ></label>
+							<label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Catégorie'| translate}}<span style="color: red;">*</span></label>
 							<select name="categorie" style="height: 30px;" class="form-control" formControlName="categorie">
-								<option value="">Choisissez Categorie</option>
+								<option value="" style="font-size: 13px;font-weight: 400;">{{'Choisissez Categorie'| translate}}</option>
 								<option value="A">A</option>
 								<option value="A1">A1</option>
 								<option value="AM">AM</option>
@@ -55,7 +56,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label class="form-label">Date dépôt</label>
+							<label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date dépôt'| translate}}<span style="color: red;">*</span></label>
 							<div class="wd-200 mg-b-30">
 								<div class="input-group">
 									<input class="form-control" placeholder="DD/MM/YYYY" type="date" formControlName="date_depot">
@@ -72,7 +73,7 @@
 
 					<div class="col-md-6">
 						<div class="form-group">
-							<label class="form-label">Date examen</label>
+							<label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date examen'| translate}}<span style="color: red;">*</span></label>
 							<div class="wd-200 mg-b-30">
 								<div class="input-group">   
 									<input class="form-control" placeholder="DD/MM/YYYY" type="date" formControlName="date_examen">
@@ -89,7 +90,7 @@
 
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="form-label">Moniteur</label>
+							<label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Moniteur'| translate}}<span style="color: red;">*</span></label>
 							<select class="form-control" style="height: 30px;" formControlName="moniteur_pratique_id">
 								<option *ngFor="let data of this.moniteurP;" value="{{data?.id}}">{{data?.nom}}{{ " " }}{{data?.prenom}}</option>
 							</select>
@@ -105,8 +106,8 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" class="btn" style="background: #198754;color: white;" id="button_edit" (click)="updateExamen()" >{{btn}}</button>
-			<button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+			<button type="submit" class="btn" style="background: #198754;color: white;" id="button_edit" (click)="updateExamen()" >{{btn|translate}}</button>
+			<button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">{{'Annuler'|translate}}</button>
 		</div>
 	</form>
   </div>

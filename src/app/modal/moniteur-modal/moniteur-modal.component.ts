@@ -76,7 +76,7 @@ export class MoniteurModalComponent implements OnInit {
       capn: new FormControl('', Validators.required),
       conduire: new FormControl('', Validators.required),
       adresse: new FormControl('', Validators.required),
-      categorie: new FormControl(''),
+      categorie: new FormControl('', Validators.required),
       observations: new FormControl(''),
       carteMoniteur: new FormControl('', Validators.required),
     })
@@ -96,9 +96,9 @@ export class MoniteurModalComponent implements OnInit {
       capn: new FormControl('', Validators.required),
       conduire: new FormControl('', Validators.required),
       adresse: new FormControl('', Validators.required),
-      categorie: new FormControl(''),
+      categorie: new FormControl('',Validators.required),
       observations: new FormControl(''),
-      carteMoniteur: new FormControl(''),
+      carteMoniteur: new FormControl('', Validators.required),
     })
   
   }

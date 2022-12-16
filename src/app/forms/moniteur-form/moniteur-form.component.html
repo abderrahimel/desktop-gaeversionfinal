@@ -189,7 +189,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="email-id-column" style="font-size: 13px;font-weight: 400;">{{ "Catégorie" | translate }}</label>
+                                                <label for="email-id-column" style="font-size: 13px;font-weight: 400;">{{ "Catégorie" | translate }}<span style="color:red">*</span></label>
                                                 <select name="categorie" class="form-control" style="font-size:16px;height:30px"  formControlName="categorie" id="categorie" (change)="addCategorie($event)">
                                                     <option value="">Choisissez catégorie</option>
                                                     <option value="AM">AM</option>
@@ -205,7 +205,12 @@
                                                     <option value="F">F</option>
                                                 </select>
                                             </div>
-                                            
+                                            <div class="err" *ngIf="submitted && this.form.controls.categorie.errors">
+                                                <div style="color: red;" *ngIf="this.form.controls.categorie.errors.required">
+                                                      {{'categorie obligatoire * ' | translate}}  
+                                                </div>
+                    
+                                            </div>
                                         </div>
                                         <div class="col-3" >
                                             <div class="form-group">

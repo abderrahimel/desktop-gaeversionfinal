@@ -11,7 +11,7 @@
               <div class="row">
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label">Titre*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Titre'| translate}}<span style="color:red">*</span></label>
                           <input type="text" style="font-size: 14px;" class="form-control" name="titre" placeholder="titre" formControlName="titre">
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
@@ -23,7 +23,7 @@
 
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label">Description*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Description'| translate}}<span style="color:red">*</span></label>
                           <textarea rows="5"  style="font-size: 14px;" class="form-control" placeholder="Description auto ecole" name="description" formControlName="description"></textarea>
                           <div class="err" *ngIf="submitted && this.form.controls.description.errors">
                             <div style="color: red;" *ngIf="this.form.controls.description.errors.required">
@@ -35,7 +35,7 @@
 
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label">Prix*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prix'| translate}}<span style="color:red">*</span></label>
                           <input type="text" class="form-control"  style="font-size: 14px;" name="prix" placeholder="Prix" formControlName="prix">
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.prix.errors">
@@ -46,7 +46,7 @@
                   </div>
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label">Date*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date'| translate}}<span style="color:red">*</span></label>
                           <input type="date" class="form-control"  style="font-size: 14px;" name="date" placeholder="Date" formControlName="date">
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.date.errors">
@@ -58,7 +58,7 @@
 
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label" *ngIf="show" >Image*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Image'| translate}}<span style="color:red">*</span></label>
                           <input *ngIf="show" class="form-control" type="file"  name="image" formControlName="image" (change)="fileChangeEvent($event)"
                           data-allowed-file-extensions="jpeg jpg png"
                           accept="image/*">

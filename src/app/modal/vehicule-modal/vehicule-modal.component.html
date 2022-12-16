@@ -1,18 +1,18 @@
 <div class="modal-content" style="width: 800px;">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} Véhicule</h5>
+      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn|translate}} {{'Véhicule'|translate}}</h5>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
     </div>
     <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data" style="padding: 20px;">
         <div class="card-body">
-             <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire </p>
+             <p style="color: red; font-weight: bold;font-size: 12px;">(*) {{'Champs obligatoire'|translate}}</p>
             
              <div class="row">
                  <div class="col-md-6">
                    <div class="form-group">
-                       <label for="first-name-column">{{ "matricule" | translate }} :</label>
+                       <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'matricule'| translate}}<span style="color: red;">*</span></label>
                        <input type="text" id="appt" name="appt" style="font-size: 16px;height: 30px;" class="form-control input" formControlName='matricule'>
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.matricule.errors">
@@ -25,14 +25,14 @@
 
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Type</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Type'| translate}}<span style="color: red;">*</span></label>
                          <div class="input-group mb-3">
                              <select name="type" class="form-control"  style="font-size: 16px;height: 30px;"  id="add_type" formControlName='type'>
-                                 <option value="">Choisir un type</option>
-                                 <option value="Motocycle">Motorcycle</option>
-                                 <option value="Autocar">Autocar</option>
-                                 <option value="Voiture">Voiture</option>
-                                 <option value="Camion">Camion</option>
+                                 <option value="">{{'Choisir un type'|translate}}</option>
+                                 <option value="Motocycle">{{'Motorcycle'|translate}}</option>
+                                 <option value="Autocar">{{'Autocar'|translate}}</option>
+                                 <option value="Voiture">{{'Voiture'|translate}}</option>
+                                 <option value="Camion">{{'Camion'|translate}}</option>
                                </select>
                          </div>
                          <div class="err" *ngIf="submitted && this.form.controls.type.errors">
@@ -46,7 +46,7 @@
                  
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Fournisseur*</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Fournisseur'| translate}}<span style="color: red;">*</span></label>
                          <input type="text" name="fournisseur"  style="font-size: 16px"  class="form-control" formControlName='fourniseur'>
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.fourniseur.errors">
@@ -58,7 +58,7 @@
 
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Marque*</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Marque'| translate}}<span style="color: red;">*</span></label>
                          <input type="text" name="marque"  style="font-size: 16px"  class="form-control" formControlName='marque'>
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.marque.errors">
@@ -70,7 +70,7 @@
 
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Modéle*</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Modéle'| translate}}<span style="color: red;">*</span></label>
                          <input type="text" name="modele"  style="font-size: 16px"  class="form-control" formControlName='modele'>
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.modele.errors">
@@ -80,9 +80,9 @@
                    </div>
                  </div>
                  <div class="col-md-6">
-                     <label class="form-label">Catégorie</label>
+                     <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Catégorie'| translate}}<span style="color: red;">*</span></label>
                      <select name="categorie" class="form-control "  style="font-size: 16px;height: 30px;"  formControlName='categorie'>
-                         <option value="">Choisissez catégorie</option>
+                         <option value="">{{'Choisissez catégorie'|translate}}</option>
                          <option value="A">A</option>
                          <option value="AM">AM</option>
                          <option value="A1">A1</option>
@@ -102,7 +102,7 @@
                  </div>
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Date visite technique</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date visite technique'| translate}}<span style="color: red;">*</span></label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_visite'>
@@ -117,7 +117,7 @@
                  </div>
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Date prochain visite technique</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date prochain visite technique'| translate}}<span style="color: red;">*</span></label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_prochain_visite'>
@@ -133,7 +133,7 @@
 
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Date vidange</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date vidange'| translate}}<span style="color: red;">*</span></label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_vidange' >
@@ -149,7 +149,7 @@
                  </div>
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Date prochain vidange</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date prochain vidange'| translate}}<span style="color: red;">*</span></label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_prochain_vidange' >
@@ -165,7 +165,7 @@
                  </div>
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Date assurance</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date assurance'| translate}}<span style="color: red;">*</span></label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY"  style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_assurance'>
@@ -180,7 +180,7 @@
                  </div>
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label class="form-label">Date expiration assurance</label>
+                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date expiration assurance'| translate}}<span style="color: red;">*</span></label>
                          <div class="wd-200 mg-b-30">
                              <div class="input-group">
                                  <input class="form-control" placeholder="DD/MM/YYYY" style="font-size: 13px;text-transform: uppercase;"  type="date" formControlName='date_expiration_assurance'>
@@ -198,7 +198,7 @@
 
                  <div class="col-md-3">
                    <div class="form-group">
-                       <label for="last-name-column">{{ "Carte grise" | translate }}:</label>
+                       <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Carte grise'| translate}}<span style="color: red;">*</span></label>
                        <input type="file" id="appt" class="dropify" name="appt" style="font-size: 13px" class="form-control input" formControlName='carte_grise' 
                        (change)="fileChangeEvent($event, 'cart')"
                        data-allowed-file-extensions="jpg png jpeg"
@@ -214,7 +214,7 @@
  
                  <div class="col-md-3">
                    <div class="form-group"> 
-                       <label for="last-name-column">{{ "assurance" | translate }}:</label>
+                       <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'assurance'| translate}}<span style="color: red;">*</span></label>
                        <input type="file" id="appt" name="appt" class="form-control input" style="font-size: 13px;" formControlName='assurance'
                                  (change)="fileChangeEvent($event, 'assurance')"
                        >
@@ -229,7 +229,7 @@
  
                  <div class="col-md-3">
                    <div class="form-group"> 
-                       <label for="last-name-column">{{ "visite technique" | translate }}:</label>
+                       <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'visite technique'| translate}}<span style="color: red;">*</span></label>
                        <input type="file" id="appt" name="appt" class="form-control input" style="font-size: 13px;" formControlName='visite'
                               (change)="fileChangeEvent($event, 'visite')"
                        >
@@ -244,7 +244,7 @@
  
                  <div class="col-md-3">
                    <div class="form-group">
-                       <label for="last-name-column">{{ "vignette" | translate }}:</label>
+                       <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'vignette'| translate}}<span style="color: red;">*</span></label>
                        <input type="file" id="appt" name="appt" style="font-size: 13px;"
                               class="form-control input" 
                               formControlName='vignette'
@@ -263,8 +263,8 @@
              </div>	
          </div>
          <div class="card-footer" *ngIf="show" style="margin-top: 7px;">
-           <button type="submit" class="btn" style="background:#198754 ;color: white;font-size: 16px;" (click)="AddOrModifierVehicule()">{{btn}}</button>
-             <button type="button" class="btn btn-danger" style="font-size: 16px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+           <button type="submit" class="btn" style="background:#198754 ;color: white;font-size: 16px;" (click)="AddOrModifierVehicule()">{{btn|translate}}</button>
+             <button type="button" class="btn btn-danger" style="font-size: 16px;" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">{{'Annuler'|translate}}</button>
          </div>
      </form>	
   </div>

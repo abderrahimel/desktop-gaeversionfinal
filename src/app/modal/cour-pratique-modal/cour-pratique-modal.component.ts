@@ -10,6 +10,8 @@ import { CandidatState } from 'src/app/state/candidat/candidat.state';
 import { CourState } from 'src/app/state/cours/cour.state';
 import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
 import { take } from 'rxjs/operators';
+import { presencecourState } from 'src/app/state/presencecours/presencecours.state';
+import { loadPresencecourPratique } from 'src/app/state/presencecours/presencecours.actions';
 
 @Component({
   selector: 'app-cour-pratique-modal',
@@ -56,7 +58,7 @@ export class CourPratiqueModalComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private dataService: DataService,
-              private store:Store<{candidat:CandidatState, cour:CourState, moniteur:MoniteurState}>,
+              private store:Store<{candidat:CandidatState, cour:CourState, moniteur:MoniteurState, presencecour: presencecourState}>,
     ) { }
 
     ngOnInit(): void {
@@ -155,6 +157,7 @@ export class CourPratiqueModalComponent implements OnInit {
           presence: this.presence
         }
         ).subscribe(data => {
+          this.store.dispatch(loadPresencecourPratique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         },
           error => this.handlerror(error)
         )
@@ -172,6 +175,7 @@ export class CourPratiqueModalComponent implements OnInit {
           presence: this.presence
         }
         ).subscribe(data => {
+          this.store.dispatch(loadPresencecourPratique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         },
           error => this.handlerror(error)
         )

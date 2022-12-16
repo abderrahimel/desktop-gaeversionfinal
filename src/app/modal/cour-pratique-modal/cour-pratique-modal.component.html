@@ -1,21 +1,18 @@
 <div class="modal-content" style="width: 800px;">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn}} planning</h5>
+      <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">{{btn|translate}} {{'planning'|translate}}</h5>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
     </div>
     <form class="form"  [formGroup]="form" method="POST" action="" enctype="multipart/form-data">
         <div class="card-body">
-           <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire</p>
-           <div class="col-md-12">
-               <div class="alert" id="AddMessage" style="display: none;">
-               </div>
-           </div>     
+           <p style="color: red; font-weight: bold;font-size: 12px;">(*) {{'Champs obligatoire'|translate}}</p>
+         
            <div class="row">
                <div class="col-md-6">
                    <div class="form-group">
-                       <label class="form-label">Date*</label>
+                       <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date'| translate}}<span style="color: red;">*</span></label>
                        <div class="wd-200 mg-b-30">
                          <div class="input-group">
                              <input class="form-control" placeholder="DD/MM/YYYY" type="date" name="date" formControlName="date" >
@@ -32,12 +29,12 @@
 
                <div class="col-md-6">
                    <div class="form-group">
-                       <label class="form-label">Heure début</label>
+                       <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Heure début'| translate}}<span style="color: red;">*</span></label>
                        <input type="time" name="heure_debut" class="form-control" formControlName="date_debut" placeholder="Heure Début 08:00">
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.date_debut.errors">
                      <div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
-                           {{'Hour obligatoire * ' | translate}}  
+                           {{'Heure obligatoire * ' | translate}}  
                      </div>
 
                  </div>
@@ -45,20 +42,21 @@
                
                <div class="col-md-6">
                    <div class="form-group">
-                     <label class="form-label">Heure fin</label>
+                     <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Heure fin'| translate}}<span style="color: red;">*</span></label>
                      <input type="time" name="heure_fin"  formControlName="date_fin" class="form-control" placeholder="Heure Fin 18:00">
                    </div>
                    <div class="err" *ngIf="submitted && this.form.controls.date_fin.errors">
                      <div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
-                           {{'Hour obligatoire * ' | translate}}  
+                           {{'Heure obligatoire * ' | translate}}  
                      </div>
 
                  </div>
                </div>
                
                <div class="col-md-6">
-                 <label class="form-label">Permis</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Permis'| translate}}<span style="color: red;">*</span></label>
                  <select id="permis_add" name="permis" class="form-control" style="height:30px" formControlName="permis">
+                    <option value="">{{'Choisir un categorie'|translate}}</option>
                      <option value="AM">AM</option>
                      <option value="A1">A1</option>
                      <option value="A">A</option>
@@ -79,11 +77,12 @@
                </div>
                 
                <div class="col-md-6">
-                     <label class="form-label">Type</label>
+                     <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Type'| translate}}<span style="color: red;">*</span></label>
                      <div class="input-group mb-3">
                          <select name="type" class="form-control" style="height:30px"  formControlName="type">
-                             <option value="circuit">Circuit libre</option>
-                             <option value="manoeuvre">Manoeuvre d'examen</option>
+                            <option value="">{{'choisir un type'|translate}}</option>
+                             <option value="circuit">{{'Circuit libre'|translate}}</option>
+                             <option value="manoeuvre">{{'Manoeuvre d\'examen'|translate}}</option>
                          </select>
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.type.errors">
@@ -95,9 +94,10 @@
                  </div>
              <div class="col-md-4">
                  <div class="form-group">
-                     <label class="form-label">Moniteur</label>
+                     <label class="form-label"></label>
+                     <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Moniteur'| translate}}<span style="color: red;">*</span></label>
                      <select id="monitor_add" name="moniteur" style="height:30px"  class="form-control" formControlName="moniteur_pratique_id">
-                         <option value="">Choisissez moniteur</option>
+                         <option value="">{{'Choisissez moniteur'|translate}}</option>
                          <option *ngFor="let mP of monitorP_E" value="{{ mP?.id }}">{{ mP?.nom }}{{ " " }}{{ mP?.prenom }}</option>
                      </select>
                      <div class="err" *ngIf="submitted && this.form.controls.moniteur_pratique_id.errors">
@@ -110,9 +110,9 @@
              </div>    
              <div class="col-md-4">
                  <div class="form-group">
-                     <label class="form-label">Véhicule</label>
+                     <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Véhicule'| translate}}<span style="color: red;">*</span></label>
                      <select dir="rtl" name="vehicule" class="form-control" style="height:30px"  formControlName="vehicule_id">
-                         <option value="">Choisissez une Véhicule </option>
+                         <option value="">{{'Choisissez une Véhicule'|translate}} </option>
                          <option *ngFor="let vehicule of vehicule_ecole" value="{{vehicule?.id}}">{{ vehicule?.matricule }}</option>
                                                          
                      </select>
@@ -128,9 +128,9 @@
          <div class="row">
              <div class="col-md-4">
                  <div class="form-group">
-                     <label class="form-label">Candidat</label>
+                     <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Candidat'| translate}}<span style="color: red;">*</span></label>
                      <select class="form-control" formControlName="candidat" style="height:30px"  (change)="add_to_list($event)">
-                         <option value="">Choisissez un(e) Candidat </option>   
+                         <option value="">{{'Choisissez un(e) Candidat'|translate}} </option>   
                          <option *ngFor="let data of candidatsB;" value="{{data?.id}}">{{data?.nom_fr}}{{ " " }}{{data?.prenom_fr}}</option>
                          <option *ngFor="let data of candidatS;" value="{{data?.id}}">{{data?.nom_fr}}{{ " " }}{{data?.prenom_fr}}</option>
                      </select>
@@ -144,7 +144,7 @@
 
              <div class="col-md-8">
                  <div class="form-group">
-                     <label class="form-label">List</label>
+                     <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'List'| translate}}</label>
                      <textarea class="form-control" name="list_candidat"  readonly="readonly">
                          {{listCandidat}}
                      </textarea> 
@@ -155,8 +155,8 @@
          </div> 
 
        <div class="card-footer">
-         <button type="submit" class="btn" style="background: #198754;color: white;" (click)="addCours_pratique()">{{btn}}</button>
-         <button type="button" class="btn btn-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">Annuler</button>
+         <button type="submit" class="btn" style="background: #198754;color: white;" (click)="addCours_pratique()">{{btn|translate}}</button>
+         <button type="button" class="btn btn-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">{{'Annuler'|translate}}</button>
        </div>
    </form>	
   </div>

@@ -50,6 +50,7 @@ export class TableDepenseLocalComponent implements OnInit {  //
   candidatsB:any;  
   candidatS:any;
   id_candidat:any;
+  categorieLocalList:any;
   hidden:any = true;
   depenseLocal:any;
   dataLoad:any
@@ -63,18 +64,32 @@ export class TableDepenseLocalComponent implements OnInit {  //
   ngOnInit(): void {
     // this.depenseL()
     this.getData()
+    this.categoriedepenseLocal();
   }
   depenseL(){ 
     this.dataservice.getDepenceLocal(localStorage.getItem('autoEcole_id')).subscribe(dlocal=>{
       this.depenseLocal = dlocal;
       console.log(this.depenseLocal);
-      this.dataSource = new MatTableDataSource(this.depenseLocal)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.n = this.depenseLocal.reduce((acc, o) => acc + Object.keys(o).length, 0)
+      // this.dataSource = new MatTableDataSource(this.depenseLocal)
+      // this.dataSource.paginator = this.paginator;
+      // this.dataSource.sort = this.sort;
+      // this.n = this.depenseLocal.reduce((acc, o) => acc + Object.keys(o).length, 0)
    }) 
 
 
+}
+categoriedepenseLocal(){
+  // loadCategoriedepense
+  this.store.pipe(take(1)).subscribe(store=>{
+    if(!store.categorieDepense.depenseCategorie.loaded){
+      this.store.dispatch(loadCategoriedepense({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+    }
+    this.store.select(state=>state.categorieDepense.depenseCategorie.categorieLocal).subscribe(local=>{
+      console.log("categorie local list");console.log(local);
+      this.categorieLocalList = local;
+    }) 
+  }
+  )
 }
 getData(){ 
   this.store.pipe(take(1)).subscribe(store=>{
@@ -96,6 +111,7 @@ getData(){
      // select depense local
     this.store.select(state=>state.depense.depense.local.local).subscribe(dlocal=>{
       this.depenseLocal = dlocal;
+      console.log("depense local ");console.log(this.depenseLocal);
       this.dataSource = new MatTableDataSource(this.depenseLocal)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -181,8 +197,8 @@ getData(){
   }
   open(data:any, btn:any) {
     const modalRef = this.modalService.open(DepenselocalmodalComponent);
-    modalRef.componentInstance.data = data;this.depenseLocal
-    modalRef.componentInstance.depenseLocal = this.depenseLocal
+    modalRef.componentInstance.data = data;
+    modalRef.componentInstance.depenseLocal = this.categorieLocalList
     modalRef.componentInstance.btn = btn;
   }
   applyFilter(event:any){

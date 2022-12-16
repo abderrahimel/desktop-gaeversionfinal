@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;background: #e5ebef;">
+<body style="font-size: 13px;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
@@ -35,7 +35,7 @@
           <hr>
           <div style="display: flex;align-items: center;justify-content: space-around;padding-left: 7px;padding-right: 7px;">
             <input type="date" class="form-control" style="height:30px">
-            <select class="form-control" name="categorie" id="categorie" style="height:30px;font-size: 14px;">
+            <select class="form-control" name="categorie" id="categorie" style="height:30px;font-size: 13px;">
               <option value="">Choisissez catégorie</option>
               <option value="A">A</option>
               <option value="A1">A1</option>
@@ -51,11 +51,11 @@
               <option value="FP">FP</option>
               <option value="FP/FC">FP/FC</option>
             </select>
-            <select type="text"  class="form-control" style="height:30px;font-size: 14px;">
+            <select type="text"  class="form-control" style="height:30px;font-size: 13px;">
                 <option value="">{{ "Choisissez Moniteur" | translate }}</option>
                 <option *ngFor="let element of fromMoniteur" value="{{element}}">{{element}}</option>
             </select>
-            <select type="text"  class="form-control" style="height:30px;font-size: 14px;">
+            <select type="text"  class="form-control" style="height:30px;font-size: 13px;">
                 <option value="">{{ "Choisissez Candidats" | translate }}</option>
                 <option *ngFor="let element of fromCandidat" value="{{element}}">{{element}}</option>
             </select>

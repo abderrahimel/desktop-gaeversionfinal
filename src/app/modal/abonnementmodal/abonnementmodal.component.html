@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">Prix*</label>     
+                                    <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prix'| translate}}<span style="color: red;">*</span></label>
                                     <input type="text" class="form-control" name="prix" id="edit_prix" formControlName="prix">
                                 </div>
                                 <div class="err" *ngIf="submitted && this.form.controls.prix.errors">
@@ -27,7 +27,7 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">Date début*</label>
+                                    <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date début'| translate}}<span style="color: red;">*</span></label>
                                     <div class="wd-200 mg-b-30">
                                         <div class="input-group">
                                             <input class="form-control" placeholder="DD/MM/YYYY" type="date" name="date_debut" id="edit_date_debut" formControlName="date_debut">
@@ -43,7 +43,7 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">Date fin*</label>
+                                    <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date fin'| translate}}<span style="color: red;">*</span></label>
                                     <div class="wd-200 mg-b-30">
                                         <div class="input-group">
                                            <input class="form-control" placeholder="DD/MM/YYYY" type="date" name="date_fin" id="edit_date_fin" formControlName="date_fin">
@@ -60,7 +60,6 @@
                         </div>
                     </div>
           </div>
-
                 <div class="card-footer" style="margin: 10px;">
                   <button type="submit" class="btn" style="background:#198754 ;color: white;" id="button_edit" (click)="abonnement()" >  {{btn}}</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Annuler</button>

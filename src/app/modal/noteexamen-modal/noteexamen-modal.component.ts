@@ -1,8 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
 import { loadExamenAction } from 'src/app/state/examen/examen.actions';
+import { loadExamenNoReussiAction } from 'src/app/state/examenNoreussi/examenNoreussi.actions';
+import { ExamenNoreussiState } from 'src/app/state/examenNoreussi/examenNoreussi.state';
+import { loadExamenReussiAction } from 'src/app/state/examenreussi/examenreussi.actions';
+import { ExamenreussiState } from 'src/app/state/examenreussi/examenreussi.state';
 
 @Component({
   selector: 'app-noteexamen-modal',
@@ -58,9 +63,11 @@ export class NoteexamenModalComponent implements OnInit {
   })
   constructor( public activeModal: NgbActiveModal,
                private dataservice: DataService, 
+               private store:Store<{examenreussi: ExamenreussiState, examenNoreussi: ExamenNoreussiState}>
     ) { }
 
     ngOnInit(): void {
+      console.log(this.data);
       this.getData();
       this.showForm(this.data?.id, this.data?.date_examen, this.categoriee)
     }
@@ -90,7 +97,10 @@ export class NoteexamenModalComponent implements OnInit {
       moyen: this.categorieId.moyen
      }).subscribe(
       data=>{
-       this.showformExam = false;
+        this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+        this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+        this.showformExam = false;
+         window.location.reload();
      },
      error =>console.log(error.error)
      )
@@ -98,11 +108,11 @@ export class NoteexamenModalComponent implements OnInit {
     }
   showForm(idExamen:any, dateExamen:any, categorie:any){
 
-  this.date_examen = dateExamen;
-  let DateE = new Date(dateExamen).getTime();
+    this.date_examen = dateExamen;
+    let DateE = new Date(dateExamen).getTime();
 
-  this.dataservice.getNotes(localStorage.getItem('autoEcole_id')).subscribe(data =>{
-   this.categorieId = JSON.parse(data).filter(note => note.categorie === categorie)[0];
+    this.dataservice.getNotes(localStorage.getItem('autoEcole_id')).subscribe(data =>{
+    this.categorieId = JSON.parse(data).filter(note => note.categorie === categorie)[0];
    
    if(this.categorieId?.categorie === categorie){
     this.showformconfigureNote = false;

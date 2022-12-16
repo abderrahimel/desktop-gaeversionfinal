@@ -1,7 +1,7 @@
 
   <div class="modal-content" >
     <div class="modal-header">
-        <h5  style="padding-top: -100px;border-top: none;font-size: 13px;">{{btn| translate}}{{'depense'| translate}}</h5>
+        <h5  style="padding-top: -100px;border-top: none;font-size: 13px;">{{btn| translate}}{{" "}}{{'depense'| translate}}</h5>
         <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">×</span>
         </button>
@@ -16,7 +16,7 @@
                             <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Catégorie'| translate}}<span style="color:red">*</span></label>
                             <select name="categorie" class="form-control" style="font-size: 16px;height: 30px;"  id="categorie" formControlName="id_categorie">
                                 <option value="" style="font-size: 13px;font-weight: 400;">{{'Choisissez catégorie'| translate}}</option>
-                                <option *ngFor="let data of categories" value="{{data?.categorie?.id}}">{{data?.categorie?.categorie}}</option>
+                                <option *ngFor="let data of categories" value="{{data?.id}}">{{data?.categorie}}</option>
                            </select>
                            <div class="err" *ngIf="submitted && this.form.controls.id_categorie.errors">
                               <div style="color: red;" *ngIf="this.form.controls.id_categorie.errors.required">

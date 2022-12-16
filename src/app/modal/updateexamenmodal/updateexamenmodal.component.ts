@@ -6,6 +6,10 @@ import { DataService } from 'src/app/services/data.service';
 import { CandidatState } from 'src/app/state/candidat/candidat.state';
 import { loadExamenAction, setloadingToFalse} from 'src/app/state/examen/examen.actions';
 import { ExamenState } from 'src/app/state/examen/examen.state';
+import { loadExamenNoReussiAction } from 'src/app/state/examenNoreussi/examenNoreussi.actions';
+import { ExamenNoreussiState } from 'src/app/state/examenNoreussi/examenNoreussi.state';
+import { loadExamenReussiAction } from 'src/app/state/examenreussi/examenreussi.actions';
+import { ExamenreussiState } from 'src/app/state/examenreussi/examenreussi.state';
 import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
 
 @Component({
@@ -29,7 +33,7 @@ export class UpdateexamenmodalComponent implements OnInit {
   })
 
   constructor(public activeModal: NgbActiveModal,
-              private store:Store<{candidat: CandidatState, moniteur: MoniteurState, examen: ExamenState}>,
+              private store:Store<{candidat: CandidatState, moniteur: MoniteurState, examen: ExamenState, examenreussi: ExamenreussiState, examenNoreussi: ExamenNoreussiState}>,
               private dataService:DataService,
     ) { }
 
@@ -63,17 +67,20 @@ export class UpdateexamenmodalComponent implements OnInit {
       date_depot: this.form.value.date_depot,
     };
     if(this.btn === 'Modifier'){
-      this.dataService.updateExamen(this.data?.id ,data).subscribe();
-      // this.store.dispatch(setloadingToFalse())
-      // this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
-      this.activeModal.dismiss('Cross click');
+      this.dataService.updateExamen(this.data?.id ,data).subscribe(data=>{
+        this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
+        this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+        this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+        window.location.reload();
+      });
+      
     }else{
-      this.dataService.addExamen(localStorage.getItem('autoEcole_id'), data).subscribe(data=>{})
-      // this.store.dispatch(setloadingToFalse())
-      // this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
-      this.activeModal.dismiss('Cross click');
+      this.dataService.addExamen(localStorage.getItem('autoEcole_id'), data).subscribe(data=>{
+          // this.store.dispatch(setloadingToFalse())
+          this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
+          window.location.reload()
+      })
     }
-    
-     
+    this.activeModal.dismiss('Cross click');
   }
 }

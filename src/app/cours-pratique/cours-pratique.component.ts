@@ -18,6 +18,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { candidatStart } from '../state/candidat/candidat.actions';
+import { presencecourState } from '../state/presencecours/presencecours.state';
+import { loadPresencecourPratique } from '../state/presencecours/presencecours.actions';
 declare var $;
 
 @Component({
@@ -49,7 +51,7 @@ export class CoursPratiqueComponent implements OnInit { //
   constructor(private dataservice:DataService,
               private candidatData: CandidatService,
               private router: Router,
-              private store:Store<{candidat:CandidatState, cour:CourState, moniteur:MoniteurState}>,
+              private store:Store<{candidat:CandidatState, cour:CourState, moniteur:MoniteurState, presencecour:presencecourState}>,
               private modalService: NgbModal,
     ) { }
 
@@ -124,6 +126,7 @@ applyFilter(event:any){
       if (result.isConfirmed) {
         this.store.dispatch(deleteCourPratiqueById({id: id}));
         this.store.dispatch(loadCourPratique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+        this.store.dispatch(loadPresencecourPratique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
       }
     })
   }

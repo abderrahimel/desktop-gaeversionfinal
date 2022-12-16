@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadedPresencecourTheoriqueToStore } from "./presencecours.actions";
+import { loadedPresencecourPratiqueToStore, loadedPresencecourTheoriqueToStore } from "./presencecours.actions";
 import { initialState } from "./presencecours.state";
 
 
@@ -15,8 +15,20 @@ const _presencecourReducer = createReducer(initialState,
             loaded: state.presencecourstheorique.loaded
         }
     };
-})
-
+}),
+// 
+on(loadedPresencecourPratiqueToStore, (state, action)=>{
+    return {...state,
+        presencecourstheorique:{
+            presencecourstheorique: state.presencecourstheorique.presencecourstheorique,
+            loaded: state.presencecourstheorique.loaded
+        },
+        presencecourspratique:{
+            presencecourspratique: action.payload,
+            loaded: true
+        }
+    };
+}),
 
 )
 

@@ -3,8 +3,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { take } from 'rxjs/operators';
 import { CandidatService } from 'src/app/services/candidat.service';
 import { DataService } from 'src/app/services/data.service';
+import { loadPresencecourPratique } from 'src/app/state/presencecours/presencecours.actions';
+import { presencecourState } from 'src/app/state/presencecours/presencecours.state';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -35,33 +39,59 @@ export class PresencePratiqueComponent implements OnInit { //
   constructor(private route: ActivatedRoute,
               private dataService: DataService,
               private router:Router,
-              private candidatService: CandidatService
+              private candidatService: CandidatService,
+              private store:Store<{presencecour:presencecourState}>
     ) { }
 
   ngOnInit(): void {
    this.getpresences()
   }
 
-
   getpresences(){
-    this.dataService.getPresenceCourPratique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      this.presenceP = data;
-      this.presenceP.map(p=>{
-        for(let i=0; i<p.candidats.split(',').length;i++){
-          if(!this.fromCandidat.includes(p.candidats.split(',')[i])){
-            this.fromCandidat.push(p.candidats.split(',')[i]);
-          }
+    this.store.pipe(take(1)).subscribe(store=>{
+      if(!store.presencecour.presencecourspratique.loaded){
+        this.store.dispatch(loadPresencecourPratique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+      }
+      this.store.select(state=>state.presencecour.presencecourspratique.presencecourspratique).subscribe(cpratique=>{
+        this.presenceP = cpratique;
+        if(this.presenceP){
+          this.presenceP.map(p=>{
+            for(let i=0; i<p.candidats.split(',').length;i++){
+              if(!this.fromCandidat.includes(p.candidats.split(',')[i])){
+                this.fromCandidat.push(p.candidats.split(',')[i]);
+              }
+            }
+            // moniteurs 
+            if(!this.fromMoniteur.includes(p.moniteur) && p?.moniteur != undefined && p?.moniteur != null){
+              this.fromMoniteur.push(p.moniteur)
+            }
+          })
+          this.dataSource = new MatTableDataSource(this.presenceP)
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          this.n = this.presenceP.reduce((acc, o) => acc + Object.keys(o).length, 0)
         }
-        // moniteurs 
-        if(!this.fromMoniteur.includes(p.moniteur) && p?.moniteur != undefined && p?.moniteur != null){
-          this.fromMoniteur.push(p.moniteur)
-        }
+        
       })
-      this.dataSource = new MatTableDataSource(this.presenceP)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.n = this.presenceP.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
+    // this.dataService.getPresenceCourPratique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+    //   this.presenceP = data;
+    //   this.presenceP.map(p=>{
+    //     for(let i=0; i<p.candidats.split(',').length;i++){
+    //       if(!this.fromCandidat.includes(p.candidats.split(',')[i])){
+    //         this.fromCandidat.push(p.candidats.split(',')[i]);
+    //       }
+    //     }
+    //     // moniteurs 
+    //     if(!this.fromMoniteur.includes(p.moniteur) && p?.moniteur != undefined && p?.moniteur != null){
+    //       this.fromMoniteur.push(p.moniteur)
+    //     }
+    //   })
+    //   this.dataSource = new MatTableDataSource(this.presenceP)
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    //   this.n = this.presenceP.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    // })
   }
   applyFilter(event:any){
     let value = event.target.value

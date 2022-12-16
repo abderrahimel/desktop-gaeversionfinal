@@ -175,6 +175,7 @@ export class CourTheoriqueModalComponent implements OnInit {
         candidat: this.list_candidat,
         presence: this.presence
       }).subscribe(data => {
+        this.store.dispatch(loadPresencecourTheorique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         },
           error => this.handlerror(error)
         )

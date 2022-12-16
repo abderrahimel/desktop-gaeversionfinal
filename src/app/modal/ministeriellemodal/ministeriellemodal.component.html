@@ -10,7 +10,7 @@
               <div class="card-body">
                   <div class="row">
                       <div class="col-md-12">
-                          <label class="form-label">Messages.caregory*</label>
+                          <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'categorie'| translate}}<span style="color: red;">*</span></label>
                                 <div class="mb-3" style="display: flex;align-items: center;">
                                     <select *ngIf="!add_type" name="category" class="form-control" style="height: 32px" id="category" formControlName="category">
                                         <option value="">Choisissez catégorie</option>
@@ -35,7 +35,7 @@
                       </div>
                       <div class="col-md-12">
                           <div class="form-group">
-                              <label class="form-label">Titre*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Titre'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" class="form-control" name="titre" formControlName="titre">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.titre.errors">
@@ -47,7 +47,8 @@
                       
                       <div class="col-md-12">
                           <div class="form-group">
-                              <label class="form-label">Liens youtube</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Liens youtube'| translate}}<span style="color: red;">*</span></label>
+                              <label class="form-label"></label>
                               <input class="form-control" type="text" formControlName="lien">
                           </div> 
                           <div class="err" *ngIf="submitted && this.form.controls.lien.errors">
@@ -59,7 +60,7 @@
 
                       <div class="col-md-12">
                         <div class="form-group">
-                            <label class="form-label">Fichier PDF*</label>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Fichier PDF'| translate}}<span style="color: red;">*</span></label>
                             <input type="file" class="form-control" formControlName="fichier" name="fichier" 
                             (change)="fileChangeEvent($event)"
                             data-allowed-file-extensions="pdf"

@@ -11,6 +11,7 @@ import { loadCourPratique, loadCourTheorique } from 'src/app/state/cours/cour.ac
 import { CourState } from 'src/app/state/cours/cour.state';
 import { loadMoniteurP, loadMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
 import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
+import { loadPresencecourPratique } from 'src/app/state/presencecours/presencecours.actions';
 import { presencecourState } from 'src/app/state/presencecours/presencecours.state';
 
 @Component({
@@ -123,6 +124,7 @@ export class PresencePratiqueModalComponent implements OnInit {
       presence: this.present,
       candidat:this.can
     }).subscribe(data=>{
+      this.store.dispatch(loadPresencecourPratique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
     },
     error => this.handlerror(error)
     )

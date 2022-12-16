@@ -26,7 +26,7 @@ export class PaimentCandidatModalComponent implements OnInit {
     date: new FormControl('', Validators.required),
     montant: new FormControl('', Validators.required),
     banque: new FormControl(''),
-    type: new FormControl(''),
+    type: new FormControl('', Validators.required),
     numero: new FormControl(''),
     image: new FormControl(''),
     remarque: new FormControl(''),
@@ -71,7 +71,6 @@ export class PaimentCandidatModalComponent implements OnInit {
 AddOrUpdatepaiment(){
   this.submitted = true;
   if(this.form.invalid){
-    console.log("form invalid ");
     return;
   }
   let idC = Number(this.route.snapshot.paramMap.get('id'));

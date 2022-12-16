@@ -1,10 +1,10 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadExamenNoReussiToStore } from "./examenNoreussi.actions";
+import { loadExamenNReussitostore } from "./examenNoreussi.actions";
 import { initialState } from "./examenNoreussi.state";
 
-
 const _examenNoreussiReducer = createReducer(initialState,
-    on(loadExamenNoReussiToStore, (state, action)=>{
+    on(loadExamenNReussitostore, (state, action)=>{
+        console.log(action.payload);
     return {...state,
         examenNoreussi:{
             loaded:true,

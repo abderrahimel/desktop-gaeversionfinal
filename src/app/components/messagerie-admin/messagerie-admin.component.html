@@ -36,7 +36,7 @@
     <div style="border: 1px solid rgb(235, 235, 236);margin: 20px;">
         <div style="display: flex; align-items:center; justify-content:flex-start;">
             <div style="outline: none;margin-right: 5px;padding: 7px;margin-top: 7px;margin-left: 10px;cursor: pointer;background: black;color: white;font-size: 14px;border: 1px solid rgb(224, 220, 220);" id="envoi" (click)="changeBorder(1)"  >Envoi pour tous</div>
-            <div style="border: 1px solid rgb(235, 235, 236);outline: none;padding: 7px;margin-top: 7px;margin-top: 7px;cursor: pointer;font-size: 14px;" id='envoiSpecifier' (click)="changeBorder(2)">Envoi specifier</div>
+            <div style="border: 1px solid rgb(235, 235, 236);outline: none;padding: 7px;margin-top: 7px;margin-top: 7px;cursor: pointer;font-size: 13px;" id='envoiSpecifier' (click)="changeBorder(2)">Envoi specifier</div>
         </div>
         <div *ngIf="!hidden">
             <!-- start messagers for one auto ecole-->
@@ -45,7 +45,7 @@
             <div class="row">
             <div class="col-6">  
                 <div class="form-group">
-                    <label for="city-column" style="font-size: 15px">{{ "Objet*" | translate }}</label>
+                    <label for="city-column" style="font-size: 13px;font-weight:400">{{ "Objet" | translate }}<span style="color: red;">*</span> </label>
                     <input type="text" id="appt" name="appt" class="form-control" formControlName="object"/>
                     <div class="err" *ngIf="submitted1 && this.form1.controls.object.errors">
                         <div style="color: red;" *ngIf="this.form1.controls.object.errors.required">
@@ -62,7 +62,7 @@
                     <!--  -->
                     <div class="col-6">
                         <div class="form-group">   
-                            <label for="last-name-column" style="font-size: 15px">{{ "Message" | translate }}</label>
+                            <label for="city-column" style="font-size: 13px;font-weight:400">{{ "Message" | translate }}<span style="color: red;">*</span> </label>
                             <textarea  id="appt" name="appt" class="form-control" formControlName="message"> </textarea>
                             <div class="err" *ngIf="submitted1 && this.form1.controls.message.errors">
                                 <div style="color: red;" *ngIf="this.form1.controls.message.errors.required">
@@ -78,7 +78,7 @@
                     <!--  -->
                     <div class="col-6"> 
                         <div class="form-group"> 
-                            <label for="last-name-column" style="font-size: 15px">{{ "Fichier" | translate }}:</label>
+                            <label for="city-column" style="font-size: 13px;font-weight:400">{{ "Fichier" | translate }}<span style="color: red;">*</span> </label>
                             <input type="file" id="appt" name="appt" class="form-control"  (change)="fileChangeEvent($event)" formControlName="fichier">
                             <div class="err" *ngIf="submitted1 && this.form1.controls.fichier.errors">
                                 <div style="color: red;" *ngIf="this.form1.controls.fichier.errors.required">
@@ -106,7 +106,7 @@
             <div class="row">
             <div class="col-6">  
                 <div class="form-group">
-                    <label for="city-column" style="font-size: 15px">{{ "Objet*" | translate }}</label>
+                    <label  style="font-size: 13px;font-weight:400">{{ "Objet" | translate }}<span style="color: red;">*</span> </label>
                     <input type="text" id="appt" name="appt" class="form-control" formControlName="object"/>
                     <div class="err" *ngIf="submitted && this.form2.controls.object.errors">
                         <div style="color: red;" *ngIf="this.form2.controls.object.errors.required">
@@ -118,8 +118,8 @@
             <!--  -->
             <div class="col-6" >   
                 <div class="form-group">
-                    <label for="last-name-column" style="font-size: 15px">{{ "Ecoles" | translate }}</label>
-                    <select  id="appt" name="appt" class="form-control" style="height: 32px;font-size: 14px" formControlName="id_autoEcole" >
+                    <label  style="font-size: 13px;font-weight:400">{{ "Ecoles" | translate }}<span style="color: red;">*</span> </label>
+                    <select  id="appt" name="appt" class="form-control" style="height: 32px;font-size: 13px" formControlName="id_autoEcole" >
                         <option value="">Choisir Ecole</option>
                         <option *ngFor="let data of dataAutoEcole" value="{{data?.id}}">{{data?.nom_auto_ecole}}</option>
                     </select>
@@ -136,7 +136,7 @@
                     <!--  -->
                     <div class="col-6">
                         <div class="form-group">   
-                            <label for="last-name-column" style="font-size: 15px">{{ "Message" | translate }}</label>
+                            <label style="font-size: 13px;font-weight:400">{{ "Message" | translate }}<span style="color: red;">*</span> </label>
                             <textarea  id="appt" name="appt" class="form-control" formControlName="message"> </textarea>
                             <div class="err" *ngIf="submitted && this.form2.controls.message.errors">
                                 <div style="color: red;" *ngIf="this.form2.controls.message.errors.required">
@@ -163,7 +163,7 @@
                     <!--  -->
                     <div class="col-6"> 
                         <div class="form-group"> 
-                            <label for="last-name-column" style="font-size: 15px">{{ "Fichier" | translate }}:</label>
+                            <label  style="font-size: 13px;font-weight:400">{{ "Fichier" | translate }}<span style="color: red;">*</span> </label>
                             <input type="file" id="appt" name="appt" class="form-control"  (change)="fileChangeEvent($event)" formControlName="fichier">
                             <div class="err" *ngIf="submitted && this.form2.controls.fichier.errors">
                                 <div style="color: red;" *ngIf="this.form2.controls.fichier.errors.required">

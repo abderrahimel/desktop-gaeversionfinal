@@ -1,39 +1,61 @@
-<div class="modal-content" style="height: 450px;width: 700px;">
+<!-- configuration  -->
+<div *ngIf="showformconfigureNote" class="modal-content" style="height: 160px;width: 600px;">
+  <div class="modal-header">
+    <div  style="display: flex;flex-direction: column;">
+      <h5 class="modal-title" id="exampleModalLabel">Oops! Attention!</h5>
+      <p>Vous devez premièrement complétez la configuration avant d'ajouter la note.</p>
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+     <div  class="note-div" style="width: 600px;height: 150px;padding: 10px;margin-bottom: none;">
+      <div style="padding: 10px;">
+      <hr style="background: white;">
+        <div style="display: flex;align-items: center;">
+              <a class="btn btn-success" style="text-decoration: none;color: white;" routerLink="/listes-notes">Ajouter Note</a>
+              <button class="btn" style="background: black;color: white;text-align: center;" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+        </div>
+      </div>               
+    </div> 
+</div> 
+
+<div *ngIf="showmessageAttendateExamen" class="modal-content" style="height: 160px;width: 600px;">
+  <div class="modal-header">
+    <div  style="display: flex;flex-direction: column;">
+      <h5 class="modal-title" id="exampleModalLabel">
+        Oops! Attention!
+        <p>Vous devez attender la date d'examen pour ajouter la note.</p>
+      </h5>
+      
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+        <div class="note-div" style="width: 600px;height: 200px;padding: 10px;" >
+          <div style="padding: 10px;">
+          <hr style="background: white;" >
+            <div style="display: flex;align-items: center;">
+              <button class="btn" style="background: black;color: white;text-align: center;" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+            </div>
+          </div>               
+        </div>
+</div> 
+
+
+<div *ngIf="showformExam" class="modal-content" style="height: 450px;width: 700px;">
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalLabel">Ajouter note</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
     </button>
   </div>
-  <form *ngIf="showformExam" class="form" [formGroup]="form" style="padding: 7px;"  method="POST" action="" id="ajoute_cours" 
+     <!-- time to set the note -->
+
+  <form  class="form" [formGroup]="form" style="padding: 7px;"  method="POST" action="" id="ajoute_cours" 
   enctype="multipart/form-data">
-              <!-- time to set the note -->
-              <div *ngIf="showformconfigureNote" class="note-div" style="width: 600px;height: 200px;padding: 10px;">
-                  <div style="padding: 10px;">
-                    <h3>Oops! Attention!
-                    </h3>
-                    <p>Vous devez premièrement complétez la configuration avant d'ajouter la note.</p>
-                    <!-- <p [hidden]="true">Vous devez attender la date d'examen pour ajouter la note.</p> -->
-                  <hr style="background: white;">
-                    <div style="display: flex;align-items: center;">
-                          <a class="btn btn-success" style="text-decoration: none;color: white;"   
-                               routerLink="/listes-notes">Ajouter Note</a>
-                          <button style="cursor: pointer; width: 140px;height: 35px;background: black;color: white; padding: 5px; border-radius: 5px;text-align: center;" (click)="activeModal.dismiss('Cross click')">Fermer</button>
-                    </div>
-                  </div>               
-                </div> 
-                <!--  -->
-                <div *ngIf="showmessageAttendateExamen"  class="note-div" style="width: 600px;height: 200px;padding: 10px;" >
-                  <div style="padding: 10px;">
-                    <h3>Oops! Attention!
-                    </h3>
-                    <p>Vous devez attender la date d'examen pour ajouter la note.</p>
-                  <hr style="background: white;" >
-                    <div style="display: flex;align-items: center;">
-                      <button style="cursor: pointer; width: 140px;height: 35px;background: black;color: white; padding: 5px; border-radius: 5px;text-align: center;" (click)="activeModal.dismiss('Cross click')">Fermer</button>
-                    </div>
-                  </div>               
-                </div>
+           
   <!-- examen theorique -->
   <div class="row">
   <div class="col-4">

@@ -1,22 +1,22 @@
 <div class="modal-content" style="padding: 10px;">
 	<div class="modal-header">
-	  <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px">Paiement candidat</h5>
+	  <h5 class="modal-title" id="exampleModalLabel" style="font-size: 13px">{{'Paiement candidat'|translate}}</h5>
 	  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
 		<span aria-hidden="true">×</span>
 	  </button>
 	</div>
     <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
         <div class="card-body">
-            <p style="color: red; font-weight: bold;font-size: 12px;">(*) Champs obligatoire</p>
+            <p style="color: red; font-weight: bold;font-size: 13px;">(*) {{'Champs obligatoire'|translate}}</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">Date*</label>
-                        <input type="date" class="form-control" style="font-size: 14px;" name="date" formControlName="date">
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date'| translate}}<span style="color: red;">*</span></label>
+                        <input type="date" class="form-control" style="font-size: 13px;" name="date" formControlName="date">
                     </div>
                     <div class="err" *ngIf="submitted && this.form.controls.date.errors">
                       <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
-                            {{'field required ' | translate}}  
+                            {{'champs obligatoire' | translate}}  
                       </div>
 
                   </div>
@@ -24,57 +24,57 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">Montant</label>
-                        <input type="text" name="montant"  style="font-size: 14px;"  class="form-control" formControlName="montant">
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Montant'| translate}}<span style="color: red;">*</span></label>
+                        <input type="text" name="montant"  style="font-size: 13px;"  class="form-control" formControlName="montant">
                     </div>
                     <div class="err"  *ngIf="submitted && this.form.controls.montant.errors">
                       <div style="color: red;" *ngIf="this.form.controls.montant.errors.required">
-                            {{'field required ' | translate}}  
+                            {{'champs obligatoire' | translate}}  
                       </div>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">Banque</label>   
-                        <input type="text" name="banque"  style="font-size: 14px;"  class="form-control" placeholder="Banque" formControlName="banque">
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Banque'| translate}}</label>
+                        <input type="text" name="banque"  style="font-size: 13px;"  class="form-control" placeholder="Banque" formControlName="banque">
                     </div>
                     <div class="err" *ngIf="submitted && this.form.controls.banque.errors">
                       <div style="color: red;" *ngIf="this.form.controls.banque.errors.required">
-                            {{'field required ' | translate}}  
+                            {{'champs obligatoire' | translate}}  
                       </div>
                   </div>
                 </div>
                 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">Type</label>
-                        <select name="type_paiement" class="form-control"  style="font-size: 14px;"  formControlName="type" (change)="setHidden($event)">
-                            <option value="">Choisir un type</option>
-                            <option value="espece">Espece</option>
-                            <option value="cheque">Cheque</option>
-                            <option value="virement">Virement</option>
-                            <option value="verssement">Verssement</option>
-                            <option value="traite">Traite</option>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Type'| translate}}<span style="color: red;">*</span></label>
+                        <select name="type_paiement" class="form-control"  style="font-size: 13px;"  formControlName="type" (change)="setHidden($event)">
+                            <option value="">{{'Choisir un type'|translate}}</option>
+                            <option value="espece">{{'Espece'|translate}}</option>
+                            <option value="cheque">{{'Cheque'|translate}}</option>
+                            <option value="virement">{{'Virement'|translate}}</option>
+                            <option value="verssement">{{'Verssement'|translate}}</option>
+                            <option value="traite">{{'Traite'|translate}}</option>
                         </select>
                     </div>
                     <div class="err" *ngIf="submitted && this.form.controls.type.errors">
                       <div style="color: red;margin-top: 8px;" *ngIf="this.form.controls.type.errors.required">
-                            {{'field required ' | translate}}  
+                            {{'champs obligatoire' | translate}}  
                       </div>
                   </div>
                 </div>
                    
                 <div class="col-md-6" *ngIf="hidden">
                     <div class="form-group" id="numero" >
-                        <label class="form-label">Numéro</label>
-                        <input type="text" name="numero"  style="font-size: 14px;"  class="form-control" placeholder="Numéro" formControlName="numero">
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Numéro'| translate}}</label>
+                        <input type="text" name="numero"  style="font-size: 13px;"  class="form-control" placeholder="Numéro" formControlName="numero">
                     </div>
                 </div>
                     
                 <div class="col-md-12" *ngIf="hidden">
                     <div class="form-group" id="image">
-                        <label class="form-label">Image</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Image'| translate}}<span style="color: red;">*</span></label>
                         <input type="file"  class="form-control" 
                         (change)="fileChangeEvent($event)"
                         data-allowed-file-extensions="jpeg jpg png"
@@ -86,21 +86,21 @@
 
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="form-label">Remarques</label>
-                        <textarea rows="5" name="remarques"  style="font-size: 14px;"  class="form-control" formControlName="remarque"></textarea>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Remarques'| translate}}</label>
+                        <textarea rows="5" name="remarques"  style="font-size: 13px;"  class="form-control" formControlName="remarque"></textarea>
                     </div>
                     <div class="err" *ngIf="submitted && this.form.controls.remarque.errors">
                       <div style="color: red;" *ngIf="this.form.controls.remarque.errors.required">
-                            {{'field required ' | translate}}  
+                            {{'champs obligatoire ' | translate}}  
                       </div>
                   </div>
                 </div>
             </div>
         </div>
         <div class="card-footer" style="margin-top: 7px;">
-            <button type="submit" class="btn" style="background: #198754;color: white;" (click)="AddOrUpdatepaiment()"> {{btn}}</button>
+            <button type="submit" class="btn" style="background: #198754;color: white;" (click)="AddOrUpdatepaiment()"> {{btn|translate}}</button>
             <button type="submit" class="btn btn-dark" 
-            (click)="activeModal.dismiss('Cross click')">Annuler</button>
+            (click)="activeModal.dismiss('Cross click')">{{'Annuler'|translate}}</button>
         </div>
     </form>	
 </div>

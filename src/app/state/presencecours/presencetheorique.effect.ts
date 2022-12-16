@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { addAutoEcole } from '../autoEcole/autoEcole.actions';
 import { AutoEcoleState } from '../autoEcole/autoEcole.state';
-import { loadedPresencecourTheoriqueToStore, loadPresencecourTheorique, removePresenceById } from './presencecours.actions';
+import { loadedPresencecourPratiqueToStore, loadedPresencecourTheoriqueToStore, loadPresencecourPratique, loadPresencecourTheorique, removePresenceById } from './presencecours.actions';
 import { presencecourState } from './presencecours.state';
 
 @Injectable()
@@ -30,7 +30,23 @@ export class PresencecourEffects {
      })
     )
   })
-  // 
+  // loadPresencecourPratique
+  loadPresencecourPratique$ = createEffect(()=>{
+    
+    return this.actions$.pipe(ofType(loadPresencecourPratique),
+    
+     exhaustMap((action)=>{
+        return this.dataService.getPresenceCourPratique(action.idAutoEcole)
+        .pipe(
+            map((data)=>{
+              console.log("cours pratique");
+              console.log(data);
+                return loadedPresencecourPratiqueToStore({payload: data});
+            })
+        )
+     })
+    )
+  })
   removePresenceById$ = createEffect(()=>{
     
     return this.actions$.pipe(ofType(removePresenceById),

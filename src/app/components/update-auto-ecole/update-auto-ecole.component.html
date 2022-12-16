@@ -43,7 +43,7 @@ enctype="multipart/form-data" >
         
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark  styletext" >{{'Nom Auto-école*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Nom Auto-école'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="nom_auto_ecole" value="" formControlName="nom_auto_ecole" required>
                 
                  <div class="err" *ngIf="submitted && this.form.controls.nom_auto_ecole.errors">
@@ -52,16 +52,13 @@ enctype="multipart/form-data" >
                      </div>
 
                  </div>
-                 <label class="form-label text-dark  styletext">{{'Date d\'Overture*' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date d\'Overture'| translate}}<span style="color: red;">*</span></label>
                  <div class="wd-200 mg-b-30">
                      <div class="input-group">
-                       
                          <input 
                              class="form-control  datepickerNoOfMonths do hasDatepicker" 
                              placeholder="DD/MM/YYYY" type="date" name="date_ouverture"
                               value="" id="dp1645567079409" formControlName="date_ouverture" required>
-                             
-                          
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.date_ouverture.errors">
                          <div style="color: red;" *ngIf="this.form.controls.date_ouverture.errors.required">
@@ -70,10 +67,8 @@ enctype="multipart/form-data" >
 
                      </div>
                  </div>
-
-                 <label class="form-label text-dark  styletext"> {{'N. Registre de Commerce*' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'N. Registre de Commerce'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="n_register_de_commerce" value="" formControlName="n_register_de_commerce" required>
-              
                  <div class="err" *ngIf="submitted && this.form.controls.n_register_de_commerce.errors">
                      <div style="color: red;" *ngIf="this.form.controls.n_register_de_commerce.errors.required">
                            {{'Registre commerce required ' | translate}}  
@@ -84,7 +79,7 @@ enctype="multipart/form-data" >
          </div>
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark  styletext">{{'Identification Fiscale*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Identification Fiscale'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="identification_fiscale" value="" formControlName="identification_fiscale" required>
                 
                  <div class="err" *ngIf="submitted && this.form.controls.identification_fiscale.errors">
@@ -93,17 +88,14 @@ enctype="multipart/form-data" >
                      </div>
 
                  </div>
-                 <label class="form-label text-dark  styletext">{{'Date Autorisation*' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date Autorisation'| translate}}<span style="color: red;">*</span></label>
                  <div class="wd-200 mg-b-30">
                      <div class="input-group">
-                        
                          <input 
                              class="form-control  datepickerNoOfMonths da hasDatepicker"
                              placeholder="DD/MM/YYYY" 
                              type="date" id="date autorisation"
                              name="date_autorisation" value="" formControlName="date_autorisation" required>
-                            
-                           
                      </div>
                      <div class="err" *ngIf="submitted && this.form.controls.date_autorisation.errors">
                          <div style="color: red;" *ngIf="this.form.controls.date_autorisation.errors.required">
@@ -112,10 +104,8 @@ enctype="multipart/form-data" >
 
                      </div>
                  </div>
-
-                 <label class="form-label text-dark  styletext">{{'N. Agrément*' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'N. Agrément'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="n_agrement" value=""  formControlName="n_agrement" required>
-                 
                  <div class="err" *ngIf="submitted && this.form.controls.n_agrement.errors">
                      <div style="color: red;" *ngIf="this.form.controls.n_agrement.errors.required">
                            {{'N. Agrement required' | translate}}  
@@ -127,9 +117,8 @@ enctype="multipart/form-data" >
 
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark  styletext">{{'N. Patente*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'N. Patente'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="n_patente" value="" formControlName="n_patente" required>
-               
                  <div class="err" *ngIf="submitted && this.form.controls.n_patente.errors">
                      <div style="color: red;" *ngIf="this.form.controls.n_patente.errors.required">
                            {{' N. patente required.' | translate}}  
@@ -144,7 +133,7 @@ enctype="multipart/form-data" >
      <div class="row">
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark  styletext">{{'N. CNSS*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'N. CNSS'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="n_cnss" value="" formControlName="n_cnss" required>
                      <div class="err" *ngIf="submitted && this.form.controls.n_cnss.errors">
                          <div style="color: red;" *ngIf="this.form.controls.n_cnss.errors.required">
@@ -157,7 +146,7 @@ enctype="multipart/form-data" >
 
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark  styletext">{{'ICE*' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'ICE'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="ice" value="" formControlName="ice" required>
                  <div class="err" *ngIf="submitted && this.form.controls.ice.errors">
                      <div style="color: red;" *ngIf="this.form.controls.ice.errors.required">
@@ -170,7 +159,7 @@ enctype="multipart/form-data" >
 
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark  styletext">{{'Compte Bancaire*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Compte Bancaire'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="n_compte_bancaire" value="" formControlName="n_compte_bancaire" required>
                  <div class="err" *ngIf="submitted && this.form.controls.n_compte_bancaire.errors">
                      <div style="color: red;" *ngIf="this.form.controls.n_compte_bancaire.errors.required">
@@ -183,7 +172,7 @@ enctype="multipart/form-data" >
 
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark  styletext">{{'TVA*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'TVA'| translate}}<span style="color: red;">*</span></label>
                  <input type="number" class="form-control " name="tva" value="" formControlName="tva" required>
                  <div class="err" *ngIf="submitted && this.form.controls.tva.errors">
                      <div style="color: red;" *ngIf="this.form.controls.tva.errors.required">
@@ -198,7 +187,7 @@ enctype="multipart/form-data" >
      <div class="row">
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark  styletext">{{'Pays*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Pays'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="pays" value=""  formControlName="pays" required>
                  <div class="err" *ngIf="submitted && this.form.controls.pays.errors">
                      <div style="color: red;" *ngIf="this.form.controls.pays.errors.required">
@@ -206,7 +195,7 @@ enctype="multipart/form-data" >
                      </div>
 
                  </div>
-                 <label class="form-label text-dark styletext">{{'Téléphone*' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Téléphone'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="telephone" value="" formControlName="telephone" required>
                  <div class="err" *ngIf="submitted && this.form.controls.telephone.errors">
                      <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required">
@@ -219,7 +208,7 @@ enctype="multipart/form-data" >
 
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark styletext">{{'Ville*' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Ville'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="ville" value="" formControlName="ville" required>
                  <div class="err" *ngIf="submitted && this.form.controls.ville.errors">
                      <div style="color: red;" *ngIf="this.form.controls.ville.errors.required">
@@ -227,10 +216,8 @@ enctype="multipart/form-data" >
                      </div>
 
                  </div>
-                 <label class="form-label text-dark styletext">{{'Fax' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Fax'| translate}}</label>
                  <input type="text" class="form-control " name="fax" value="" formControlName="fax" >
-             
-                 
              </div>
          </div>
 
@@ -238,7 +225,7 @@ enctype="multipart/form-data" >
 
          <div class="col-md-6">
              <div class="form-group">
-             <label class="form-label  text-dark styletext" style="display: flex;align-items: center;">{{'Adresse' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Adresse'| translate}}</label>
                  <textarea 
                      rows="5" 
                      class="form-control " 
@@ -248,7 +235,7 @@ enctype="multipart/form-data" >
                  >
 
                  </textarea>
-                 <label class="form-label">{{'Site Web' | translate}}</label>
+                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Site Web'| translate}}</label>
                  <input formControlName="site_web" name="site_web" type="text" class="form-control "  i18n="site_web"/>
              </div>
          </div>
@@ -257,7 +244,7 @@ enctype="multipart/form-data" >
      <div class="row">
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark styletext">{{'Cin de Résponsable*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Cin de Résponsable'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="cin_responsable" value="" formControlName="cin_responsable" required>
                  <div class="err" *ngIf="submitted && this.form.controls.cin_responsable.errors">
                      <div style="color: red;" *ngIf="this.form.controls.cin_responsable.errors.required">
@@ -270,7 +257,7 @@ enctype="multipart/form-data" >
 
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark styletext">{{'Nom de Résponsable*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Nom de Résponsable'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="nom_responsable" value="" formControlName="nom_responsable" required>
                  <div class="err" *ngIf="submitted && this.form.controls.nom_responsable.errors">
                      <div style="color: red;" *ngIf="this.form.controls.nom_responsable.errors.required">
@@ -282,7 +269,7 @@ enctype="multipart/form-data" >
          </div>
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark styletext">{{'Prenom Responsable*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prenom Responsable'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="prenom_responsable" value="" formControlName="prenom_responsable" required>
                  <div class="err" *ngIf="submitted && this.form.controls.prenom_responsable.errors">
                      <div style="color: red;" *ngIf="this.form.controls.prenom_responsable.errors.required">
@@ -294,7 +281,7 @@ enctype="multipart/form-data" >
          </div>
          <div class="col-md-3">
              <div class="form-group">
-                 <label class="form-label text-dark styletext">{{'Tél de Résponsable*' | translate}}</label>
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Tél de Résponsable'| translate}}<span style="color: red;">*</span></label>
                  <input type="text" class="form-control " name="tel_responsable" value="" formControlName="tel_responsable" required>
                  <div class="err" *ngIf="submitted && this.form.controls.tel_responsable.errors">
                      <div style="color: red;" *ngIf="this.form.controls.tel_responsable.errors.required">
@@ -307,7 +294,7 @@ enctype="multipart/form-data" >
       
          <div class="col-md-9"> 
              <div class="form-group"> 
-                 <label class="form-label text-dark ">{{'Adresse de Résponsable' | translate}}</label> 
+                <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Adresse de Résponsable'| translate}}</label>
                  <textarea 
                      rows="5" 
                      class="form-control "  

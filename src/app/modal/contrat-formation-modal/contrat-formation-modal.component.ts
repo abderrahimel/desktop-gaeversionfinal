@@ -16,9 +16,6 @@ export class ContratFormationModalComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal,) { }
 
   ngOnInit(): void {
-    console.log("autoecole");console.log(this.autoecole);
-    console.log("candidat");console.log(this.data);
-    console.log("user");console.log(this.user);
     const months = {
       Jan: '01',
       Feb: '02',

@@ -24,10 +24,6 @@
         <div class="mat-elevation-z8" style="margin: 15px">
           <div class="card" style="width: 100%;">
             <div class="card-body">
-              
-
-
-
  <div class="wrap-table100" style="margin-bottom: 100px;">
   <div>
     <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
@@ -41,7 +37,7 @@
   <div style="display: flex;align-items: center;justify-content: space-around;padding-left: 7px;padding-right: 7px;">
     <input type="date" class="form-control">
     <select class="form-control" name="categorie" id="categorie" style="height:32px;font-size: 14px;">
-      <option value="">Choisissez catégorie</option>
+      <option value="">{{'Choisissez catégorie'|translate}}</option>
       <option value="A">A</option>
       <option value="A1">A1</option>
       <option value="AM">AM</option>
@@ -72,7 +68,7 @@
        <div class="table-responsive border-top mb-0">
               <!--ABSENCE candidats -->
                 <div style="display: flex;align-items:center;justify-content:flex-end">
-                  <div style="margin-right: 6px">  Rechercher:</div>
+                  <div style="margin-right: 6px">  {{'Rechercher'|translate}}:</div>
                   <mat-form-field appearance="standard">
                      <mat-label></mat-label>
                      <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
@@ -126,9 +122,9 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
               <mat-paginator 
-              [length]="n" 
-              [pageSize]="5"  
-              [pageSizeOptions]="[5, 10, 25, 100]">
+                #paginator
+                [pageSize]="5"  
+                [pageSizeOptions]="[5, 10, 25, 100]">
               </mat-paginator>
               <!-- end ABSENCE candidats -->
        </div>

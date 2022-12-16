@@ -11,6 +11,7 @@ import { loadCourTheorique } from 'src/app/state/cours/cour.actions';
 import { CourState } from 'src/app/state/cours/cour.state';
 import { loadMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
 import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
+import { loadPresencecourTheorique } from 'src/app/state/presencecours/presencecours.actions';
 import { presencecourState } from 'src/app/state/presencecours/presencecours.state';
 interface Object {
   [key: string]: any
@@ -120,16 +121,12 @@ export class PresenceTheoriquemodalComponent implements OnInit {
       if(this.form.invalid){
         return;
       } 
-     
-     let modifier;
-     let id;
-    
-       id = this.cour.id;
+      let id = this.cour.id;
      this.dataservice.ModifierPresenceCourTheorique(this.data?.presence[0]?.id,{
        presence: this.present,
        candidat: this.can
      }).subscribe(data=>{
- 
+      this.store.dispatch(loadPresencecourTheorique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
      },
      error => this.handlerror(error)
      )

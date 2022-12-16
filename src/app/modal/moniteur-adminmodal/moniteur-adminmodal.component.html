@@ -11,7 +11,7 @@
               <div class="row">
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label">Nom*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Nom'| translate}}<span style="color: red;">*</span></label>
                           <input type="text" class="form-control" name="titre" placeholder="nom de moniteur" formControlName="nom">
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.nom.errors">
@@ -23,7 +23,7 @@
 
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label">Description*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Description'| translate}}<span style="color: red;">*</span></label>
                           <textarea rows="5" class="form-control" placeholder="Description de moniteur" name="description"  formControlName="description"></textarea>
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.description.errors">
@@ -36,7 +36,8 @@
 
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label">Salaire*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Salaire'| translate}}<span style="color: red;">*</span></label>
+                          <label class="form-label">*</label>
                           <input type="text" class="form-control" name="prix" placeholder="Prix" formControlName="salaire">
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.salaire.errors">
@@ -47,7 +48,7 @@
                   </div>
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label class="form-label">Date*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date'| translate}}<span style="color: red;">*</span></label>
                           <input type="date" class="form-control" name="date" placeholder="Date" formControlName="date">
                       </div>
                       <div class="err" *ngIf="submitted && this.form.controls.date.errors">
@@ -60,7 +61,7 @@
 
                   <div class="col-md-12">
                       <div class="form-group">
-                          <label *ngIf="show"  class="form-label">Image*</label>
+                        <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Image'| translate}}<span style="color: red;">*</span></label>
                           <input *ngIf="show" class="form-control" type="file"  name="image" formControlName="image" (change)="fileChangeEvent($event)"
                                 data-allowed-file-extensions="jpeg jpg png"
                                 accept="image/*">

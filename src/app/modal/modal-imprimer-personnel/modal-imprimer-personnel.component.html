@@ -1,20 +1,22 @@
 <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;">Imprimer Dépenses</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size: 13px;">{{'Imprimer Dépenses'| translate}}</h5>
         <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">×</span>
         </button>
     </div>
+    <span style="color: red;padding-left: 10px;">(*){{'Champs obligatoire'| translate}}
+    </span>
     <form class="form" [formGroup]="form"  method="POST"   enctype="multipart/form-data">
         <div class="modal-body">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label">Date début*</label>
+                            <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date début'| translate}}<span style="color: red;">*</span></label>
                             <div class="wd-200 mg-b-30">
                                 <div class="input-group">
-                                    <input class="form-control" (change)="date_debut($event)" style="font-size: 16px;text-transform: uppercase;" placeholder="DD/MM/YYYY" formControlName="date_debut" type="date" name="date_debut" id="dp1666620510463">
+                                    <input class="form-control" (change)="date_debut($event)" style="font-size: 13px;text-transform: uppercase;" placeholder="DD/MM/YYYY" formControlName="date_debut" type="date" name="date_debut" id="dp1666620510463">
                                 </div>
                                 <div class="err" *ngIf="submitted && this.form.controls.date_debut.errors">
                                     <div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
@@ -26,10 +28,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label">Date fin*</label>
+                            <label class="form-label">{{'Date fin'| translate}}<span style="color: red;">*</span></label>
                             <div class="wd-200 mg-b-30">
                                 <div class="input-group">
-                                    <input class="form-control" (change)="date_fin($event)" style="font-size: 16px;text-transform: uppercase;" placeholder="DD/MM/YYYY" formControlName="date_fin" type="date" name="date_fin" id="dp1666620510464">
+                                    <input class="form-control" (change)="date_fin($event)" style="font-size: 13px;text-transform: uppercase;" placeholder="DD/MM/YYYY" formControlName="date_fin" type="date" name="date_fin" id="dp1666620510464">
                                 </div>
                                 <div class="err" *ngIf="submitted && this.form.controls.date_fin.errors">
                                     <div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
@@ -43,9 +45,9 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button style="background:red;border:none" (click)="activeModal.dismiss('Cross click')" class="btn btn-success" style="background:green;color:white;font-size: 16px;"  printSectionId="printpdf" #print ngxPrint> <i class="fa fa-print" aria-hidden="true"></i>Imprimer</button>
+            <button style="background:red;border:none" (click)="activeModal.dismiss('Cross click')" class="btn btn-success" style="background:green;color:white;font-size: 13px;"  printSectionId="printpdf" #print ngxPrint> <i class="fa fa-print" aria-hidden="true"></i> {{'Imprimer'| translate}}</button>
             <!-- <button type="submit" class="btn btn-success"  (click)="imprimer()"><i class="fa fa-print" aria-hidden="true"></i> Imprimer</button> -->
-            <button type="button" style="font-size: 16px;" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+            <button type="button" style="font-size: 13px;" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">{{'Fermer'|translate}}</button>
         </div>
     </form>
 </div>

@@ -1,5 +1,3 @@
-<!--  -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;background: #e5ebef;">
+<body style="font-size: 13px;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
@@ -26,7 +24,7 @@
               <div class="wrap-table100">
                 <div class="table-header">
                   <div  style="display: flex;align-items: center;justify-content: space-between;">
-                    <div class="col-9" style="font-size:15px;">
+                    <div class="col-9" style="font-size:13px;">
                       GESTION DES CANDIDATS
                     </div>
                     <div>
@@ -35,9 +33,9 @@
                   </div>
                 </div>
                 <div class="d-flex">
-                    <div> <button id="tab1text" class=" mx-2" style="background:black;color:white;padding: 6px;font-size: 15px;" onclick="document.getElementById('tab2').style.display='none';document.getElementById('tab1').style.display='block';document.getElementById('tab2text').style.color='black';document.getElementById('tab2text').style.background='white';document.getElementById('tab1text').style.color='white';document.getElementById('tab1text').style.background='black';">Formation-Basic</button> </div>
+                    <div> <button id="tab1text" class=" mx-2" style="background:black;color:white;padding: 6px;font-size: 13px;" onclick="document.getElementById('tab2').style.display='none';document.getElementById('tab1').style.display='block';document.getElementById('tab2text').style.color='black';document.getElementById('tab2text').style.background='white';document.getElementById('tab1text').style.color='white';document.getElementById('tab1text').style.background='black';">Formation-Basic</button> </div>
 
-                    <div><button id="tab2text" style="background:white;padding:6px;font-size: 15px;color: black;border: 2 px solid rgb(238, 226, 226)" onclick="document.getElementById('tab1').style.display='none';document.getElementById('tab2').style.display='block';document.getElementById('tab1text').style.background='white';document.getElementById('tab1text').style.color='black';document.getElementById('tab2text').style.background='black';document.getElementById('tab2text').style.color='white';">Cours supplementaire</button></div>
+                    <div><button id="tab2text" style="background:white;padding:6px;font-size: 13px;color: black;border: 2 px solid rgb(238, 226, 226)" onclick="document.getElementById('tab1').style.display='none';document.getElementById('tab2').style.display='block';document.getElementById('tab1text').style.background='white';document.getElementById('tab1text').style.color='black';document.getElementById('tab2text').style.background='black';document.getElementById('tab2text').style.color='white';">Cours supplementaire</button></div>
                 </div>
                 <div id="tab1" style="margin-top: 10px">
                   <mat-card>
@@ -181,7 +179,7 @@
                                   <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie}} </td>
                                 </ng-container>
                                   <!-- actions Column -->  
-                                  <ng-container matColumnDef="actions" style="color:white;font-size:15px">   
+                                  <ng-container matColumnDef="actions" style="color:white;font-size:13px">   
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ACTIONS</span> </th>
                                     <td mat-cell *matCellDef="let element" style="text-align: center;display: flex;align-items: center;"> 
                                          <!-- paiment -->

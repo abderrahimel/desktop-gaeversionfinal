@@ -6,7 +6,7 @@ import { take } from 'rxjs/operators';
 import { DataService } from '../services/data.service';
 import { loadExamenAction, setloadingToFalse } from '../state/examen/examen.actions';
 import { ExamenState } from '../state/examen/examen.state';
-import Swal from 'sweetalert2';
+import    Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DetailexamenmodalComponent } from '../modal/detailexamenmodal/detailexamenmodal.component';
 import { UpdateexamenmodalComponent } from '../modal/updateexamenmodal/updateexamenmodal.component';
@@ -17,6 +17,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import * as _ from 'lodash';
 import { AuthService } from '../services/auth/auth.service';
 import { getexamens } from '../state/examen/examen.selector';
+import { ExamenreussiState } from '../state/examenreussi/examenreussi.state';
+import { ExamenNoreussiState } from '../state/examenNoreussi/examenNoreussi.state';
+import { loadExamenReussiAction } from '../state/examenreussi/examenreussi.actions';
+import { loadExamenNoReussiAction } from '../state/examenNoreussi/examenNoreussi.actions';
 
 @Component({
   selector: 'app-examen',
@@ -74,8 +78,9 @@ export class ExamenComponent implements OnInit {
     etat_2: new FormControl(''),
     resultat: new FormControl(''),
   })
+
   constructor(private dataservice: DataService,
-              private store:Store<{examen: ExamenState}>,
+              private store:Store<{examen: ExamenState, examenreussi: ExamenreussiState, examenNoreussi: ExamenNoreussiState}>,
               private modalService: NgbModal,
               private auth:AuthService
     ) { }
@@ -84,9 +89,9 @@ export class ExamenComponent implements OnInit {
     this.auth.authStatus.subscribe(value=>{
       if(value){
         this.getExamens();
-        this.getCandidats();
-        this.getNotes();
-        this.reloadData();
+        // this.getCandidats();
+        // this.getNotes();
+        // this.reloadData();
       }
      })
   
@@ -99,7 +104,26 @@ export class ExamenComponent implements OnInit {
       })
     })
   }
+
   getExamens(){
+    //  this.store.pipe(take(1)).subscribe(store=>{
+    //   if(!store.examen.examen.loaded){
+    //     this.store.dispatch(loadExamenAction({idAutoEcole:localStorage.getItem('autoEcole_id')}))
+    //   }
+    //   this.store.select(state=>state.examen.examen.examen).subscribe(examen=>{
+    //     if(examen){
+    //       this.data_examen = examen;
+    //       this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    //       if(this.n > 0){
+    //         this.dataSource = new MatTableDataSource(this.data_examen);
+    //         this.dataSource.paginator = this.paginator;
+    //         this.dataSource.sort = this.sort;
+    //       }
+    //     }
+          
+         
+    //   })
+    // })
     this.dataservice.getExamen(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.data_examen = data;
       this.dataSource = new MatTableDataSource(this.data_examen)
@@ -107,18 +131,7 @@ export class ExamenComponent implements OnInit {
       this.dataSource.sort = this.sort;
       // this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
-    
-    // this.store.pipe(take(1)).subscribe(store=>{
-    //   if(!store.examen.examen.loaded){
-    //     this.store.dispatch(loadExamenAction({idAutoEcole:localStorage.getItem('autoEcole_id')}))
-    //   }
-    //   this.store.select(state=>state.examen.examen.examen).subscribe(examen=>{
-    //     this.data_examen = examen;
-    //     this.dataSource = new MatTableDataSource(this.data_examen);
-    //     this.dataSource.paginator = this.paginator;
-    //     this.dataSource.sort = this.sort;
-    //   })
-    // })
+   
   }
   onChange(e:any){
     if(e.target.value === ''){
@@ -241,6 +254,8 @@ reloadData(){
     }).then((result) => {
       if (result.isConfirmed) {
         this.dataservice.deleteExamen(id).subscribe(data =>{
+          this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+          this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         })
       }
       this.getData();

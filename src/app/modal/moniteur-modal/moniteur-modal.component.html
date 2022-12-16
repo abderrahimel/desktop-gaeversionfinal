@@ -18,12 +18,12 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Nom*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Nom'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" name="nom" class="form-control" formControlName="nom">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.nom.errors">
                             <div style="color: red;" *ngIf="this.form.controls.nom.errors.required">
-                                  {{'Nom required ' | translate}}  
+                                  {{'Nom obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -32,12 +32,12 @@
   
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Cin*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Cin'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" name="cin" class="form-control" formControlName="cin">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.cin.errors">
                             <div style="color: red;" *ngIf="this.form.controls.cin.errors.required">
-                                  {{'Cin required ' | translate}}  
+                                  {{'Cin obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -45,12 +45,12 @@
   
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Prénom*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prénom'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" name="prenom" class="form-control" formControlName="prenom">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.prenom.errors">
                             <div style="color: red;" *ngIf="this.form.controls.prenom.errors.required">
-                                  {{'Prenom required ' | translate}}  
+                                  {{'Prenom obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -58,7 +58,7 @@
   
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Date naissance*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date naissance'| translate}}<span style="color: red;">*</span></label>
                               <div class="wd-200 mg-b-30">
                                   <div class="input-group">
                                       <div class="input-group-prepend">
@@ -66,7 +66,7 @@
                                   </div>
                                   <div class="err" *ngIf="submitted && this.form.controls.date_naissance.errors">
                                     <div style="color: red;" *ngIf="this.form.controls.date_naissance.errors.required">
-                                          {{'Date de naissance required ' | translate}}  
+                                          {{'Date de naissance obligatoire ' | translate}}  
                                     </div>
     
                                 </div>
@@ -76,12 +76,12 @@
              
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Lieu naissance*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Lieu naissance'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" name="lieu_naissance" class="form-control" formControlName="lieu_naissance">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.lieu_naissance.errors">
                             <div style="color: red;" *ngIf="this.form.controls.lieu_naissance.errors.required">
-                                  {{'Lieu de naissance required ' | translate}}  
+                                  {{'Lieu de naissance obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -89,12 +89,12 @@
   
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Email*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Email'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" name="email" class="form-control" formControlName="email">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.email.errors">
                             <div style="color: red;" *ngIf="this.form.controls.email.errors.required">
-                                  {{'Email required ' | translate}}  
+                                  {{'Email obligatoire ' | translate}}  
                             </div>
                             <div style="color: red;" *ngIf="form.controls.email.errors.email">
                                 {{'Email Invalid' | translate}}  
@@ -104,12 +104,12 @@
                   
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Téléphone*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Téléphone'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" name="telephone" class="form-control" formControlName="telephone">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.telephone.errors">
                             <div style="color: red;" *ngIf="this.form.controls.telephone.errors.required">
-                                  {{'Telephone required ' | translate}}  
+                                  {{'Telephone obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -117,7 +117,7 @@
   
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Date d'embauche*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Date d\'embauche'| translate}}<span style="color: red;">*</span></label>
                               <div class="wd-200 mg-b-30">
                                   <div class="input-group">
                                       <div class="input-group-prepend">
@@ -125,7 +125,7 @@
                                   </div>
                                   <div class="err" *ngIf="submitted && this.form.controls.date_embauche.errors">
                                     <div style="color: red;" *ngIf="this.form.controls.date_embauche.errors.required">
-                                          {{'Date de embauche required ' | translate}}  
+                                          {{'Date de embauche obligatoire ' | translate}}  
                                     </div>
     
                                 </div>
@@ -136,7 +136,7 @@
                      
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Type*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Type'| translate}}<span style="color: red;">*</span></label>
                               <select name="type_employe" class="form-control" formControlName="type_moniteur">
                                   <option value="">Choisir un type</option>
                                   <option value="Moniteur Théorique">Moniteur Théorique</option>
@@ -146,7 +146,7 @@
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.type_moniteur.errors">
                             <div style="color: red;" *ngIf="this.form.controls.type_moniteur.errors.required">
-                                  {{'Type Moniteur required ' | translate}}  
+                                  {{'Type Moniteur obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -154,12 +154,12 @@
                    
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">C.A.P.N</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'C.A.P.N'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" name="capn" class="form-control" formControlName="capn">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.capn.errors">
                             <div style="color: red;" *ngIf="this.form.controls.capn.errors.required">
-                                  {{'C.A.P.N required ' | translate}}  
+                                  {{'C.A.P.N obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -167,12 +167,12 @@
   
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">N p conduire</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'N p conduire'| translate}}<span style="color: red;">*</span></label>
                               <input type="text" name="n_p_conduire" class="form-control" formControlName="conduire">
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.conduire.errors">
                             <div style="color: red;" *ngIf="this.form.controls.conduire.errors.required">
-                                  {{'N° P Conduire required ' | translate}}  
+                                  {{'N° P Conduire obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -183,12 +183,12 @@
                          
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label class="form-label">Adresse*</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Adresse'| translate}}<span style="color: red;">*</span></label>
                               <textarea rows="5" class="form-control" name="adresse" formControlName="adresse"></textarea>
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.adresse.errors">
                             <div style="color: red;" *ngIf="this.form.controls.adresse.errors.required">
-                                  {{'Adresse required ' | translate}}  
+                                  {{'Adresse obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -196,12 +196,12 @@
   
                       <div class="col-md-6">
                           <div class="form-group">
-                              <label class="form-label">Observations</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Observations'| translate}}</label>
                               <textarea rows="5" class="form-control" name="observation" formControlName="observations"></textarea>
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.observations.errors">
                             <div style="color: red;" *ngIf="this.form.controls.observations.errors.required">
-                                  {{'Observations required ' | translate}}  
+                                  {{'Observations obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -210,7 +210,7 @@
                   <div class="row">
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Catégorie</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Catégorie'| translate}}<span style="color: red;">*</span></label>
                               <select class="form-control" (change)="addCategorie($event)" formControlName="categorie">
                                   <option value="">Choisissez catégorie</option>
                                   <option value="AM">AM</option>
@@ -231,13 +231,13 @@
                   
                       <div class="col-md-8">
                           <div class="form-group">
-                              <label class="form-label">List</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'List'| translate}}</label>
                               <textarea  class="form-control">{{categorie_list}}</textarea>
                           </div> 
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <label class="form-label">Carte moniteur</label>
+                              <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Carte moniteur'| translate}}<span style="color: red;">*</span></label>
                               <input type="file"  class="form-control" name="carteMoniteur" id="carteMoniteur" rows="3"
                               (change)="fileChangeEvent($event)"
                               data-allowed-file-extensions="jpeg jpg png"
@@ -247,7 +247,7 @@
                           </div>
                           <div class="err" *ngIf="submitted && this.form.controls.carteMoniteur.errors">
                             <div style="color: red;" *ngIf="this.form.controls.carteMoniteur.errors.required">
-                                  {{'Nom required ' | translate}}  
+                                  {{'carte Moniteur obligatoire ' | translate}}  
                             </div>
 
                         </div>
@@ -257,8 +257,8 @@
               </div>
   
               <div class="card-footer" style="margin-top: 5px">
-                  <button type="submit" class="btn" style="background: #198754;color: white;" (click)="moniteur()">{{btn}}</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">Fermer</button>
+                  <button type="submit" class="btn" style="background: #198754;color: white;" (click)="moniteur()">{{btn|translate}}</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">{{'Fermer'|translate}}</button>
               </div>
           </form>	
       </div>

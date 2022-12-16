@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth/auth.service';
+import { exhaustMap, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -276,7 +278,13 @@ updateDepenseCategorie(id:any, data:any){
     return this.httpclient.get(this.api + '/absence/'+ id, { responseType: 'text'});
   }
   getExamen(ecole_id:any){
-    return this.httpclient.get(this.api + '/auto-ecole/'+ ecole_id + '/examen');
+    return this.httpclient
+       .get(this.api + '/auto-ecole/'+ ecole_id + '/examen')
+      //  .pipe(
+      //   map((data:any)=>{
+      //       return data;
+      //   })
+      //  )
   }
   getExamenReussi(ecole_id:any){ 
     return this.httpclient.get(this.api + '/auto-ecole/' + ecole_id + '/candidat-reussi', { responseType: 'text'});

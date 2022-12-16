@@ -114,9 +114,8 @@ applyFilter(event:any){
           this.dataSource.sort = this.empTbSort;
           this.dataSource.paginator = this.paginatorFirst;
       });
-      // select examen no reussi
       this.store.select(state=> state.examenNoreussi.examenNoreussi.examenNoreussi).subscribe(examenNoreussi=>{
-          this.resultatCandidatNoReussi = examenNoreussi;
+          this.resultatCandidatNoReussi = examenNoreussi; console.log("d", examenNoreussi);
           this.dataSource1 = new MatTableDataSource(this.resultatCandidatNoReussi); 
           this.dataSource1.sort = this.empTbSort1;
           this.dataSource1.paginator = this.paginatorSecond;
@@ -160,7 +159,7 @@ applyFilter(event:any){
     modalRef.componentInstance.categoriee = element?.categorie;
   }
 
-  delete(id:any){
+  deleteexamen(id:any){
     Swal.fire({
       title: 'confirmation',
       text: "Vous voulez vraiment confirmer la suppression !",

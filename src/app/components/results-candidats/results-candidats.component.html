@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     <title>Gestion Auto-écoles-J2HB PLUS Editeur sécurité Routière</title>
 </head>
-<body style="font-size: 14px;background: #e5ebef;">
+<body style="font-size: 13px;;background: #e5ebef;">
   <div class="h-55">
     <app-headerlogged></app-headerlogged>
   </div>
@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-9">
               <div class="title">
-                <span style="font-size: 15px;font-weight: 700;">RÉSULTAT DES EXAMENS
+                <span style="font-size: 13px;;font-weight: 700;">RÉSULTAT DES EXAMENS
                 </span>
               </div>
             </div>
@@ -33,7 +33,7 @@
         <hr>
         <div  style="display: flex;align-items:center;flex: 1;justify-content:flex-start;">
           <div class="col-3">
-            <select name="moniteur" style="width: 200px;height:40px;font-size: 14px;" class="form-control" id=""  (change)="onChangeMoniteur($event)">
+            <select name="moniteur" style="width: 200px;height:40px;font-size: 13px;;" class="form-control" id=""  (change)="onChangeMoniteur($event)">
               <option value="">Choisissez Moniteur</option>
               <option *ngFor="let data of resultatCandidatReussi" value="{{data?.moniteur?.id}}">
                 {{data?.moniteur?.nom}}{{" "}}{{data?.moniteur?.prenom}}</option>
@@ -43,7 +43,7 @@
             </select>
           </div>
           <div class="col-3">
-              <select name="" id="" style="width: 200px;height:40px;font-size: 14px;" class="form-control" (change)="onChange($event)">
+              <select name="" id="" style="width: 200px;height:40px;font-size: 13px;;" class="form-control" (change)="onChange($event)">
                 <option value="">Choisissez Catégorie</option>
                 <option value="A">A</option>
                 <option value="A1">A1</option>
@@ -61,7 +61,7 @@
               </select>
           </div>
           <div class="col-3" >
-              <input class="form-control" style="margin-left: 10px;width: 200px;height:40px;font-size: 14px;" type="date"  (change)="onchangeInput($event)">
+              <input class="form-control" style="margin-left: 10px;width: 200px;height:40px;font-size: 13px;;" type="date"  (change)="onchangeInput($event)">
           </div>
         
         </div>
@@ -117,10 +117,10 @@
                                <ng-container matColumnDef="actions">   
                                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ACTIONS</span> </th>
                                  <td mat-cell *matCellDef="let element" style="text-align: center;"> 
-                                   <button class="btn button-class" style="background-color: rgb(0, 140, 255);color:white;width: 100px;font-size: 15px;" (click)="detail(element)">
+                                   <button class="btn button-class" style="background-color: rgb(0, 140, 255);color:white;width: 100px;font-size: 13px;;" (click)="detail(element)">
                                      Detail
                                    </button>
-                                   <button class="btn button-class" style="background-color: black;color:white;font-size: 15px;" (click)="delete(element?.id)">
+                                   <button class="btn button-class" style="background-color: black;color:white;font-size: 13px;;" (click)="deleteexamen(element?.id)">
                                      Supprimer
                                    </button>
                                  </td>
@@ -186,10 +186,10 @@
               <ng-container matColumnDef="actions">   
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ACTIONS</span> </th>
                 <td mat-cell *matCellDef="let element" style="text-align: center;"> 
-                  <button class="btn button-class" style="color: white;background-color: rgb(0, 140, 255);width: 100px;font-size: 15px;" (click)="detail(element)">
+                  <button class="btn button-class" style="color: white;background-color: rgb(0, 140, 255);width: 100px;font-size: 13px;;" (click)="detail(element)">
                     Detail
                   </button>
-                  <button class="btn button-class" style="background-color: black;color: white;font-size: 15px;" (click)="delete(element?.id)">
+                  <button class="btn button-class" style="background-color: black;color: white;font-size: 13px;;" (click)="deleteexamen(element?.id)">
                     Supprimer
                   </button>
                 </td>
