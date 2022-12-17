@@ -4,6 +4,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
 import { loadExamenAction } from 'src/app/state/examen/examen.actions';
+import { ExamenState } from 'src/app/state/examen/examen.state';
 import { loadExamenNoReussiAction } from 'src/app/state/examenNoreussi/examenNoreussi.actions';
 import { ExamenNoreussiState } from 'src/app/state/examenNoreussi/examenNoreussi.state';
 import { loadExamenReussiAction } from 'src/app/state/examenreussi/examenreussi.actions';
@@ -61,9 +62,10 @@ export class NoteexamenModalComponent implements OnInit {
     etat_2: new FormControl(''),
     resultat: new FormControl(''),
   })
+
   constructor( public activeModal: NgbActiveModal,
                private dataservice: DataService, 
-               private store:Store<{examenreussi: ExamenreussiState, examenNoreussi: ExamenNoreussiState}>
+               private store:Store<{examen: ExamenState, examenreussi: ExamenreussiState, examenNoreussi: ExamenNoreussiState}>
     ) { }
 
     ngOnInit(): void {
@@ -71,6 +73,7 @@ export class NoteexamenModalComponent implements OnInit {
       this.getData();
       this.showForm(this.data?.id, this.data?.date_examen, this.categoriee)
     }
+    
   getData(){
       let ecole_id = localStorage.getItem('autoEcole_id');
       this.dataservice.getNotes(ecole_id).subscribe(data=>{
@@ -97,10 +100,10 @@ export class NoteexamenModalComponent implements OnInit {
       moyen: this.categorieId.moyen
      }).subscribe(
       data=>{
+        this.store.dispatch(loadExamenAction({idAutoEcole:localStorage.getItem('autoEcole_id')}))
         this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         this.showformExam = false;
-         window.location.reload();
      },
      error =>console.log(error.error)
      )

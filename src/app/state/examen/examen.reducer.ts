@@ -1,22 +1,17 @@
 import { createReducer, on } from "@ngrx/store";
 import { Action } from "rxjs/internal/scheduler/Action";
-import { loadExamenToStore, removeExamenAction, setloadingToFalse } from "./examen.actions";
+import { loadExamensToStore, loadExamenToStore, removeExamenAction, setloadingToFalse } from "./examen.actions";
 import { initialState } from "./examen.state";
 
 
 const _examenReducer = createReducer(initialState,
-    on(loadExamenToStore, (state, action)=>{
-        if(action.payload){
+    on(loadExamensToStore, (state, action)=>{
             return {...state,
                 examen:{
                     loaded:true,
                     examen:action.payload
                 }
             };
-        }else{
-            return state;
-        }
-    
 }), 
 on(removeExamenAction, (state)=>{
     return {...state,

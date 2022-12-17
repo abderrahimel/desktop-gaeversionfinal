@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { exhaustMap, map, mergeMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataService } from 'src/app/services/data.service';
-import { addExamen, loadedExamenToStore, loadExamenAction, loadExamenToStore, setExamenInTheStore, updateExamen } from './examen.actions';
+import { addExamen,loadExamenAction, loadExamensToStore, loadExamenToStore, setExamenInTheStore, updateExamen } from './examen.actions';
 import { ExamenState } from './examen.state';
 
 @Injectable()
@@ -23,13 +23,12 @@ export class ExamenEffects {
         return this.dataService.getExamen(action.idAutoEcole)
         .pipe( 
             map((data)=>{
-                return loadExamenToStore({payload: data});
+                return loadExamensToStore({payload: data});
             })
         )
      })
     )
   })
-  
   // /listes-examens
   updateExamen$ = createEffect(()=>{
     return this.actions$.pipe(ofType(updateExamen),
@@ -58,6 +57,4 @@ addExamen$ = createEffect(()=>{
    })
   )
 })
-
 }
-

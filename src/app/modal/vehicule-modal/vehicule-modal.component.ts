@@ -5,8 +5,14 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DataService } from 'src/app/services/data.service';
 import { TranslationService } from 'src/app/services/translation.service';
+import { loadassurance } from 'src/app/state/assurance/assurance.actions';
+import { AssuranceState } from 'src/app/state/assurance/assurance.state';
 import { AutoEcoleState } from 'src/app/state/autoEcole/autoEcole.state';
 import { loadViheculeAction } from 'src/app/state/vehicule/vehicule.actions';
+import { loadvidange } from 'src/app/state/vidange/vidange.actions';
+import { VidangeState } from 'src/app/state/vidange/vidange.state';
+import { loadvisiteTechnique } from 'src/app/state/visiteTechnique/visiteTechnique.actions';
+import { VisiteTechniqueState } from 'src/app/state/visiteTechnique/visiteTechnique.state';
 @Component({
   selector: 'app-vehicule-modal',
   templateUrl: './vehicule-modal.component.html',
@@ -35,7 +41,7 @@ export class VehiculeModalComponent implements OnInit {
               private dataservice: DataService,
               private router: Router,
               private route: ActivatedRoute,
-              private store: Store<{autoEcole: AutoEcoleState}>
+              private store: Store<{autoEcole: AutoEcoleState, visiteTechnique:VisiteTechniqueState, vidange:VidangeState, assurance:AssuranceState}>
     ) { }
     ngOnInit(): void {
       this.id = Number(this.route.snapshot.paramMap.get('id'));
@@ -145,6 +151,9 @@ export class VehiculeModalComponent implements OnInit {
         carte_grise: this.base64Img_cart
        }).subscribe(data => {
         this.store.dispatch(loadViheculeAction({id: localStorage.getItem('autoEcole_id')}));
+        this.store.dispatch(loadvisiteTechnique({idAuto: localStorage.getItem('autoEcole_id')}));
+        this.store.dispatch(loadvidange({idAuto: localStorage.getItem('autoEcole_id')}));
+        this.store.dispatch(loadassurance({idAuto: localStorage.getItem('autoEcole_id')}));
       },
          error => this.handlerror(error)
       ) 
@@ -167,9 +176,10 @@ export class VehiculeModalComponent implements OnInit {
         assurance: this.base64Img_image_assurance,
         carte_grise: this.base64Img_cart
        }).subscribe(data => {
-        console.log(data);
         this.store.dispatch(loadViheculeAction({id: localStorage.getItem('autoEcole_id')}));
-        
+        this.store.dispatch(loadvisiteTechnique({idAuto: localStorage.getItem('autoEcole_id')}));
+        this.store.dispatch(loadvidange({idAuto: localStorage.getItem('autoEcole_id')}));
+        this.store.dispatch(loadassurance({idAuto: localStorage.getItem('autoEcole_id')}));
       },
          error => this.handlerror(error)
       ) 

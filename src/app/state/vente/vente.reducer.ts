@@ -4,7 +4,6 @@ import { initialState } from "./vente.state";
 
 const _venteReducer = createReducer(initialState,
     on(loadVenteToStore, (state, action)=>{
-        console.log("action.payload", action.payload);
     return {...state,
         vente: {
             vente:action.payload,

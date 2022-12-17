@@ -89,9 +89,9 @@ export class ExamenComponent implements OnInit {
     this.auth.authStatus.subscribe(value=>{
       if(value){
         this.getExamens();
-        // this.getCandidats();
-        // this.getNotes();
-        // this.reloadData();
+        this.getCandidats();
+        this.getNotes();
+        this.reloadData();
       }
      })
   
@@ -106,31 +106,32 @@ export class ExamenComponent implements OnInit {
   }
 
   getExamens(){
-    //  this.store.pipe(take(1)).subscribe(store=>{
-    //   if(!store.examen.examen.loaded){
-    //     this.store.dispatch(loadExamenAction({idAutoEcole:localStorage.getItem('autoEcole_id')}))
-    //   }
-    //   this.store.select(state=>state.examen.examen.examen).subscribe(examen=>{
-    //     if(examen){
-    //       this.data_examen = examen;
-    //       this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
-    //       if(this.n > 0){
-    //         this.dataSource = new MatTableDataSource(this.data_examen);
-    //         this.dataSource.paginator = this.paginator;
-    //         this.dataSource.sort = this.sort;
-    //       }
-    //     }
+     this.store.pipe(take(1)).subscribe(store=>{
+      if(!store.examen.examen.loaded){
+        this.store.dispatch(loadExamenAction({idAutoEcole:localStorage.getItem('autoEcole_id')}))
+      }
+      this.store.select(state=>state.examen.examen.examen).subscribe(examen=>{
+        if(examen){
+          this.data_examen = examen;
+          console.log("examen");console.log(examen);
+          this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
+          if(this.n > 0){
+            this.dataSource = new MatTableDataSource(this.data_examen);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          }
+        }
           
          
-    //   })
-    // })
-    this.dataservice.getExamen(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      this.data_examen = data;
-      this.dataSource = new MatTableDataSource(this.data_examen)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      // this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
+      })
     })
+    // this.dataservice.getExamen(localStorage.getItem('autoEcole_id')).subscribe(data=>{
+    //   this.data_examen = data;
+    //   this.dataSource = new MatTableDataSource(this.data_examen)
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    //   // this.n = this.data_examen.reduce((acc, o) => acc + Object.keys(o).length, 0)
+    // })
    
   }
   onChange(e:any){
@@ -254,11 +255,11 @@ reloadData(){
     }).then((result) => {
       if (result.isConfirmed) {
         this.dataservice.deleteExamen(id).subscribe(data =>{
+          this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
           this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
           this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
         })
       }
-      this.getData();
     })
         
         

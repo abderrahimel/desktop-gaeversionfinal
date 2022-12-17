@@ -16,8 +16,10 @@ export class VenteModelComponent implements OnInit {
   @Input() data: any;
   candidats:any;
   produits:any;
+  errorQuantity:boolean = false;
   submitted:boolean = false;
   candidatSupplementaire:any;
+  quantityDisponible:any;
   candidatBasic:any;
   form = new FormGroup({ 
     candidat_id: new FormControl('', Validators.required),
@@ -35,6 +37,7 @@ export class VenteModelComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    console.log(this.data);
     this.getCandidatsSupplementaire();
      this.getCandidatsBasic()
     this.dataService.getProduit(localStorage.getItem('autoEcole_id')).subscribe(data=>{
@@ -51,6 +54,36 @@ export class VenteModelComponent implements OnInit {
       date:  this.data?.date,
   });
   }
+  setquantitePrix(e:any){
+    console.log(e.target.value);
+    if(e.target.value){
+      this.dataService.getProduitById(e.target.value).subscribe(data=>{
+        console.log(JSON.parse(data));
+        this.form.patchValue({
+          prixUnitaire:  JSON.parse(data)['prix'],
+          quantiteDisponible:  JSON.parse(data)['quantite'],
+        });
+      });
+    }
+  }
+
+  checkQuantity(e:any){
+    console.log(e.target.value);
+    if(Number(e.target.value) >Number(this.form.value.quantiteDisponible)){
+      this.errorQuantity = true;
+    }else{
+      this.errorQuantity = false;
+      if(this.form.value.prixUnitaire){
+        let prixTotal = Number(e.target.value) * Number(this.form.value.prixUnitaire);
+        this.form.patchValue({
+          prixTotale: prixTotal
+        })
+      }
+      
+    }
+    console.log(this.errorQuantity);
+  }
+
   getCandidatsSupplementaire(){
     this.dataService.getCandidatsSupplementaire(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.candidatSupplementaire = JSON.parse(data)   
@@ -58,6 +91,7 @@ export class VenteModelComponent implements OnInit {
     error=>{}
     )
   }  
+ 
   getCandidatsBasic(){ 
     this.dataService.getCandidatsBasic(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.candidatBasic = JSON.parse(data)  
@@ -68,6 +102,10 @@ export class VenteModelComponent implements OnInit {
   addVente(){
     this.submitted = true;
     if(this.form.invalid){
+      return;
+    }
+    // Quantité doit être inférieur au quantité disponible
+    if(this.errorQuantity){
       return;
     }
     if(this.btn === 'Ajouter'){
@@ -82,7 +120,6 @@ export class VenteModelComponent implements OnInit {
       }).subscribe(data =>{
         this.store.dispatch(setloadedVente());
         this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
-        this.router.navigateByUrl('/vente');
       })
     }else{
       this.dataService.updateVente(this.data.id, { 

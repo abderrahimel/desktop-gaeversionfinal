@@ -32,9 +32,9 @@
                         <div class="form-group">
                             <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Libelle'| translate}}<span style="color:red">*</span>
                             </label>
-                            <select class="form-control" style="font-size: 13px;height:34px" name="produit" formControlName="produit_id" >
+                            <select class="form-control" style="font-size: 13px;height:34px" (change)="setquantitePrix($event)" name="produit" formControlName="produit_id" >
                                 <option value="" style="font-size: 13px;font-weight: 400;">{{'Choisissez un produit'| translate}}</option>
-                               <option *ngFor="let data of produits" value="{{data.id}}">{{data.libelle}}</option>
+                               <option *ngFor="let data of produits" value="{{data?.id}}">{{data?.libelle}}</option>
                             </select>
                             <div class="err" *ngIf="submitted && this.form.controls.produit_id.errors">
                                 <div style="color: red;" *ngIf="this.form.controls.produit_id.errors.required">
@@ -47,7 +47,7 @@
                         <div class="form-group"> 
                             <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Quantité disponible'| translate}}<span style="color:red">*</span>
                             </label>
-                            <input type="text" name="quantite_dispo" style="font-size: 13px;" formControlName="quantiteDisponible"  class="form-control" >
+                            <input type="text" name="quantite_dispo" style="font-size: 13px;" formControlName="quantiteDisponible"  class="form-control"  readonly="readonly">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.quantiteDisponible.errors">
                             <div style="color: red;" *ngIf="this.form.controls.quantiteDisponible.errors.required">
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prix unitaire'| translate}}<span style="color:red">*</span>
                             </label>
-                            <input type="text" name="prix_u"  style="font-size: 13px;" class="form-control" formControlName="prixUnitaire" >
+                            <input type="text" name="prix_u"  style="font-size: 13px;" class="form-control" formControlName="prixUnitaire" readonly="readonly">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.prixUnitaire.errors">
                             <div style="color: red;" *ngIf="this.form.controls.prixUnitaire.errors.required">
@@ -71,19 +71,21 @@
                         <div class="form-group">
                             <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Quantité'| translate}}<span style="color:red">*</span>
                             </label> 
-                            <input type="text" name="quantite"  style="font-size: 13px;" class="form-control" formControlName="quantite">
+                            <input type="text" name="quantite"  style="font-size: 13px;" (change)="checkQuantity($event)" class="form-control" formControlName="quantite">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.quantite.errors">
                             <div style="color: red;" *ngIf="this.form.controls.quantite.errors.required">
                                 {{' champs obligatoire *' | translate}}
                             </div>
+                            
                         </div>
-                    </div>
+                        <div *ngIf="errorQuantity" style="color: red;">Quantité doit être inférieur au quantité disponible *</div>
+                    </div>  
                     <div class="col-md-5">
                         <div class="form-group">         
                             <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Prix totale'| translate}}<span style="color:red">*</span>
                             </label>
-                            <input type="text" name="prix_t"  style="font-size: 13px;" class="form-control" formControlName="prixTotale">
+                            <input type="text" name="prix_t"  style="font-size: 13px;" class="form-control" formControlName="prixTotale" readonly="readonly">
                         </div>
                         <div class="err" *ngIf="submitted && this.form.controls.prixTotale.errors">
                             <div style="color: red;" *ngIf="this.form.controls.prixTotale.errors.required">

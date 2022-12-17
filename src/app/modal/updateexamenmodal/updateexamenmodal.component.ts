@@ -68,17 +68,17 @@ export class UpdateexamenmodalComponent implements OnInit {
     };
     if(this.btn === 'Modifier'){
       this.dataService.updateExamen(this.data?.id ,data).subscribe(data=>{
-        this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
-        this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
-        this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
-        window.location.reload();
+        this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+        // this.store.dispatch(loadExamenReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+        // this.store.dispatch(loadExamenNoReussiAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+        // window.location.reload();
       });
       
     }else{
       this.dataService.addExamen(localStorage.getItem('autoEcole_id'), data).subscribe(data=>{
           // this.store.dispatch(setloadingToFalse())
-          this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}))
-          window.location.reload()
+          this.store.dispatch(loadExamenAction({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+          // window.location.reload()
       })
     }
     this.activeModal.dismiss('Cross click');

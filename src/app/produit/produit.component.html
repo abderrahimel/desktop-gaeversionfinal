@@ -106,80 +106,10 @@
             </div>
         </div>
         </mat-card>
-           <!-- <div style="display: flex;align-items:center;justify-content:flex-end">
-               <div style="margin-right: 6px">  Rechercher:</div>
-               <mat-form-field appearance="standard">
-                  <mat-label></mat-label>
-                  <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
-               </mat-form-field>
-           </div>
-            <table mat-table [dataSource]="dataSource" matSort>    
-          
-              <ng-container matColumnDef="fournisseur">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fournisseur"> 
-                  <span style="font-weight:900;margin-right: 5px;">FOURNISSEUR</span>    
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.fournisseur}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="libelle">    
-                <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;margin-right: 5px;">LIBELLE</span>   </th>
-                <td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="prix">   
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;margin-right: 5px;">PRIX</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.prix}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="quantite">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;margin-right: 5px;">QUANTITE</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
-              </ng-container>   
-      
-              <ng-container matColumnDef="description"> 
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">DESCRIPTION</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-              </ng-container>
-              <ng-container matColumnDef="gsm">  
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">GSM</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.autoecole[0]?.tel_responsable}} </td>
-              </ng-container> 
-       
-          
-             <ng-container matColumnDef="actions">  
-              <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">ACTIONS</span>  </th>
-              <td mat-cell *matCellDef="let element"> 
-                  <button class="btn btn-danger" style="padding: 5px;" (click)="deleteProduit(element.id)">
-                    Supprimer 
-                  </button>
-                  <button 
-                  (click)="open('Modifier', element)"
-                      class="btn btn-primary"
-                      style="padding: 5px; width: 85px;margin-top: 2px;">
-                    Modifier
-                  </button>
-              </td>
-            </ng-container>
-      
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <mat-paginator 
-              [length]="n" 
-              [pageSize]="5"  
-              [pageSizeOptions]="[5, 10, 25, 100]">
-            </mat-paginator> -->
           </div>
       </div>
   </div>
-  <!-- fin first container -->
-                  
-
-    
-             
  </div>
-
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { AutoEcoleState } from 'src/app/state/autoEcole/autoEcole.state';
-import { addMoniteurP, addMoniteurT, updateMoniteurP, updateMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
+import { addMoniteurP, addMoniteurT, loadMoniteurT, updateMoniteurP, updateMoniteurT } from 'src/app/state/moniteur/moniteur.actions';
 import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
 import { loadMoniteurP } from 'src/app/state/moniteurPratique/moniteurPratique.actions';
 import { MoniteurPratiqueState } from 'src/app/state/moniteurPratique/moniteurPratique.state';
@@ -59,7 +59,8 @@ export class MoniteurModalComponent implements OnInit {
     });
 
     let categorie =  this.dataMoniteur?.categorie;
-      this.categorie_list = categorie.join(',')
+      this.categorie_list = categorie.split('-');
+      this.categorie_list = this.categorie_list.join(',');
       this.categorie_list += ','
   }
   createFormNew(){
@@ -78,7 +79,7 @@ export class MoniteurModalComponent implements OnInit {
       adresse: new FormControl('', Validators.required),
       categorie: new FormControl('', Validators.required),
       observations: new FormControl(''),
-      carteMoniteur: new FormControl('', Validators.required),
+      carteMoniteur: new FormControl(''),
     })
   
   }
@@ -98,7 +99,7 @@ export class MoniteurModalComponent implements OnInit {
       adresse: new FormControl('', Validators.required),
       categorie: new FormControl('',Validators.required),
       observations: new FormControl(''),
-      carteMoniteur: new FormControl('', Validators.required),
+      carteMoniteur: new FormControl(''),
     })
   
   }
@@ -130,6 +131,7 @@ export class MoniteurModalComponent implements OnInit {
     
       if(this.type === 'T'){
         this.store.dispatch(addMoniteurT({idAuto: localStorage.getItem('autoEcole_id'), payload: dataMoniteur}));
+        this.store.dispatch(loadMoniteurT({idAutoEcole:localStorage.getItem('autoEcole_id')}));
       }else{
         this.store.dispatch(addMoniteurP({idAuto: localStorage.getItem('autoEcole_id'), payload: dataMoniteur}));
         this.store.dispatch(loadMoniteurP({idAutoEcole:localStorage.getItem('autoEcole_id')}));
@@ -137,8 +139,10 @@ export class MoniteurModalComponent implements OnInit {
     }else{
         if(this.type === 'T'){
           this.store.dispatch(updateMoniteurT({id: this.data.id, data: dataMoniteur}));
+          this.store.dispatch(loadMoniteurT({idAutoEcole:localStorage.getItem('autoEcole_id')}));
         }else{
           this.store.dispatch(updateMoniteurP({id: this.data.id, data: dataMoniteur}));
+          this.store.dispatch(loadMoniteurP({idAutoEcole:localStorage.getItem('autoEcole_id')}));
         }
         this.activeModal.dismiss('Cross click')
     }

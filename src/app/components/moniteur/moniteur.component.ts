@@ -20,8 +20,8 @@ import { MoniteurPratiqueState } from 'src/app/state/moniteurPratique/moniteurPr
   styleUrls: ['./moniteur.component.css']
 })
 export class MoniteurComponent implements OnInit {
-  displayedColumns: string[] = ['cin',  'nom',  'telephone',  'type',  'newCategorie', 'date_embauche', 'actions']; 
-  displayedColumns1: string[] = ['cin',  'nom',  'telephone',  'type',  'newCategorie', 'date_embauche', 'actions']; 
+  displayedColumns: string[] = ['cin',  'nom',  'telephone',  'type',  'categorie', 'date_embauche', 'actions']; 
+  displayedColumns1: string[] = ['cin',  'nom',  'telephone',  'type',  'categorie', 'date_embauche', 'actions']; 
   @ViewChild('empTbSort') empTbSort = new MatSort();
   @ViewChild('empTbSortsecond') empTbSortsecond = new MatSort();
   @ViewChild('paginatorFirst') paginatorFirst!: MatPaginator;
@@ -47,18 +47,6 @@ export class MoniteurComponent implements OnInit {
       }
     })
   }
-  applyFilter(event:any){
-    let value = event.target.value
-    if(value){
-      this.dataSource.filter = value.trim().toLowerCase()
-    }
-  }
-  applyFilter1(event:any){
-    let value = event.target.value
-    if(value){
-      this.dataSource1.filter = value.trim().toLowerCase()
-    }
-  }
   getData(){
     // load moniteurs theorique
     this.store.pipe(take(1)).subscribe(store=>{
@@ -68,10 +56,6 @@ export class MoniteurComponent implements OnInit {
       this.store.select(state=>state.moniteur.moniteur.moniteurTheorique.moniteurTheorique).subscribe(moniteurs=>{
         this.datamoniteurT = moniteurs;
         if(this.datamoniteurT){
-          this.datamoniteurT.map(mt=>{
-            let categories = mt?.categorie
-            // mt['categorie'] = categories.join('-');
-          });
           this.dataSource = new MatTableDataSource(this.datamoniteurT)
             this.dataSource.paginator = this.paginatorFirst;
             this.dataSource.sort = this.empTbSort;
@@ -85,10 +69,6 @@ export class MoniteurComponent implements OnInit {
       this.store.select(state=>state.moniteurPratique.moniteurPratique.moniteurPratique).subscribe(moniteurs=>{
           this.datamoniteurP = moniteurs;
            if(this.datamoniteurP){
-            this.datamoniteurP.map(mp=>{
-              let categories = mp?.categorie
-              // mp['categorie'] = categories.join('-');
-            });
             this.dataSource1 = new MatTableDataSource(this.datamoniteurP)
             this.dataSource1.paginator = this.paginatorSecond;
             this.dataSource1.sort = this.empTbSortsecond;
@@ -96,28 +76,20 @@ export class MoniteurComponent implements OnInit {
       })
     })
   }
- reloadData(){
-  this.dataService.getMoniteurT(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-    this.datamoniteurT = data;
-    this.datamoniteurT.map(mt=>{
-      let categories = mt?.categorie
-      mt['newCategorie'] = categories.join('-');
-    });
-    this.dataSource = new MatTableDataSource(this.datamoniteurT)
-      this.dataSource.paginator = this.paginatorFirst;
-      this.dataSource.sort = this.empTbSort;
-  })
-  this.dataService.getMoniteurP(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      this.datamoniteurP = data;
-      this.datamoniteurP.map(mp=>{
-        let categories = mp?.categorie
-        mp['newCategorie'] = categories.join('-');
-      });
-      this.dataSource1 = new MatTableDataSource(this.datamoniteurP)
-      this.dataSource1.paginator = this.paginatorSecond;
-      this.dataSource1.sort = this.empTbSortsecond;
-  });
- }
+  applyFilter(event:any){
+    let value = event.target.value
+    if(value){
+      this.dataSource.filter = value.trim().toLowerCase()
+    }
+  }
+  applyFilter1(event:any){
+    let value = event.target.value
+    if(value){
+      this.dataSource1.filter = value.trim().toLowerCase()
+    }
+  }
+
+
 
 
   deletMoniteurT(id:any){

@@ -38,7 +38,7 @@ export class MoniteurFormComponent implements OnInit {
     adresse: new FormControl('', Validators.required),
     categorie: new FormControl('', Validators.required),
     observations: new FormControl(''),
-    carteMoniteur: new FormControl('', Validators.required),
+    carteMoniteur: new FormControl(''),
   })
 
   constructor(private dataService: DataService,

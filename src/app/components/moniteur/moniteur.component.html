@@ -55,9 +55,9 @@
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TYPE</span> </th>
                           <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.type}} </td>
                         </ng-container>
-                        <ng-container matColumnDef="newCategorie">   
+                        <ng-container matColumnDef="categorie">   
                           <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CATEGORIE</span> </th>
-                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.newCategorie}} </td>
+                          <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie}} </td>
                         </ng-container>
                           <ng-container matColumnDef="date_embauche">   
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE EMBAUCHE</span> </th>
@@ -120,9 +120,9 @@
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">TYPE</span> </th>
                       <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.type}} </td>
                     </ng-container>
-                    <ng-container matColumnDef="newCategorie">   
+                    <ng-container matColumnDef="categorie">   
                       <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CATEGORIE</span> </th>
-                      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.newCategorie}} </td>
+                      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie}} </td>
                     </ng-container>
                       <ng-container matColumnDef="date_embauche">   
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE EMBAUCHE</span> </th>
@@ -131,7 +131,7 @@
                         <ng-container matColumnDef="actions">   
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">ACTIONS</span> </th>
                         <td mat-cell *matCellDef="let element" style="text-align: center;"> 
-                          <button class="btn btn-danger button-class"  (click)="deletMoniteurT(element?.id)">
+                          <button class="btn btn-danger button-class"  (click)="deletMoniteurP(element?.id)">
                             Supprimer
                           </button>
                             <button 

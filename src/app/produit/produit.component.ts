@@ -38,14 +38,7 @@ export class ProduitComponent implements OnInit { //
     let value = event.target.value
     this.dataSource.filter = value.trim().toLowerCase()
   }
-  getProduit(){
-    this.dataService.getProduit(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-      this.dataProduit = JSON.parse(data);
-      this.dataSource = new MatTableDataSource(this.dataProduit)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    })
-  }
+
   getData(){
         this.store.pipe(take(1)).subscribe(store=>{
           if(!store.produitA.produit.loaded){
@@ -73,7 +66,7 @@ export class ProduitComponent implements OnInit { //
     }).then((result) => {
       if (result.isConfirmed) {
         this.store.dispatch(deletProduit({id: id}));
-        this.getData()
+        this.store.dispatch(loadProduit({idAutoEcole: localStorage.getItem('autoEcole_id')}));
       }
     })
    

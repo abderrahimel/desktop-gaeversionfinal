@@ -15,6 +15,12 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { VehiculeDetailModelComponent } from 'src/app/modal/vehicule-detail-model/vehicule-detail-model.component';
+import { VisiteTechniqueState } from 'src/app/state/visiteTechnique/visiteTechnique.state';
+import { VidangeState } from 'src/app/state/vidange/vidange.state';
+import { AssuranceState } from 'src/app/state/assurance/assurance.state';
+import { loadvisiteTechnique } from 'src/app/state/visiteTechnique/visiteTechnique.actions';
+import { loadvidange } from 'src/app/state/vidange/vidange.actions';
+import { loadassurance } from 'src/app/state/assurance/assurance.actions';
 
 @Component({
   selector: 'app-vehicule',
@@ -34,7 +40,7 @@ export class VehiculeComponent implements OnInit { // matricule  type  marque mo
   constructor(private translateService:TranslationService,
               private dataService: DataService, 
               private log: AuthService,
-              private store:Store<{vehicule: VehiculeState}>,
+              private store:Store<{vehicule: VehiculeState, visiteTechnique:VisiteTechniqueState, vidange:VidangeState, assurance:AssuranceState}>,
               private modalService: NgbModal,
               ) { 
                 this.vehiculesData$ = this.store.select(getVehicules);
@@ -43,10 +49,12 @@ export class VehiculeComponent implements OnInit { // matricule  type  marque mo
   ngOnInit(): void {
    this.getData();
   }
+
   applyFilter(event:any){
     let value = event.target.value
     this.dataSource.filter = value.trim().toLowerCase()
   }
+
   getData(){
     this.store.pipe(take(1)).subscribe(store=>{
       if(!store.vehicule.vehicule.loaded){
@@ -63,6 +71,7 @@ export class VehiculeComponent implements OnInit { // matricule  type  marque mo
       }
     })
   }
+
   getVehicules(){
     this.dataService.getVehicules(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.vehiculesData = JSON.parse(data);
@@ -72,6 +81,7 @@ export class VehiculeComponent implements OnInit { // matricule  type  marque mo
       this.n = this.vehiculesData.reduce((acc, o) => acc + Object.keys(o).length, 0)
     })
   }
+
   deleteVehicule(id:any){
     Swal.fire({
       title: 'confirmation',
@@ -86,11 +96,14 @@ export class VehiculeComponent implements OnInit { // matricule  type  marque mo
       if (result.isConfirmed) {
         this.dataService.deleteVehicule(id).subscribe(data =>{
           this.store.dispatch(loadViheculeAction({id: localStorage.getItem('autoEcole_id')}));
+          this.store.dispatch(loadvisiteTechnique({idAuto: localStorage.getItem('autoEcole_id')}));
+          this.store.dispatch(loadvidange({idAuto: localStorage.getItem('autoEcole_id')}));
+          this.store.dispatch(loadassurance({idAuto: localStorage.getItem('autoEcole_id')}));
         })  
       }
     })
-       
   }
+  
   open( btn:any, data:any) {
     const modalRef = this.modalService.open(VehiculeDetailModelComponent);
     modalRef.componentInstance.btn = btn;
