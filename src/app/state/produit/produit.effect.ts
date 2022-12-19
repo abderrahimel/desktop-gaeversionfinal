@@ -59,7 +59,6 @@ export class ProduitsEffects {
         .pipe(
             map((data)=>{
                 this.store.dispatch(loadproduitCandidat({idAutoEcole: localStorage.getItem('autoEcole_id')}));
-                this.router.navigateByUrl('/produit');
                 return loadProduit({idAutoEcole: localStorage.getItem('autoEcole_id')});
             })
         )
@@ -75,7 +74,6 @@ export class ProduitsEffects {
         .pipe(
             map((data)=>{
                 this.store.dispatch(loadproduitCandidat({idAutoEcole: localStorage.getItem('autoEcole_id')}));
-                this.router.navigateByUrl('/produit');
                 return loadProduit({idAutoEcole: localStorage.getItem('autoEcole_id')});
             })
         )

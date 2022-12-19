@@ -62,10 +62,8 @@ export class CourPratiqueModalComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-      console.log(this.data);
          this.getCandidatsBasic() 
          this.getCandidatsSupplementaire()
-   
         this.dataService.getMoniteursP(localStorage.getItem('autoEcole_id')).subscribe(data =>{
           this.monitorP_E = data
           });
@@ -74,7 +72,6 @@ export class CourPratiqueModalComponent implements OnInit {
            this.vehicule_ecole = JSON.parse(data);
          });
          // get candidat
-     
            this.form.patchValue({
             date: this.data?.date,
             date_debut: this.data?.date_debut,
@@ -92,7 +89,6 @@ export class CourPratiqueModalComponent implements OnInit {
                this.follow_cours_pratique += courP?.candidat[index] + ',';
              }
            }
-          
         
            this.candidatService.getListCandidat(courP?.candidat).subscribe(data=>{
              this.listCandidat = data
@@ -103,7 +99,6 @@ export class CourPratiqueModalComponent implements OnInit {
                this.listCandidatK?.push({key: val});
              })
               })
-              
            //
            let id_pr = Number(this.route.snapshot.paramMap.get('id'));
            if(this.data?.id !== undefined){

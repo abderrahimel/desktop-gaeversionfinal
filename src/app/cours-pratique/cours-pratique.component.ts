@@ -8,7 +8,6 @@ import { CandidatService } from '../services/candidat.service';
 import { CandidatState } from '../state/candidat/candidat.state';
 import { deleteCourPratiqueById, loadCourPratique } from '../state/cours/cour.actions';
 import { CourState } from '../state/cours/cour.state';
-
 import { MoniteurState } from '../state/moniteur/moniteur.state';
 import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -92,10 +91,6 @@ currentData()
   })
   this.dataservice.getMoniteurP(localStorage.getItem('autoEcole_id')).subscribe(data=>{
     this.datamoniteurP = data;
-    this.datamoniteurP.map(mp=>{
-      let categories = mp?.categorie
-      mp['newCategorie'] = categories.join('-');
-    })
 });
 }
 

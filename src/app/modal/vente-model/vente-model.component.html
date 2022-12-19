@@ -32,10 +32,12 @@
                         <div class="form-group">
                             <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Libelle'| translate}}<span style="color:red">*</span>
                             </label>
-                            <select class="form-control" style="font-size: 13px;height:34px" (change)="setquantitePrix($event)" name="produit" formControlName="produit_id" >
+                            <select *ngIf="selectboolean" class="form-control" style="font-size: 13px;height:34px" (change)="setquantitePrix($event)" name="produit" formControlName="produit_id" >
                                 <option value="" style="font-size: 13px;font-weight: 400;">{{'Choisissez un produit'| translate}}</option>
                                <option *ngFor="let data of produits" value="{{data?.id}}">{{data?.libelle}}</option>
                             </select>
+                            <input  *ngIf="!selectboolean" class="form-control" style="font-size: 13px;height:34px"  name="produit" formControlName="produit_id" readonly="readonly">
+                               
                             <div class="err" *ngIf="submitted && this.form.controls.produit_id.errors">
                                 <div style="color: red;" *ngIf="this.form.controls.produit_id.errors.required">
                                     {{' champs obligatoire *' | translate}}

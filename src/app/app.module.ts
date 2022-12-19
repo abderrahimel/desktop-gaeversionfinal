@@ -16,11 +16,9 @@ import { LoginComponent } from './components/login/login.component';
 import { CandidatComponent } from './components/candidat/candidat.component';
 import { CandidatFormComponent } from './forms/candidat-form/candidat-form.component';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
-import { CoursTheoriqueFormComponent } from './forms/cours-theorique-form/cours-theorique-form.component';
 import { CoursPratiqueComponent } from './cours-pratique/cours-pratique.component';
 import { ExamenComponent } from './examen/examen.component';
 import { DepenceComponent } from './depence/depence.component';
-import { DepenceFormComponent } from './forms/depence-form/depence-form.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AutoEcoleComponent } from './components/auto-ecole/auto-ecole.component';
@@ -35,18 +33,15 @@ import { DossierComponent } from './dossier/dossier.component';
 import { FactureComponent } from './caisse/facture/facture.component';
 import { RecetteComponent } from './caisse/recette/recette.component';
 import { PaiementComponent } from './paiement/paiement.component';
-import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { CategorieDepenseComponent } from './config/categorie-depense/categorie-depense.component';
 import { CategoriePermisComponent } from './config/categorie-permis/categorie-permis.component';
 import { LangueComponent } from './config/langue/langue.component';
-import { SalaireComponent } from './salaire/salaire.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { CandidatTrsfComponent } from './transition/candidat-trsf/candidat-trsf.component';
 import { CaisseTrsfComponent } from './transition/caisse-trsf/caisse-trsf.component';
 import { VehiculeTrsfComponent } from './transition/vehicule-trsf/vehicule-trsf.component';
 import { ProduitTrsfComponent } from './transition/produit-trsf/produit-trsf.component';
 import { ConfigTrsfComponent } from './transition/config-trsf/config-trsf.component';
-import { AbsenceformComponent } from './forms/absence/absence.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HeadertopComponent } from './components/headertop/headertop.component';
@@ -74,16 +69,12 @@ import { DevisComponent } from './caisse/devis/devis.component';
 import { NotesComponent } from './configuration/notes/notes.component';
 import { DepensesCategoriesComponent } from './configuration/depenses-categories/depenses-categories.component';
 import { UtilisateursComponent } from './configuration/utilisateurs/utilisateurs.component';
-import { VidangeFormComponent } from './forms/vidange-form/vidange-form.component';
 import { MoniteurFormComponent } from './forms/moniteur-form/moniteur-form.component';
 import { FacturationFormComponent } from './forms/facturation-form/facturation-form.component';
 import { DevisFormComponent } from './forms/devis-form/devis-form.component';
-import { UtilisateurFormComponent } from './forms/utilisateur-form/utilisateur-form.component';
 import { PaimentCandidatFormComponent } from './forms/paiment-candidat-form/paiment-candidat-form.component';
 import { PresenceComponent } from './components/presence/presence.component';
 import { ResultsCandidatsComponent } from './components/results-candidats/results-candidats.component';
-import { PresenceFormComponent } from './forms/presence-form/presence-form.component';
-import { PresencePratiqueFormComponent } from './forms/presence-pratique-form/presence-pratique-form.component';
 import { PresencePratiqueComponent } from './components/presence-pratique/presence-pratique.component';
 import { AdminComponent } from './admin/admin.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
@@ -326,12 +317,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SlideBarComponent,
     CandidatComponent,
     CandidatFormComponent,
-    CoursTheoriqueFormComponent,
     CoursPratiqueComponent,
     ExamenComponent,
     PresenceComponent,
     DepenceComponent,
-    DepenceFormComponent,
     AutoEcoleComponent,
     AutoEcoleFormComponent,
     VehiculeComponent,
@@ -343,18 +332,15 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FactureComponent,
     RecetteComponent,
     PaiementComponent,
-    FournisseurComponent,
     CategorieDepenseComponent,
     CategoriePermisComponent,
     LangueComponent,
-    SalaireComponent,
     AbsenceComponent,
     CandidatTrsfComponent,
     CaisseTrsfComponent,
     VehiculeTrsfComponent,
     ProduitTrsfComponent,
     ConfigTrsfComponent,
-    AbsenceformComponent,
     HeaderComponent,
     SignUpComponent,
     HeadertopComponent,
@@ -380,15 +366,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NotesComponent,
     DepensesCategoriesComponent,
     UtilisateursComponent,
-    VidangeFormComponent,
     MoniteurFormComponent,
     FacturationFormComponent,
     DevisFormComponent,
-    UtilisateurFormComponent,
     PaimentCandidatFormComponent,
     ResultsCandidatsComponent,
-    PresenceFormComponent,
-    PresencePratiqueFormComponent,
     PresencePratiqueComponent,
     AdminComponent,
     VenteComponent,

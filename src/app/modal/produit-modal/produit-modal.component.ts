@@ -20,7 +20,7 @@ export class ProduitModalComponent implements OnInit {
     libelle: new FormControl('', Validators.required),
     prix: new FormControl('', Validators.required),
     quantite: new FormControl('', Validators.required),
-    description: new FormControl(''),
+    description: new FormControl('', Validators.required),
   })
   constructor( public activeModal: NgbActiveModal,
                 private store: Store<{produitA: ProduitState}>,

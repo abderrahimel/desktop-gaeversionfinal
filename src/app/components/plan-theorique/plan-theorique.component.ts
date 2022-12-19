@@ -77,10 +77,10 @@ export class PlanTheoriqueComponent implements OnInit {
   getMoniteursT(){
     this.dataService.getMoniteurT(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.datamoniteurT = data;
-      this.datamoniteurT.map(mt=>{
-        let categories = mt?.categorie
-        mt['newCategorie'] = categories.join('-');
-      })
+      // this.datamoniteurT.map(mt=>{
+      //   let categories = mt?.categorie
+      //   mt['newCategorie'] = categories.join('-');
+      // })
     })
   }
   currentData()

@@ -11,15 +11,18 @@ import { VenteState } from 'src/app/state/vente/vente.state';
   templateUrl: './vente-model.component.html',
   styleUrls: ['./vente-model.component.css']
 })
+
 export class VenteModelComponent implements OnInit {
   @Input() btn: any;
   @Input() data: any;
   candidats:any;
+  idProduit:any;
   produits:any;
   errorQuantity:boolean = false;
   submitted:boolean = false;
   candidatSupplementaire:any;
   quantityDisponible:any;
+  selectboolean:boolean = true;
   candidatBasic:any;
   form = new FormGroup({ 
     candidat_id: new FormControl('', Validators.required),
@@ -37,22 +40,27 @@ export class VenteModelComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    if(this.btn === 'Ajouter'){
+      this.selectboolean = true;
+     
+    }else{
+      this.form.patchValue({
+        candidat_id: this.data?.candidat_id,
+        produit_id:  this.data?.produit?.libelle,
+        prixUnitaire:  this.data?.prixUnitaire,
+        prixTotale:  this.data?.prixTotale,
+        quantiteDisponible:  this.data?.quantiteDisponible,
+        quantite:  this.data?.quantite,
+        date:  this.data?.date,
+       });
+      this.selectboolean = false;
+    }
     this.getCandidatsSupplementaire();
      this.getCandidatsBasic()
     this.dataService.getProduit(localStorage.getItem('autoEcole_id')).subscribe(data=>{
         this.produits  = JSON.parse(data)
     })
-    
-    this.form.patchValue({
-      candidat_id: this.data?.candidat_id,
-      produit_id:  this.data?.produit_id,
-      prixUnitaire:  this.data?.prixUnitaire,
-      prixTotale:  this.data?.prixTotale,
-      quantiteDisponible:  this.data?.quantiteDisponible,
-      quantite:  this.data?.quantite,
-      date:  this.data?.date,
-  });
+   
   }
   setquantitePrix(e:any){
     console.log(e.target.value);
@@ -122,19 +130,19 @@ export class VenteModelComponent implements OnInit {
         this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
       })
     }else{
-      this.dataService.updateVente(this.data.id, { 
-        candidat_id: this.form.value.candidat_id,
-        prixUnitaire: this.form.value.prixUnitaire,
-        prixTotale: this.form.value.prixTotale,
-        produit_id: this.form.value.produit_id,
-        quantiteDisponible: this.form.value.quantiteDisponible,
-        quantite: this.form.value.quantite,
-        date: this.form.value.date,
-        }).subscribe(data =>{
-          this.store.dispatch(setloadedVente());
-          this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
-          this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
-        })
+        this.dataService.updateVente(this.data.id, { 
+          candidat_id: this.form.value.candidat_id,
+          prixUnitaire: this.form.value.prixUnitaire,
+          prixTotale: this.form.value.prixTotale,
+          produit_id: this.data?.produit_id,
+          quantiteDisponible: this.form.value.quantiteDisponible,
+          quantite: this.form.value.quantite,
+          date: this.form.value.date,
+          }).subscribe(data =>{
+            this.store.dispatch(setloadedVente());
+            this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
+            this.store.dispatch(loadVente({idAuto: localStorage.getItem('autoEcole_id')}));
+          })
     }
     
    this.activeModal.dismiss('Cross click')

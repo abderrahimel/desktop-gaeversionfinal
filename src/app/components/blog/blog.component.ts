@@ -64,11 +64,11 @@ export class BlogComponent  implements OnInit, OnDestroy, AfterViewInit{
         }
         this.store.select(state=>state.blog.blog.blog).subscribe(blogs=>{
           this.actualite = blogs
-          if(this.blogs){
-            this.nblogs = this.blogs.reduce((acc, o) => acc + Object.keys(o).length, 0);
-          }else{
-            this.nblogs = 0
-          }
+          // if(this.blogs){
+          //   this.nblogs = this.blogs.reduce((acc, o) => acc + Object.keys(o).length, 0);
+          // }else{
+          //   this.nblogs = 0
+          // }
         })
       })
      

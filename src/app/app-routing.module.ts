@@ -6,8 +6,6 @@ import { CoursPratiqueComponent } from './cours-pratique/cours-pratique.componen
 import { DepenceComponent } from './depence/depence.component';
 import { ExamenComponent } from './examen/examen.component';
 import { CandidatFormComponent } from './forms/candidat-form/candidat-form.component';
-import { CoursTheoriqueFormComponent } from './forms/cours-theorique-form/cours-theorique-form.component';
-import { DepenceFormComponent } from './forms/depence-form/depence-form.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { VehiculeComponent } from './components/vehicule/vehicule.component';
 import { ProduitComponent } from './produit/produit.component';
@@ -29,21 +27,17 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { PlanTheoriqueComponent } from './components/plan-theorique/plan-theorique.component';
 import { PlanPratiqueComponent } from './components/plan-pratique/plan-pratique.component';
 import { VidangeComponent } from './components/vidange/vidange.component';
-import { AbsenceformComponent } from './forms/absence/absence.component';
 import { AbsenceListeComponent } from './components/absence-liste/absence-liste.component';
 import { DevisComponent } from './caisse/devis/devis.component';
 import { NotesComponent } from './configuration/notes/notes.component';
 import { DepensesCategoriesComponent } from './configuration/depenses-categories/depenses-categories.component';
 import { UtilisateursComponent } from './configuration/utilisateurs/utilisateurs.component';
-import { VidangeFormComponent } from './forms/vidange-form/vidange-form.component';
 import { MoniteurFormComponent } from './forms/moniteur-form/moniteur-form.component';
 import { FacturationFormComponent } from './forms/facturation-form/facturation-form.component';
 import { DevisFormComponent } from './forms/devis-form/devis-form.component';
 import { PaimentCandidatFormComponent } from './forms/paiment-candidat-form/paiment-candidat-form.component';
 import { PresenceComponent } from './components/presence/presence.component';
 import { ResultsCandidatsComponent } from './components/results-candidats/results-candidats.component';
-import { PresenceFormComponent } from './forms/presence-form/presence-form.component';
-import { PresencePratiqueFormComponent } from './forms/presence-pratique-form/presence-pratique-form.component';
 import { PresencePratiqueComponent } from './components/presence-pratique/presence-pratique.component';
 import { ProtectRouteGuardGuard } from './protect-route-guard.guard';
 import { AdminComponent } from './admin/admin.component';
@@ -145,24 +139,20 @@ const routes: Routes = [
   { path: 'candidat_form', component: CandidatFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard]},
   { path: 'candidat/:id', component: CandidatFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-examens', component: ExamenComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'ajouter-cour', component: CoursTheoriqueFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-cours', component: PlanTheoriqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-presencesC', component: PresenceComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },  
   { path: 'listes-presences', component: PresencePratiqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'update-presence/:id', component: PresenceFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'update-presence-pratique/:id', component: PresencePratiqueFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'cours-modifier/:id', component: CoursTheoriqueFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-conduitdes', component: PlanPratiqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-conduites', component: CoursPratiqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-resultatV', component: ResultsCandidatsComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-depenses', component: DepenceComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'depense_form', component: DepenceFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
+  // { path: 'depense_form', component: DepenceFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-employees', component: EmployeeComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'vehicule', component: VehiculeComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard]},
   { path: 'monitors', component: MonitorsComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard]},
   { path: 'ecole-vendre', component: EcoleVendreListComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard, SuperAdminGuardGuard]},
   { path: 'listes-vidange', component: VidangeComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'ajouter-vidange', component: VidangeFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
+  // { path: 'ajouter-vidange', component: VidangeFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'depense-info/:id', component: DepenseInfoComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'produit_form', component: ProduitFormComponent, canActivate: [ProtectRouteGuardGuard] },
   { path: 'produit_form/:id', component: ProduitFormComponent, canActivate: [ProtectRouteGuardGuard] },
@@ -182,8 +172,8 @@ const routes: Routes = [
   { path: 'nouvel-devis', component: DevisFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'ajoute-facture', component: FacturationFormComponent, canActivate: [ProtectRouteGuardGuard] },
   { path: 'update-facture/:id', component: FacturationFormComponent, canActivate: [ProtectRouteGuardGuard] },
-  { path: 'ajouter-absence', component: AbsenceformComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'update-absence/:id', component: AbsenceformComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
+  // { path: 'ajouter-absence', component: AbsenceformComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
+  // { path: 'update-absence/:id', component: AbsenceformComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-absences', component: AbsenceListeComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-absencesM', component: AbsenceMoniteurComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'vente', component: VenteComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
