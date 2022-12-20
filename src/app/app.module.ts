@@ -71,7 +71,6 @@ import { DepensesCategoriesComponent } from './configuration/depenses-categories
 import { UtilisateursComponent } from './configuration/utilisateurs/utilisateurs.component';
 import { MoniteurFormComponent } from './forms/moniteur-form/moniteur-form.component';
 import { FacturationFormComponent } from './forms/facturation-form/facturation-form.component';
-import { DevisFormComponent } from './forms/devis-form/devis-form.component';
 import { PaimentCandidatFormComponent } from './forms/paiment-candidat-form/paiment-candidat-form.component';
 import { PresenceComponent } from './components/presence/presence.component';
 import { ResultsCandidatsComponent } from './components/results-candidats/results-candidats.component';
@@ -258,7 +257,6 @@ import { MoniteurJobEffects } from './state/moniteurJob/moniteurJob.effects';
 import { moniteurJobReducer } from './state/moniteurJob/moniteurJob.reducers';
 import { AutoEcoleWithAbonnementEffects } from './state/autoEcoleWithAbonnement/autoEcoleWithAbonnement.effects';
 import { autoecolewithabonnementReducer } from './state/autoEcoleWithAbonnement/autoEcoleWithAbonnement.reducers';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { CategorieModalComponent } from './modal/categorie-modal/categorie-modal.component';
 import { NgxPrintModule } from 'ngx-print';
@@ -368,7 +366,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     UtilisateursComponent,
     MoniteurFormComponent,
     FacturationFormComponent,
-    DevisFormComponent,
     PaimentCandidatFormComponent,
     ResultsCandidatsComponent,
     PresencePratiqueComponent,
@@ -479,7 +476,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatMenuModule,
     MatTabsModule,
     NgxPrintModule,
-    PdfViewerModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,

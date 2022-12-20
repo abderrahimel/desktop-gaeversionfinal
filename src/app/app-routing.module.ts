@@ -34,7 +34,6 @@ import { DepensesCategoriesComponent } from './configuration/depenses-categories
 import { UtilisateursComponent } from './configuration/utilisateurs/utilisateurs.component';
 import { MoniteurFormComponent } from './forms/moniteur-form/moniteur-form.component';
 import { FacturationFormComponent } from './forms/facturation-form/facturation-form.component';
-import { DevisFormComponent } from './forms/devis-form/devis-form.component';
 import { PaimentCandidatFormComponent } from './forms/paiment-candidat-form/paiment-candidat-form.component';
 import { PresenceComponent } from './components/presence/presence.component';
 import { ResultsCandidatsComponent } from './components/results-candidats/results-candidats.component';
@@ -169,7 +168,6 @@ const routes: Routes = [
   { path: 'listes-recettes', component: RecetteComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'recette-info/:id', component: RecetteInfoComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-devis', component: DevisComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'nouvel-devis', component: DevisFormComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'ajoute-facture', component: FacturationFormComponent, canActivate: [ProtectRouteGuardGuard] },
   { path: 'update-facture/:id', component: FacturationFormComponent, canActivate: [ProtectRouteGuardGuard] },
   // { path: 'ajouter-absence', component: AbsenceformComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
