@@ -20,7 +20,6 @@ export class CoursEffects {
         .pipe( 
             map((data)=>{
                 return loadCourTheoriqueToStore({payload: JSON.parse(data)});
-               
             })
         )
      })

@@ -58,6 +58,7 @@ export class PresenceTheoriquemodalComponent implements OnInit {
 
     ngOnInit(): void {
       // get moniteurs;
+      console.log("presence data");console.log(this.data);
        this.currentData();
       this.id = this.data?.presence?.id;
         this.presenceTheorique = this.data?.presence;
@@ -67,13 +68,12 @@ export class PresenceTheoriquemodalComponent implements OnInit {
         }
                this.cour = this.data;
                this.can = this.cour?.candidat;
-               
                  let moniteurr = this.data?.moniteurth;
                  this.idMoniteur = this.cour?.moniteur_theorique_id;
                  this.form.patchValue({
                    heure_debut: this.cour?.date_debut,
                    heure_fin:   this.cour?.date_fin,
-                   moniteur_theorique_id : this.data?.id,
+                   moniteur_theorique_id : this.data?.moniteur_theorique_id,
                    categorie: this.cour?.permis,
                   });
             

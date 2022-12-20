@@ -38,8 +38,10 @@ export class ProduitAdminmodalComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
-    if(this.data?.nomCategorie === 'vehicule occasion'){
+    if(this.data?.nomCategorie === 'Vehicule occasion'){
       this.hidd = true;
+    }else{
+      this.hidd = false;
     }
       this.form.patchValue({
         titre: this.data?.titre,
@@ -58,11 +60,13 @@ export class ProduitAdminmodalComponent implements OnInit {
   }
 
   boolShow(event:any){
-    if(this.form.value.categorie === 'vehicule occasion'){
+    console.log(this.form.value.categorie);
+    if(this.form.value.categorie === 'Vehicule occasion'){
       this.hidd = true;
     }else{
       this.hidd = false;
     }
+    console.log(this.hidd);
   }
   showPrix(event:any){
     if(event.target.value === 'oui'){

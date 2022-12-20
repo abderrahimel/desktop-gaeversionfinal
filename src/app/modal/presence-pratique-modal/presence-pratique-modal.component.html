@@ -36,14 +36,14 @@
 				  <div class="col-md-4">
 					  <div class="form-group">
 						  <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Moniteur'| translate}}<span style="color: red;">*</span></label>
-						  <select type="text" id="appt" name="appt" class="form-control input" style="height: 30px;" formControlName='moniteur_theorique_id'> 
+						  <select type="text" id="appt" name="appt" class="form-control input" style="height: 30px;" formControlName='moniteur_pratique_id'> 
 								<option value="">{{'Choisissez moniteur'|translate}}</option>
 							<option *ngFor="let data of moniteurp" value="{{data?.id}}">{{data?.nom}}{{" "}}{{data?.prenom}}</option>
 
 						  </select>   
 					  </div>
-					  <div class="err" *ngIf="submitted && this.form.controls.moniteur_theorique_id.errors">
-						<div style="color: red;" *ngIf="this.form.controls.moniteur_theorique_id.errors.required">
+					  <div class="err" *ngIf="submitted && this.form.controls.moniteur_pratique_id.errors">
+						<div style="color: red;" *ngIf="this.form.controls.moniteur_pratique_id.errors.required">
 							  {{'champs obligatoire *' | translate}}  
 						</div>
 					</div>

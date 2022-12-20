@@ -11,14 +11,16 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <link rel="icon" href="assets/img/logo.png" type="image/x-icon"/>
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.png" />
+        <link rel="icon" href="/assets/img/logo.png" type="image/x-icon"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo.png" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-        <link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet"/>
         <!-- Title -->
         <title>Gestion Auto-écoles - J2HB Plus Editeur de la securité routiére au maroc.</title>
 		<!-- Bootstrap Css -->
         <link href="https://gestionautoecole.com/plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!--  Css -->
         <link href="https://gestionautoecole.com/css/style.css" rel="stylesheet" />
         <!-- Color-Skins -->
         <link rel="stylesheet" media="all" href="https://gestionautoecole.com/color-skins/color10.css" />      
@@ -26,6 +28,8 @@
 
     <body class="bg-white">
         <style>
+
+ 
 .form-section{
     padding-left: 15px;
     display: none;
@@ -35,6 +39,17 @@
 {
     display: block;
 }
+
+/* .btn-success
+{
+    margin-left: 20px;
+} */
+/* .btn-info, .btn-success
+{
+    margin-top: 10px;
+    font-size: 1rem;
+} */
+
 .form-label {
     font-size: 20px;
 }
@@ -58,6 +73,10 @@
 {
  display: none;   
 }
+
+
+
+
 .parsley-required,.parsley-type
 {
     margin: 2px 0px 3px;
@@ -69,18 +88,18 @@
 </style>
     
         <script src="https://gestionautoecole.com/js/validate/register.js" ></script>
-        <script src="https://gestionautoecole.com/js/validate/show-pass.js" ></script>
-        <style type="text/css">
-            hr{
-                width: 70% !important;
-            }
-            label{
-                font-size: 13px !important;
-            }
-            #view_eye{display:none;}
-        </style>
+<script src="https://gestionautoecole.com/js/validate/show-pass.js" ></script>
+<style type="text/css">
+    hr{
+        width: 70% !important;
+    }
+    label{
+        font-size: 13px !important;
+    }
+    #view_eye{display:none;}
+</style>
 <!--Header Main-->
-<div class="header-main" id="top_scroll" style="display: flex;align-items: center;justify-content: center;margin-top: 30px;">
+<div class="header-main" id="top_scroll" style="display: flex;align-items: center;justify-content: center;margin-top: 30px;margin-bottom: 25px;">
  
     <div class="desktoplogo d-flex align-content-center">
         <a routerLink="/" >
@@ -650,7 +669,7 @@
                               <!-- <a *ngIf="form.invalid" href="/register#alertid">{{'Enregistrer' | translate}}</a> -->
                             </button> 
                               <button [disabled]="disabled" style="border: none;background: white;">
-                                 <a  href="/register#alertid" *ngIf="form.invalid || errors" type="submit" class="btn" style="background: red;color: white;"  (click)="register()">{{'Enregistrer' | translate}}</a> 
+                                 <a  routerLink="/register#alertid" *ngIf="form.invalid || errors" type="submit" class="btn" style="background: red;color: white;"  (click)="register()">{{'Enregistrer' | translate}}</a> 
                               </button>
                              <button type="reset" class="btn btn-dark">{{'Annuler' | translate}}</button> 
                          </div>
@@ -659,7 +678,7 @@
                      
                  </form>
                  <div style="margin-left:20px;padding-bottom: 7px;">
-                    vous avez déjà un compte gae <a href="/login" style="text-decoration:underline;color:black;font-weight:700">login</a>
+                    vous avez déjà un compte gae <a routerLink="/login" style="text-decoration:underline;color:black;font-weight:700">login</a>
                  </div>
                 </div>
             </div>

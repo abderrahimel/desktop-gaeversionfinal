@@ -20,6 +20,7 @@ import { candidatStart } from '../state/candidat/candidat.actions';
 import { presencecourState } from '../state/presencecours/presencecours.state';
 import { loadPresencecourPratique } from '../state/presencecours/presencecours.actions';
 declare var $;
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-cours-pratique',
@@ -103,10 +104,39 @@ getCoursPtratique(){
       this.n = this.cours_pratique.reduce((acc, o) => acc + Object.keys(o).length, 0)
   })
 }
-applyFilter(event:any){
-  let value = event.target.value
-  this.dataSource.filter = value.trim().toLowerCase()
-}
+  applyFilter(event:any){
+    let value = event.target.value
+    this.dataSource.filter = value.trim().toLowerCase()
+  }
+  onChange(e:any){
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.cours_pratique);
+    }else{
+        let filterData = _.filter(this.cours_pratique, (item)=>{
+          return item.categorie.toLowerCase() == e.target.value.toLowerCase()
+        })
+
+        this.dataSource = new MatTableDataSource(filterData);
+
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+  }
+  // filter cours by moniteur
+  onChangeMoniteur(e:any){
+    // id moniteur
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.cours_pratique);
+    }else{
+        let filterData = _.filter(this.cours_pratique, (item)=>{
+          return item.moniteur_pratique_id == e.target.value
+        })
+        this.dataSource = new MatTableDataSource(filterData);
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
   deleteCouP(id:any){
     Swal.fire({
       title: 'confirmation',

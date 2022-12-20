@@ -563,7 +563,7 @@ updateMoniteurP(id:any, data:any){
     return this.httpclient.get(this.api + '/user/'+ id);
   }
   getUsersAutoEcole(){
-    return this.httpclient.get(this.api + '/user');
+    return this.httpclient.get(this.api + '/users');
   }
   test(){
     return this.httpclient.get('http://localhost:8000/test');

@@ -25,6 +25,8 @@ export class BlogAdminComponent implements OnInit, AfterViewInit {
   n:any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('empTbSort') empTbSort = new MatSort();
+  @ViewChild('paginatorFirst') paginatorFirst!: MatPaginator;   
   dateVal = new Date();
   blogs:any;
   form = new FormGroup({           
@@ -32,10 +34,10 @@ export class BlogAdminComponent implements OnInit, AfterViewInit {
     description: new FormControl('', Validators.required),
     image: new FormControl('', Validators.required),
   });
-  constructor(private   dataServece: DataService,
-             private   modalService: NgbModal,
-             private store: Store<{blog: BlogState}>,
-             private auth:AuthService
+  constructor(  private   dataServece: DataService,
+                private   modalService: NgbModal,
+                private store: Store<{blog: BlogState}>,
+                private auth:AuthService
     ) { }
 
   ngOnInit(): void {
@@ -57,17 +59,17 @@ export class BlogAdminComponent implements OnInit, AfterViewInit {
   this.store.select(state=>state.blog.blog.blog).subscribe(blogs=>{
     this.blogs = blogs;
     this.dataSource = new MatTableDataSource(this.blogs)
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginatorFirst;
+    this.dataSource.sort = this.empTbSort;
   })
-
  }
+ 
  getBlogs(){
   this.dataServece.getBlogs().subscribe(data=>{
     this.blogs = JSON.parse(data)
     this.dataSource = new MatTableDataSource(this.blogs)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginatorFirst;
+      this.dataSource.sort = this.empTbSort;
   })
  }
  applyFilter(event:any){

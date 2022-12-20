@@ -25,7 +25,6 @@ export class MoniteurEffects {
         .pipe(
             map((data)=>{
                 return loadMoniteurToStore({payload: data});
-               
             })
         )
      })

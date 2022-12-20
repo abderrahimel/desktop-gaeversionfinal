@@ -37,6 +37,7 @@ export class MenuSBComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.urlLogo = localStorage.getItem('logo')
   }
 
   toggleNavbar(){

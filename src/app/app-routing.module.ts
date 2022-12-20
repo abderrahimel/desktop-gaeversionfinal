@@ -141,7 +141,7 @@ const routes: Routes = [
   { path: 'listes-cours', component: PlanTheoriqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-presencesC', component: PresenceComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },  
   { path: 'listes-presences', component: PresencePratiqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
-  { path: 'listes-conduitdes', component: PlanPratiqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
+  { path: 'listes-conduitdes', component: PlanPratiqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },//?
   { path: 'listes-conduites', component: CoursPratiqueComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-resultatV', component: ResultsCandidatsComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },
   { path: 'listes-depenses', component: DepenceComponent, canActivate: [ProtectRouteGuardGuard, AutoAdminGuardGuard] },

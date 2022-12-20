@@ -20,6 +20,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { presencecourState } from 'src/app/state/presencecours/presencecours.state';
 import { loadPresencecourTheorique } from 'src/app/state/presencecours/presencecours.actions';
+import * as _ from 'lodash';
 @Component({
   selector: 'app-plan-theorique',
   templateUrl: './plan-theorique.component.html',
@@ -77,10 +78,6 @@ export class PlanTheoriqueComponent implements OnInit {
   getMoniteursT(){
     this.dataService.getMoniteurT(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.datamoniteurT = data;
-      // this.datamoniteurT.map(mt=>{
-      //   let categories = mt?.categorie
-      //   mt['newCategorie'] = categories.join('-');
-      // })
     })
   }
   currentData()
@@ -130,6 +127,36 @@ getCoursTheorique(){
     let value = event.target.value
     this.dataSource.filter = value.trim().toLowerCase()
   }
+   // filter cours by categorie
+  onChange(e:any){
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.cours_theorique);
+    }else{
+        let filterData = _.filter(this.cours_theorique, (item)=>{
+          return item.categorie.toLowerCase() == e.target.value.toLowerCase()
+        })
+
+        this.dataSource = new MatTableDataSource(filterData);
+
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+  }
+  // filter cours by moniteur
+  onChangeMoniteur(e:any){
+    // id moniteur
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.cours_theorique);
+    }else{
+        let filterData = _.filter(this.cours_theorique, (item)=>{
+          return item.moniteur_theorique_id == e.target.value
+        })
+        this.dataSource = new MatTableDataSource(filterData);
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
    candidatList(list:any){
      this.candidatData.getListCandidat(list).subscribe(data=>{
        this.list = data;
@@ -162,7 +189,7 @@ getCoursTheorique(){
     modalRef.componentInstance.btn = btn;
     modalRef.componentInstance.data = data;
   }
-  open1( data:any) {
+  open1(data:any) {
     const modalRef = this.modalService.open(PresenceTheoriquemodalComponent);
     modalRef.componentInstance.data = data;
   }

@@ -26,7 +26,6 @@ export class UsersEffects {
         .pipe(
             map((data)=>{
                 this.users = data;
-                console.log(data);
                 return loaduserstostoreaction({payload: this.users});
             })
         )

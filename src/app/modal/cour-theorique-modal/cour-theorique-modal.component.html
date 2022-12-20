@@ -25,7 +25,6 @@
                               <div style="color: red;" *ngIf="this.form.controls.date.errors.required">
                                     {{'Date is obligatoire * ' | translate}}  
                               </div>
-
                           </div>
                       </div>
                     </div>
@@ -39,7 +38,6 @@
                       <div style="color: red;" *ngIf="this.form.controls.date_debut.errors.required">
                             {{'heure debut obligatoire * ' | translate}}  
                       </div>
-
                   </div>
                 </div>   
                 <div class="col-md-6">
@@ -51,7 +49,6 @@
                       <div style="color: red;" *ngIf="this.form.controls.date_fin.errors.required">
                             {{'heure fin obligatoire * ' | translate}}  
                       </div>
-
                   </div>
                 </div>  
                 <div class="col-md-6">
@@ -88,13 +85,12 @@
                       <div style="color: red;" *ngIf="this.form.controls.type.errors.required">
                             {{'Type obligatoire * ' | translate}}  
                       </div>
-
                   </div>
               </div>
               <div class="col-md-4">
                   <div class="form-group">
                       <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Moniteur'| translate}}<span style="color: red;">*</span></label>    
-                      <select id="monitor_add" name="moniteur" class="form-control" formControlName="moniteur_theorique_id" style="font-size: 16px;height:30px">
+                      <select id="monitor_add" name="moniteur" class="form-control" formControlName="moniteur_theorique_id"  style="font-size: 16px;height:30px">
                           <option value="">{{'Choisissez moniteur'|translate}}</option>
                           <option *ngFor="let mP of moniteurTheorique_data" value="{{ mP?.id }}">{{ mP?.nom }}{{ " " }}{{ mP?.prenom }}</option>
                       </select>

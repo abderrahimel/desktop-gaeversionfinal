@@ -19,8 +19,8 @@ export class TableRecettePermisComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['cin', 'candidat', 'categorie', 'date', 'type_p', 'montant'];    
   dataSource!: MatTableDataSource<any>;
   n:any;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild('sort') sort!: MatSort;
   loadData:any;
   supplementaire:any;
   permis:any; 

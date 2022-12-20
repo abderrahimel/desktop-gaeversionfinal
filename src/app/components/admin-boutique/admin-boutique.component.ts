@@ -23,8 +23,9 @@ export class AdminBoutiqueComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['image', 'titre', 'prix', 'promotion', 'actions'];    
   dataSource!: MatTableDataSource<any>;
   n:any;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+
+  @ViewChild('empTbSort') empTbSort = new MatSort();
+  @ViewChild('paginatorFirst') paginatorFirst!: MatPaginator;  
   dataLoad:any;
   hidding:boolean = false;
   hiddingNewProduit:boolean = false;
@@ -80,8 +81,8 @@ export class AdminBoutiqueComponent implements OnInit,AfterViewInit {
   this.store.select(state=>state.produitSuperAdmin.produitSuperAdmin.produitSuperAdmin).subscribe(produitSuperAdmin=>{
     this.dataLoad = produitSuperAdmin;
     this.dataSource = new MatTableDataSource(this.dataLoad)
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginatorFirst;
+    this.dataSource.sort = this.empTbSort;
   })
 
  }

@@ -25,7 +25,7 @@
                   <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Catégorie'| translate}}<span style="color: red;">*</span></label>
-                          <select id="list_categorie" style="height: 32px;" class="form-control" name="categorie" formControlName="categorie" (ngModelChange)="boolShow($event)">
+                          <select id="list_categorie" style="height: 32px;" class="form-control" name="categorie" formControlName="categorie" (change)="boolShow($event)">
                               <option value="">Choisir un categorie</option>
                               <option value="Materiel informatique">Materiel informatique</option>
                               <option value="Vehicule occasion">Vehicule occasion</option>
@@ -55,7 +55,7 @@
                   </div>
               
                   <div class="col-md-12" id="car_detail" >
-                      <div class="row" *ngIf="hidd">
+                      <div *ngIf="hidd" class="row">
                           <div class="col-md-6">
                               <div class="form-group">
                                 <label class="form-label" style="font-size: 13px;font-weight: 400;">{{'Marque'| translate}}</label>

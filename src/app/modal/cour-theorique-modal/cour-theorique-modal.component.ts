@@ -97,7 +97,7 @@ export class CourTheoriqueModalComponent implements OnInit {
             }
            }
     }
-    
+
   getCandidatsSupplementaire(){
     this.dataService.getCandidatsSupplementaire(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.candidatSupplementaire = JSON.parse(data)   
@@ -183,11 +183,11 @@ export class CourTheoriqueModalComponent implements OnInit {
     this.activeModal.dismiss('Cross click');
     this.store.dispatch(loadCourTheorique({idAutoEcole: localStorage.getItem('autoEcole_id')}))
    }
-handlerror(error:any){
-    console.log(error);
-}
-add_to_list(e:any){
- 
+    handlerror(error:any){
+        console.log(error);
+    }
+    add_to_list(e:any){
+    
     if(!this.list_candidat.includes(e.target.value)){
        this.presence[e.target.value] = 'A';
        this.candidatData.getCandidatById(e.target.value).subscribe((data:any) =>{

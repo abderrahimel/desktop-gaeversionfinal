@@ -19,8 +19,8 @@ export class TableCoursSupplementaireComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['cour', 'nbr_heure_pratique', 'candidat', 'categorie', 'date', 'montant'];    
   dataSource!: MatTableDataSource<any>;
   n:any;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild('sort') sort!: MatSort;
   loadData:any;
   supplementaire:any;
   permis:any;

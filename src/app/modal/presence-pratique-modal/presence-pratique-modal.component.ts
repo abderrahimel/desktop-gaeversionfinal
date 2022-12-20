@@ -41,7 +41,7 @@ export class PresencePratiqueModalComponent implements OnInit {
   form = new FormGroup({
     heure_debut:new FormControl('', Validators.required),
     heure_fin:new FormControl('', Validators.required),
-    moniteur_theorique_id :new FormControl('', Validators.required),
+    moniteur_pratique_id :new FormControl('', Validators.required),
     categorie:new FormControl('', Validators.required),
   });
   constructor(public activeModal: NgbActiveModal,
@@ -55,6 +55,7 @@ export class PresencePratiqueModalComponent implements OnInit {
 
     ngOnInit(): void {
       // get moniteurs;
+      console.log("presence pratique");console.log(this.data);
        this.currentData();
       this.id = this.data?.presence[0]?.id;
         this.presencepratique = this.data?.presence;
@@ -69,7 +70,7 @@ export class PresencePratiqueModalComponent implements OnInit {
                  this.form.patchValue({
                    heure_debut: this.cour?.date_debut,
                    heure_fin:   this.cour?.date_fin,
-                   moniteur_theorique_id : this.data?.id,
+                   moniteur_pratique_id : this.data?.moniteur_pratique_id,
                    categorie: this.cour?.permis,
                   });
             

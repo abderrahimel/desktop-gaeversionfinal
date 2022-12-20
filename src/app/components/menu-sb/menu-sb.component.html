@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
 </head>
 <body style="background: #e5ebef;">
     <mat-card class="menu-fix" style="width: 225px;height: 100%;margin: 3px;z-index: 200;">
       <div class="content">
         <div class="logoAutoEcole">
-          <img class="imgAutoEcole"  src="https://gestionautoecole.com/storage/WCC0eSAEX1kMywrcfAxB4QX2ox6b7tVMqzIb51Xe.jpg" alt="">
+          <img class="imgAutoEcole"  src="{{urlLogo}}" alt="logo auto ecole">
           <a routerLink="/auto-ecole" class="text-white" style="font-family: 'Roboto', sans-serif;font-size: 15px;text-decoration: none;font-weight: 400">auto ecole 1</a>
         </div>
       <ul ngbNav #nav="ngbNav" [(activeId)]="active"  orientation="vertical">

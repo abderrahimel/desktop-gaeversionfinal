@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,7 @@
            <div style="display: flex;align-items:center;justify-content:space-between;padding-left:5px;padding-right:5px">
             <div class="col-md-3">
               <div class="form-group">
-                <select class="form-control w-80 mr-2 hovC" style="height: 30px;font-size: 14px;" name="categorie" id="categorie">
+                <select class="form-control w-80 mr-2 hovC" style="height: 30px;font-size: 14px;" name="categorie" id="categorie" (change)="onChange($event)">
                   <option value="">Choisissez catégorie</option>
                   <option value="A">A</option>
                   <option value="A1">A1</option>
@@ -52,7 +51,7 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <select class="form-control w-80 mr-2 hovC"  style="height: 30px;font-size: 14px;" name="moniteur" id="moniteur">
+                <select class="form-control w-80 mr-2 hovC"  style="height: 30px;font-size: 14px;" name="moniteur" id="moniteur" (change)="onChangeMoniteur($event)">
                   <option value="">Choisissez moniteur</option>
                   <option *ngFor="let data of datamoniteurP" value="{{data?.id}}">{{data?.nom}}{{" "}}{{data?.prenom}} </option>
                 </select>

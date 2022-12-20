@@ -299,7 +299,7 @@ import { InstallationCategorieDepenseLocalComponent } from './components/install
 import { InstallationNoteCategorieComponent } from './components/installation-note-categorie/installation-note-categorie.component';
 
 export function httpLoaderFactory(http:HttpClient){
-  return new TranslateHttpLoader(http,'../assets/i18n/','.json');
+  return new TranslateHttpLoader(http,'./assets/i18n/','.json');
 };
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
