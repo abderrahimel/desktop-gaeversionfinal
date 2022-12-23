@@ -202,25 +202,25 @@
                                            <!-- vehicule Column -->
                                            <ng-container matColumnDef="vehicule">  
                                              <th mat-header-cell *matHeaderCellDef mat-sort-header><span class="" style="font-weight:900;">VEHICULE</span>   </th>
-                                             <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{ element?.matricule}} </td>
+                                             <td mat-cell *matCellDef="let element"  class=""> {{ element?.matricule}} </td>
                                            </ng-container>
                                        
                                            <!-- date Column -->  
                                            <ng-container matColumnDef="date">   
                                              <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">DATE</span> </th>
-                                             <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.date_visite}} </td>
+                                             <td mat-cell *matCellDef="let element"  class=""> {{element?.date_visite}} </td>
                                            </ng-container>
         
                                             <!-- type Column -->  
                                             <ng-container matColumnDef="type">   
                                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">TYPE</span> </th>
-                                              <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.type}} </td>
+                                              <td mat-cell *matCellDef="let element"  class=""> {{element?.type}} </td>
                                             </ng-container>
 
                                               <!-- etat Column -->  
                                               <ng-container matColumnDef="etat">   
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">ETAT</span> </th>
-                                                <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> - </td>
+                                                <td mat-cell *matCellDef="let element"  class=""> - </td>
                                               </ng-container>
 
                                            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
@@ -312,25 +312,25 @@
                                          <!-- nom Column -->
                                          <ng-container matColumnDef="nom">  
                                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;" class="">NOM</span>   </th>
-                                           <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{ element?.candidat?.nom_fr}}{{" "}}{{ element?.candidat?.prenom_fr}} </td>
+                                           <td mat-cell *matCellDef="let element"  class=""> {{ element?.candidat?.nom_fr}}{{" "}}{{ element?.candidat?.prenom_fr}} </td>
                                          </ng-container>
                                      
                                          <!-- cin Column -->  
                                          <ng-container matColumnDef="cin">   
                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;" class="">CIN</span> </th>
-                                           <td mat-cell *matCellDef="let element" style="text-align: center; " class=""> {{element?.candidat?.cin}} </td>
+                                           <td mat-cell *matCellDef="let element"  class=""> {{element?.candidat?.cin}} </td>
                                          </ng-container>
       
                                           <!-- categorie Column -->  
                                           <ng-container matColumnDef="categorie">   
                                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">CATEGORIE</span> </th>
-                                            <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.categorie}} </td>
+                                            <td mat-cell *matCellDef="let element" class=""> {{element?.categorie}} </td>
                                           </ng-container>
 
                                             <!-- date_examen Column -->  
                                             <ng-container matColumnDef="date_examen">   
                                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span class="" style="font-weight:900;">DATE EXAMEN</span> </th>
-                                              <td mat-cell *matCellDef="let element" style="text-align: center;" class=""> {{element?.date_examen}} </td>
+                                              <td mat-cell *matCellDef="let element" class=""> {{element?.date_examen}} </td>
                                             </ng-container>
 
                                             <!-- date_depot Column -->  
@@ -368,31 +368,31 @@
                                          <!-- nom Column -->
                                          <ng-container matColumnDef="nom">  
                                            <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">NOM</span>   </th>
-                                           <td mat-cell *matCellDef="let element" style="text-align: center;"> {{ element?.candidat?.nom_fr}}{{" "}}{{ element?.candidat?.prenom_fr}} </td>
+                                           <td mat-cell *matCellDef="let element" > {{ element?.candidat?.nom_fr}}{{" "}}{{ element?.candidat?.prenom_fr}} </td>
                                          </ng-container>
                                      
                                          <!-- cin Column -->  
                                          <ng-container matColumnDef="cin">   
                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CIN</span> </th>
-                                           <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.candidat?.cin}} </td>
+                                           <td mat-cell *matCellDef="let element"> {{element?.candidat?.cin}} </td>
                                          </ng-container>
       
                                           <!-- categorie Column -->  
                                           <ng-container matColumnDef="categorie">   
                                             <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">CATEGORIE</span> </th>
-                                            <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.categorie}} </td>
+                                            <td mat-cell *matCellDef="let element" > {{element?.categorie}} </td>
                                           </ng-container>
 
                                             <!-- date_examen Column --> 
                                             <ng-container matColumnDef="date_examen">   
                                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE EXAMEN</span> </th>
-                                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_examen}} </td>
+                                              <td mat-cell *matCellDef="let element"> {{element?.date_examen}} </td>
                                             </ng-container>
 
                                             <!-- date_depot Column -->  
                                             <ng-container matColumnDef="date_depot">   
                                               <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">DATE DEPOT</span> </th>
-                                              <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element?.date_depot}} </td>
+                                              <td mat-cell *matCellDef="let element"> {{element?.date_depot}} </td>
                                             </ng-container>
                                          <tr mat-header-row *matHeaderRowDef="displayedColumns6"></tr>
                                          <tr mat-row *matRowDef="let row; columns: displayedColumns6;"></tr>

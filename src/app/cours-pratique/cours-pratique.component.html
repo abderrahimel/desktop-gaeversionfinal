@@ -59,7 +59,7 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <select name="candidats" class="form-control"  style="height: 30px;font-size: 14px;" id="candidats">
+                <select name="candidats" class="form-control"  style="height: 30px;font-size: 14px;" id="candidats" (change)="onChangeCandidat($event)">
                   <option value="">Choisissez candidats</option>
                   <option *ngFor="let data of candidatsB" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>
                   <option *ngFor="let data of candidatS" value="{{data?.id}}">{{data?.nom_fr}}{{" "}}{{data?.prenom_fr}}</option>

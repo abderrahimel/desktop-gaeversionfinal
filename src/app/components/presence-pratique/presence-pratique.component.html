@@ -19,8 +19,7 @@
     <div style="display: flex;background: #e5ebef;">
       <div class="wrap-table100">
         <div class="tableDiv">
-          <div class="info_paiement">
-      </div>
+          
           <div class="mat-elevation-z8" style="margin-top: 10px;">
    
             <div style="display: flex;align-items:center; justify-content:space-between;margin-bottom: 10px;margin-left: 6px;margin-right: 6px;padding: 10px;">
@@ -34,8 +33,8 @@
           </div>
           <hr>
           <div style="display: flex;align-items: center;justify-content: space-around;padding-left: 7px;padding-right: 7px;">
-            <input type="date" class="form-control" style="height:30px">
-            <select class="form-control" name="categorie" id="categorie" style="height:30px;font-size: 13px;">
+            <input type="date" class="form-control" style="height:30px" (change)="onchangeInput3($event)">
+            <select class="form-control" name="categorie" id="categorie" style="height:30px;font-size: 13px;" (change)="onChange($event)">
               <option value="">Choisissez catégorie</option>
               <option value="A">A</option>
               <option value="A1">A1</option>
@@ -51,14 +50,15 @@
               <option value="FP">FP</option>
               <option value="FP/FC">FP/FC</option>
             </select>
-            <select type="text"  class="form-control" style="height:30px;font-size: 13px;">
-                <option value="">{{ "Choisissez Moniteur" | translate }}</option>
-                <option *ngFor="let element of fromMoniteur" value="{{element}}">{{element}}</option>
+            <select type="text"  class="form-control" style="height:30px;font-size: 13px;" (change)="onChangeMoniteur($event)">
+                <option value="">{{ "Choisissez Moniteur pratique" | translate }}</option>
+                <option *ngFor="let element of moniteursPratique" value="{{element?.id}}">{{element?.nom}}{{" "}}{{element?.prenom}}</option>
             </select>
-            <select type="text"  class="form-control" style="height:30px;font-size: 13px;">
-                <option value="">{{ "Choisissez Candidats" | translate }}</option>
-                <option *ngFor="let element of fromCandidat" value="{{element}}">{{element}}</option>
-            </select>
+            <select type="text"  class="form-control" style="height:32px;font-size: 14px;" (change)="onChangeCandidat($event)">
+              <option value="">{{ "Choisissez Candidats" | translate }}</option>
+              <option *ngFor="let element of candidatsB" value="{{element?.id}}">{{element?.nom_fr}}{{" "}}{{element?.prenom_fr}}</option>
+              <option *ngFor="let element of candidatS" value="{{element?.id}}">{{element?.nom_fr}}{{" "}}{{element?.prenom_fr}}</option>
+          </select>
         </div>
         <mat-card>
           <div class="card" style="width: 100%;">
@@ -128,67 +128,7 @@
             </div>
         </div>
         </mat-card>
-             <!-- <div style="display: flex;align-items:center;justify-content:flex-end">
-                 <div style="margin-right: 6px">  {{ "Rechercher" | translate }}:</div>
-                 <mat-form-field appearance="standard">
-                    <mat-label></mat-label>
-                    <input matInput (keyup)="applyFilter($event)" placeholder="... " #input>
-                 </mat-form-field>
-             </div>
-              <table mat-table [dataSource]="dataSource" matSort>    
-            
-                <ng-container matColumnDef="date">   
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by login"> 
-                    <span style="font-weight:900;">{{ "DATE" | translate }}</span>    
-                  </th>
-                  <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-                </ng-container>
-            
-                <ng-container matColumnDef="heure">  
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="font-weight:900;">{{ "SEANCE" | translate }}</span>   </th>
-                  <td mat-cell *matCellDef="let element"> {{element.heure}} </td>
-                </ng-container>
-            
-                <ng-container matColumnDef="type">   
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>  <span style="font-weight:900;">{{ "TYPE" | translate }}</span> </th>
-                  <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-                </ng-container>
-            
-                <ng-container matColumnDef="categorie">  
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "CATEGORIE" | translate }}</span> </th>
-                  <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
-                </ng-container>   
-        
-                <ng-container matColumnDef="moniteur"> 
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "MONITEUR" | translate }}</span> </th>
-                  <td mat-cell *matCellDef="let element"> {{element.moniteur}} </td>
-                </ng-container>
-                <ng-container matColumnDef="matricule">  
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "VEHICULE" | translate }}</span> </th>
-                  <td mat-cell *matCellDef="let element"> {{element.matricule}} </td>
-                </ng-container> 
-                <ng-container matColumnDef="candidats">  
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight:900;">{{ "CANDIDATS" | translate }}</span> </th>
-                  <td mat-cell *matCellDef="let element"> {{element.candidats}} </td>
-                </ng-container> 
-            
-               <ng-container matColumnDef="actions">  
-                <th mat-header-cell *matHeaderCellDef><span style="font-weight:900;">{{ "ACTIONS" | translate }}</span>  </th>
-                <td mat-cell *matCellDef="let element"> 
-                  <button (click)="deletepresence(element.presence.id)" style="padding: 10px; background: black;color: white; margin-left: 5px;width: 100px;margin-top: 5px;margin-bottom: 5px;" class="btn">
-                    {{ "Supprimer" | translate }}
-                  </button>
-                </td>
-              </ng-container>
-        
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-              <mat-paginator 
-                [length]="n" 
-                [pageSize]="5"  
-                [pageSizeOptions]="[5, 10, 25, 100]">
-              </mat-paginator> -->
+             
             </div>
        
         </div>

@@ -113,7 +113,7 @@ getCoursPtratique(){
       this.dataSource = new MatTableDataSource(this.cours_pratique);
     }else{
         let filterData = _.filter(this.cours_pratique, (item)=>{
-          return item.categorie.toLowerCase() == e.target.value.toLowerCase()
+          return item.permis.toLowerCase() == e.target.value.toLowerCase()
         })
 
         this.dataSource = new MatTableDataSource(filterData);
@@ -121,7 +121,6 @@ getCoursPtratique(){
     }
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
   }
   // filter cours by moniteur
   onChangeMoniteur(e:any){
@@ -137,6 +136,21 @@ getCoursPtratique(){
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+    // filter cours by candidat
+    onChangeCandidat(e:any){
+      // let array1 = [3, 1, 2, 4, 6, 5];
+      // console.log(array1.includes(Number(e.target.value)));
+      if(e.target.value === ''){
+        this.dataSource = new MatTableDataSource(this.cours_pratique);
+      }else{
+          let filterData = _.filter(this.cours_pratique, (item)=>{
+            return item.candidat.includes(Number(e.target.value));
+          })
+          this.dataSource = new MatTableDataSource(filterData);
+      }
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
   deleteCouP(id:any){
     Swal.fire({
       title: 'confirmation',

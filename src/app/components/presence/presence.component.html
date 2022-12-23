@@ -35,8 +35,8 @@
   </div>
   <hr>
   <div style="display: flex;align-items: center;justify-content: space-around;padding-left: 7px;padding-right: 7px;">
-    <input type="date" class="form-control">
-    <select class="form-control" name="categorie" id="categorie" style="height:32px;font-size: 14px;">
+    <input type="date" class="form-control" (change)="onchangeInput3($event)">
+    <select class="form-control" name="categorie" id="categorie" style="height:32px;font-size: 14px;" (change)="onChange($event)">
       <option value="">{{'Choisissez catégorie'|translate}}</option>
       <option value="A">A</option>
       <option value="A1">A1</option>
@@ -52,14 +52,14 @@
       <option value="FP">FP</option>
       <option value="FP/FC">FP/FC</option>
     </select>
-    <select type="text"  class="form-control" style="height:32px;font-size: 14px;">
+    <select type="text"  class="form-control" style="height:32px;font-size: 14px;" (change)="onChangeMoniteur($event)">
         <option value="">{{ "Choisissez Moniteur" | translate }}</option>
-        <option *ngFor="let element of presence" value="{{element?.moniteur}}">{{element?.moniteur}}</option>
+        <option *ngFor="let element of presence" value="{{element?.moniteur_theorique_id}}">{{element?.moniteur}}</option>
     </select>
-    <select type="text"  class="form-control" style="height:32px;font-size: 14px;">
+    <select type="text"  class="form-control" style="height:32px;font-size: 14px;" (change)="onChangeCandidat($event)">
         <option value="">{{ "Choisissez Candidats" | translate }}</option>
-        <option *ngFor="let element of candidatsB" value="{{element?.nom_fr}}">{{element?.prenom_fr}}</option>
-        <option *ngFor="let element of candidatS" value="{{element?.nom_fr}}">{{element?.prenom_fr}}</option>
+        <option *ngFor="let element of candidatsB" value="{{element?.id}}">{{element?.nom_fr}}{{" "}}{{element?.prenom_fr}}</option>
+        <option *ngFor="let element of candidatS" value="{{element?.id}}">{{element?.nom_fr}}{{" "}}{{element?.prenom_fr}}</option>
     </select>
 </div>
 <mat-card>

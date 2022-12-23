@@ -39,8 +39,6 @@ export class PresencecourEffects {
         return this.dataService.getPresenceCourPratique(action.idAutoEcole)
         .pipe(
             map((data)=>{
-              console.log("cours pratique");
-              console.log(data);
                 return loadedPresencecourPratiqueToStore({payload: data});
             })
         )

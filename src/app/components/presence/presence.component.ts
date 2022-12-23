@@ -16,6 +16,8 @@ import { MoniteurState } from 'src/app/state/moniteur/moniteur.state';
 import { loadPresencecourTheorique, removePresenceById } from 'src/app/state/presencecours/presencecours.actions';
 import { presencecourState } from 'src/app/state/presencecours/presencecours.state';
 import Swal from 'sweetalert2';
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-presence',
   templateUrl: './presence.component.html',
@@ -60,7 +62,6 @@ export class PresenceComponent implements OnInit {
   }
   currentData(){
     this.idCandidat = Number(this.route.snapshot.paramMap.get('id'));
-    let auto_ecole_id = localStorage.getItem('autoEcole_id');
     this.getData();
     if(this.router.url === '/listes-presencesC'){
       this.paiment = true;
@@ -91,7 +92,62 @@ export class PresenceComponent implements OnInit {
       this.candidatS =  candidats.candidatSupplementaire;
   })
   }
+  onChange(e:any){
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.presence);
+    }else{
+        let filterData = _.filter(this.presence, (item)=>{
+          return item.categorie.toLowerCase() == e.target.value.toLowerCase()
+        })
 
+        this.dataSource = new MatTableDataSource(filterData);
+
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+    // filter cours by candidat
+    onChangeCandidat(e:any){
+      // let array1 = [3, 1, 2, 4, 6, 5];
+      // console.log(array1.includes(Number(e.target.value)));
+      if(e.target.value === ''){
+        this.dataSource = new MatTableDataSource(this.presence);
+      }else{
+          let filterData = _.filter(this.presence, (item)=>{
+            return item.candidat.includes(Number(e.target.value));
+          })
+          this.dataSource = new MatTableDataSource(filterData);
+      }
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+    // filter cours by moniteur
+  onChangeMoniteur(e:any){
+    // id moniteur
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.presence);
+    }else{
+        let filterData = _.filter(this.presence, (item)=>{
+          return item.moniteur_theorique_id == e.target.value
+        })
+        this.dataSource = new MatTableDataSource(filterData);
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  // filter presence by date
+  onchangeInput3(e:any){
+    if(e.target.value === ''){
+        this.dataSource = new MatTableDataSource(this.presence);
+    }else{
+        let filterData = _.filter(this.presence, (item)=>{
+          return item.date.toLowerCase() == e.target.value.toLowerCase()
+        })
+        this.dataSource = new MatTableDataSource(filterData);
+    }
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
   getpresences(){
     this.dataService.getPresenceCourTheorique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
       this.presence = JSON.parse(data);

@@ -13,7 +13,7 @@
       <div style="padding: 10px;">
       <hr style="background: white;">
         <div style="display: flex;align-items: center;">
-              <a class="btn btn-success" style="text-decoration: none;color: white;" routerLink="/listes-notes">Ajouter Note</a>
+              <a class="btn btn-success" style="text-decoration: none;color: white;" (click)="activeModal.dismiss('Cross click')" routerLink="/listes-notes">Ajouter Note</a>
               <button class="btn" style="background: black;color: white;text-align: center;" (click)="activeModal.dismiss('Cross click')">Fermer</button>
         </div>
       </div>               

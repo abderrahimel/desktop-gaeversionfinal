@@ -248,7 +248,6 @@ export class CandidatFormComponent implements OnInit {
       if(this.form.invalid){
         return ;
       }
-      let formData = new FormData();
        let data = {
         cin:this.form.value.cin,
         image:this.base64Img_image,
@@ -287,7 +286,7 @@ export class CandidatFormComponent implements OnInit {
 
        if(this.is_update){
           this.store.dispatch(updatecandidat({id: this.id_ecoleOrCandidat, data: data}));
-
+          console.log("update candidat");console.log(data);
        }else{
         this.store.dispatch(creatnewcandidat({idautoecole: localStorage.getItem('autoEcole_id'), data}));
        }

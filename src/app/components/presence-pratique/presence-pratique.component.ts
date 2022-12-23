@@ -10,6 +10,11 @@ import { DataService } from 'src/app/services/data.service';
 import { loadPresencecourPratique } from 'src/app/state/presencecours/presencecours.actions';
 import { presencecourState } from 'src/app/state/presencecours/presencecours.state';
 import Swal from 'sweetalert2';
+import * as _ from 'lodash';
+import { CandidatState } from 'src/app/state/candidat/candidat.state';
+import { candidatStart } from 'src/app/state/candidat/candidat.actions';
+import { MoniteurPratiqueState } from 'src/app/state/moniteurPratique/moniteurPratique.state';
+import { loadMoniteurP } from 'src/app/state/moniteur/moniteur.actions';
 
 @Component({
   selector: 'app-presence-pratique',
@@ -28,7 +33,10 @@ export class PresencePratiqueComponent implements OnInit { //
   idCandidat:any;
   totalPaiment:any = 0;
   restPaiment:any;
+  moniteursPratique:any;
   paiment:any;
+  candidatsB:any;
+  candidatS:any;
   moniteur:any;
   presence:any = [];
   presenceP:any;
@@ -40,17 +48,21 @@ export class PresencePratiqueComponent implements OnInit { //
               private dataService: DataService,
               private router:Router,
               private candidatService: CandidatService,
-              private store:Store<{presencecour:presencecourState}>
+              private store:Store<{presencecour:presencecourState,candidat:CandidatState,moniteurPratique: MoniteurPratiqueState}>
     ) { }
 
   ngOnInit(): void {
-   this.getpresences()
+   this.getpresences();
+   this.getMoniteurPratique();
   }
 
   getpresences(){
     this.store.pipe(take(1)).subscribe(store=>{
       if(!store.presencecour.presencecourspratique.loaded){
         this.store.dispatch(loadPresencecourPratique({idAutoEcole: localStorage.getItem('autoEcole_id')}));
+      }
+      if(!store.candidat.candidat.loaded){
+        this.store.dispatch(candidatStart({idAutoEcole: localStorage.getItem('autoEcole_id')}));
       }
       this.store.select(state=>state.presencecour.presencecourspratique.presencecourspratique).subscribe(cpratique=>{
         this.presenceP = cpratique;
@@ -71,31 +83,84 @@ export class PresencePratiqueComponent implements OnInit { //
           this.dataSource.sort = this.sort;
           this.n = this.presenceP.reduce((acc, o) => acc + Object.keys(o).length, 0)
         }
-        
+      })
+       // select candidat from the store 
+     this.store.select(state=>state.candidat.candidat).subscribe(candidats=>{
+      this.candidatsB = candidats.candidatBasic;
+      this.candidatS =  candidats.candidatSupplementaire;})
+    })
+
+  }
+  getMoniteurPratique(){
+     // load moniteurs theorique
+     this.store.pipe(take(1)).subscribe(store=>{
+      //load moniteurs pratique
+      if(!store.moniteurPratique.moniteurPratique.loaded){
+        this.store.dispatch(loadMoniteurP({idAutoEcole:localStorage.getItem('autoEcole_id')}));
+      }
+      this.store.select(state=>state.moniteurPratique.moniteurPratique.moniteurPratique).subscribe(moniteurs=>{
+          this.moniteursPratique = moniteurs;
       })
     })
-    // this.dataService.getPresenceCourPratique(localStorage.getItem('autoEcole_id')).subscribe(data=>{
-    //   this.presenceP = data;
-    //   this.presenceP.map(p=>{
-    //     for(let i=0; i<p.candidats.split(',').length;i++){
-    //       if(!this.fromCandidat.includes(p.candidats.split(',')[i])){
-    //         this.fromCandidat.push(p.candidats.split(',')[i]);
-    //       }
-    //     }
-    //     // moniteurs 
-    //     if(!this.fromMoniteur.includes(p.moniteur) && p?.moniteur != undefined && p?.moniteur != null){
-    //       this.fromMoniteur.push(p.moniteur)
-    //     }
-    //   })
-    //   this.dataSource = new MatTableDataSource(this.presenceP)
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.sort;
-    //   this.n = this.presenceP.reduce((acc, o) => acc + Object.keys(o).length, 0)
-    // })
   }
   applyFilter(event:any){
     let value = event.target.value
     this.dataSource.filter = value.trim().toLowerCase()
+  }
+  // filter by categorie
+  onChange(e:any){
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.presenceP);
+    }else{
+        let filterData = _.filter(this.presenceP, (item)=>{
+          return item.categorie.toLowerCase() == e.target.value.toLowerCase()
+        })
+  
+        this.dataSource = new MatTableDataSource(filterData);
+  
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+    // filter  by candidat
+    onChangeCandidat(e:any){
+      if(e.target.value === ''){
+        this.dataSource = new MatTableDataSource(this.presenceP);
+      }else{
+          let filterData = _.filter(this.presenceP, (item)=>{
+            return item.candidat.includes(Number(e.target.value));
+          })
+          this.dataSource = new MatTableDataSource(filterData);
+      }
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+    // filter  by moniteur
+  onChangeMoniteur(e:any){
+    // id moniteur
+    if(e.target.value === ''){
+      this.dataSource = new MatTableDataSource(this.presenceP);
+    }else{
+        let filterData = _.filter(this.presenceP, (item)=>{
+          return Number(item.moniteur_pratique_id) === Number(e.target.value);
+        })
+        this.dataSource = new MatTableDataSource(filterData);
+    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  // filter  by date
+  onchangeInput3(e:any){
+    if(e.target.value === ''){
+        this.dataSource = new MatTableDataSource(this.presenceP);
+    }else{
+        let filterData = _.filter(this.presenceP, (item)=>{
+          return item.date.toLowerCase() == e.target.value.toLowerCase()
+        })
+        this.dataSource = new MatTableDataSource(filterData);
+    }
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
   deletepresence(id:any){
     Swal.fire({
@@ -110,8 +175,6 @@ export class PresencePratiqueComponent implements OnInit { //
     }).then((result) => {
       if (result.isConfirmed) {
         this.dataService.deletPresenceCourP(id).subscribe(data => {
-          console.log("presence cours pratique deleted");
-          console.log(data);
           this.presence = [];
           this.getpresences()
         }, error => this.handleError(error));

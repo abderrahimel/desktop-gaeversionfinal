@@ -21,6 +21,7 @@ export class ModalImprimerVehiculeComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataLoad = this.data
+    console.log(this.data);
     this.dataLoad.map(data=> { this.total += Number(data.montant);console.log(this.total);});
   }
 
