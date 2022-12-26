@@ -1,6 +1,7 @@
 {
   "name": "auto-ecole",
   "version": "0.0.0",
+  "icon": "logo_gae.ico",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
@@ -8,7 +9,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start:electron": "ng build --base-href ./ --prod --aot --build-optimizer  && electron ."
+    "start:electron": "ng build --base-href ./ --prod --aot --build-optimizer  && electron .",
+    "winpackage": "electron-packager . GAE --platform=win32 --arch=x64 --overwrite --app-version=1.1.0 --build-version=1.2.0 --win32metadata.ProductName=GAE --FileDescription='gae pour windows' --appname=GAE --win32metadata.CompanyName=J2HB --app-copyright='copyright j2hb' --icon=logo_gae.ico",
+    "archiveapp": "asar pack GAE-win32-x64/resources/app GAE-win32-x64/resources/app.asar",
+    "packit": "ng build --base-href ./ && npm run winpackage && npm  run archiveapp"
   },
   "private": true,
   "dependencies": {
@@ -39,11 +43,13 @@
     "@popperjs/core": "^2.10.2",
     "angular-datatables": "^14.0.0",
     "angular-responsive-carousel": "^2.1.2",
+    "asar": "^3.2.0",
     "blob-util": "^2.0.2",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "datatables.net": "^1.12.1",
     "datatables.net-dt": "^1.12.1",
+    "electron-packager": "^17.1.1",
     "file-system": "^2.2.2",
     "font-awesome": "^4.7.0",
     "highcharts": "^10.2.1",

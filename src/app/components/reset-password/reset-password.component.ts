@@ -57,7 +57,6 @@ export class ResetPasswordComponent implements OnInit {
         password_confirmation:this.form.value.password_confirmation
       }).subscribe(
       data => {
-        console.log(JSON.parse(data));
         this.message = JSON.parse(data).message;
          this.success=JSON.parse(data).success;
          if(this.success){
